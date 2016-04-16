@@ -1,0 +1,5 @@
+--glob=!node_modules/*
+--glob=!.git/*
+--glob=!.cache/*
+--hidden
+--follow

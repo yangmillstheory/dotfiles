@@ -1,0 +1,7 @@
+backup() {
+  suffix=`date +%Y-%m-%d.%H%M.bak`
+  for f in $@; do
+    echo mv $f $f.$suffix
+    echo cp -p $f.$suffix $f
+  done | sh -x
+}
