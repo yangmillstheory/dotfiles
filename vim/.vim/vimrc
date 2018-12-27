@@ -151,7 +151,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 \ }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim', { 'on': 'Tmuxline' }
-Plug 'fatih/vim-go', { 'do': 'GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'mattn/calendar-vim'
 Plug 'matze/vim-move'
@@ -185,12 +185,23 @@ call plug#end()
 " plugin settings {{{
 " deoplete {{{
 let g:deoplete#enable_at_startup = 1
-
 " this is really a global setting;
 " but it's related to completion
 if has("patch-7.4.314")
  set shortmess+=c
 endif
+" }}}
+
+" gruvbox {{{
+"
+"   https://github.com/morhetz/gruvbox/wiki/Terminal-specific
+let g:gruvbox_contrast_dark    = 'medium'
+let g:gruvbox_contrast_light   = 'medium'
+let g:gruvbox_invert_selection = 0
+let g:gruvbox_italic           = 1
+let g:gruvbox_bold             = 1
+let g:gruvbox_underline        = 1
+let g:gruvbox_undercurl        = 1
 " }}}
 
 " ale {{{
@@ -213,6 +224,9 @@ let g:deoplete#sources#go#gocode_binary = $HOME . '/go/bin/gocode'
 " }}}
 
 " vim-go {{{
+let g:go_def_mapping_enabled = 0
+let g:go_info_mode = 'guru'
+let g:go_def_mode = 'guru'
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
@@ -236,14 +250,12 @@ augroup END
 " LanguageClient {{{
 "https://github.com/autozimu/LanguageClient-neovim/wiki/Recommended-Settings
 let g:LanguageClient_serverCommands = {
-\ 'go': ['go-langserver'],
-\ 'cpp': [
-\   '~/code/cquery/build/release/bin/cquery',
-\   '--log-file=/tmp/cq.log',
-\   '--init={"cacheDirectory":"/home/victoralvarez/.cache/cquery"}'
-\ ],
-\}
-function! SetLSPShortcuts()
+\  'python': ['/google/bin/releases/grok/tools/kythe_languageserver'],
+\  'go': ['/google/bin/releases/editor-devtools/ciderlsp'],
+\  'cpp': ['/google/bin/releases/editor-devtools/ciderlsp'],
+\  'proto': ['/google/bin/releases/editor-devtools/ciderlsp'],
+\  'borg': ['/google/bin/releases/editor-devtools/ciderlsp'],
+\ }
 nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
 nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
@@ -254,12 +266,6 @@ nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
 nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
 nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
 nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-endfunction()
-
-augroup LSP
-autocmd!
-autocmd FileType * call SetLSPShortcuts()
-augroup END
 
 set signcolumn=yes
 " https://github.com/autozimu/LanguageClient-neovim/issues/379
@@ -333,6 +339,15 @@ nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 " }}}
 
+" vimwiki {{{
+let g:vimwiki_list = [{'path': '$HOME/vimwiki/personal'}]
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_use_calendar = 1
+let g:calendar_options = 'nornu'
+let g:calendar_diary = '$HOME/vimwiki/personal/diary'
+let g:calendar_no_mappings = 1
+" }}}
+
 " vim-snipe {{{
 map <leader><leader>F <Plug>(snipe-F)
 map <leader><leader>f <Plug>(snipe-f)
@@ -367,12 +382,18 @@ let g:AutoPairsShortcutFastWrap = ''
 
 " NERDTree {{{
 nnoremap <C-n> :NERDTreeToggle<CR>
-"   https://github.com/scrooloose/nerdtree
 nnoremap <Leader>n :NERDTreeFind<CR>
 let NERDTreeShowHidden = 1
 " }}}
 
+" neosnippets {{{
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+" }}}
+
 " fugitive {{{
+"
 "   http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
 set diffopt+=vertical
 augroup fugitive
@@ -394,16 +415,17 @@ nnoremap <silent> <c-t> :FzfFiles<CR>
 nnoremap <silent> <c-f> :FzfRg<space>
 nnoremap <silent> <c-b> :FzfBuffers<CR>
 nnoremap <silent> <c-r> :FzfHistory:<CR>
-nnoremap <silent> <c-/>/ :FzfHistory/<CR>
+nnoremap <silent> <c-s> :FzfHistory/<CR>
 nnoremap <silent> <Leader>z :FzfFasdFile<space>
 nnoremap <silent> <Leader>Z :FzfFasdDir<space>
 " keep actions compatible with nerdtree
 let g:fzf_action = {
 \ 'ctrl-t': 'tab split',
 \ 'ctrl-i': 'split',
-\ 'ctrl-s': 'vsplit' }
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
+\ 'ctrl-s': 'vsplit',
+\ }
+let g:fzf_colors = {
+\ 'fg':      ['fg', 'Normal'],
 \ 'bg':      ['bg', 'Normal'],
 \ 'hl':      ['fg', 'Comment'],
 \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
@@ -424,14 +446,14 @@ let g:rg_exclude = []
 " https://github.com/junegunn/fzf.vim#advanced-customization
 " make sure that we can pass multiple directories to fzf sources
 function! s:RgArgs(q_args) abort
-  let fzf_args = []
+  let rg_args = []
   if len(g:rg_exclude)
-    let fzf_args += ["--glob=!{" . join(g:rg_exclude, ",") . "}"]
+    let rg_args += ["--glob=!{" . join(g:rg_exclude, ",") . "}"]
   endif
   if len(a:q_args)
-    let fzf_args += [a:q_args]
+    let rg_args += [a:q_args]
   endif
-  return join(fzf_args + g:rg_include, " ")
+  return join(rg_args + g:rg_include, " ")
 endfunction
 command! -bang -complete=dir FzfFiles
 \ call fzf#run(fzf#wrap({
@@ -534,16 +556,6 @@ let g:lightline = {
 \    'readonly': 'LightlineReadonly',
 \  },
 \}
-"  }}}
-
-" vimwiki {{{
-let g:vimwiki_list = [{'path': '$HOME/vimwiki'}]
-let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_use_calendar = 1
-let g:calendar_options = 'nornu'
-let g:calendar_diary = '$HOME/vimwiki/diary'
-let g:calendar_no_mappings = 1
-" }}}
 
 " winresizer {{{
 let g:winresizer_start_key = '<leader>r'
@@ -565,18 +577,18 @@ silent execute "h " . @@
 let @@ = saved
 endfunction
 augroup vimscript
-autocmd!
-" write and save the current file
-autocmd Filetype vim nnoremap <F9> :w!<cr> :so %<cr>
-" F1 = help
-autocmd FileType vim vnoremap <F1> :<c-u>call <SID>Help(visualmode())<cr>
-autocmd FileType vim nnoremap <F1> :set operatorfunc=<SID>Help<cr>g@
-autocmd FileType vim nnoremap <F1><F1> :h <c-r><c-w><cr>
+  autocmd!
+  " write and save the current file
+  autocmd Filetype vim nnoremap <F3> :w!<cr> :so %<cr>
+  " F1 = help
+  autocmd FileType vim vnoremap <F1> :<c-u>call <SID>Help(visualmode())<cr>
+  autocmd FileType vim nnoremap <F1> :set operatorfunc=<SID>Help<cr>g@
+  autocmd FileType vim nnoremap <F1><F1> :h <c-r><c-w><cr>
 augroup END
 augroup vimrc
-autocmd!
-autocmd BufRead vimrc setlocal foldmethod=marker
-autocmd BufRead vimrc setlocal foldlevelstart=0
+  autocmd!
+  autocmd BufRead vimrc setlocal foldmethod=marker
+  autocmd BufRead vimrc setlocal foldlevelstart=0
 augroup END
 " }}}
 
@@ -697,6 +709,87 @@ endfunction
 
 nnoremap <leader>g :set operatorfunc=<SID>GrepOperator<cr>g@
 vnoremap <leader>g :<c-u>call <SID>GrepOperator(visualmode())<cr>
+" }}}
+" }}}
+
+" google {{{
+source /usr/share/vim/google/google.vim
+
+" glugins {{{
+Glug codefmt-google
+" Glug ultisnips-google
+" Glug youcompleteme-google
+" }}}
+
+" glugin config {{{
+" ultisnips {{{
+" let g:UltiSnipsExpandTrigger = "<c-j>"
+" let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+" }}}
+
+" codefmt-google {{{
+augroup autoformat_settings
+  autocmd FileType borg,gcl,patchpanel AutoFormatBuffer gclfmt
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType markdown AutoFormatBuffer mdformat
+  autocmd FileType python AutoFormatBuffer pyformat
+  autocmd FileType textpb AutoFormatBuffer text-proto-format
+augroup END
+" }}}
+
+" ycm {{{
+" let g:ycm_clangd_binary_path = "/google/bin/releases/editor-devtools/ciderlsp"
+" }}}
+
+" lang {{{
+" go {{{
+Glug codefmt gofmt_executable="goimports"
+Glug codefmt-google
+Glug blazedeps auto_filetypes=`['go']`
+" }}}
+" }}}
+" }}}
+
+" codesearch + fzf.vim {{{
+function! s:CodeSearchSink(path)
+  execute "edit " . <SID>add_depot_root(a:path)
+endfunction
+function! s:citcroot()
+  return matchstr(getcwd(), '^/google/src/cloud/[^/]\+/[^/]\+/')
+endfunction
+function! s:add_depot_root(path)
+  if <SID>in_citc()
+    return <SID>citcroot() . a:path
+  else
+    return "/google/src/files/head/depot" . a:path
+  endif
+endfunction
+function! s:in_citc()
+  return match(getcwd(), '^/google/src/cloud/') != -1
+endfunction
+function! s:csearch(search)
+  let b:root='/google/src/files/head/depot'
+  if <SID>in_citc()
+    let b:root=<SID>citcroot()
+  endif
+  call fzf#run({
+        \ 'source': "csearch -l " . a:search . "| sed 's|^/google/src/files/head/depot||'",
+        \ 'sink': function("s:CodeSearchSink"),
+        \ 'options': '-m --preview-window=right:65% --preview="cat ' . b:root . '{}"'
+        \ })
+endfunction
+command! -nargs=+ CSearch :call <SID>csearch("<args>")
+cnoreabbrev cs CSearch
+" }}}
+
+" languages {{{
+" go {{{
+autocmd FileType go AutoFormatBuffer gofmt
+" }}}
 " }}}
 " }}}
 " }}}
