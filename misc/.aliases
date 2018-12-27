@@ -1,0 +1,54 @@
+alias v='~/.bin/nvim'
+alias o='xdg-open'
+alias t='tmx'
+alias q='exit'
+alias m='make'
+alias c='clear'
+alias x='systemctl suspend'
+
+alias p='python'
+alias p3='python3'
+
+# other apps
+alias ag='ag --path-to-ignore ~/.agignore'
+
+# git
+alias ga='git add'
+alias gap='git add --patch'
+alias gaf='git add $(fgf)'
+alias gcf='git checkout $(fgf)'
+alias gcb='git checkout $(fgb)'
+
+alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+
+alias gr='git reset'
+alias grp='gr --patch'
+
+alias gco='git checkout'
+alias gcop='gco --patch'
+
+alias gc='git commit'
+alias gca='gc --amend'
+alias gcm='gc --message'
+
+alias gd='git diff'
+alias gds='gd --staged'
+alias gdh='gd HEAD'
+
+alias gs='git status'
+
+alias gpush='git push'
+alias gpull='git pull'
+
+# fasd
+#
+# these all come with fasd --init auto in .zshrc, but
+# pasting them here for documentation
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
