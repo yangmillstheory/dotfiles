@@ -1,2 +1,11 @@
 clear lock
+! caps -> escape
 keycode 66 = Escape NoSymbol NoSymbol
+
+! right to left, starting from F12
+keycode 96 = XF86AudioRaiseVolume
+keycode 95 = XF86AudioLowerVolume
+keycode 76 = XF86AudioMute
+keycode 75 = XF86AudioPlay
+keycode 74 = XF86AudioNext
+keycode 73 = XF86AudioPrev

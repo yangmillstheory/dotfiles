@@ -100,7 +100,10 @@ unsetopt autopushd
 
 export KEYTIMEOUT=1
 
-fpath=(~/.zsh/completions $fpath)
+fpath=(
+  ~/.zsh/completions
+  $fpath
+)
 
 # don't remember what this is?
 autoload -Uz compinit && compinit
@@ -136,10 +139,26 @@ setopt HIST_IGNORE_ALL_DUPS
 
 eval "$(fasd --init auto)"
 
+# google
+#
+# https://g3doc.corp.google.com/devtools/blaze/scripts/zsh_completion/README.md?cl=head
 if [[ -f /etc/bash_completion.d/g4d ]]; then
   . /etc/bash_completion.d/g4d
   . /etc/bash_completion.d/p4
 fi
+
+fpath=(
+  /google/src/files/head/depot/google3/devtools/blaze/scripts/zsh_completion
+  $fpath
+)
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+_blaze_query_tmux() {
+  tmux display-message 'Querying blaze'
+  $@
+}
+zstyle ':completion:*:blaze-*:query' command -_blaze_query_tmux
 
 prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
 if ! prodcertstatus -q; then

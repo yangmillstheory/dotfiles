@@ -1,13 +1,12 @@
-# This is Git's per-user configuration file.
 [user]
-  name = Victor Alvarez
-  email = victoralvarez@google.com
+	name = Victor Alvarez
+	email = victoralvarez@google.com
 [core]
-  editor = nvim
+	editor = nvim
 [url "git@github.com:"]
   pushInsteadOf = "https://github.com/"
 [alias]
-  co = checkout
-  br = branch
-  ci = commit
-  st = status
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
