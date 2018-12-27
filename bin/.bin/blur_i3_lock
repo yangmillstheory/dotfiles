@@ -1,0 +1,54 @@
+#!/bin/bash
+# script to lock the screen with a blur effect
+#
+# dependencies:
+#   - scrot
+#   - imagemagick
+#   - i3lock
+#   - dunst
+
+# pause notifications, create lock background,
+# and set DPMS settings for standby, suspend, off
+
+LOCK_ICON=~/Pictures/lock.png
+LOCK_BG=/tmp/bg.png
+scrot "$LOCK_BG"
+
+# cargo-culted and cleaned from https://github.com/guimeira/i3lock-fancy-multimonitor
+# this isn't called dynamically, just once to get the computation results, which are then inlined
+get_convert_params() {
+  LOCK_W=190
+  LOCK_H=190
+  PARAMS=""
+  # matching breaks if we do the test below inline
+  RES_AND_DIM_PATTERN="([0-9]+)x([0-9]+)\\+([0-9]+)\\+([0-9]+)"
+  while read XRANDR_LINE
+  do
+    if [[ $XRANDR_LINE =~ $RES_AND_DIM_PATTERN ]]; then
+      W=${BASH_REMATCH[1]}
+      H=${BASH_REMATCH[2]}
+      X=${BASH_REMATCH[3]}
+      Y=${BASH_REMATCH[4]}
+      X=$(($X + $W/2 - $LOCK_W/2))
+      Y=$(($Y + $H/2 - $LOCK_H/2))
+      PARAMS="$PARAMS '$LOCK_ICON' '-geometry' '+$X+$Y' '-composite'"
+    else
+      echo "Couldn't match line $XRANDR_LINE."
+      exit 1
+    fi
+  done <<< "`xrandr | grep -sw connected`"
+  echo "'$LOCK_BG' '-scale' '10%' '-scale' '1000%' $PARAMS '$LOCK_BG'"
+}
+
+killall -SIGUSR1 dunst
+convert "$LOCK_BG" -scale 10% -scale 1000%  "$LOCK_ICON" -geometry +1185+625 -composite "$LOCK_ICON" -geometry +3745+625 -composite "$LOCK_BG"
+
+xset +dpms dpms 120 300 300
+killall compton
+i3lock --image "$LOCK_BG" --nofork
+
+# resume notifications and set DPMS off
+compton -f &
+xset dpms 0 0 0
+killall -SIGUSR2 dunst
+rm $LOCK_BG

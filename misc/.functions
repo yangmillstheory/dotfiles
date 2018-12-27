@@ -1,0 +1,37 @@
+backup() {
+  suffix=`date +%Y-%m-%d.%H%M.bak`
+  for f in $@; do
+    echo mv $f $f.$suffix
+    echo cp -p $f.$suffix $f
+  done | sh -x
+}
+
+# blaze-bin
+function bb() {
+  if [[ $PWD =~ '(.*)/blaze-bin(.*)' ]]; then
+    cd "${match[1]}${match[2]}"
+  else
+    cd "${PWD/\/google3//google3/blaze-bin}"
+  fi
+}
+
+# blaze-genfiles
+function bg() {
+  if [[ $PWD =~ '(.*)/blaze-genfiles(.*)' ]]; then
+    cd "${match[1]}${match[2]}"
+  else
+    cd "${PWD/\/google3//google3/blaze-genfiles}"
+  fi
+}
+
+function jt() {
+    if [[ $PWD =~ '(.*)/javatests(.*)' ]]; then
+        cd "${match[1]}/java${match[2]}"
+    else
+        cd "${PWD/\/google3\/java//google3/javatests}"
+    fi
+}
+
+prodaccess() {
+  /usr/bin/prodaccess "$@" && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh --extra_space
+}
