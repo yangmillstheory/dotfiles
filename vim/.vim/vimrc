@@ -167,6 +167,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'simeji/winresizer'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'simeji/winresizer'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
@@ -485,6 +486,10 @@ command! -bang -nargs=* FzfFasdDir
 "
 " command! -bang -nargs=? -complete=dir FzfBuffers
 "   \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview(), <bang>0)
+" }}}
+
+" winresizer {{{
+let g:winresizer_start_key = '<leader>r'
 " }}}
 
 " vim-better-whitespace {{{
