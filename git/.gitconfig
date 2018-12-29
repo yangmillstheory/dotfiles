@@ -1,7 +1,7 @@
 [core]
   editor = nvim
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
