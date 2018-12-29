@@ -167,7 +167,6 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'simeji/winresizer'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'simeji/winresizer'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
@@ -344,15 +343,6 @@ nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 " }}}
 
-" vimwiki {{{
-let g:vimwiki_list = [{'path': '$HOME/vimwiki/personal'}]
-let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_use_calendar = 1
-let g:calendar_options = 'nornu'
-let g:calendar_diary = '$HOME/vimwiki/personal/diary'
-let g:calendar_no_mappings = 1
-" }}}
-
 " vim-snipe {{{
 map <leader><leader>F <Plug>(snipe-F)
 map <leader><leader>f <Plug>(snipe-f)
@@ -389,12 +379,6 @@ let g:AutoPairsShortcutFastWrap = ''
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <Leader>n :NERDTreeFind<CR>
 let NERDTreeShowHidden = 1
-" }}}
-
-" neosnippets {{{
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
 " }}}
 
 " fugitive {{{
@@ -492,10 +476,6 @@ command! -bang -nargs=* FzfFasdDir
 "   \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview(), <bang>0)
 " }}}
 
-" winresizer {{{
-let g:winresizer_start_key = '<leader>r'
-" }}}
-
 " vim-better-whitespace {{{
 autocmd BufEnter * EnableStripWhitespaceOnSave
 autocmd BufEnter * DisableWhitespace
@@ -565,6 +545,15 @@ let g:lightline = {
 \    'readonly': 'LightlineReadonly',
 \  },
 \}
+
+" vimwiki {{{
+let g:vimwiki_list = [{'path': '$HOME/vimwiki/personal'}]
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_use_calendar = 1
+let g:calendar_options = 'nornu'
+let g:calendar_diary = '$HOME/vimwiki/personal/diary'
+let g:calendar_no_mappings = 1
+" }}}
 
 " winresizer {{{
 let g:winresizer_start_key = '<leader>r'
