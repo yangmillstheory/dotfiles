@@ -15,7 +15,7 @@ xsetroot -solid "#333333"
 
 export TERMINAL=alacritty
 
-# handle keyboard mappings
+# set up keyboard and mouse
 xmodmap ~/.Xmodmap
 xset r rate 200 25
 imwheel --kill --buttons '4 5'

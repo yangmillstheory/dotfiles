@@ -29,8 +29,8 @@ get_convert_params() {
       H=${BASH_REMATCH[2]}
       X=${BASH_REMATCH[3]}
       Y=${BASH_REMATCH[4]}
-      X=$(($X + $W/2 - $LOCK_W/2))
-      Y=$(($Y + $H/2 - $LOCK_H/2))
+      X=$(($X+$W/2-$LOCK_W/2))
+      Y=$(($Y+$H/2-$LOCK_H/2))
       PARAMS="$PARAMS '$LOCK_ICON' '-geometry' '+$X+$Y' '-composite'"
     else
       echo "Couldn't match line $XRANDR_LINE."

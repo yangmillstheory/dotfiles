@@ -63,14 +63,14 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
 set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
+set $ws3 "3: "
+set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws0 "0: "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -82,7 +82,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+0 workspace $ws0
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -94,11 +94,10 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+0 move container to workspace $ws0
 
 assign [class="Alacritty"] $ws1
-assign [class="Google-chrome"] $ws2
-for_window [class="Spotify"] move to workspace $ws3
+for_window [class="Spotify"] move to workspace $ws0
 for_window [class=".*"] border none
 
 # reload the configuration file
@@ -156,7 +155,6 @@ exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/Leaves.jpg
 exec --no-startup-id alacritty
 exec --no-startup-id google-chrome
 exec --no-startup-id spotify
-exec --no-startup-id i3-msg "workspace 4; exec alacritty -e irssi"
 
 # lock screen
 bindsym $mod+shift+x exec ~/.bin/blur_i3_lock
@@ -169,7 +167,6 @@ exec --no-startup-id xautolock \
   -notifier "notify-send -u critical -t 15000 -- 'Warning!' 'Inactivity detected; locking soon.'" \
 # lock when suspended
 exec --no-startup-id xss-lock -l -- ~/.bin/blur_i3_lock
-
 
 # used to bind mouse buttons
 exec_always xbindkeys --poll-rc
