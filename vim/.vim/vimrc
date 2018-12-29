@@ -193,6 +193,18 @@ if has("patch-7.4.314")
 endif
 " }}}
 
+" gruvbox {{{
+"
+"   https://github.com/morhetz/gruvbox/wiki/Terminal-specific
+let g:gruvbox_contrast_dark    = 'medium'
+let g:gruvbox_contrast_light   = 'medium'
+let g:gruvbox_invert_selection = 0
+let g:gruvbox_italic           = 1
+let g:gruvbox_bold             = 1
+let g:gruvbox_underline        = 1
+let g:gruvbox_undercurl        = 1
+" }}}
+
 " ale {{{
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
@@ -243,7 +255,6 @@ let g:LanguageClient_serverCommands = {
 \   '--init={"cacheDirectory":"/home/victoralvarez/.cache/cquery"}'
 \ ],
 \}
-function! SetLSPShortcuts()
 nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
 nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
@@ -254,12 +265,6 @@ nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
 nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
 nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
 nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-endfunction()
-
-augroup LSP
-autocmd!
-autocmd FileType * call SetLSPShortcuts()
-augroup END
 
 set signcolumn=yes
 " https://github.com/autozimu/LanguageClient-neovim/issues/379
@@ -367,12 +372,12 @@ let g:AutoPairsShortcutFastWrap = ''
 
 " NERDTree {{{
 nnoremap <C-n> :NERDTreeToggle<CR>
-"   https://github.com/scrooloose/nerdtree
 nnoremap <Leader>n :NERDTreeFind<CR>
 let NERDTreeShowHidden = 1
 " }}}
 
 " fugitive {{{
+"
 "   http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
 set diffopt+=vertical
 augroup fugitive
@@ -401,9 +406,10 @@ nnoremap <silent> <Leader>Z :FzfFasdDir<space>
 let g:fzf_action = {
 \ 'ctrl-t': 'tab split',
 \ 'ctrl-i': 'split',
-\ 'ctrl-s': 'vsplit' }
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
+\ 'ctrl-s': 'vsplit'
+\ }
+let g:fzf_colors = {
+\ 'fg':      ['fg', 'Normal'],
 \ 'bg':      ['bg', 'Normal'],
 \ 'hl':      ['fg', 'Comment'],
 \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
