@@ -545,6 +545,7 @@ let g:lightline = {
 \    'readonly': 'LightlineReadonly',
 \  },
 \}
+" }}}
 
 " vimwiki {{{
 let g:vimwiki_list = [{'path': '$HOME/vimwiki/personal'}]
