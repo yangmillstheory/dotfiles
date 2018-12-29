@@ -183,123 +183,16 @@ call plug#end()
 " }}}
 
 " plugin settings {{{
-" deoplete {{{
-let g:deoplete#enable_at_startup = 1
-" this is really a global setting;
-" but it's related to completion
-if has("patch-7.4.314")
- set shortmess+=c
-endif
-" }}}
-
-" gruvbox {{{
-"
-"   https://github.com/morhetz/gruvbox/wiki/Terminal-specific
-let g:gruvbox_contrast_dark    = 'medium'
-let g:gruvbox_contrast_light   = 'medium'
-let g:gruvbox_invert_selection = 0
-let g:gruvbox_italic           = 1
-let g:gruvbox_bold             = 1
-let g:gruvbox_underline        = 1
-let g:gruvbox_undercurl        = 1
-" }}}
-
 " ale {{{
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 " }}}
 
-" neosnippets {{{
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-if has('conceal')
-set conceallevel=2 concealcursor=niv
-endif
-let g:neosnippet#enable_completed_snippet = 1
-" }}}
-
-" deoplete-go {{{
-let g:deoplete#sources#go#gocode_binary = $HOME . '/go/bin/gocode'
-" }}}
-
-" vim-go {{{
-let g:go_def_mapping_enabled = 1
-let g:go_info_mode = 'guru'
-let g:go_echo_go_info = 0
-let g:go_def_mode = 'guru'
-let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 1
-let g:go_list_type = "quickfix"
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_generate_tags = 1
-
-" Open :GoDeclsDir with ctrl-g
-nmap <C-g> :GoDeclsDir<cr>
-imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
-
-augroup go
-  autocmd!
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-augroup END
-" }}}
-
-" LanguageClient {{{
-"https://github.com/autozimu/LanguageClient-neovim/wiki/Recommended-Settings
-let g:LanguageClient_serverCommands = {
-\  'python': ['/google/bin/releases/grok/tools/kythe_languageserver'],
-\  'go': ['/google/bin/releases/editor-devtools/ciderlsp'],
-\  'cpp': ['/google/bin/releases/editor-devtools/ciderlsp'],
-\  'proto': ['/google/bin/releases/editor-devtools/ciderlsp'],
-\  'borg': ['/google/bin/releases/editor-devtools/ciderlsp'],
-\ }
-
-let g:LanguageClient_loadSettings = 0
-
-nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-
-set signcolumn=yes
-" https://github.com/autozimu/LanguageClient-neovim/issues/379
-let g:LanguageClient_hasSnippetSupport = 0
-let g:LanguageClient_diagnosticsDisplay = {
-\ 1: {
-\   "name": "Error",
-\   "texthl": "ALEError",
-\   "signText": "✖",
-\   "signTexthl": "ALEErrorSign",
-\ },
-\ 2: {
-\   "name": "Warning",
-\   "texthl": "ALEWarning",
-\   "signText": "❗",
-\   "signTexthl": "ALEWarningSign",
-\ },
-\ 3: {
-\   "name": "Information",
-\   "texthl": "ALEInfo",
-\   "signText": "ℹ",
-\   "signTexthl": "ALEInfoSign",
-\ },
-\ 4: {
-\   "name": "Hint",
-\   "texthl": "ALEInfo",
-\   "signText": "➤",
-\   "signTexthl": "ALEInfoSign",
-\ },
-\ }
+" autopairs {{{
+let g:AutoPairsShortcutToggle = ''
+let g:AutoPairsShortcutJump = ''
+let g:AutoPairsShortcutBackInsert = ''
+let g:AutoPairsShortcutFastWrap = ''
 " }}}
 
 " colorscheme {{{
@@ -321,64 +214,18 @@ hi Normal     guibg=NONE ctermbg=NONE
 hi CursorLine cterm=none gui=none
 " }}}
 
-" vim-move {{{
-let g:move_map_keys = 0
-vmap <A-S-h> <Plug>MoveBlockLeft
-vmap <A-S-j> <Plug>MoveBlockDown
-vmap <A-S-k> <Plug>MoveBlockUp
-vmap <A-S-l> <Plug>MoveBlockRight
-nmap <A-S-h> <Plug>MoveCharLeft
-nmap <A-S-j> <Plug>MoveLineDown
-nmap <A-S-k> <Plug>MoveLineUp
-nmap <A-S-l> <Plug>MoveCharRight
+" deoplete {{{
+let g:deoplete#enable_at_startup = 1
+
+" this is really a global setting;
+" but it's related to completion
+if has("patch-7.4.314")
+ set shortmess+=c
+endif
 " }}}
 
-" vim-tmux-navigator {{{
-" https://github.com/christoomey/vim-tmux-navigator/#vim-1
-let g:tmux_navigator_no_mappings = 1
-let g:tmux_navigator_disable_when_zoomed = 1
-nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
-" }}}
-
-" vim-snipe {{{
-map <leader><leader>F <Plug>(snipe-F)
-map <leader><leader>f <Plug>(snipe-f)
-map <leader><leader>T <Plug>(snipe-T)
-map <leader><leader>t <Plug>(snipe-t)
-map <leader><leader>w <Plug>(snipe-w)
-map <leader><leader>W <Plug>(snipe-W)
-map <leader><leader>e <Plug>(snipe-e)
-map <leader><leader>E <Plug>(snipe-E)
-map <leader><leader>b <Plug>(snipe-b)
-map <leader><leader>B <Plug>(snipe-B)
-map <leader><leader>ge <Plug>(snipe-ge)
-map <leader><leader>gE <Plug>(snipe-gE)
-nmap <leader><leader>] <Plug>(snipe-f-xp)
-nmap <leader><leader>[ <Plug>(snipe-F-xp)
-nmap <leader><leader>x <Plug>(snipe-f-x)
-nmap <leader><leader>X <Plug>(snipe-F-x)
-nmap <leader><leader>r <Plug>(snipe-f-r)
-nmap <leader><leader>R <Plug>(snipe-F-r)
-nmap <leader><leader>i <Plug>(snipe-f-i)
-nmap <leader><leader>I <Plug>(snipe-F-i)
-nmap <leader><leader>a <Plug>(snipe-f-a)
-nmap <leader><leader>A <Plug>(snipe-F-a)
-" }}}
-
-" autopairs {{{
-let g:AutoPairsShortcutToggle = ''
-let g:AutoPairsShortcutJump = ''
-let g:AutoPairsShortcutBackInsert = ''
-let g:AutoPairsShortcutFastWrap = ''
-" }}}
-
-" NERDTree {{{
-nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <Leader>n :NERDTreeFind<CR>
-let NERDTreeShowHidden = 1
+" deoplete-go {{{
+let g:deoplete#sources#go#gocode_binary = $HOME . '/go/bin/gocode'
 " }}}
 
 " fugitive {{{
@@ -411,7 +258,7 @@ nnoremap <silent> <Leader>Z :FzfFasdDir<space>
 let g:fzf_action = {
 \ 'ctrl-t': 'tab split',
 \ 'ctrl-i': 'split',
-\ 'ctrl-s': 'vsplit',
+\ 'ctrl-s': 'vsplit'
 \ }
 let g:fzf_colors = {
 \ 'fg':      ['fg', 'Normal'],
@@ -476,51 +323,70 @@ command! -bang -nargs=* FzfFasdDir
 "   \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview(), <bang>0)
 " }}}
 
-" vim-better-whitespace {{{
-autocmd BufEnter * EnableStripWhitespaceOnSave
-autocmd BufEnter * DisableWhitespace
+" gruvbox {{{
+"
+"   https://github.com/morhetz/gruvbox/wiki/Terminal-specific
+let g:gruvbox_contrast_dark    = 'medium'
+let g:gruvbox_contrast_light   = 'medium'
+let g:gruvbox_invert_selection = 0
+let g:gruvbox_italic           = 1
+let g:gruvbox_bold             = 1
+let g:gruvbox_underline        = 1
+let g:gruvbox_undercurl        = 1
 " }}}
 
-" lightline functions {{{
-function! LightlineModified()
-return &ft =~ 'help\|vimfiler' ? '' : &modified ? '⚡' : &modifiable ? '' : '-'
-endfunction
-function! LightlineReadonly()
-return &readonly ? '' : ''
-endfunction
-function! LightlineFilename()
-return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-\  &ft == 'unite' ? unite#get_status_string() :
-\  &ft == 'vimshell' ? vimshell#get_status_string() :
-\ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-\ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-function! LightlineFugitive()
-if &ft !~? 'vimfiler' && exists('*fugitive#head')
-  let branch = fugitive#head()
-  return branch !=# '' ?  ' '.branch : ''
-endif
-return ''
-endfunction
-" }}}
+" LanguageClient {{{
+"https://github.com/autozimu/LanguageClient-neovim/wiki/Recommended-Settings
+let g:LanguageClient_serverCommands = {
+\  'python': ['/google/bin/releases/grok/tools/kythe_languageserver'],
+\  'go': ['/google/bin/releases/editor-devtools/ciderlsp'],
+\  'cpp': ['/google/bin/releases/editor-devtools/ciderlsp'],
+\  'proto': ['/google/bin/releases/editor-devtools/ciderlsp'],
+\  'borg': ['/google/bin/releases/editor-devtools/ciderlsp'],
+\ }
 
-" tmuxline {{{
-let g:tmuxline_preset = {
-    \'options': {'status-justify': 'left'},
-    \'a'    : '#S',
-    \'win'  : ['#I', '#W'],
-    \'cwin' : ['#I', '#W'],
-    \'y'    : [
-    \  '%R',
-    \  '%a',
-    \  '%Y'
-    \],
-    \'z': '#H'}
-" }}}
+let g:LanguageClient_loadSettings = 0
 
-" python-syntax {{{
-let g:python_highlight_all = 1
+nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+
+set signcolumn=yes
+" https://github.com/autozimu/LanguageClient-neovim/issues/379
+let g:LanguageClient_hasSnippetSupport = 0
+let g:LanguageClient_diagnosticsDisplay = {
+\ 1: {
+\   "name": "Error",
+\   "texthl": "ALEError",
+\   "signText": "✖",
+\   "signTexthl": "ALEErrorSign",
+\ },
+\ 2: {
+\   "name": "Warning",
+\   "texthl": "ALEWarning",
+\   "signText": "❗",
+\   "signTexthl": "ALEWarningSign",
+\ },
+\ 3: {
+\   "name": "Information",
+\   "texthl": "ALEInfo",
+\   "signText": "ℹ",
+\   "signTexthl": "ALEInfoSign",
+\ },
+\ 4: {
+\   "name": "Hint",
+\   "texthl": "ALEInfo",
+\   "signText": "➤",
+\   "signTexthl": "ALEInfoSign",
+\ },
+\ }
 " }}}
 
 "  lightline {{{
@@ -545,6 +411,136 @@ let g:lightline = {
 \    'readonly': 'LightlineReadonly',
 \  },
 \}
+" lightline functions {{{
+function! LightlineModified()
+return &ft =~ 'help\|vimfiler' ? '' : &modified ? '⚡' : &modifiable ? '' : '-'
+endfunction
+function! LightlineReadonly()
+return &readonly ? '' : ''
+endfunction
+function! LightlineFilename()
+return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+\  &ft == 'unite' ? unite#get_status_string() :
+\  &ft == 'vimshell' ? vimshell#get_status_string() :
+\ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+\ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+function! LightlineFugitive()
+if &ft !~? 'vimfiler' && exists('*fugitive#head')
+  let branch = fugitive#head()
+  return branch !=# '' ?  ' '.branch : ''
+endif
+return ''
+endfunction
+" }}}
+"  }}}
+
+" NERDTree {{{
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <Leader>n :NERDTreeFind<CR>
+let NERDTreeShowHidden = 1
+" }}}
+
+" neosnippets {{{
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+if has('conceal')
+set conceallevel=2 concealcursor=niv
+endif
+let g:neosnippet#enable_completed_snippet = 1
+" }}}
+
+" tmuxline {{{
+let g:tmuxline_preset = {
+    \'options': {'status-justify': 'left'},
+    \'a'    : '#S',
+    \'win'  : ['#I', '#W'],
+    \'cwin' : ['#I', '#W'],
+    \'y'    : [
+    \  '%R',
+    \  '%a',
+    \  '%Y'
+    \],
+    \'z': '#H'}
+" }}}
+
+" vim-better-whitespace {{{
+autocmd BufEnter * EnableStripWhitespaceOnSave
+autocmd BufEnter * DisableWhitespace
+" }}}
+
+" vim-go {{{
+let g:go_def_mapping_enabled = 1
+let g:go_info_mode = 'guru'
+let g:go_echo_go_info = 0
+let g:go_def_mode = 'guru'
+let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+let g:go_list_type = "quickfix"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
+
+" Open :GoDeclsDir with ctrl-g
+nmap <C-g> :GoDeclsDir<cr>
+imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
+
+augroup go
+  autocmd!
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
+" }}}
+
+" vim-move {{{
+let g:move_map_keys = 0
+vmap <A-S-h> <Plug>MoveBlockLeft
+vmap <A-S-j> <Plug>MoveBlockDown
+vmap <A-S-k> <Plug>MoveBlockUp
+vmap <A-S-l> <Plug>MoveBlockRight
+nmap <A-S-h> <Plug>MoveCharLeft
+nmap <A-S-j> <Plug>MoveLineDown
+nmap <A-S-k> <Plug>MoveLineUp
+nmap <A-S-l> <Plug>MoveCharRight
+" }}}
+
+" vim-snipe {{{
+map <leader><leader>F <Plug>(snipe-F)
+map <leader><leader>f <Plug>(snipe-f)
+map <leader><leader>T <Plug>(snipe-T)
+map <leader><leader>t <Plug>(snipe-t)
+map <leader><leader>w <Plug>(snipe-w)
+map <leader><leader>W <Plug>(snipe-W)
+map <leader><leader>e <Plug>(snipe-e)
+map <leader><leader>E <Plug>(snipe-E)
+map <leader><leader>b <Plug>(snipe-b)
+map <leader><leader>B <Plug>(snipe-B)
+map <leader><leader>ge <Plug>(snipe-ge)
+map <leader><leader>gE <Plug>(snipe-gE)
+nmap <leader><leader>] <Plug>(snipe-f-xp)
+nmap <leader><leader>[ <Plug>(snipe-F-xp)
+nmap <leader><leader>x <Plug>(snipe-f-x)
+nmap <leader><leader>X <Plug>(snipe-F-x)
+nmap <leader><leader>r <Plug>(snipe-f-r)
+nmap <leader><leader>R <Plug>(snipe-F-r)
+nmap <leader><leader>i <Plug>(snipe-f-i)
+nmap <leader><leader>I <Plug>(snipe-F-i)
+nmap <leader><leader>a <Plug>(snipe-f-a)
+nmap <leader><leader>A <Plug>(snipe-F-a)
+" }}}
+
+" vim-tmux-navigator {{{
+" https://github.com/christoomey/vim-tmux-navigator/#vim-1
+let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_disable_when_zoomed = 1
+nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 " }}}
 
 " vimwiki {{{
