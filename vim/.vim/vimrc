@@ -165,6 +165,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'simeji/winresizer'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
@@ -228,6 +229,7 @@ let g:go_info_mode = 'guru'
 let g:go_def_mode = 'guru'
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
+let g:go_echo_go_info = 0
 let g:go_list_type = "quickfix"
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
@@ -562,6 +564,10 @@ let g:AutoPairsShortcutToggle = ''
 let g:AutoPairsShortcutJump = ''
 let g:AutoPairsShortcutBackInsert = ''
 let g:AutoPairsShortcutFastWrap = ''
+" }}}
+
+" winresizer {{{
+let g:winresizer_start_key = '<leader>r'
 " }}}
 " }}}
 
