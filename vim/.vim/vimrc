@@ -394,7 +394,7 @@ nnoremap <silent> <c-t> :FzfFiles<CR>
 nnoremap <silent> <c-f> :FzfRg<space>
 nnoremap <silent> <c-b> :FzfBuffers<CR>
 nnoremap <silent> <c-r> :FzfHistory:<CR>
-nnoremap <silent> <c-/>/ :FzfHistory/<CR>
+nnoremap <silent> <c-s>/ :FzfHistory/<CR>
 nnoremap <silent> <Leader>z :FzfFasdFile<space>
 nnoremap <silent> <Leader>Z :FzfFasdDir<space>
 " keep actions compatible with nerdtree
@@ -424,14 +424,14 @@ let g:rg_exclude = []
 " https://github.com/junegunn/fzf.vim#advanced-customization
 " make sure that we can pass multiple directories to fzf sources
 function! s:RgArgs(q_args) abort
-  let fzf_args = []
+  let rg_args = []
   if len(g:rg_exclude)
-    let fzf_args += ["--glob=!{" . join(g:rg_exclude, ",") . "}"]
+    let rg_args += ["--glob=!{" . join(g:rg_exclude, ",") . "}"]
   endif
   if len(a:q_args)
-    let fzf_args += [a:q_args]
+    let rg_args += [a:q_args]
   endif
-  return join(fzf_args + g:rg_include, " ")
+  return join(rg_args + g:rg_include, " ")
 endfunction
 command! -bang -complete=dir FzfFiles
 \ call fzf#run(fzf#wrap({
@@ -565,18 +565,18 @@ silent execute "h " . @@
 let @@ = saved
 endfunction
 augroup vimscript
-autocmd!
-" write and save the current file
-autocmd Filetype vim nnoremap <F9> :w!<cr> :so %<cr>
-" F1 = help
-autocmd FileType vim vnoremap <F1> :<c-u>call <SID>Help(visualmode())<cr>
-autocmd FileType vim nnoremap <F1> :set operatorfunc=<SID>Help<cr>g@
-autocmd FileType vim nnoremap <F1><F1> :h <c-r><c-w><cr>
+  autocmd!
+  " write and save the current file
+  autocmd Filetype vim nnoremap <F9> :w!<cr> :so %<cr>
+  " F1 = help
+  autocmd FileType vim vnoremap <F1> :<c-u>call <SID>Help(visualmode())<cr>
+  autocmd FileType vim nnoremap <F1> :set operatorfunc=<SID>Help<cr>g@
+  autocmd FileType vim nnoremap <F1><F1> :h <c-r><c-w><cr>
 augroup END
 augroup vimrc
-autocmd!
-autocmd BufRead vimrc setlocal foldmethod=marker
-autocmd BufRead vimrc setlocal foldlevelstart=0
+  autocmd!
+  autocmd BufRead vimrc setlocal foldmethod=marker
+  autocmd BufRead vimrc setlocal foldlevelstart=0
 augroup END
 " }}}
 
