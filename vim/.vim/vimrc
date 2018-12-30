@@ -453,17 +453,19 @@ let g:neosnippet#enable_completed_snippet = 1
 " }}}
 
 " tmuxline {{{
+let g:tmuxline_status_justify = 'left'
+let g:tmuxline_theme = 'minimal'
 let g:tmuxline_preset = {
-    \'options': {'status-justify': 'left'},
-    \'a'    : '#S',
-    \'win'  : ['#I', '#W'],
-    \'cwin' : ['#I', '#W'],
-    \'y'    : [
-    \  '%R',
-    \  '%a',
-    \  '%Y'
-    \],
-    \'z': '#H'}
+\'a'    : '#S',
+\'b'    : '#(g3-short-path #{pane_current_path})',
+\'win'  : ['#I', '#W'],
+\'cwin' : ['#I', '#W'],
+\'y'    : [
+\  '%I:%M %p (%Z)',
+\  '%a %b %d',
+\],
+\'z': '#H'
+\}
 " }}}
 
 " vim-better-whitespace {{{

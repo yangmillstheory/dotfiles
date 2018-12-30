@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+if [[ $1 =~ /google/src/cloud/[^/]+/(.+)/google3(.*)$ ]]; then
+  echo "(${match[1]}) //${match[2]#/}"
+else
+  plugins=(shrink-path)
+  source $ZSH/oh-my-zsh.sh && shrink_path -f $1
+fi

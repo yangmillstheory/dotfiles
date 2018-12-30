@@ -100,10 +100,7 @@ unsetopt autopushd
 
 export KEYTIMEOUT=1
 
-fpath=(
-  ~/.zsh/completions
-  $fpath
-)
+fpath=(~/.zsh/completions $fpath)
 
 # don't remember what this is?
 autoload -Uz compinit && compinit
