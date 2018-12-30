@@ -457,7 +457,7 @@ let g:tmuxline_status_justify = 'left'
 let g:tmuxline_theme = 'minimal'
 let g:tmuxline_preset = {
 \'a'    : '#S',
-\'b'    : '#(google3_path #{pane_current_path})',
+\'b'    : '#(g3-short-path #{pane_current_path})',
 \'win'  : ['#I', '#W'],
 \'cwin' : ['#I', '#W'],
 \'y'    : [
