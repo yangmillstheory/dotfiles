@@ -464,7 +464,7 @@ let g:tmuxline_preset = {
 \  '%I:%M %p (%Z)',
 \  '%a %b %d',
 \],
-\'z': '#H'
+\'z': '#[bold]#H'
 \}
 " }}}
 
