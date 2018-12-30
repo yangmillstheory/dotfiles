@@ -90,11 +90,11 @@ font:
 
   bold:
     family: Fantasque Sans Mono
-    style: Regular
+    style: Bold
 
   italic:
     family: Fantasque Sans Mono
-    style: Regular
+    style: Italic
 
   # Point size
   size: 10.0
