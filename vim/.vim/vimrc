@@ -455,11 +455,11 @@ let g:tmuxline_status_justify = 'left'
 let g:tmuxline_theme = 'minimal'
 let g:tmuxline_preset = {
 \'a'    : '#S',
-\'b'    : '#{b:pane_current_path}',
+\'b'    : '#(shrink-path #{pane_current_path})',
 \'win'  : ['#I', '#W'],
 \'cwin' : ['#I', '#W'],
 \'y'    : [
-\  '%I:%M %p [%Z]',
+\  '%I:%M %p (%Z)',
 \  '%a %b %d',
 \],
 \'z': '#H'

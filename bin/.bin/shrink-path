@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+plugins=(shrink-path)
+source $ZSH/oh-my-zsh.sh && shrink_path -f $1
