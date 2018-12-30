@@ -455,9 +455,9 @@ let g:tmuxline_status_justify = 'left'
 let g:tmuxline_theme = 'minimal'
 let g:tmuxline_preset = {
 \'a'    : '#S',
-\'b'    : ['#(shrink-path #{pane_current_path})', '#{pane_current_command}'],
+\'b'    : ['#[italics]#(shrink-path #{pane_current_path})', '#[italics]#{pane_current_command}'],
 \'win'  : ['#I', '#W'],
-\'cwin' : ['#I', '#W'],
+\'cwin' : ['#[bold]#I', '#[bold]#W'],
 \'y'    : [
 \  '%I:%M %p (%Z)',
 \  '%a %b %d',
