@@ -174,7 +174,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
-Plug 'yangmillstheory/NeoSolarized'
 Plug 'yangmillstheory/vim-python', { 'for': 'python' }
 Plug 'yangmillstheory/vim-snippets'
 Plug 'yangmillstheory/vim-snipe'
@@ -196,20 +195,22 @@ let g:AutoPairsShortcutFastWrap = ''
 " }}}
 
 " colorscheme {{{
-" neosolarized {{{
-let g:neosolarized_italic = 0
-let g:neosolarized_bold = 1
-let g:neosolarized_underline = 1
-let g:neosolarized_contrast = 'high'
-let g:neosolarized_vertSplitBgTrans = 1
-let g:neosolarized_termtrans = 1
+" gruvbox {{{
+"
+"   https://github.com/morhetz/gruvbox/wiki/Terminal-specific
+let g:gruvbox_contrast_dark    = 'medium'
+let g:gruvbox_contrast_light   = 'medium'
+let g:gruvbox_invert_selection = 0
+let g:gruvbox_italic           = 1
+let g:gruvbox_bold             = 1
+let g:gruvbox_underline        = 1
+let g:gruvbox_undercurl        = 1
 " }}}
 
 syntax enable
 set background=dark
 colorscheme gruvbox
 
-" needs to go after neosolarized options!
 hi Normal     guibg=NONE ctermbg=NONE
 hi CursorLine cterm=none gui=none
 " }}}
@@ -227,21 +228,6 @@ endif
 " deoplete-go {{{
 let g:deoplete#sources#go#gocode_binary = $HOME . '/go/bin/gocode'
 " }}}
-
-" fugitive {{{
-"
-"   http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
-set diffopt+=vertical
-augroup fugitive
-autocmd!
-autocmd User fugitive
-      \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-      \   nnoremap <buffer> .. :edit %:h<CR> |
-      \ endif
-autocmd BufReadPost fugitive://* set bufhidden=delete
-augroup END
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-nnoremap <silent> <Leader>s :Gstatus<CR>
 " }}}
 
 " fzf.vim {{{
@@ -323,18 +309,6 @@ command! -bang -nargs=* FzfFasdDir
 "   \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview(), <bang>0)
 " }}}
 
-" gruvbox {{{
-"
-"   https://github.com/morhetz/gruvbox/wiki/Terminal-specific
-let g:gruvbox_contrast_dark    = 'medium'
-let g:gruvbox_contrast_light   = 'medium'
-let g:gruvbox_invert_selection = 0
-let g:gruvbox_italic           = 1
-let g:gruvbox_bold             = 1
-let g:gruvbox_underline        = 1
-let g:gruvbox_undercurl        = 1
-" }}}
-
 " LanguageClient {{{
 "https://github.com/autozimu/LanguageClient-neovim/wiki/Recommended-Settings
 let g:LanguageClient_serverCommands = {
@@ -396,42 +370,28 @@ let g:lightline = {
 \  'subseparator': { 'left': '', 'right': '' },
 \  'active': {
 \    'left': [ [ 'mode', 'paste' ],
-\              [ 'fugitive', 'relativepath', 'modified', 'readonly' ] ],
+\              [ 'filename', 'modified', 'readonly' ] ],
 \    'right': [ [ 'ale_warning', 'ale_error', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-\  },
-\  'component': {
-\    'modified': '%{&filetype=="help"?"":&modified?"⚡":&modifiable?"":"-"}',
 \  },
 \  'component_type': {
 \    'ale_error': 'error',
 \    'ale_warning': 'warning',
 \  },
 \  'component_function': {
-\    'fugitive': 'LightlineFugitive',
 \    'readonly': 'LightlineReadonly',
+\    'filename': 'LightlineFilename',
+\    'modified': 'LightlineModified',
 \  },
 \}
 " lightline functions {{{
 function! LightlineModified()
-return &ft =~ 'help\|vimfiler' ? '' : &modified ? '⚡' : &modifiable ? '' : '-'
+  return &ft =~ 'help\|vimfiler' ? '' : &modified ? '✗' : &modifiable ? '' : '-'
 endfunction
 function! LightlineReadonly()
-return &readonly ? '' : ''
+  return &readonly ? '' : ''
 endfunction
 function! LightlineFilename()
-return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-\  &ft == 'unite' ? unite#get_status_string() :
-\  &ft == 'vimshell' ? vimshell#get_status_string() :
-\ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-\ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-function! LightlineFugitive()
-if &ft !~? 'vimfiler' && exists('*fugitive#head')
-  let branch = fugitive#head()
-  return branch !=# '' ?  ' '.branch : ''
-endif
-return ''
+  return expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
 endfunction
 " }}}
 "  }}}
