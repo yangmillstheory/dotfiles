@@ -1,4 +1,4 @@
-font pango:Monaco for Powerline,FontAwesome 12
+font pango:Fantasque Sans Mono,FontAwesome 16
 
 # set modifier key to Win key
 set $mod Mod4
