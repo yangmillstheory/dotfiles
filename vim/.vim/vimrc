@@ -389,7 +389,7 @@ function! LightlineReadonly()
   return &readonly ? '' : ''
 endfunction
 function! LightlineFilename()
-  return  !=# '' ? expand('%:t') : '[No Name]'
+  return expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
 endfunction
 " }}}
 "  }}}
