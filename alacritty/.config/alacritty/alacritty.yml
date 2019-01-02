@@ -85,15 +85,15 @@ tabspaces: 8
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
   normal:
-    family: Fantasque Sans Mono
+    family: Ubuntu Mono derivative Powerline
     style: Regular
 
   bold:
-    family: Fantasque Sans Mono
+    family: Ubuntu Mono derivative Powerline
     style: Bold
 
   italic:
-    family: Fantasque Sans Mono
+    family: Ubuntu Mono derivative Powerline
     style: Italic
 
   # Point size
