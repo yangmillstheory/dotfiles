@@ -434,7 +434,7 @@ autocmd BufEnter * DisableWhitespace
 " }}}
 
 " vim-go {{{
-let g:go_def_mapping_enabled = 1
+let g:go_def_mapping_enabled = 0
 let g:go_info_mode = 'guru'
 let g:go_echo_go_info = 0
 let g:go_def_mode = 'guru'

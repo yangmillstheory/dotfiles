@@ -161,3 +161,6 @@ prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
 if ! prodcertstatus -q; then
   prodaccess -g
 fi
+
+export G4MULTIDIFF=0
+export P4DIFF='diff'
