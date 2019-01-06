@@ -211,6 +211,8 @@ syntax enable
 set background=dark
 colorscheme gruvbox
 
+
+hi Comment cterm=italic
 hi Normal     guibg=NONE ctermbg=NONE
 hi CursorLine cterm=none gui=none
 " }}}
@@ -389,7 +391,7 @@ function! LightlineReadonly()
   return &readonly ? '' : ''
 endfunction
 function! LightlineFilename()
-  return expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  return expand('%') !=# '' ? fnamemodify(expand('%'), ":~:.") : '[No Name]'
 endfunction
 " }}}
 "  }}}
