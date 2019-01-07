@@ -712,7 +712,7 @@ Glug blazedeps auto_filetypes=`['go']`
 " }}}
 
 " codesearch + fzf.vim {{{
-function! s:CodeSearchSink(path)
+function! s:CSearchSink(path)
   execute "edit " . <SID>add_depot_root(a:path)
 endfunction
 function! s:citcroot()
@@ -728,25 +728,19 @@ endfunction
 function! s:in_citc()
   return match(getcwd(), '^/google/src/cloud/') != -1
 endfunction
-function! s:csearch(search)
+function! s:csearch(args)
   let b:root='/google/src/files/head/depot'
   if <SID>in_citc()
     let b:root=<SID>citcroot()
   endif
   call fzf#run({
-        \ 'source': "csearch -l " . a:search . "| sed 's|^/google/src/files/head/depot||'",
-        \ 'sink': function("s:CodeSearchSink"),
-        \ 'options': '-m --preview-window=right:65% --preview="cat ' . b:root . '{}"'
+        \ 'source': "csearch -l " . a:args. "| sed 's|^/google/src/files/head/depot||'",
+        \ 'sink': function("s:CSearchSink"),
+        \ 'options': '-m --preview="cat ' . b:root . '{}"',
+        \ 'down': '30%'
         \ })
 endfunction
 command! -nargs=+ CSearch :call <SID>csearch("<args>")
-cnoreabbrev cs CSearch
-" }}}
-
-" languages {{{
-" go {{{
-autocmd FileType go AutoFormatBuffer gofmt
-" }}}
 " }}}
 " }}}
 " }}}
