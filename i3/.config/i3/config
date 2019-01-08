@@ -1,4 +1,4 @@
-font pango:Fantasque Sans Mono,FontAwesome 16
+font pango:Hack,FontAwesome 12
 
 # set modifier key to Win key
 set $mod Mod4
