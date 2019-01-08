@@ -97,7 +97,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0
 
-assign [class="Alacritty"] $ws1
 for_window [class="Spotify"] move to workspace $ws0
 for_window [class=".*"] border none
 
