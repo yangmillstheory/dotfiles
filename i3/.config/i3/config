@@ -327,4 +327,4 @@ bindsym $mod+slash workspace back_and_forth
 bindsym $mod+Shift+period move workspace to output right
 bindsym $mod+Shift+comma move workspace to output left
 
-exec dex -ae i3
+exec dex -ae i3-gaps
