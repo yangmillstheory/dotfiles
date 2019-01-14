@@ -151,7 +151,8 @@ bar {
 exec --no-startup-id compton -f
 
 # wallpaper & monitors
-exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/bg.jpg
+exec_always --no-startup-id ~/.screenlayout/ginaz.sh
+exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/Leaves.jpg
 
 exec --no-startup-id alacritty
 exec --no-startup-id google-chrome
