@@ -85,15 +85,15 @@ tabspaces: 8
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
   normal:
-    family: Fantasque Sans Mono
+    family: Monaco for Powerline
     style: Regular
 
   bold:
-    family: Fantasque Sans Mono
+    family: MonacoB2
     style: Bold
 
   italic:
-    family: Fantasque Sans Mono
+    family: Hack
     style: Italic
 
   # Point size
