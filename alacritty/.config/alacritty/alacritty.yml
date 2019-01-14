@@ -85,11 +85,11 @@ tabspaces: 8
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
   normal:
-    family: Hack
+    family: Monaco for Powerline
     style: Regular
 
   bold:
-    family: Hack
+    family: MonacoB2
     style: Bold
 
   italic:
