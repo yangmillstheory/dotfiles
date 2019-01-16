@@ -394,9 +394,9 @@ let g:tmuxline_status_justify = 'left'
 let g:tmuxline_theme = 'minimal'
 let g:tmuxline_preset = {
 \'a'    : '#S',
-\'b'    : ['#[bold]#(g3-short-path #{pane_current_path})', '#[italics,nobold]#{pane_current_command}'],
+\'b'    : ['#(g3-short-path #{pane_current_path})', '#[italics,nobold]#{pane_current_command}'],
 \'win'  : ['#I', '#W'],
-\'cwin' : ['#[bold]#I', '#W'],
+\'cwin' : ['#I', '#W'],
 \'y'    : [
 \  '%I:%M %p (%Z)',
 \  '%a %b %d',
