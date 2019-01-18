@@ -198,10 +198,10 @@ bindsym $mod+Shift+period move workspace to output right
 bindsym $mod+Shift+comma move workspace to output left
 
 # i3-gaps
-gaps inner 20
+gaps inner 30
 gaps outer 0
-gaps horizontal 15
-gaps vertical 15
+gaps horizontal 60
+gaps vertical 60
 gaps top 15
 gaps right 15
 gaps bottom 15
