@@ -52,7 +52,7 @@ killall compton
 i3lock --image "$LOCK_BG" --nofork
 
 # resume notifications and set DPMS off
-compton -f &
+compton -b
 xset dpms 0 0 0
 killall -SIGUSR2 dunst
 rm $LOCK_BG
