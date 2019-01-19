@@ -83,7 +83,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+0 workspace $ws0
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -97,7 +97,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0
 
-for_window [class="Spotify"] move to workspace $ws10
+for_window [class="Spotify"] move to workspace $ws0
 for_window [class=".*"] border none
 
 # reload the configuration file
