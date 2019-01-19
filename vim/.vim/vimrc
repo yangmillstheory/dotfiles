@@ -393,14 +393,14 @@ let g:tmuxline_status_justify = 'left'
 let g:tmuxline_theme = 'minimal'
 let g:tmuxline_preset = {
 \'a'    : '#S',
-\'b'    : ['#[bold]#(shrink-path #{pane_current_path})', '#[italics,nobold]#{pane_current_command}'],
+\'b'    : ['#(shrink-path #{pane_current_path})', '#[italics,nobold]#{pane_current_command}'],
 \'win'  : ['#I', '#W'],
 \'cwin' : ['#[bold]#I', '#W'],
 \'y'    : [
-\  '%I:%M %p (%Z)',
-\  '%a %b %d',
+\  '#[bold]%I:%M %p (%Z)',
+\  '#[bold]%a %b %d',
 \],
-\'z': '#[bold]#H'
+\'z': '#h'
 \}
 " }}}
 

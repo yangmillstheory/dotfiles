@@ -1,4 +1,4 @@
-font pango:Hack,FontAwesome 12
+font pango:Monaco for Powerline,FontAwesome 12
 
 # set modifier key to Win key
 set $mod Mod4
@@ -64,14 +64,14 @@ bindsym $mod+Shift+Return exec google-chrome
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
 set $ws2 "2: "
-set $ws3 "3: "
+set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws0 "0"
+set $ws0 "10: "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -148,12 +148,12 @@ bar {
 }
 
 # support transparent windows
-exec --no-startup-id compton -f
+exec --no-startup-id compton -b
 
 # wallpaper & monitors
 exec --no-startup-id ~/.screenlayout/home.sh
 # exec --no-startup-id ~/.screenlayout/mobile.sh
-exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/bg.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/flowers.jpg
 
 exec --no-startup-id alacritty
 exec --no-startup-id google-chrome
@@ -200,8 +200,8 @@ bindsym $mod+Shift+comma move workspace to output left
 # i3-gaps
 gaps inner 30
 gaps outer 0
-gaps horizontal 60
-gaps vertical 60
+gaps horizontal 100
+gaps vertical 100
 gaps top 15
 gaps right 15
 gaps bottom 15
