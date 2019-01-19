@@ -26,12 +26,6 @@ format_swap = "{SUp}%"
 block = "sound"
 
 [[block]]
-block = "battery"
-interval = 10
-upower = true
-format = "{percentage}% {time}"
-
-[[block]]
 block = "time"
 format = "%I:%M %p (%Z) %a %b %d"
 timezone = "US/Pacific"
