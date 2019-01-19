@@ -396,7 +396,7 @@ let g:tmuxline_preset = {
 \'a'    : '#S',
 \'b'    : ['#(g3-short-path #{pane_current_path})', '#[italics,nobold]#{pane_current_command}'],
 \'win'  : ['#I', '#W'],
-\'cwin' : ['#I', '#W'],
+\'cwin' : ['#[bold]#I', '#W'],
 \'y'    : [
 \  '#[bold]%I:%M %p (%Z)',
 \  '#[bold]%a %b %d',

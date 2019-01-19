@@ -95,7 +95,7 @@ font:
     style: Bold
 
   # Point size
-  size: 10.0
+  size: 8.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -120,7 +120,7 @@ font:
 render_timer: false
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 # Colors (Gruvbox dark)
 colors:
