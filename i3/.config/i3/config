@@ -136,11 +136,17 @@ client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-bg-color
 client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          $indicator-color
 
 bar {
-  mode hide
-  status_command i3blocks
+  # mode hide
+  position top
+  font pango:Monaco for Powerline,FontAwesome 12
+  # clone and build from source; need libdbus-1-dev
+  #
+  # https://github.com/greshake/i3status-rust
+  status_command ~/code/i3status-rust/target/release/i3status-rs ~/.config/i3status/status.toml
   colors {
     background         $bg-color
     separator          #757575
+    statusline         $text-color
     focused_workspace  $bg-color          $bg-color          $text-color
     inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
     urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
