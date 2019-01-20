@@ -10,7 +10,7 @@ name = "awesome"
 
 [[block]]
 block = "focused_window"
-max_width = 100
+max_width = 70
 
 [[block]]
 block = "music"
