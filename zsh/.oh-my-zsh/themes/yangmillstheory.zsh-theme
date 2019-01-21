@@ -1,8 +1,10 @@
 google3_prompt_info() {
   if [[ $PWD =~ '/google/src/cloud/[^/]+/(.+)/google3(.*)' ]]; then
-    print -r -- "%F{blue}($match[1]) %F{green}//${match[2]#/}"
+    DIR="${match[2]#/}"
+    print -r -- "%F{blue}($match[1]) %F{green}//$(compact $DIR)"
   else
-    print -r -- "%F{green}$(shrink_path -f)"
+    DIR="${PWD/#$HOME/~}"
+    print -r -- "%F{green}$(compact $DIR)"
   fi
 }
 
