@@ -529,6 +529,7 @@ augroup END
 " edit common files {{{
 nnoremap <leader>ev :vsp ~/.vim/vimrc<cr>
 nnoremap <leader>ea :vsp ~/.config/alacritty/alacritty.yml<cr>
+nnoremap <leader>ei :vsp ~/.config/i3/config<cr>
 nnoremap <leader>et :vsp ~/.tmux.conf<cr>
 nnoremap <leader>ez :vsp ~/.zshrc<cr>
 nnoremap <leader>es :vsp scrap<cr>
