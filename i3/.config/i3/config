@@ -177,7 +177,6 @@ exec --no-startup-id xautolock \
 # lock when suspended
 exec --no-startup-id xss-lock -l -- ~/.bin/blur_i3_lock
 
-
 # used to bind mouse buttons
 exec_always xbindkeys --poll-rc
 
