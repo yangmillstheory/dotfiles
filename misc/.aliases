@@ -45,7 +45,7 @@ alias gpull='git pull'
 # piper
 alias p='p4'
 alias g='g4'
-alias h='h'
+alias h='hg'
 
 # fasd
 #
