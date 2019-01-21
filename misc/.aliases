@@ -1,5 +1,4 @@
 alias v='nvim'
-alias g='g4'
 alias o='xdg-open'
 alias t='tmx'
 alias q='exit'
@@ -45,6 +44,8 @@ alias gpull='git pull'
 
 # piper
 alias p='p4'
+alias g='g4'
+alias h='h'
 
 # fasd
 #
