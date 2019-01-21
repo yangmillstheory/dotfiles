@@ -6,7 +6,7 @@ elif [[ $1 =~ ^(.*)+(genfiles|bin|testlogs)/(.*)$  ]]; then
   BUILD_INFO=$(dirname "${match[1]}")/build-info.txt
 	G3_ROOT=$(grep BUILD_DIRECTORY $BUILD_INFO | cut -d ' ' -f 2)
   WS_NAME=$(basename $(dirname $G3_ROOT))
-	echo "($WS_NAME:blaze-${match[2]}) ${match[3]}"
+	echo "($WS_NAME:${match[2]}) ${match[3]}"
 else
   plugins=(shrink-path)
   source $ZSH/oh-my-zsh.sh && shrink_path -f $1
