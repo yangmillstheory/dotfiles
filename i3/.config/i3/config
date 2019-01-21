@@ -169,7 +169,7 @@ bindsym $mod+shift+x exec ~/.bin/blur_i3_lock
 # make sure screen locks when idle
 exec --no-startup-id xautolock \
   -locker "/home/victoralvarez/.bin/blur_i3_lock" \
-  -time 8 \
+  -time 30 \
   -detectsleep \
   -notify 30 \
   -notifier "notify-send -u critical -t 15000 -- 'Warning!' 'Inactivity detected; locking soon.'" \
