@@ -42,7 +42,7 @@ alias gs='git status'
 alias gpush='git push'
 alias gpull='git pull'
 
-# piper
+# google vcs
 alias p='p4'
 alias g='g4'
 alias h='hg'
