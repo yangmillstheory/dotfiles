@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# relies on a binary compiled from
+#
+#  https://gist.github.com/yangmillstheory/09745d8760bf00db543343f66edc1777
+compact "${1/#$HOME/\~}"
