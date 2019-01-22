@@ -1,2 +1,4 @@
 clear lock
 keycode 66 = Escape NoSymbol NoSymbol
+keycode 135 = Super_L NoSymbol NoSymbol
+
