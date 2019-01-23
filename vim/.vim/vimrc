@@ -488,6 +488,9 @@ let g:calendar_no_mappings = 1
 
 " winresizer {{{
 let g:winresizer_start_key = '<leader>r'
+" make it like i3
+let g:winresizer_keycode_up   = 106
+let g:winresizer_keycode_down = 107
 " }}}
 " }}}
 
