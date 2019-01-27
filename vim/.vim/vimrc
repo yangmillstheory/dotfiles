@@ -135,6 +135,7 @@ set statusline+=%F
 set suffixesadd+=.js
 set suffixesadd+=.go
 set suffixesadd+=.py
+set colorcolumn=
 " }}}
 
 " plugins {{{
@@ -210,7 +211,7 @@ let g:gruvbox_undercurl        = 1
 syntax enable
 set background=dark
 colorscheme gruvbox
-
+set colorcolumn=
 
 hi Comment cterm=italic
 hi Normal     guibg=NONE ctermbg=NONE
@@ -493,9 +494,6 @@ let g:calendar_no_mappings = 1
 
 " winresizer {{{
 let g:winresizer_start_key = '<leader>r'
-" make it like i3
-let g:winresizer_keycode_up   = 106
-let g:winresizer_keycode_down = 107
 " }}}
 " }}}
 
