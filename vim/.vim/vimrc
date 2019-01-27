@@ -478,12 +478,25 @@ nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 " }}}
 
 " vimwiki {{{
-let g:vimwiki_list = [{'path': '$HOME/vimwiki'}]
-let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_use_calendar = 1
-let g:calendar_options = 'nornu'
+let g:vimwiki_list = [{
+\  'path':   '~/vimwiki',
+\  'ext':    '.md',
+\  'syntax': 'markdown'
+\}]
+let g:vimwiki_hl_cb_checked = 0
 let g:calendar_diary = '$HOME/vimwiki/diary'
-let g:calendar_no_mappings = 1
+let g:vimwiki_listsyms = ' .oOx'
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
+" putting this in an augroup doesn't work;
+" apparently the syntax setting above doens't work either
+autocmd FileType vimwiki set filetype=markdown
+autocmd FileType vimwiki set syntax=markdown
+" need to have the chrome extension
+"
+"   https://github.com/simov/markdown-viewer
+"
+" for this
+autocmd BufEnter,FileType markdown nnoremap <F9> :execute ':silent !google-chrome %'<CR>
 " }}}
 
 " winresizer {{{
