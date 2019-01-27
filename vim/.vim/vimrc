@@ -235,14 +235,6 @@ let g:deoplete#sources#go#gocode_binary = $HOME . '/go/bin/gocode'
 
 " fzf.vim {{{
 let g:fzf_buffers_jump = 1
-" use the same semantics for fzf as in shell
-nnoremap <silent> <c-t> :FzfFiles<CR>
-nnoremap <silent> <c-f> :FzfRg<space>
-nnoremap <silent> <c-b> :FzfBuffers<CR>
-nnoremap <silent> <c-r> :FzfHistory:<CR>
-nnoremap <silent> <c-s> :FzfHistory/<CR>
-nnoremap <silent> <Leader>z :FzfFasdFile<space>
-nnoremap <silent> <Leader>Z :FzfFasdDir<space>
 " keep actions compatible with nerdtree
 let g:fzf_action = {
 \ 'ctrl-t': 'tab split',
@@ -263,47 +255,59 @@ let g:fzf_colors = {
 \ 'spinner': ['fg', 'Label'],
 \ 'header':  ['fg', 'Comment'] }
 let g:fzf_command_prefix = 'Fzf'
+" use the same keybindings for fzf as in shell
+nnoremap <silent> <c-t> :FzfFiles<CR>
+nnoremap <silent> <c-s-t> :FzfHgFiles<CR>
+nnoremap <silent> <c-f> :FzfRg<space>
+nnoremap <silent> <c-s-f> :FzfHgRg<space>
+nnoremap <silent> <c-b> :FzfBuffers<CR>
+nnoremap <silent> <c-r> :FzfHistory:<CR>
+nnoremap <silent> <c-s> :FzfHistory/<CR>
+let s:rg_command = 'rg --hidden --ignore-case --column --line-number --no-heading --color=always'
+let s:hg_command = 'hg files 2>/dev/null'
+
+" https://github.com/junegunn/fzf.vim#advanced-customization
+"
 " explicitly include/exclude directories from fzf + rg
 " these aren't plugin options, but our own :)
 let g:rg_include = []
 let g:rg_exclude = []
-
-" https://github.com/junegunn/fzf.vim#advanced-customization
-" make sure that we can pass multiple directories to fzf sources
-function! s:RgArgs(q_args) abort
+function! s:RgArgs(args) abort
   let rg_args = []
   if len(g:rg_exclude)
     let rg_args += ["--glob=!{" . join(g:rg_exclude, ",") . "}"]
   endif
-  if len(a:q_args)
-    let rg_args += [a:q_args]
+  if len(a:args)
+    let rg_args += [a:args]
   endif
   return join(rg_args + g:rg_include, " ")
 endfunction
-command! -bang -complete=dir FzfFiles
+command! -bang FzfFiles
 \ call fzf#run(fzf#wrap({
 \     'source': $FZF_DEFAULT_COMMAND . " " . s:RgArgs('--files'),
 \     'options': $FZF_DEFAULT_OPTS . " " . $FZF_CTRL_T_OPTS,
 \   }),
 \   <bang>0
 \ )
-command! -bang -nargs=* FzfRg
+command! -bang FzfHgFiles
+\ call fzf#run(fzf#wrap({
+\     'source': s:hg_command,
+\     'options': $FZF_DEFAULT_OPTS . " " . $FZF_CTRL_T_OPTS,
+\   }),
+\   <bang>0
+\ )
+command! -bang -nargs=* FzfHgRg
 \ call fzf#vim#grep(
-\   'rg --hidden --ignore-case --column --line-number --no-heading --color=always ' . s:RgArgs(<q-args>), 1,
+\   s:rg_command . " " . <q-args> . " " . "$(" . s:hg_command . ")", 1,
 \   <bang>0 ? fzf#vim#with_preview('up:60%')
 \           : fzf#vim#with_preview('right:50%'),
 \   <bang>0)
-function! s:Fasd(cmd)
-  let cmd = a:cmd
-  function! FasdSink(line) closure
-    execute(cmd . ' ' . split(a:line)[-1])
-  endfunction
-  return funcref('FasdSink')
-endfunction
-command! -bang -nargs=* FzfFasdFile
-\ call fzf#run(fzf#wrap({'source': 'fasd -lf -R '. shellescape(<q-args>), 'sink': s:Fasd('e')}))
-command! -bang -nargs=* FzfFasdDir
-\ call fzf#run(fzf#wrap({'source': 'fasd -ld -r '. shellescape(<q-args>), 'sink': s:fasd('cd')}))
+command! -bang -nargs=* FzfRg
+\ call fzf#vim#grep(
+\   s:rg_command . " " . s:RgArgs(<q-args>), 1,
+\   <bang>0 ? fzf#vim#with_preview('up:60%')
+\           : fzf#vim#with_preview('right:50%'),
+\   <bang>0)
 " not yet:
 "
 "     https://github.com/junegunn/fzf.vim/issues/195
