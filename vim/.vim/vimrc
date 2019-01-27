@@ -263,6 +263,7 @@ nnoremap <silent> <c-j> :FzfHgRg<space>
 nnoremap <silent> <c-b> :FzfBuffers<CR>
 nnoremap <silent> <c-r> :FzfHistory:<CR>
 nnoremap <silent> <c-s> :FzfHistory/<CR>
+nnoremap <silent> <c-c> :FzfCommands<CR>
 let s:rg_command = 'rg --hidden --ignore-case --column --line-number --no-heading --color=always'
 let s:hg_command = 'hg files 2>/dev/null'
 
@@ -499,11 +500,19 @@ let g:vimwiki_listsyms = ' .oOx'
 let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 " putting this in an augroup doesn't work;
 " apparently the syntax setting above doens't work either
-autocmd FileType vimwiki set filetype=markdown
-autocmd FileType vimwiki set syntax=markdown
-augroup vimwiki
+augroup wiki
   autocmd!
-  autocmd BufEnter FileType vimwiki nnoremap <F9> :execute ':silent !google-chrome %'<CR>
+  autocmd BufEnter,FileType vimwiki set filetype=markdown
+  autocmd BufEnter,FileType vimwiki set syntax=markdown
+  " need to have the chrome extension
+  "
+  "   https://github.com/simov/markdown-viewer
+  "
+  " for this
+augroup END
+augroup markdown
+  autocmd!
+  autocmd FileType markdown nnoremap <silent> <F12> :silent! !google-chrome %<CR>
 augroup END
 " }}}
 
@@ -515,25 +524,25 @@ let g:winresizer_start_key = '<leader>r'
 " (au)commands, mappings, languages {{{
 " vimscript and vimrc {{{
 function! s:Help(type)
-if a:type ==# 'v'
-  normal! `<v`>y
-elseif a:type ==# 'char'
-  normal! `[v`]y
-else
-  return
-endif
-let saved = @@
-silent execute "h " . @@
-let @@ = saved
+  if a:type ==# 'v'
+    normal! `<v`>y
+  elseif a:type ==# 'char'
+    normal! `[v`]y
+  else
+    return
+  endif
+  let saved = @@
+  silent execute "h " . @@
+  let @@ = saved
 endfunction
 augroup vimscript
   autocmd!
   " write and save the current file
-  autocmd Filetype vim nnoremap <F3> :w!<cr> :so %<cr>
+  autocmd Filetype vim nnoremap <silent> <F9> :w!<cr> :so %<cr>
   " F1 = help
-  autocmd FileType vim vnoremap <F1> :<c-u>call <SID>Help(visualmode())<cr>
-  autocmd FileType vim nnoremap <F1> :set operatorfunc=<SID>Help<cr>g@
-  autocmd FileType vim nnoremap <F1><F1> :h <c-r><c-w><cr>
+  autocmd FileType vim vnoremap <silent> <F1> :<c-u>call <SID>Help(visualmode())<cr>
+  autocmd FileType vim nnoremap <silent> <F1> :set operatorfunc=<SID>Help<cr>g@
+  autocmd FileType vim nnoremap <silent> <F1><F1> :h <c-r><c-w><cr>
 augroup END
 augroup vimrc
   autocmd!
