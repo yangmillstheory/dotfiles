@@ -154,11 +154,11 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim', { 'on': 'Tmuxline' }
 Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
-Plug 'mattn/calendar-vim'
 Plug 'matze/vim-move'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': './install --all --xdg' }
 Plug 'junegunn/fzf.vim'
+Plug 'mattn/calendar-vim'
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdtree'
@@ -257,9 +257,9 @@ let g:fzf_colors = {
 let g:fzf_command_prefix = 'Fzf'
 " use the same keybindings for fzf as in shell
 nnoremap <silent> <c-t> :FzfFiles<CR>
-nnoremap <silent> <c-s-t> :FzfHgFiles<CR>
+nnoremap <silent> <c-h> :FzfHgFiles<CR>
 nnoremap <silent> <c-f> :FzfRg<space>
-nnoremap <silent> <c-s-f> :FzfHgRg<space>
+nnoremap <silent> <c-j> :FzfHgRg<space>
 nnoremap <silent> <c-b> :FzfBuffers<CR>
 nnoremap <silent> <c-r> :FzfHistory:<CR>
 nnoremap <silent> <c-s> :FzfHistory/<CR>
@@ -488,12 +488,15 @@ nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 " }}}
 
 " vimwiki {{{
-let g:vimwiki_list = [{'path': '$HOME/vimwiki/personal'}]
-let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_list = [
+\  {'path': '~/vimwiki/g', 'ext': '.md', 'syntax': 'markdown'},
+\  {'path': '~/vimwiki/p', 'ext': '.md', 'syntax': 'markdown'},
+\]
+" this doesn't seem to work
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 let g:vimwiki_use_calendar = 1
-let g:calendar_options = 'nornu'
-let g:calendar_diary = '$HOME/vimwiki/personal/diary'
-let g:calendar_no_mappings = 1
+autocmd FileType vimwiki set syntax=markdown
+autocmd FileType vimwiki set filetype=markdown
 " }}}
 
 " winresizer {{{
@@ -675,7 +678,6 @@ augroup autoformat_settings
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType markdown AutoFormatBuffer mdformat
   autocmd FileType python AutoFormatBuffer pyformat
   autocmd FileType textpb AutoFormatBuffer text-proto-format
 augroup END
@@ -688,7 +690,6 @@ augroup END
 " lang {{{
 " go {{{
 Glug codefmt gofmt_executable="goimports"
-Glug codefmt-google
 Glug blazedeps auto_filetypes=`['go']`
 " }}}
 " }}}
