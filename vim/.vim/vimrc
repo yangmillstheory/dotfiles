@@ -145,7 +145,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source ~/.vim/vimrc
 endif
 call plug#begin('~/.vim/plugged')
-Plug 'altercation/vim-colors-solarized'
 Plug 'autozimu/LanguageClient-neovim', {
 \ 'branch': 'next',
 \ 'do': 'bash install.sh',
@@ -174,7 +173,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
-Plug 'w0rp/ale'
 Plug 'yangmillstheory/vim-python', { 'for': 'python' }
 Plug 'yangmillstheory/vim-snippets'
 Plug 'yangmillstheory/vim-snipe'
@@ -183,11 +181,6 @@ call plug#end()
 " }}}
 
 " plugin settings {{{
-" ale {{{
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-" }}}
-
 " autopairs {{{
 let g:AutoPairsShortcutToggle = ''
 let g:AutoPairsShortcutJump = ''
@@ -327,10 +320,9 @@ let g:LanguageClient_serverCommands = {
 \  'borg': ['/google/bin/releases/editor-devtools/ciderlsp'],
 \ }
 
-let g:LanguageClient_loadSettings = 0
 let g:LanguageClient_hasSnippetSupport = 0
 let g:LanguageClient_diagnosticsList = "Disabled"
-let g:LanguageClient_diagnosticsEnable = 1
+let g:LanguageClient_diagnosticsEnable = 0
 
 nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
@@ -343,7 +335,7 @@ nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
 nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
 nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 
-set signcolumn=yes
+set signcolumn=auto
 " }}}
 
 "  lightline {{{
@@ -417,12 +409,13 @@ autocmd BufEnter * DisableWhitespace
 " }}}
 
 " vim-go {{{
+let g:go_metalinter_enabled = []
 let g:go_def_mapping_enabled = 0
 let g:go_info_mode = 'guru'
 let g:go_echo_go_info = 0
 let g:go_def_mode = 'guru'
 let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 1
+let g:go_autodetect_gopath = 0
 let g:go_list_type = "quickfix"
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
@@ -677,17 +670,9 @@ source /usr/share/vim/google/google.vim
 
 " glugins {{{
 Glug codefmt-google
-" Glug ultisnips-google
-" Glug youcompleteme-google
 " }}}
 
 " glugin config {{{
-" ultisnips {{{
-" let g:UltiSnipsExpandTrigger = "<c-j>"
-" let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-" }}}
-
 " codefmt-google {{{
 augroup autoformat_settings
   autocmd FileType borg,gcl,patchpanel AutoFormatBuffer gclfmt
