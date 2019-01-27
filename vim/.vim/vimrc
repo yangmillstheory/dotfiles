@@ -144,7 +144,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source ~/.vim/vimrc
 endif
 call plug#begin('~/.vim/plugged')
-Plug 'altercation/vim-colors-solarized'
 Plug 'autozimu/LanguageClient-neovim', {
 \ 'branch': 'next',
 \ 'do': 'bash install.sh',
@@ -173,7 +172,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
-Plug 'w0rp/ale'
 Plug 'yangmillstheory/vim-python', { 'for': 'python' }
 Plug 'yangmillstheory/vim-snippets'
 Plug 'yangmillstheory/vim-snipe'
@@ -182,11 +180,6 @@ call plug#end()
 " }}}
 
 " plugin settings {{{
-" ale {{{
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-" }}}
-
 " autopairs {{{
 let g:AutoPairsShortcutToggle = ''
 let g:AutoPairsShortcutJump = ''
