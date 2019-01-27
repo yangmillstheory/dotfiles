@@ -260,6 +260,7 @@ nnoremap <silent> <c-f> :FzfRg<space>
 nnoremap <silent> <c-b> :FzfBuffers<CR>
 nnoremap <silent> <c-r> :FzfHistory:<CR>
 nnoremap <silent> <c-s> :FzfHistory/<CR>
+nnoremap <silent> <c-c> :FzfCommands<CR>
 
 " https://github.com/junegunn/fzf.vim#advanced-customization
 "
