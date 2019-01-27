@@ -495,8 +495,16 @@ let g:vimwiki_list = [
 " this doesn't seem to work
 let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 let g:vimwiki_use_calendar = 1
-autocmd FileType vimwiki set syntax=markdown
+let g:vimwiki_listsyms = ' .oOx'
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
+" putting this in an augroup doesn't work;
+" apparently the syntax setting above doens't work either
 autocmd FileType vimwiki set filetype=markdown
+autocmd FileType vimwiki set syntax=markdown
+augroup vimwiki
+  autocmd!
+  autocmd BufEnter FileType vimwiki nnoremap <F9> :execute ':silent !google-chrome %'<CR>
+augroup END
 " }}}
 
 " winresizer {{{
