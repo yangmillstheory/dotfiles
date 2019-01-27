@@ -35,3 +35,7 @@ function jt() {
 prodaccess() {
   /usr/bin/prodaccess "$@" && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh --extra_space
 }
+
+fhf() {
+  hg files 2&>1 >/dev/null | fzf
+}
