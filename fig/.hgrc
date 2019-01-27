@@ -1,5 +1,6 @@
 [ui]
 merge = meld
+paginate = false
 
 [extensions]
 hgext.beautifygraph=
