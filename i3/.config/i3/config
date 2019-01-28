@@ -159,7 +159,7 @@ exec --no-startup-id compton -b
 # wallpaper & monitors
 exec --no-startup-id ~/.screenlayout/home.sh
 # exec --no-startup-id ~/.screenlayout/mobile.sh
-exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/flowers.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/rainy_leaves.jpg
 
 exec --no-startup-id alacritty
 exec --no-startup-id google-chrome

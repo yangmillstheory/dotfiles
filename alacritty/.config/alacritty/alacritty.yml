@@ -85,15 +85,15 @@ tabspaces: 8
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
   normal:
-    family: Monaco for Powerline
+    family: monospace
     style: Regular
 
   bold:
-    family: MonacoB2
+    family: monospace
     style: Bold
 
   italic:
-    family: MonacoB2
+    family: monospace
     style: Bold
 
   # Point size
@@ -183,7 +183,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: .7
+background_opacity: .5
 
 # Mouse bindings
 #
