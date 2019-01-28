@@ -250,9 +250,7 @@ let g:fzf_colors = {
 let g:fzf_command_prefix = 'Fzf'
 " use the same keybindings for fzf as in shell
 nnoremap <silent> <c-t> :FzfFiles<CR>
-nnoremap <silent> <c-h> :FzfHgFiles<CR>
 nnoremap <silent> <c-f> :FzfRg<space>
-nnoremap <silent> <c-j> :FzfHgRg<space>
 nnoremap <silent> <c-b> :FzfBuffers<CR>
 nnoremap <silent> <c-r> :FzfHistory:<CR>
 nnoremap <silent> <c-s> :FzfHistory/<CR>
