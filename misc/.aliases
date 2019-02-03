@@ -1,6 +1,8 @@
 alias v='nvim'
 alias o='xdg-open'
-alias t='tmx'
+alias t='tmx2'
+alias ta='tmx2 attach-session -t'
+alias tn='tmx2 new-session -s'
 alias q='exit'
 alias m='make'
 alias c='clear'
@@ -45,7 +47,7 @@ alias gpull='git pull'
 # google vcs
 alias p='p4'
 alias g='g4'
-alias h='hg'
+alias h='nocorrect hg'
 
 # fasd
 #

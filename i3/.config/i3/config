@@ -1,4 +1,4 @@
-font pango:Monaco for Powerline,FontAwesome 12
+font pango:Hack,FontAwesome 12
 
 # set modifier key to Win key
 set $mod Mod4
@@ -62,8 +62,8 @@ bindsym $mod+Shift+Return exec google-chrome
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: "
-set $ws2 "2: "
+set $ws1 "1: "
+set $ws2 "2: "
 set $ws3 "3: "
 set $ws4 "4: "
 set $ws5 "5"
@@ -138,7 +138,7 @@ client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color       
 bar {
   # mode hide
   position top
-  font pango:Monaco for Powerline,FontAwesome 12
+  font pango:Hack,FontAwesome 12
   # clone and build from source; need libdbus-1-dev
   #
   # https://github.com/greshake/i3status-rust
@@ -158,7 +158,7 @@ exec --no-startup-id compton -b
 
 # wallpaper & monitors
 exec_always --no-startup-id ~/.screenlayout/ginaz.sh
-exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/rainy_leaves.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/yosemite.png
 
 exec --no-startup-id alacritty
 exec --no-startup-id google-chrome

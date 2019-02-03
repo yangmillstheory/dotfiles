@@ -160,7 +160,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'mattn/calendar-vim'
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -316,6 +316,7 @@ let g:LanguageClient_serverCommands = {
 \  'cpp': ['/google/bin/releases/editor-devtools/ciderlsp'],
 \  'proto': ['/google/bin/releases/editor-devtools/ciderlsp'],
 \  'borg': ['/google/bin/releases/editor-devtools/ciderlsp'],
+\  'borgspec': ['/google/bin/releases/editor-devtools/ciderlsp'],
 \ }
 
 nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
@@ -663,12 +664,12 @@ vnoremap <leader>g :<c-u>call <SID>GrepOperator(visualmode())<cr>
 " }}}
 " }}}
 
-" google {{{
+" " google {{{
 source /usr/share/vim/google/google.vim
 
-" glugins {{{
+" " glugins {{{
 Glug codefmt-google
-" }}}
+" " }}}
 
 " glugin config {{{
 " codefmt-google {{{
@@ -683,10 +684,6 @@ augroup autoformat_settings
 augroup END
 " }}}
 
-" ycm {{{
-" let g:ycm_clangd_binary_path = "/google/bin/releases/editor-devtools/ciderlsp"
-" }}}
-
 " lang {{{
 " go {{{
 Glug codefmt gofmt_executable="goimports"
@@ -694,6 +691,11 @@ Glug blazedeps auto_filetypes=`['go']`
 " }}}
 " }}}
 " }}}
+
+augroup undo_google_style
+  autocmd!
+  autocmd BufRead * set cc= | set textwidth=0
+augroup END
 
 " codesearch + fzf.vim {{{
 function! s:CSearchSink(path)
