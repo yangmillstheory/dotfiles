@@ -205,7 +205,6 @@ set background=dark
 colorscheme gruvbox
 
 
-hi Comment cterm=italic
 hi Normal     guibg=NONE ctermbg=NONE
 hi CursorLine cterm=none gui=none
 " }}}
@@ -484,6 +483,7 @@ augroup END
 augroup markdown
   autocmd!
   autocmd FileType markdown nnoremap <silent> <F12> :silent! !google-chrome %<CR>
+  autocmd FileType markdown setlocal dictionary+=/usr/share/dict/words
 augroup END
 " }}}
 

@@ -63,14 +63,14 @@ bindsym $mod+Shift+Return exec google-chrome
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
-set $ws2 "2: "
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8: "
+set $ws9 "9: "
 set $ws0 "10: "
 
 # switch to workspace
@@ -135,23 +135,7 @@ client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-col
 client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-bg-color   $inactive-text-color
 client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          $indicator-color
 
-bar {
-  # mode hide
-  position top
-  font pango:Monaco for Powerline,FontAwesome 12
-  # clone and build from source; need libdbus-1-dev
-  #
-  # https://github.com/greshake/i3status-rust
-  status_command ~/code/i3status-rust/target/release/i3status-rs ~/.config/i3status/status.toml
-  colors {
-    background         $bg-color
-    separator          #757575
-    statusline         $text-color
-    focused_workspace  $bg-color          $bg-color          $text-color
-    inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-  }
-}
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # support transparent windows
 exec --no-startup-id compton -b
@@ -159,7 +143,8 @@ exec --no-startup-id compton -b
 # wallpaper & monitors
 exec --no-startup-id ~/.screenlayout/home.sh
 # exec --no-startup-id ~/.screenlayout/mobile.sh
-exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/rainy_leaves.jpg
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/yosemite.png
+exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/moon.jpg
 
 exec --no-startup-id alacritty
 exec --no-startup-id google-chrome
@@ -205,8 +190,8 @@ bindsym $mod+Shift+comma move workspace to output left
 # i3-gaps
 gaps inner 30
 gaps outer 0
-gaps horizontal 100
-gaps vertical 100
+gaps horizontal 0
+gaps vertical 0
 gaps top 15
 gaps right 15
 gaps bottom 15
