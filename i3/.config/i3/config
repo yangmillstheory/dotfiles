@@ -70,7 +70,7 @@ set $ws5 "5: "
 set $ws6 "6: "
 set $ws7 "7: "
 set $ws8 "8: "
-set $ws9 "9: "
+set $ws9 "9: "
 set $ws0 "10: "
 
 # switch to workspace
@@ -143,8 +143,8 @@ exec --no-startup-id compton -b
 # wallpaper & monitors
 exec --no-startup-id ~/.screenlayout/home.sh
 # exec --no-startup-id ~/.screenlayout/mobile.sh
-# exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/yosemite.png
-exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/moon.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/yosemite.png
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/moon.jpg
 
 exec --no-startup-id alacritty
 exec --no-startup-id google-chrome

@@ -1,10 +1,28 @@
 [colors]
-background = #343842
-foreground = #b3c1e0
-foreground-alt = #646d82
-primary = #2f343f
-secondary = #676e7d
-alert = #e53935
+; background = #343842
+; foreground = #b3c1e0
+; foreground-alt = #646d82
+; alert = #e53935
+nord0 = #2e3440
+nord1 = #3b4252
+nord2 = #434c5e
+nord3 = #4c566a
+nord4 = #d8dee9
+nord5 = #e5e9f0
+nord6 = #eceff4
+nord7 = #8fbcbb
+nord8 = #88c0d0
+nord9 = #81a1c1
+nord10 = #5e81ac
+nord11 = #bf616a
+nord12 = #d08770
+nord13 = #ebcb8b
+nord14 = #a3be8c
+nord15 = #b48ead
+background = #2e3440
+foreground = #d8dee9
+foreground-alt = #4c566a
+alert = #bf616a
 
 [bar/example]
 monitor = ${env:MONITOR:HDMI-1}
@@ -29,14 +47,14 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Hack:style=Regular:size=12;1
+font-0 = Hack:style=Regular:size=10;1
 font-1 = FontAwesome:style=Regular:size=13;2
 font-2 = Weather Icons:size=12;1
 font-3 = FontAwesome:style=Regular:size=13;2
 
 modules-left = i3
 modules-center = xwindow
-modules-right = spotify spacer alsa spacer wlan spacer battery spacer weather spacer date
+modules-right = spotify spacer alsa spacer wlan spacer weather spacer date spacer battery
 
 tray-position = right
 tray-padding = 2
@@ -50,6 +68,9 @@ cursor-scroll = ns-resize
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:50:...%
+format-background = ${colors.nord4}
+format-foreground = ${colors.nord0}
+format-padding = 4
 
 [module/i3]
 type = internal/i3
@@ -64,19 +85,18 @@ label-mode-padding = 0
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
-label-focused-foreground = ${colors.foreground}
-label-focused-background = ${colors.background}
-label-focused-underline = ${colors.foreground}
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.foreground}
+label-focused-underline = ${colors.background}
 label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %name%
-label-unfocused-foreground = ${colors.foreground-alt}
+label-unfocused-foreground = ${colors.foreground}
 label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
-label-visible-background = ${self.label-focused-background}
 label-visible-padding = 1
 
 ; urgent = Workspace with urgency hint set
@@ -92,25 +112,9 @@ ws-icon-4 = 5;
 ws-icon-5 = 6;
 ws-icon-6 = 7;
 ws-icon-7 = 8;
-ws-icon-8 = 9;
+ws-icon-8 = 9;
 ws-icon-10 = 10;
 ws-icon-default = 
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
-format-underline = ${colors.foreground}
-label = %percentage:2%%
-
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
-format-underline = ${colors.foreground}
-label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
@@ -119,8 +123,8 @@ interval = 3.0
 
 format-connected = <label-connected>
 format-packetloss = <animation-packetloss> <label-connected>
-format-connected-underline = ${colors.foreground}
-label-connected =  %essid%
+format-connected-underline = ${colors.nord7}
+label-connected =   %essid%
 
 label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.alert}
@@ -136,14 +140,13 @@ date-alt = %Y-%m-%d
 time =   %I:%M %p (%Z)
 time-alt =   %H:%M:%S
 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.foreground}
+format-underline = ${colors.nord15}
 
 label = %date% %time%
 
 [module/alsa]
 type = internal/alsa
-format-volume-underline = ${colors.foreground}
+format-volume-underline = ${colors.nord13}
 
 format-volume = <ramp-volume> <label-volume>
 format-muted = <label-muted>
@@ -164,20 +167,23 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.foreground}
+format-charging-underline = ${colors.nord13}
+format-charging-foreground = ${colors.nord13}
 
 format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${colors.foreground}
+format-discharging-underline = ${colors.nord12}
+format-discharging-foreground = ${colors.nord12}
 
 format-full-prefix = " "
-format-full-underline = ${colors.foreground}
+format-full-underline = ${colors.nord14}
+format-full-foreground = ${colors.nord14}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.foreground}
+ramp-capacity-foreground = ${colors.nord12}
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -202,16 +208,17 @@ content-foreground = ${colors.foreground-alt}
 type = custom/script
 exec = ~/.config/polybar/weather.sh
 label-font = 3
-format-underline = ${colors.foreground}
+format-underline = ${colors.nord9}
 interval = 600
 
 [module/spotify]
 type = custom/script
 interval = 1
 format-prefix = " "
+format-prefix-foreground = ${colors.nord14}
+format-underline = ${colors.nord14}
 format = <label>
 exec = python ~/.config/polybar/spotify -f '{artist}: {song} {play_pause}' -p ','
-format-underline = ${colors.foreground}
 
 [settings]
 screenchange-reload = true
