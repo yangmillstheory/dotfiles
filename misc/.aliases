@@ -65,3 +65,5 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 # google build & deploy
 alias b='nocorrect blaze'
 alias sp='startpcl'
+
+alias fu='fileutil'

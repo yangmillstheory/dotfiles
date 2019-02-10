@@ -32,10 +32,14 @@ function jt() {
     fi
 }
 
-prodaccess() {
-  /usr/bin/prodaccess "$@" && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh --extra_space
+function ex() {
+  echo "experimental/users/$USER"
 }
 
-fhf() {
-  hg files 2>/dev/null | fzf
+function jx() {
+  cd "$(ex)"
+}
+
+prodaccess() {
+  /usr/bin/prodaccess "$@" && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh --extra_space
 }

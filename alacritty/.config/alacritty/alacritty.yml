@@ -84,15 +84,51 @@ tabspaces: 8
 #   - https://wiki.archlinux.org/index.php/font_configuration#Fontconfig_configuration
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
+  # normal:
+  #   family: monospace
+  #   style: Regular
+  # bold:
+  #   family: monospace
+  #   style: Bold
+  # italic:
+  #   family: monospace
+  #   style: Bold
+  # normal:
+  #   family: monofur for Powerline
+  #   style: Regular
+  # bold:
+  #   family: Monofurbold Nerd Font Mono
+  #   style: Bold
+  # italic:
+  #   family: Monofurbold Nerd Font Mono
+  #   style: Bold
+  # normal:
+  #   family: Monaco for Powerline
+  #   style: Regular
+  # bold:
+  #   family: MonacoB2
+  #   style: Bold
+  # italic:
+  #   family: MonacoB2
+  #   style: Bold
   normal:
-    family: monospace
+    family: Hack
     style: Regular
   bold:
-    family: monospace
+    family: Hack
     style: Bold
   italic:
-    family: monospace
-    style: Bold
+    family: Hack
+    style: Italic
+  # normal:
+  #   family: Fantasque Sans Mono
+  #   style: Regular
+  # bold:
+  #   family: Fantasque Sans Mono
+  #   style: Bold
+  # italic:
+  #   family: Fantasque Sans Mono
+  #   style: Italic
 
   # Point size
   size: 8.0
@@ -181,7 +217,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: .7
+background_opacity: .9
 
 # Mouse bindings
 #

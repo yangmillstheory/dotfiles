@@ -27,6 +27,11 @@ format_swap = "{SUp}%"
 block = "sound"
 
 [[block]]
+block = "weather"
+format = "{weather} ({location}) {temp}°F"
+service = { name = "openweathermap", api_key = "", city_id = "5400075", units = "imperial" }
+
+[[block]]
 block = "time"
 format = "%I:%M %p (%Z) %a %b %d"
 timezone = "US/Pacific"
