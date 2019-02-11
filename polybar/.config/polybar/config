@@ -63,8 +63,8 @@ cursor-scroll = ns-resize
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:50:...%
-format-background = ${colors.nord14}
-format-foreground = ${colors.nord3}
+format-background = ${colors.nord15}
+format-foreground = ${colors.nord0}
 format-padding = 4
 
 [module/i3]
@@ -80,8 +80,8 @@ label-mode-padding = 0
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
-label-focused-foreground = ${colors.nord3}
-label-focused-background = ${colors.nord14}
+label-focused-foreground = ${colors.nord0}
+label-focused-background = ${colors.nord15}
 label-focused-underline = ${colors.nord3}
 label-focused-padding = 1
 

@@ -1,5 +1,5 @@
 #!/bin/sh
-KEY=""
+KEY="b1e6763b234c634f2920ac25192afd2a"
 CITY="5400075"
 UNITS="imperial"
 SYMBOL="°F"
