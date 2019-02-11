@@ -210,7 +210,7 @@ let g:nord_underline = 1
 
 syntax enable
 set background=dark
-colorscheme palenight
+colorscheme nord
 set colorcolumn=
 
 hi Normal     guibg=NONE ctermbg=NONE
