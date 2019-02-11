@@ -84,35 +84,33 @@ tabspaces: 8
 #   - https://wiki.archlinux.org/index.php/font_configuration#Fontconfig_configuration
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
-  # normal:
-  #   family: Monaco for Powerline
-  #   style: Regular
-  # bold:
-  #   family: MonacoB2
-  #   style: Bold
-  # italic:
-  #   family: MonacoB2
-  #   style: Bold
-  # normal:
-  #   family: monospace
-  #   style: Regular
-  # bold:
-  #   family: monospace
-  #   style: Bold
-  # italic:
-  #   family: monospace
-  #   style: Bold
   normal:
-    family: Hack
+    family: Monaco for Powerline
     style: Regular
-
   bold:
-    family: Hack
+    family: MonacoB2
     style: Bold
-
   italic:
-    family: Hack
-    style: Italic
+    family: MonacoB2
+    style: Bold
+  # normal:
+  #   family: monospace
+  #   style: Regular
+  # bold:
+  #   family: monospace
+  #   style: Bold
+  # italic:
+  #   family: monospace
+  #   style: Bold
+  # normal:
+  #   family: Hack
+  #   style: Regular
+  # bold:
+  #   family: Hack
+  #   style: Bold
+  # italic:
+  #   family: Hack
+  #   style: Italic
   # normal:
   #   family: Fantasque Sans Mono
   #   style: Regular
