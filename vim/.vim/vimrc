@@ -148,7 +148,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 \ 'branch': 'next',
 \ 'do': 'bash install.sh',
 \ }
-Plug 'arcticicestudio/nord-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim', { 'on': 'Tmuxline' }
@@ -202,14 +201,9 @@ let g:gruvbox_underline        = 1
 let g:gruvbox_undercurl        = 1
 " }}}
 
-" nord {{{
-let g:nord_comment_brightness = 20
-let g:nord_underline = 1
-" }}}
-
 syntax enable
 set background=dark
-colorscheme nord
+colorscheme gruvbox
 
 hi Normal     guibg=NONE ctermbg=NONE
 hi CursorLine cterm=none gui=none
@@ -328,7 +322,7 @@ let g:LanguageClient_hasSnippetSupport = 0
 
 "  lightline {{{
 let g:lightline = {
-\  'colorscheme': 'nord',
+\  'colorscheme': 'gruvbox',
 \  'separator': { 'left': '', 'right': '' },
 \  'subseparator': { 'left': '', 'right': '' },
 \  'active': {

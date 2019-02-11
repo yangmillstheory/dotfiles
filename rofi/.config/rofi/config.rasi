@@ -3,7 +3,7 @@ configuration {
 	width: 100;
 	lines: 10;
 	columns: 1;
-	font: "Inconsolata-g for Powerline 16";
+	font: "System San Francisco Display 16";
 	bw: 0;
 	location: 0;
 	padding: 800;
