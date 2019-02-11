@@ -150,7 +150,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 \ 'do': 'bash install.sh',
 \ }
 Plug 'arcticicestudio/nord-vim'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim', { 'on': 'Tmuxline' }
 Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries' }
@@ -211,6 +210,7 @@ let g:nord_underline = 1
 syntax enable
 set background=dark
 colorscheme nord
+
 set colorcolumn=
 
 hi Normal     guibg=NONE ctermbg=NONE
