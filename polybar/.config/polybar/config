@@ -47,9 +47,9 @@ font-1 = FontAwesome:style=Regular:size=14;2
 font-2 = Weather Icons:size=12;1
 font-3 = FontAwesome:style=Regular:size=14;2
 
-modules-left = i3
-modules-center = xwindow
-modules-right = spotify spacer alsa spacer wlan spacer weather spacer date spacer battery
+modules-left = i3 spacer xwindow
+modules-center = date
+modules-right = spotify spacer alsa spacer wlan spacer weather spacer battery
 
 tray-position = right
 tray-padding = 2
