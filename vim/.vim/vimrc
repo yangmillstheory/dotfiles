@@ -204,7 +204,6 @@ let g:gruvbox_undercurl        = 1
 syntax enable
 set background=dark
 colorscheme gruvbox
-
 set colorcolumn=
 
 hi Normal     guibg=NONE ctermbg=NONE
