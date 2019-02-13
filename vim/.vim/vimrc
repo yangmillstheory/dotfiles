@@ -275,7 +275,7 @@ function! s:RgArgs(args) abort
 endfunction
 command! -bang FzfFiles
 \ call fzf#run(fzf#wrap({
-\     'source': $FZF_DEFAULT_COMMAND . " " . s:RgArgs('--files'),
+\     'source': $FZF_DEFAULT_COMMAND . " " . s:RgArgs(''),
 \     'options': $FZF_DEFAULT_OPTS . " " . $FZF_CTRL_T_OPTS,
 \   }),
 \   <bang>0

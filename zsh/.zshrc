@@ -124,7 +124,7 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgrep/ripgreprc
 #
 #   https://github.com/robbyrussell/oh-my-zsh/issues/3003
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-export FZF_DEFAULT_COMMAND='rg'
+export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS='--inline-info --reverse --border --height 40%'
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden --bind '?:toggle-preview'"
 export FZF_CTRL_T_OPTS="--exit-0 --select-1 --preview '(highlight -O ansi {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
