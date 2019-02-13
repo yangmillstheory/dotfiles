@@ -142,7 +142,7 @@ exec --no-startup-id compton -b
 
 # wallpaper & monitors
 exec_always --no-startup-id ~/.screenlayout/ginaz.sh
-exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/yosemite.png
+exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/blossoms.jpg
 
 exec --no-startup-id alacritty
 exec --no-startup-id google-chrome
