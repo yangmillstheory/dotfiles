@@ -49,7 +49,7 @@ font-3 = FontAwesome:style=Regular:size=14;2
 
 modules-left = i3 spacer xwindow
 modules-center =
-modules-right = spotify spacer alsa spacer wlan spacer weather spacer date spacer battery
+modules-right = spotify spacer alsa spacer wlan spacer weather spacer date
 
 tray-position = right
 tray-padding = 2
@@ -99,8 +99,8 @@ label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 3
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
+ws-icon-0 = 1;
+ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
 ws-icon-4 = 5;
@@ -113,13 +113,13 @@ ws-icon-default = 
 
 [module/wlan]
 type = internal/network
-interface = wlp2s0
+interface = enp0s31f6
 interval = 3.0
 
 format-connected = <label-connected>
 format-packetloss = <animation-packetloss> <label-connected>
 format-connected-underline = ${colors.nord7}
-label-connected =   %essid%
+label-connected =   %local_ip%  %upspeed%  %downspeed%
 
 label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.alert}
@@ -154,45 +154,6 @@ label-muted-foreground = ${colors.foreground}
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.nord13}
-format-charging-foreground = ${colors.nord13}
-
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${colors.nord12}
-format-discharging-foreground = ${colors.nord12}
-
-format-full-prefix = " "
-format-full-underline = ${colors.nord14}
-format-full-foreground = ${colors.nord14}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.nord12}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-framerate = 500
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-3 = 
-animation-discharging-4 = 
-animation-discharging-framerate = 1000
 
 [module/spacer]
 type = custom/text
