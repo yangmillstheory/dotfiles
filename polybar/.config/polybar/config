@@ -42,14 +42,14 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = System San Francisco Display:style=Regular:size=11;1
+font-0 = System San Francisco Display:style=Regular:size=10;1
 font-1 = FontAwesome:style=Regular:size=14;2
 font-2 = Weather Icons:size=12;1
 font-3 = FontAwesome:style=Regular:size=14;2
 
 modules-left = i3 spacer xwindow
-modules-center = date
-modules-right = spotify spacer alsa spacer wlan spacer weather spacer battery
+modules-center =
+modules-right = spotify spacer alsa spacer wlan spacer weather spacer date spacer battery
 
 tray-position = right
 tray-padding = 2
@@ -213,7 +213,7 @@ format-prefix = " "
 format-prefix-foreground = ${colors.nord14}
 format-underline = ${colors.nord14}
 format = <label>
-exec = python ~/.config/polybar/spotify -f '{artist}: {song} {play_pause}' -p ','
+exec = python ~/.config/polybar/spotify -f '{artist}: {song} {play_pause}' -p ','
 
 [settings]
 screenchange-reload = true

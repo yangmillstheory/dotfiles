@@ -143,7 +143,8 @@ exec --no-startup-id compton -b
 # wallpaper & monitors
 exec --no-startup-id ~/.screenlayout/home.sh
 # exec --no-startup-id ~/.screenlayout/mobile.sh
-exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/yosemite.png
+exec_always --no-startup-id feh --bg-fill ~/Downloads/blossoms
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/yosemite.png
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/moon.jpg
 
 exec --no-startup-id alacritty
