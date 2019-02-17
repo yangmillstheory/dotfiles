@@ -26,8 +26,8 @@ window:
   # Blank space added around the window in pixels. This padding is not scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 30
-    y: 30
+    x: 20
+    y: 20
 
   # Window decorations
   #
@@ -112,17 +112,17 @@ font:
   #   family: Hack
   #   style: Regular
   # normal:
-  #   family: Fantasque Sans Mono
+  #   family: Fira Mono for Powerline
   #   style: Regular
   # bold:
-  #   family: Fantasque Sans Mono
+  #   family: Fira Mono for Powerline
   #   style: Bold
   # italic:
-  #   family: Fantasque Sans Mono
-  #   style: Bold
+  #   family: Fira Mono for Powerline
+  #   style: Italic
 
   # Point size
-  size: 8.0
+  size: 10.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -234,7 +234,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: .9
+background_opacity: .7
 
 # Mouse bindings
 #
