@@ -49,7 +49,7 @@ font-3 = FontAwesome:style=Regular:size=14;2
 
 modules-left = i3 spacer xwindow
 modules-center =
-modules-right = spotify spacer alsa spacer wlan spacer weather spacer date
+modules-right = spotify spacer alsa spacer weather spacer date
 
 tray-position = right
 tray-padding = 2
