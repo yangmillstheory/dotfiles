@@ -261,17 +261,17 @@ let s:hg_command = 'hg files 2>/dev/null'
 "
 " explicitly include/exclude directories from fzf + rg
 " these aren't plugin options, but our own :)
-let g:rg_include = []
-let g:rg_exclude = []
+let g:rg_in = []
+let g:rg_ex = []
 function! s:RgArgs(args) abort
   let rg_args = []
-  if len(g:rg_exclude)
-    let rg_args += ["--glob=!{" . join(g:rg_exclude, ",") . "}"]
+  if len(g:rg_ex)
+    let rg_args += ["--glob=!{" . join(g:rg_ex, ",") . "}"]
   endif
   if len(a:args)
     let rg_args += [a:args]
   endif
-  return join(rg_args + g:rg_include, " ")
+  return join(rg_args + g:rg_in, " ")
 endfunction
 command! -bang FzfFiles
 \ call fzf#run(fzf#wrap({
