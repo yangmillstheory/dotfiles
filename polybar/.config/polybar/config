@@ -49,7 +49,7 @@ font-3 = FontAwesome:style=Regular:size=14;2
 
 modules-left = i3 spacer xwindow
 modules-center =
-modules-right = spotify spacer alsa spacer weather spacer date
+modules-right = spotify spacer alsa spacer weather spacer date spacer date-zrh
 
 tray-position = right
 tray-padding = 2
@@ -137,6 +137,11 @@ time-alt =   %H:%M:%S
 format-underline = ${colors.nord15}
 
 label = %date% %time%
+
+[module/date-zrh]
+type = custom/script
+exec = TZ=Europe/Zurich date +" %a %b %d   %I:%M:%S (%Z)"
+interval = 30
 
 [module/alsa]
 type = internal/alsa
