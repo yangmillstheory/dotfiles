@@ -140,7 +140,7 @@ label = %date% %time%
 
 [module/date-zrh]
 type = custom/script
-exec = TZ=Europe/Zurich date +" %a %b %d   %I:%M:%S (%Z)"
+exec = TZ=Europe/Zurich date +" %a %b %d   %I:%M:%S %p (%Z)"
 interval = 30
 
 [module/alsa]
