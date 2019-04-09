@@ -68,3 +68,4 @@ alias bl='nocorrect blaze'
 alias sp='startpcl'
 alias fu='fileutil'
 alias bc='borgcfg'        # NB: this also overrides a system binary
+alias paste='/google/src/head/depot/eng/tools/pastebin'
