@@ -85,41 +85,50 @@ tabspaces: 8
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
   # normal:
-  #   family: Monaco for Powerline
+  #   family: monofur for Powerline
   #   style: Regular
   # bold:
-  #   family: MonacoB2
+  #   family: Monofurbold Nerd Font Mono
   #   style: Bold
   # italic:
-  #   family: MonacoB2
+  #   family: Monofurbold Nerd Font Mono
   #   style: Bold
-  # normal:
-  #   family: monospace
-  #   style: Regular
-  # bold:
-  #   family: monospace
-  #   style: Bold
-  # italic:
-  #   family: monospace
-  #   style: Bold
-  # normal:
-  #   family: Hack
-  #   style: Regular
-  # bold:
-  #   family: Hack
-  #   style: Bold
-  # italic:
-  #   family: Hack
-  #   style: Regular
   normal:
-    family: Oxygen Mono
+    family: Monaco for Powerline
     style: Regular
   bold:
-    family: Oxygen Mono
+    family: MonacoB2
     style: Bold
   italic:
-    family: Oxygen Mono
-    style: Italic
+    family: MonacoB2
+    style: Bold
+  # normal:
+  #   family: monospace
+  #   style: Regular
+  # bold:
+  #   family: monospace
+  #   style: Bold
+  # italic:
+  #   family: monospace
+  #   style: Bold
+  # normal:
+  #   family: Hack
+  #   style: Regular
+  # bold:
+  #   family: Hack
+  #   style: Bold
+  # italic:
+  #   family: Hack
+  #   style: Regular
+  # normal:
+  #   family: Oxygen Mono
+  #   style: Regular
+  # bold:
+  #   family: Oxygen Mono
+  #   style: Bold
+  # italic:
+  #   family: Oxygen Mono
+  #   style: Italic
 
   # Point size
   size: 10.0
@@ -234,7 +243,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: .7
+background_opacity: .9
 
 # Mouse bindings
 #
