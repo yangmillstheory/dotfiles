@@ -7,7 +7,6 @@ alias q='exit'
 alias m='make'
 alias c='clear'
 alias x='systemctl suspend'
-
 alias irc='irssi -c google'
 
 alias py='python'
@@ -45,8 +44,6 @@ alias gpush='git push'
 alias gpull='git pull'
 
 # google vcs
-alias p='p4'
-alias g='g4'
 alias h='nocorrect hg'
 
 # fasd
@@ -61,11 +58,16 @@ alias sd='fasd -sid'     # interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
-alias cn=/google/data/ro/teams/conductor/conductor
 
 # google build & deploy
 alias bl='nocorrect blaze'
 alias sp='startpcl'
 alias fu='fileutil'
 alias bc='borgcfg'        # NB: this also overrides a system binary
+
+# google tools
 alias paste='/google/src/head/depot/eng/tools/pastebin'
+alias dingo='/google/data/ro/projects/production/tools/dingo'
+alias analog=/google/data/ro/teams/borg-logs-ui/analog-cli
+alias p=prodaccess
+alias vs=/google/data/ro/teams/annealing/versionstore/live/cli
