@@ -93,33 +93,32 @@ font:
   # italic:
   #   family: Monofurbold Nerd Font Mono
   #   style: Bold
+  # normal:
+  #   family: Monaco for Powerline
+  #   style: Regular
+  # bold:
+  #   family: MonacoB2
+  #   style: Bold
+  # italic:
+  #   family: MonacoB2
+  #   style: Bold
+  # normal:
+  #   family: monospace
+  #   style: Regular
+  # bold:
+  #   style: Bold
+  # italic:
+  #   family: monospace
+  #   style: Bold
   normal:
-    family: Monaco for Powerline
+    family: Hack
     style: Regular
   bold:
-    family: MonacoB2
-    style: Bold
+    family: Hack
+    style: Regular
   italic:
-    family: MonacoB2
-    style: Bold
-  # normal:
-  #   family: monospace
-  #   style: Regular
-  # bold:
-  #   family: monospace
-  #   style: Bold
-  # italic:
-  #   family: monospace
-  #   style: Bold
-  # normal:
-  #   family: Hack
-  #   style: Regular
-  # bold:
-  #   family: Hack
-  #   style: Bold
-  # italic:
-  #   family: Hack
-  #   style: Regular
+    family: Hack
+    style: Regular
   # normal:
   #   family: Oxygen Mono
   #   style: Regular
@@ -131,7 +130,7 @@ font:
   #   style: Italic
 
   # Point size
-  size: 10.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.

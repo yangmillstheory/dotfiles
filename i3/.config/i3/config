@@ -143,13 +143,14 @@ exec --no-startup-id compton -b
 # wallpaper & monitors
 exec --no-startup-id ~/.screenlayout/home.sh
 # exec --no-startup-id ~/.screenlayout/mobile.sh
-exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/forest.png
+exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/anime_evening.jpg
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/yosemite.png
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/moon.jpg
 
 exec --no-startup-id alacritty
 exec --no-startup-id google-chrome
 exec --no-startup-id spotify
+
 
 # lock screen
 bindsym $mod+shift+x exec ~/.bin/blur_i3_lock
