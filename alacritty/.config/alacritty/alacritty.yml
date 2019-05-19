@@ -102,33 +102,51 @@ font:
   # italic:
   #   family: MonacoB2
   #   style: Bold
-  # normal:
-  #   family: monospace
-  #   style: Regular
-  # bold:
-  #   family: monospace
-  #   style: Bold
-  # italic:
-  #   family: monospace
-  #   style: Bold
-  # normal:
-  #   family: Hack
-  #   style: Regular
-  # bold:
-  #   family: Hack
-  #   style: Bold
-  # italic:
-  #   family: Hack
-  #   style: Regular
   normal:
-    family: Oxygen Mono
+    family: Fira Code
     style: Regular
   bold:
-    family: Oxygen Mono
+    family: Fira Code
     style: Bold
   italic:
-    family: Oxygen Mono
-    style: Italic
+    family: Fira Code
+    style: Bold
+  # normal:
+  #   family: monospace
+  #   style: Regular
+  # bold:
+  #   family: monospace
+  #   style: Bold
+  # italic:
+  #   family: monospace
+  #   style: Bold
+  # normal:
+  #   family: Inconsolata for Powerline
+  #   style: Regular
+  # bold:
+  #   family: Inconsolata for Powerline
+  #   style: BoldForPowerline
+  # italic:
+  #   family: Inconsolata for Powerline
+  #   style: Regular
+  # normal:
+  #   family: Hack
+  #   style: Regular
+  # bold:
+  #   family: Hack
+  #   style: Bold
+  # italic:
+  #   family: Hack
+  #   style: Regular
+  # normal:
+  #   family: Oxygen Mono
+  #   style: Regular
+  # bold:
+  #   family: Oxygen Mono
+  #   style: Bold
+  # italic:
+  #   family: Oxygen Mono
+  #   style: Italic
 
   # Point size
   size: 10.0

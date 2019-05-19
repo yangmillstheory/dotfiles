@@ -158,6 +158,7 @@ zstyle ':completion:*:blaze-*:query' command -_blaze_query_tmux
 
 prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
 if ! prodcertstatus -q; then
+  echo 'Getting prodaccess...'
   prodaccess -g
 fi
 

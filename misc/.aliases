@@ -60,7 +60,11 @@ alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
 
 # google build & deploy
-alias bl='nocorrect blaze'
+alias blaze='nocorrect blaze'
+alias bl='blaze'
+alias blb='blaze build'
+alias blt='blaze test'
+alias blr='blaze run'
 alias sp='startpcl'
 alias fu='fileutil'
 alias bc='borgcfg'        # NB: this also overrides a system binary
@@ -71,3 +75,4 @@ alias dingo='/google/data/ro/projects/production/tools/dingo'
 alias analog=/google/data/ro/teams/borg-logs-ui/analog-cli
 alias p=prodaccess
 alias vs=/google/data/ro/teams/annealing/versionstore/live/cli
+alias prodspec=/google/data/ro/teams/prodspec/prodspec
