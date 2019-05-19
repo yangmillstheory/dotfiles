@@ -259,6 +259,7 @@ nnoremap <silent> <c-c> :FzfCommands<CR>
 " these aren't plugin options, but our own :)
 let g:rg_in = []
 let g:rg_ex = []
+nnoremap <Leader>d q:ilet g:rg_in=['']<esc>hi
 let s:rg_command = 'rg --hidden --ignore-case --column --line-number --no-heading --color=always'
 function! s:RgArgs(args) abort
   let rg_args = []
