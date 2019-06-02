@@ -149,6 +149,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 \ 'do': 'bash install.sh',
 \ }
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'deoplete-plugins/deoplete-dictionary'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim', { 'on': 'Tmuxline' }
 Plug 'fatih/vim-go', { 'do': 'GoInstallBinaries' }
