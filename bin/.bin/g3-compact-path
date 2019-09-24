@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+# this relies on a binary 'compact' compiled from
+#
+#     https://gist.github.com/yangmillstheory/09745d8760bf00db543343f66edc1777
+#
+if [[ $1 =~ /google/src/cloud/[^/]+/(.+)/google3(.*)$ ]]; then
+  echo "(${match[1]}) //$(compact ${match[2]#/})"
+elif [[ $1 =~ ^(.*)+(genfiles|bin|testlogs)/(.*)$  ]]; then
+  BUILD_INFO=$(dirname "${match[1]}")/build-info.txt
+	G3_ROOT=$(grep BUILD_DIRECTORY $BUILD_INFO | cut -d ' ' -f 2)
+  WS_NAME=$(basename $(dirname $G3_ROOT))
+	echo "($WS_NAME:${match[2]}) $(compact ${match[3]/#})"
+else
+  compact "${1/#$HOME/~}"
+fi

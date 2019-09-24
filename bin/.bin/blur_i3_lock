@@ -41,14 +41,18 @@ get_convert_params() {
 }
 
 killall -SIGUSR1 dunst
-convert "$LOCK_BG" -scale 10% -scale 1000%  "$LOCK_ICON" -geometry +1185+625 -composite "$LOCK_ICON" -geometry +3745+625 -composite "$LOCK_BG"
+convert "$LOCK_BG" -scale 10% -scale 1000%  "$LOCK_ICON" \
+  -geometry +6305+625 -composite "$LOCK_ICON" \
+  -geometry +3745+625 -composite "$LOCK_ICON" \
+  -geometry +1185+625 -composite "$LOCK_BG"
+
 
 xset +dpms dpms 120 300 300
 killall compton
 i3lock --image "$LOCK_BG" --nofork
 
 # resume notifications and set DPMS off
-compton -f &
+compton &
 xset dpms 0 0 0
 killall -SIGUSR2 dunst
 rm $LOCK_BG

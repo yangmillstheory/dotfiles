@@ -57,7 +57,6 @@ plugins=(
   # remember that these have to be manually installed
   zsh-autosuggestions
   zsh-completions
-  shrink-path
   vim
 )
 
@@ -125,7 +124,7 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgrep/ripgreprc
 #
 #   https://github.com/robbyrussell/oh-my-zsh/issues/3003
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-export FZF_DEFAULT_COMMAND='rg'
+export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS='--inline-info --reverse --border --height 40%'
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden --bind '?:toggle-preview'"
 export FZF_CTRL_T_OPTS="--exit-0 --select-1 --preview '(highlight -O ansi {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
@@ -159,5 +158,9 @@ zstyle ':completion:*:blaze-*:query' command -_blaze_query_tmux
 
 prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
 if ! prodcertstatus -q; then
+  echo 'Getting prodaccess...'
   prodaccess -g
 fi
+
+export G4MULTIDIFF=0
+export P4DIFF='diff'

@@ -20,4 +20,14 @@ xmodmap ~/.Xmodmap
 xset r rate 200 25
 imwheel --kill --buttons '4 5'
 
-exec i3
+# in a clean install, use i3 instead.
+#
+# to use i3-gaps, build and install the binary
+# per the instructions in
+#
+# 		https://github.com/Airblader/i3/wiki/Compiling-&-Installing
+#
+# ;make sure the requirements for Debian Testing
+# installed beforehand. Then copy the binary to a location
+# in $PATH.
+exec i3-gaps

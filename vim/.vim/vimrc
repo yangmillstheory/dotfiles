@@ -135,6 +135,7 @@ set statusline+=%F
 set suffixesadd+=.js
 set suffixesadd+=.go
 set suffixesadd+=.py
+set colorcolumn=
 " }}}
 
 " plugins {{{
@@ -144,36 +145,34 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source ~/.vim/vimrc
 endif
 call plug#begin('~/.vim/plugged')
-Plug 'altercation/vim-colors-solarized'
 Plug 'autozimu/LanguageClient-neovim', {
 \ 'branch': 'next',
 \ 'do': 'bash install.sh',
 \ }
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'deoplete-plugins/deoplete-dictionary'
 Plug 'edkolev/tmuxline.vim', { 'on': 'Tmuxline' }
 Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
-Plug 'mattn/calendar-vim'
 Plug 'matze/vim-move'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': './install --all --xdg' }
 Plug 'junegunn/fzf.vim'
+Plug 'mattn/calendar-vim'
 Plug 'morhetz/gruvbox'
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'scrooloose/nerdtree'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'tmux-plugins/vim-tmux'
 Plug 'simeji/winresizer'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
-Plug 'w0rp/ale'
 Plug 'yangmillstheory/vim-python', { 'for': 'python' }
 Plug 'yangmillstheory/vim-snippets'
 Plug 'yangmillstheory/vim-snipe'
@@ -182,11 +181,6 @@ call plug#end()
 " }}}
 
 " plugin settings {{{
-" ale {{{
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-" }}}
-
 " autopairs {{{
 let g:AutoPairsShortcutToggle = ''
 let g:AutoPairsShortcutJump = ''
@@ -201,7 +195,7 @@ let g:AutoPairsShortcutFastWrap = ''
 let g:gruvbox_contrast_dark    = 'medium'
 let g:gruvbox_contrast_light   = 'medium'
 let g:gruvbox_invert_selection = 0
-let g:gruvbox_italic           = 1
+let g:gruvbox_italic           = 0
 let g:gruvbox_bold             = 1
 let g:gruvbox_underline        = 1
 let g:gruvbox_undercurl        = 1
@@ -210,6 +204,7 @@ let g:gruvbox_undercurl        = 1
 syntax enable
 set background=dark
 colorscheme gruvbox
+set colorcolumn=
 
 hi Normal     guibg=NONE ctermbg=NONE
 hi CursorLine cterm=none gui=none
@@ -232,14 +227,6 @@ let g:deoplete#sources#go#gocode_binary = $HOME . '/go/bin/gocode'
 
 " fzf.vim {{{
 let g:fzf_buffers_jump = 1
-" use the same semantics for fzf as in shell
-nnoremap <silent> <c-t> :FzfFiles<CR>
-nnoremap <silent> <c-f> :FzfRg<space>
-nnoremap <silent> <c-b> :FzfBuffers<CR>
-nnoremap <silent> <c-r> :FzfHistory:<CR>
-nnoremap <silent> <c-s> :FzfHistory/<CR>
-nnoremap <silent> <Leader>z :FzfFasdFile<space>
-nnoremap <silent> <Leader>Z :FzfFasdDir<space>
 " keep actions compatible with nerdtree
 let g:fzf_action = {
 \ 'ctrl-t': 'tab split',
@@ -260,47 +247,60 @@ let g:fzf_colors = {
 \ 'spinner': ['fg', 'Label'],
 \ 'header':  ['fg', 'Comment'] }
 let g:fzf_command_prefix = 'Fzf'
-" explicitly include/exclude directories from fzf + rg
-" these aren't plugin options, but our own :)
-let g:rg_include = []
-let g:rg_exclude = []
+" use the same keybindings for fzf as in shell
+nnoremap <silent> <c-t> :FzfFiles<CR>
+nnoremap <silent> <c-f> :FzfRg<space>
+nnoremap <silent> <c-_> :FzfBLines<CR>
+nnoremap <silent> <c-b> :FzfBuffers<CR>
+nnoremap <silent> <c-r> :FzfHistory:<CR>
+nnoremap <silent> <c-s> :FzfHistory/<CR>
+nnoremap <silent> <c-c> :FzfCommands<CR>
+let s:rg_command = 'rg --hidden --ignore-case --column --line-number --no-heading --color=always'
+let s:hg_command = 'hg files 2>/dev/null'
 
 " https://github.com/junegunn/fzf.vim#advanced-customization
-" make sure that we can pass multiple directories to fzf sources
-function! s:RgArgs(q_args) abort
+"
+" explicitly include/exclude directories from fzf + rg
+" these aren't plugin options, but our own :)
+let g:rg_in = []
+let g:rg_ex = []
+nnoremap <Leader>d q:ilet g:rg_in=['']<esc>hi
+function! s:RgArgs(args) abort
   let rg_args = []
-  if len(g:rg_exclude)
-    let rg_args += ["--glob=!{" . join(g:rg_exclude, ",") . "}"]
+  if len(g:rg_ex)
+    let rg_args += ["--glob=!{" . join(g:rg_ex, ",") . "}"]
   endif
-  if len(a:q_args)
-    let rg_args += [a:q_args]
+  if len(a:args)
+    let rg_args += [a:args]
   endif
-  return join(rg_args + g:rg_include, " ")
+  return join(rg_args + g:rg_in, " ")
 endfunction
-command! -bang -complete=dir FzfFiles
+command! -bang FzfFiles
 \ call fzf#run(fzf#wrap({
-\     'source': $FZF_DEFAULT_COMMAND . " " . s:RgArgs('--files'),
+\     'source': $FZF_DEFAULT_COMMAND . " " . s:RgArgs(''),
 \     'options': $FZF_DEFAULT_OPTS . " " . $FZF_CTRL_T_OPTS,
 \   }),
 \   <bang>0
 \ )
-command! -bang -nargs=* FzfRg
+command! -bang FzfHgFiles
+\ call fzf#run(fzf#wrap({
+\     'source': s:hg_command,
+\     'options': $FZF_DEFAULT_OPTS . " " . $FZF_CTRL_T_OPTS,
+\   }),
+\   <bang>0
+\ )
+command! -bang -nargs=* FzfHgRg
 \ call fzf#vim#grep(
-\   'rg --hidden --ignore-case --column --line-number --no-heading --color=always ' . s:RgArgs(<q-args>), 1,
+\   s:rg_command . " " . <q-args> . " " . "$(" . s:hg_command . ")", 1,
 \   <bang>0 ? fzf#vim#with_preview('up:60%')
 \           : fzf#vim#with_preview('right:50%'),
 \   <bang>0)
-function! s:Fasd(cmd)
-  let cmd = a:cmd
-  function! FasdSink(line) closure
-    execute(cmd . ' ' . split(a:line)[-1])
-  endfunction
-  return funcref('FasdSink')
-endfunction
-command! -bang -nargs=* FzfFasdFile
-\ call fzf#run(fzf#wrap({'source': 'fasd -lf -R '. shellescape(<q-args>), 'sink': s:Fasd('e')}))
-command! -bang -nargs=* FzfFasdDir
-\ call fzf#run(fzf#wrap({'source': 'fasd -ld -r '. shellescape(<q-args>), 'sink': s:fasd('cd')}))
+command! -bang -nargs=* FzfRg
+\ call fzf#vim#grep(
+\   s:rg_command . " " . s:RgArgs(<q-args>), 1,
+\   <bang>0 ? fzf#vim#with_preview('up:60%')
+\           : fzf#vim#with_preview('right:50%'),
+\   <bang>0)
 " not yet:
 "
 "     https://github.com/junegunn/fzf.vim/issues/195
@@ -317,9 +317,8 @@ let g:LanguageClient_serverCommands = {
 \  'cpp': ['/google/bin/releases/editor-devtools/ciderlsp'],
 \  'proto': ['/google/bin/releases/editor-devtools/ciderlsp'],
 \  'borg': ['/google/bin/releases/editor-devtools/ciderlsp'],
+\  'borgspec': ['/google/bin/releases/editor-devtools/ciderlsp'],
 \ }
-
-let g:LanguageClient_loadSettings = 0
 
 nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
@@ -332,35 +331,11 @@ nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
 nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
 nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 
-set signcolumn=yes
+set signcolumn=auto
 " https://github.com/autozimu/LanguageClient-neovim/issues/379
+let g:LanguageClient_diagnosticsList = "Disabled"
+let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_hasSnippetSupport = 0
-let g:LanguageClient_diagnosticsDisplay = {
-\ 1: {
-\   "name": "Error",
-\   "texthl": "ALEError",
-\   "signText": "✖",
-\   "signTexthl": "ALEErrorSign",
-\ },
-\ 2: {
-\   "name": "Warning",
-\   "texthl": "ALEWarning",
-\   "signText": "❗",
-\   "signTexthl": "ALEWarningSign",
-\ },
-\ 3: {
-\   "name": "Information",
-\   "texthl": "ALEInfo",
-\   "signText": "ℹ",
-\   "signTexthl": "ALEInfoSign",
-\ },
-\ 4: {
-\   "name": "Hint",
-\   "texthl": "ALEInfo",
-\   "signText": "➤",
-\   "signTexthl": "ALEInfoSign",
-\ },
-\ }
 " }}}
 
 "  lightline {{{
@@ -391,7 +366,7 @@ function! LightlineReadonly()
   return &readonly ? '' : ''
 endfunction
 function! LightlineFilename()
-  return expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  return expand('%') !=# '' ? fnamemodify(expand('%'), ":~:.") : '[No Name]'
 endfunction
 " }}}
 "  }}}
@@ -417,14 +392,14 @@ let g:tmuxline_status_justify = 'left'
 let g:tmuxline_theme = 'minimal'
 let g:tmuxline_preset = {
 \'a'    : '#S',
-\'b'    : ['#[bold]#(g3-short-path #{pane_current_path})', '#[italics,nobold]#{pane_current_command}'],
+\'b'    : ['#(g3-compact-path #{pane_current_path})', '#[italics,nobold]#{pane_current_command}'],
 \'win'  : ['#I', '#W'],
 \'cwin' : ['#[bold]#I', '#W'],
 \'y'    : [
-\  '%I:%M %p (%Z)',
-\  '%a %b %d',
+\  '#[bold]%I:%M %p (%Z)',
+\  '#[bold]%a %b %d',
 \],
-\'z': '#[bold]#H'
+\'z': '#h'
 \}
 " }}}
 
@@ -434,12 +409,13 @@ autocmd BufEnter * DisableWhitespace
 " }}}
 
 " vim-go {{{
-let g:go_def_mapping_enabled = 1
+let g:go_metalinter_enabled = []
+let g:go_def_mapping_enabled = 0
 let g:go_info_mode = 'guru'
 let g:go_echo_go_info = 0
 let g:go_def_mode = 'guru'
 let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 1
+let g:go_autodetect_gopath = 0
 let g:go_list_type = "quickfix"
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
@@ -506,12 +482,32 @@ nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 " }}}
 
 " vimwiki {{{
-let g:vimwiki_list = [{'path': '$HOME/vimwiki/personal'}]
-let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_list = [
+\  {'path': '~/vimwiki/g', 'ext': '.md', 'syntax': 'markdown'},
+\  {'path': '~/vimwiki/p', 'ext': '.md', 'syntax': 'markdown'},
+\]
+" this doesn't seem to work
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 let g:vimwiki_use_calendar = 1
-let g:calendar_options = 'nornu'
-let g:calendar_diary = '$HOME/vimwiki/personal/diary'
-let g:calendar_no_mappings = 1
+let g:vimwiki_listsyms = ' .oOx'
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
+" putting this in an augroup doesn't work;
+" apparently the syntax setting above doens't work either
+augroup wiki
+  autocmd!
+  autocmd BufEnter,FileType vimwiki set filetype=markdown
+  autocmd BufEnter,FileType vimwiki set syntax=markdown
+  " need to have the chrome extension
+  "
+  "   https://github.com/simov/markdown-viewer
+  "
+  " for this
+augroup END
+augroup markdown
+  autocmd!
+  autocmd FileType markdown nnoremap <silent> <F12> :silent! !google-chrome %<CR>
+  autocmd FileType markdown setlocal dictionary+=/usr/share/dict/words
+augroup END
 " }}}
 
 " winresizer {{{
@@ -522,25 +518,25 @@ let g:winresizer_start_key = '<leader>r'
 " (au)commands, mappings, languages {{{
 " vimscript and vimrc {{{
 function! s:Help(type)
-if a:type ==# 'v'
-  normal! `<v`>y
-elseif a:type ==# 'char'
-  normal! `[v`]y
-else
-  return
-endif
-let saved = @@
-silent execute "h " . @@
-let @@ = saved
+  if a:type ==# 'v'
+    normal! `<v`>y
+  elseif a:type ==# 'char'
+    normal! `[v`]y
+  else
+    return
+  endif
+  let saved = @@
+  silent execute "h " . @@
+  let @@ = saved
 endfunction
 augroup vimscript
   autocmd!
   " write and save the current file
-  autocmd Filetype vim nnoremap <F3> :w!<cr> :so %<cr>
+  autocmd Filetype vim nnoremap <silent> <F9> :w!<cr> :so %<cr>
   " F1 = help
-  autocmd FileType vim vnoremap <F1> :<c-u>call <SID>Help(visualmode())<cr>
-  autocmd FileType vim nnoremap <F1> :set operatorfunc=<SID>Help<cr>g@
-  autocmd FileType vim nnoremap <F1><F1> :h <c-r><c-w><cr>
+  autocmd FileType vim vnoremap <silent> <F1> :<c-u>call <SID>Help(visualmode())<cr>
+  autocmd FileType vim nnoremap <silent> <F1> :set operatorfunc=<SID>Help<cr>g@
+  autocmd FileType vim nnoremap <silent> <F1><F1> :h <c-r><c-w><cr>
 augroup END
 augroup vimrc
   autocmd!
@@ -552,6 +548,7 @@ augroup END
 " edit common files {{{
 nnoremap <leader>ev :vsp ~/.vim/vimrc<cr>
 nnoremap <leader>ea :vsp ~/.config/alacritty/alacritty.yml<cr>
+nnoremap <leader>ei :vsp ~/.config/i3/config<cr>
 nnoremap <leader>et :vsp ~/.tmux.conf<cr>
 nnoremap <leader>ez :vsp ~/.zshrc<cr>
 nnoremap <leader>es :vsp scrap<cr>
@@ -669,22 +666,14 @@ vnoremap <leader>g :<c-u>call <SID>GrepOperator(visualmode())<cr>
 " }}}
 " }}}
 
-" google {{{
+" " google {{{
 source /usr/share/vim/google/google.vim
 
-" glugins {{{
+" " glugins {{{
 Glug codefmt-google
-" Glug ultisnips-google
-" Glug youcompleteme-google
-" }}}
+" " }}}
 
 " glugin config {{{
-" ultisnips {{{
-" let g:UltiSnipsExpandTrigger = "<c-j>"
-" let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-" }}}
-
 " codefmt-google {{{
 augroup autoformat_settings
   autocmd FileType borg,gcl,patchpanel AutoFormatBuffer gclfmt
@@ -692,27 +681,26 @@ augroup autoformat_settings
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType markdown AutoFormatBuffer mdformat
-  autocmd FileType python AutoFormatBuffer pyformat
-  autocmd FileType textpb AutoFormatBuffer text-proto-format
+  " autocmd FileType python AutoFormatBuffer pyformat
+  " autocmd FileType textpb AutoFormatBuffer text-proto-format
 augroup END
-" }}}
-
-" ycm {{{
-" let g:ycm_clangd_binary_path = "/google/bin/releases/editor-devtools/ciderlsp"
 " }}}
 
 " lang {{{
 " go {{{
 Glug codefmt gofmt_executable="goimports"
-Glug codefmt-google
 Glug blazedeps auto_filetypes=`['go']`
 " }}}
 " }}}
 " }}}
 
+augroup undo_google_style
+  autocmd!
+  autocmd BufRead * set cc= | set textwidth=0
+augroup END
+
 " codesearch + fzf.vim {{{
-function! s:CodeSearchSink(path)
+function! s:CSearchSink(path)
   execute "edit " . <SID>add_depot_root(a:path)
 endfunction
 function! s:citcroot()
@@ -728,25 +716,19 @@ endfunction
 function! s:in_citc()
   return match(getcwd(), '^/google/src/cloud/') != -1
 endfunction
-function! s:csearch(search)
+function! s:csearch(args)
   let b:root='/google/src/files/head/depot'
   if <SID>in_citc()
     let b:root=<SID>citcroot()
   endif
   call fzf#run({
-        \ 'source': "csearch -l " . a:search . "| sed 's|^/google/src/files/head/depot||'",
-        \ 'sink': function("s:CodeSearchSink"),
-        \ 'options': '-m --preview-window=right:65% --preview="cat ' . b:root . '{}"'
+        \ 'source': "csearch -l " . a:args. "| sed 's|^/google/src/files/head/depot||'",
+        \ 'sink': function("s:CSearchSink"),
+        \ 'options': '-m --preview="cat ' . b:root . '{}"',
+        \ 'down': '30%'
         \ })
 endfunction
 command! -nargs=+ CSearch :call <SID>csearch("<args>")
-cnoreabbrev cs CSearch
-" }}}
-
-" languages {{{
-" go {{{
-autocmd FileType go AutoFormatBuffer gofmt
-" }}}
 " }}}
 " }}}
 " }}}

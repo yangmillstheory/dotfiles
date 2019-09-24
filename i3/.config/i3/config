@@ -1,4 +1,4 @@
-font pango:Fantasque Sans Mono,FontAwesome 16
+font pango:Roboto,Hack,FontAwesome 14
 
 # set modifier key to Win key
 set $mod Mod4
@@ -62,16 +62,16 @@ bindsym $mod+Shift+Return exec google-chrome
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: "
-set $ws2 "2: "
+set $ws1 "1: "
+set $ws2 "2: "
 set $ws3 "3: "
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws0 "0: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8: "
+set $ws9 "9: "
+set $ws10 "10: "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -83,7 +83,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws0
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -95,10 +95,9 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws0
+bindsym $mod+Shift+0 move container to workspace $ws10
 
-assign [class="Alacritty"] $ws1
-for_window [class="Spotify"] move to workspace $ws0
+for_window [class="Spotify"] move to workspace $ws10
 for_window [class=".*"] border none
 
 # reload the configuration file
@@ -110,8 +109,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Really exit?' -b 'yes' 'i3-m
 
 mode "resize" {
   bindsym h resize shrink width 10 px or 10 ppt
-  bindsym j resize grow height 10 px or 10 ppt
-  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
+  bindsym j resize shrink height 10 px or 10 ppt
   bindsym l resize grow width 10 px or 10 ppt
   bindsym Left resize shrink width 10 px or 10 ppt
   bindsym Down resize grow height 10 px or 10 ppt
@@ -136,22 +135,14 @@ client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-col
 client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-bg-color   $inactive-text-color
 client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          $indicator-color
 
-bar {
-  status_command i3blocks
-  colors {
-    background         $bg-color
-    separator          #757575
-    focused_workspace  $bg-color          $bg-color          $text-color
-    inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-  }
-}
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # support transparent windows
-exec --no-startup-id compton -f
+exec --no-startup-id compton -b
 
 # wallpaper & monitors
-exec_always --no-startup-id feh --bg-fill ~/Pictures/backgrounds/Leaves.jpg
+exec_always --no-startup-id ~/.screenlayout/ginaz.sh
+exec_always --no-startup-id feh --bg-fill ~/Downloads/conifer-macro-wallpaper-40831a7461af42f69b1feba4d3f5f243.jpg
 
 exec --no-startup-id alacritty
 exec --no-startup-id google-chrome
@@ -162,7 +153,7 @@ bindsym $mod+shift+x exec ~/.bin/blur_i3_lock
 # make sure screen locks when idle
 exec --no-startup-id xautolock \
   -locker "/home/victoralvarez/.bin/blur_i3_lock" \
-  -time 8 \
+  -time 30 \
   -detectsleep \
   -notify 30 \
   -notifier "notify-send -u critical -t 15000 -- 'Warning!' 'Inactivity detected; locking soon.'" \
@@ -194,4 +185,134 @@ bindsym $mod+slash workspace back_and_forth
 bindsym $mod+Shift+period move workspace to output right
 bindsym $mod+Shift+comma move workspace to output left
 
-exec dex -ae i3
+# i3-gaps
+gaps inner 30
+gaps outer 0
+gaps horizontal 0
+gaps vertical 0
+gaps top 15
+gaps right 15
+gaps bottom 15
+gaps left 15
+
+set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_horiz Horizontal Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_verti Vertical Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_right Right Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_bottom Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+  bindsym o      mode "$mode_gaps_outer"
+  bindsym i      mode "$mode_gaps_inner"
+  bindsym h      mode "$mode_gaps_horiz"
+  bindsym v      mode "$mode_gaps_verti"
+  bindsym t      mode "$mode_gaps_top"
+  bindsym r      mode "$mode_gaps_right"
+  bindsym b      mode "$mode_gaps_bottom"
+  bindsym l      mode "$mode_gaps_left"
+  bindsym Return mode "$mode_gaps"
+  bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+  bindsym plus  gaps outer current plus 5
+  bindsym minus gaps outer current minus 5
+  bindsym 0     gaps outer current set 0
+
+  bindsym Shift+plus  gaps outer all plus 5
+  bindsym Shift+minus gaps outer all minus 5
+  bindsym Shift+0     gaps outer all set 0
+
+  bindsym Return mode "$mode_gaps"
+  bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+  bindsym plus  gaps inner current plus 5
+  bindsym minus gaps inner current minus 5
+  bindsym 0     gaps inner current set 0
+
+  bindsym Shift+plus  gaps inner all plus 5
+  bindsym Shift+minus gaps inner all minus 5
+  bindsym Shift+0     gaps inner all set 0
+
+  bindsym Return mode "$mode_gaps"
+  bindsym Escape mode "default"
+}
+mode "$mode_gaps_horiz" {
+  bindsym plus  gaps horizontal current plus 5
+  bindsym minus gaps horizontal current minus 5
+  bindsym 0     gaps horizontal current set 0
+
+  bindsym Shift+plus  gaps horizontal all plus 5
+  bindsym Shift+minus gaps horizontal all minus 5
+  bindsym Shift+0     gaps horizontal all set 0
+
+  bindsym Return mode "$mode_gaps"
+  bindsym Escape mode "default"
+}
+mode "$mode_gaps_verti" {
+  bindsym plus  gaps vertical current plus 5
+  bindsym minus gaps vertical current minus 5
+  bindsym 0     gaps vertical current set 0
+
+  bindsym Shift+plus  gaps vertical all plus 5
+  bindsym Shift+minus gaps vertical all minus 5
+  bindsym Shift+0     gaps vertical all set 0
+
+  bindsym Return mode "$mode_gaps"
+  bindsym Escape mode "default"
+}
+mode "$mode_gaps_top" {
+  bindsym plus  gaps top current plus 5
+  bindsym minus gaps top current minus 5
+  bindsym 0     gaps top current set 0
+
+  bindsym Shift+plus  gaps top all plus 5
+  bindsym Shift+minus gaps top all minus 5
+  bindsym Shift+0     gaps top all set 0
+
+  bindsym Return mode "$mode_gaps"
+  bindsym Escape mode "default"
+}
+mode "$mode_gaps_right" {
+  bindsym plus  gaps right current plus 5
+  bindsym minus gaps right current minus 5
+  bindsym 0     gaps right current set 0
+
+  bindsym Shift+plus  gaps right all plus 5
+  bindsym Shift+minus gaps right all minus 5
+  bindsym Shift+0     gaps right all set 0
+
+  bindsym Return mode "$mode_gaps"
+  bindsym Escape mode "default"
+}
+mode "$mode_gaps_bottom" {
+  bindsym plus  gaps bottom current plus 5
+  bindsym minus gaps bottom current minus 5
+  bindsym 0     gaps bottom current set 0
+
+  bindsym Shift+plus  gaps bottom all plus 5
+  bindsym Shift+minus gaps bottom all minus 5
+  bindsym Shift+0     gaps bottom all set 0
+
+  bindsym Return mode "$mode_gaps"
+  bindsym Escape mode "default"
+}
+mode "$mode_gaps_left" {
+  bindsym plus  gaps left current plus 5
+  bindsym minus gaps left current minus 5
+  bindsym 0     gaps left current set 0
+
+  bindsym Shift+plus  gaps left all plus 5
+  bindsym Shift+minus gaps left all minus 5
+  bindsym Shift+0     gaps left all set 0
+
+  bindsym Return mode "$mode_gaps"
+  bindsym Escape mode "default"
+}
+
+exec dex -ae i3-gaps

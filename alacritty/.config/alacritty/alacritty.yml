@@ -26,8 +26,8 @@ window:
   # Blank space added around the window in pixels. This padding is not scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 30
-    y: 30
+    x: 20
+    y: 20
 
   # Window decorations
   #
@@ -83,18 +83,72 @@ tabspaces: 8
 # Please see these resources for more information on how to use fontconfig:
 #   - https://wiki.archlinux.org/index.php/font_configuration#Fontconfig_configuration
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
+antialias: true
+
 font:
+  # normal:
+  #   family: monofur for Powerline
+  #   style: Regular
+  # bold:
+  #   family: Monofurbold Nerd Font Mono
+  #   style: Bold
+  # italic:
+  #   family: Monofurbold Nerd Font Mono
+  #   style: Bold
+  # normal:
+  #   family: Monaco for Powerline
+  #   style: Regular
+  # bold:
+  #   family: MonacoB2
+  #   style: Bold
+  # italic:
+  #   family: MonacoB2
+  #   style: Bold
+  # normal:
+  #   family: Fira Code
+  #   style: Regular
+  # bold:
+  #   family: Fira Code
+  #   style: Bold
+  # italic:
+  #   family: Fira Code
+  #   style: Bold
+  # normal:
+  #   family: monospace
+  #   style: Regular
+  # bold:
+  #   family: monospace
+  #   style: Bold
+  # italic:
+  #   family: monospace
+  #   style: Bold
+  # normal:
+  #   family: Inconsolata for Powerline
+  #   style: Regular
+  # bold:
+  #   family: Inconsolata for Powerline
+  #   style: BoldForPowerline
+  # italic:
+  #   family: Inconsolata for Powerline
+  #   style: Regular
   normal:
-    family: Fantasque Sans Mono
+    family: Hack
     style: Regular
-
   bold:
-    family: Fantasque Sans Mono
+    family: Hack
     style: Bold
-
   italic:
-    family: Fantasque Sans Mono
+    family: Hack
     style: Italic
+  # normal:
+  #   family: Oxygen Mono
+  #   style: Regular
+  # bold:
+  #   family: Oxygen Mono
+  #   style: Bold
+  # italic:
+  #   family: Oxygen Mono
+  #   style: Italic
 
   # Point size
   size: 10.0
@@ -109,21 +163,49 @@ font:
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   glyph_offset:
-    x: 0
+    x: 1
     y: 0
 
   # Scale the font size based on the monitor's DPI. This will lead to bigger text on HiDPI
   # screens and make reading text a little easier.
   # On X11 it is possible to change the DPI for each instance of alacritty by using
   # `WINIT_HIDPI_FACTOR=1.0 alacritty` to scale the font.
-  scale_with_dpi: true
 
-# Display the time it takes to redraw each frame.
-render_timer: false
+debug:
+  # Display the time it takes to redraw each frame.
+  render_timer: false
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
+# # Colors (Seoul256)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x3a3a3a'
+#     foreground: '0xd0d0d0'
+
+#   # Normal colors
+#   normal:
+#     black:   '0x4e4e4e'
+#     red:     '0xd68787'
+#     green:   '0x5f865f'
+#     yellow:  '0xd8af5f'
+#     blue:    '0x85add4'
+#     magenta: '0xd7afaf'
+#     cyan:    '0x87afaf'
+#     white:   '0xd0d0d0'
+
+#   # Bright colors
+#   bright:
+#     black:   '0x626262'
+#     red:     '0xd75f87'
+#     green:   '0x87af87'
+#     yellow:  '0xffd787'
+#     blue:    '0xadd4fb'
+#     magenta: '0xffafaf'
+#     cyan:    '0x87d7d7'
+#     white:   '0xe4e4e4'
 # Colors (Gruvbox dark)
 colors:
   # Default colors
@@ -132,7 +214,6 @@ colors:
     background: '0x282828'
     # soft contrast: background = '0x32302f'
     foreground: '0xebdbb2'
-
   # Normal colors
   normal:
     black:   '0x282828'
@@ -143,7 +224,6 @@ colors:
     magenta: '0xb16286'
     cyan:    '0x689d6a'
     white:   '0xa89984'
-
   # Bright colors
   bright:
     black:   '0x928374'
@@ -183,7 +263,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: .90
+background_opacity: .85
 
 # Mouse bindings
 #
@@ -226,7 +306,7 @@ mouse:
     #
     # These are the modifiers that need to be held down for opening URLs when clicking
     # on them. The available modifiers are documented in the key binding section.
-    #modifiers: Control|Shift
+    modifiers: Control|Shift
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"

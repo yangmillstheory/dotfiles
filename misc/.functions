@@ -32,6 +32,14 @@ function jt() {
     fi
 }
 
+function ex() {
+  echo "experimental/users/$USER"
+}
+
+function jx() {
+  cd "$(ex)"
+}
+
 prodaccess() {
   /usr/bin/prodaccess "$@" && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh --extra_space
 }
