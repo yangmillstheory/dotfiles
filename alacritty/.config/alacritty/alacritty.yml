@@ -83,6 +83,8 @@ tabspaces: 8
 # Please see these resources for more information on how to use fontconfig:
 #   - https://wiki.archlinux.org/index.php/font_configuration#Fontconfig_configuration
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
+antialias: true
+
 font:
   # normal:
   #   family: monofur for Powerline
@@ -102,15 +104,15 @@ font:
   # italic:
   #   family: MonacoB2
   #   style: Bold
-  normal:
-    family: Fira Code
-    style: Regular
-  bold:
-    family: Fira Code
-    style: Bold
-  italic:
-    family: Fira Code
-    style: Bold
+  # normal:
+  #   family: Fira Code
+  #   style: Regular
+  # bold:
+  #   family: Fira Code
+  #   style: Bold
+  # italic:
+  #   family: Fira Code
+  #   style: Bold
   # normal:
   #   family: monospace
   #   style: Regular
@@ -129,15 +131,15 @@ font:
   # italic:
   #   family: Inconsolata for Powerline
   #   style: Regular
-  # normal:
-  #   family: Hack
-  #   style: Regular
-  # bold:
-  #   family: Hack
-  #   style: Bold
-  # italic:
-  #   family: Hack
-  #   style: Regular
+  normal:
+    family: Hack
+    style: Regular
+  bold:
+    family: Hack
+    style: Bold
+  italic:
+    family: Hack
+    style: Italic
   # normal:
   #   family: Oxygen Mono
   #   style: Regular
@@ -161,7 +163,7 @@ font:
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   glyph_offset:
-    x: 0
+    x: 1
     y: 0
 
   # Scale the font size based on the monitor's DPI. This will lead to bigger text on HiDPI
@@ -169,8 +171,9 @@ font:
   # On X11 it is possible to change the DPI for each instance of alacritty by using
   # `WINIT_HIDPI_FACTOR=1.0 alacritty` to scale the font.
 
-# Display the time it takes to redraw each frame.
-render_timer: false
+debug:
+  # Display the time it takes to redraw each frame.
+  render_timer: false
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
@@ -260,7 +263,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: .9
+background_opacity: .85
 
 # Mouse bindings
 #

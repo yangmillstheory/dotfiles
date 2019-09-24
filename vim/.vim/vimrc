@@ -150,6 +150,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 \ 'do': 'bash install.sh',
 \ }
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'deoplete-plugins/deoplete-dictionary'
 Plug 'edkolev/tmuxline.vim', { 'on': 'Tmuxline' }
 Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
@@ -249,6 +250,7 @@ let g:fzf_command_prefix = 'Fzf'
 " use the same keybindings for fzf as in shell
 nnoremap <silent> <c-t> :FzfFiles<CR>
 nnoremap <silent> <c-f> :FzfRg<space>
+nnoremap <silent> <c-_> :FzfBLines<CR>
 nnoremap <silent> <c-b> :FzfBuffers<CR>
 nnoremap <silent> <c-r> :FzfHistory:<CR>
 nnoremap <silent> <c-s> :FzfHistory/<CR>

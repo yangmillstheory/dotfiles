@@ -3,7 +3,7 @@ configuration {
 	width: 100;
 	lines: 10;
 	columns: 1;
-	font: "Monaco for Powerline 15";
+	font: "Inconsolata for Powerline 20";
 	bw: 0;
 	location: 0;
 	padding: 800;

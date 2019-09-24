@@ -2,20 +2,20 @@ alias v='nvim'
 alias o='xdg-open'
 alias t='tmx2'
 alias ta='tmx2 attach-session -t'
-alias tn='tmx2 new-session -s'
+alias tn='/usr/bin/tmx2 new-session -s'
 alias q='exit'
-alias m='make'
-alias c='clear'
-alias x='systemctl suspend'
-alias irc='irssi -c google'
+alias c='/usr/bin/clear'
+alias x='/bin/systemctl suspend'
+alias irc='/usr/bin/irssi -c google'
 
-alias py='python'
-alias py3='python3'
+alias py='/usr/bin/python'
+alias py3='/usr/bin/python3'
 
 # other apps
-alias ag='ag --path-to-ignore ~/.agignore'
+alias ag='/usr/bin/ag --path-to-ignore ~/.agignore'
 
 # git
+alias git=/usr/bin/git
 alias ga='git add'
 alias gap='git add --patch'
 alias gaf='git add $(fgf)'
@@ -44,12 +44,13 @@ alias gpush='git push'
 alias gpull='git pull'
 
 # google vcs
-alias h='nocorrect hg'
+alias h='nocorrect /usr/bin/hg'
 
 # fasd
 #
 # these all come with fasd --init auto in .zshrc, but
 # pasting them here for documentation
+alias fasd=/usr/bin/fasd
 alias a='fasd -a'        # any
 alias s='fasd -si'       # show / search / select
 alias d='fasd -d'        # directory
@@ -60,14 +61,14 @@ alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
 
 # google build & deploy
-alias blaze='nocorrect blaze'
+alias blaze='nocorrect /usr/bin/blaze'
 alias bl='blaze'
 alias blb='blaze build'
 alias blt='blaze test'
 alias blr='blaze run'
-alias sp='startpcl'
-alias fu='fileutil'
-alias bc='borgcfg'        # NB: this also overrides a system binary
+alias sp='/usr/bin/startpcl'
+alias fu='/usr/bin/fileutil'
+alias bc='/usr/bin/borgcfg'        # NB: this also overrides a system binary
 
 # google tools
 alias paste='/google/src/head/depot/eng/tools/pastebin'
@@ -76,3 +77,6 @@ alias analog=/google/data/ro/teams/borg-logs-ui/analog-cli
 alias p=prodaccess
 alias vs=/google/data/ro/teams/annealing/versionstore/live/cli
 alias prodspec=/google/data/ro/teams/prodspec/prodspec
+alias adm=/google/data/ro/projects/tonic/admin_session
+
+alias sudo='nocorrect /usr/bin/sudo'
