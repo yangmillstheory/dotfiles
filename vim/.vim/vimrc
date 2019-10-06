@@ -161,7 +161,6 @@ Plug 'mattn/calendar-vim'
 Plug 'matze/vim-move'
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'ptzz/lf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -316,16 +315,6 @@ set signcolumn=auto
 let g:LanguageClient_diagnosticsList = "Disabled"
 let g:LanguageClient_diagnosticsEnable = 1
 let g:LanguageClient_hasSnippetSupport = 0
-" }}}
-
-" lf.vim {{{
-let g:lf_map_keys = 0
-let g:lf_replace_netrw = 1
-function! s:LF() abort
-  vsp
-  execute 'LfCurrentDirectory'
-endfunction
-map <leader>f :call <SID>LF()<CR>
 " }}}
 
 "  lightline {{{
