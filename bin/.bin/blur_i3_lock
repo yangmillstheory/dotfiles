@@ -46,7 +46,6 @@ convert "$LOCK_BG" -scale 10% -scale 1000%  "$LOCK_ICON" \
   -geometry +3745+625 -composite "$LOCK_ICON" \
   -geometry +1185+625 -composite "$LOCK_BG"
 
-
 xset +dpms dpms 120 300 300
 killall compton
 i3lock --image "$LOCK_BG" --nofork
