@@ -34,7 +34,6 @@ set hidden!
 set info size:time
 set number
 set relativenumber
-set ratios 1
 
 # dedicated keys for file opener actions
 map o &mimeopen $f
