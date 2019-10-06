@@ -295,13 +295,11 @@ command! -bang -nargs=* FzfRg
 
 " LanguageClient {{{
 "https://github.com/autozimu/LanguageClient-neovim/wiki/Recommended-Settings
+let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
 let g:LanguageClient_serverCommands = {
-\ 'go': ['go-langserver'],
-\ 'cpp': [
-\   '~/code/cquery/build/release/bin/cquery',
-\   '--log-file=/tmp/cq.log',
-\   '--init={"cacheDirectory":"/home/victoralvarez/.cache/cquery"}'
-\ ],
+\ 'go': ['gopls'],
+\ 'c': ['ccls', '--log-file=/tmp/cc.log'],
+\ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
 \}
 nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
@@ -401,6 +399,7 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
+let g:go_def_mapping_enabled = 0
 
 " Open :GoDeclsDir with ctrl-g
 nmap <C-g> :GoDeclsDir<cr>

@@ -42,7 +42,8 @@ get_convert_params() {
 
 killall -SIGUSR1 dunst
 if [[ $(xrandr | grep -sw connected | wc -l) -eq 2 ]]; then
-  convert $LOCK_BG -scale 10% -scale 1000% $LOCK_ICON -geometry +865+805 -composite $LOCK_ICON -geometry +3105+625 -composite $LOCK_BG
+  # ASUS PB278Q
+  convert $LOCK_BG -scale 10% -scale 1000% $LOCK_ICON -geometry +3425+805 -composite $LOCK_ICON -geometry +1185+625 -composite $LOCK_BG
 else
   convert "$LOCK_BG" -scale 10% -scale 1000% "$LOCK_BG"
   convert "$LOCK_BG" $LOCK_ICON -gravity center -composite "$LOCK_BG"
