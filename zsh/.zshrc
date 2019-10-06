@@ -119,6 +119,17 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/ripgreprc
 
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+bindkey -s '^o' 'lfcd\n'
+
 # fzf
 #
 # should we just use the fzf plugin?
