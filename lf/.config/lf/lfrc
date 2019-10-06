@@ -27,8 +27,14 @@ map <enter> shell
 map x $$f
 map X !$f
 
-# custom mappings
+# custom mappings & options
 map <esc> quit
+set promptfmt "%w/%f"
+set hidden!
+set info size:time
+set number
+set relativenumber
+set ratios 1
 
 # dedicated keys for file opener actions
 map o &mimeopen $f
@@ -57,13 +63,13 @@ cmd open ${{
 cmd trash %set -f; mv $fx ~/.trash
 
 # define a custom 'delete' command
-# cmd delete ${{
-#     set -f
-#     printf "$fx\n"
-#     printf "delete?[y/n]"
-#     read ans
-#     [ $ans = "y" ] && rm -rf $fx
-# }}
+cmd delete ${{
+    set -f
+    printf "$fx\n"
+    printf "delete?[y/n]"
+    read ans
+    [ $ans = "y" ] && rm -rf $fx
+}}
 
 # use '<delete>' key for either 'trash' or 'delete' command
 # map <delete> trash

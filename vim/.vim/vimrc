@@ -161,7 +161,7 @@ Plug 'mattn/calendar-vim'
 Plug 'matze/vim-move'
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'scrooloose/nerdtree'
+Plug 'ptzz/lf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -318,6 +318,16 @@ let g:LanguageClient_diagnosticsEnable = 1
 let g:LanguageClient_hasSnippetSupport = 0
 " }}}
 
+" lf.vim {{{
+let g:lf_map_keys = 0
+let g:lf_replace_netrw = 1
+function! s:LF() abort
+  vsp
+  execute 'LfCurrentDirectory'
+endfunction
+map <leader>f :call <SID>LF()<CR>
+" }}}
+
 "  lightline {{{
 let g:lightline = {
 \  'colorscheme': 'gruvbox',
@@ -350,12 +360,6 @@ function! LightlineFilename()
 endfunction
 " }}}
 "  }}}
-
-" NERDTree {{{
-nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <Leader>n :NERDTreeFind<CR>
-let NERDTreeShowHidden = 1
-" }}}
 
 " neosnippets {{{
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
