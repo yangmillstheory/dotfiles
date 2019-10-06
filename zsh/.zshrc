@@ -57,6 +57,7 @@ plugins=(
   # remember that these have to be manually installed
   zsh-autosuggestions
   zsh-completions
+  zsh-syntax-highlighting
   vim
 )
 
