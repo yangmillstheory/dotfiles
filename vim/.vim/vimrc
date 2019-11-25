@@ -149,6 +149,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 \ 'branch': 'next',
 \ 'do': 'bash install.sh',
 \ }
+Plug 'deoplete-plugins/deoplete-dictionary'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'deoplete-plugins/deoplete-dictionary'
 Plug 'edkolev/tmuxline.vim', { 'on': 'Tmuxline' }
@@ -311,6 +312,7 @@ command! -bang -nargs=* FzfRg
 
 " LanguageClient {{{
 "https://github.com/autozimu/LanguageClient-neovim/wiki/Recommended-Settings
+let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
 let g:LanguageClient_serverCommands = {
 \  'python': ['/google/bin/releases/grok/tools/kythe_languageserver'],
 \  'go': ['/google/bin/releases/editor-devtools/ciderlsp'],
@@ -371,12 +373,6 @@ endfunction
 " }}}
 "  }}}
 
-" NERDTree {{{
-nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <Leader>n :NERDTreeFind<CR>
-let NERDTreeShowHidden = 1
-" }}}
-
 " neosnippets {{{
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -423,6 +419,7 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
+let g:go_def_mapping_enabled = 0
 
 " Open :GoDeclsDir with ctrl-g
 nmap <C-g> :GoDeclsDir<cr>
