@@ -159,7 +159,6 @@ Plug 'matze/vim-move'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': './install --all --xdg' }
 Plug 'junegunn/fzf.vim'
-Plug 'mattn/calendar-vim'
 Plug 'morhetz/gruvbox'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'ntpeters/vim-better-whitespace'
@@ -263,7 +262,13 @@ let s:hg_command = 'hg files 2>/dev/null'
 "
 " explicitly include/exclude directories from fzf + rg
 " these aren't plugin options, but our own :)
-let g:rg_in = []
+let g:rg_in = [
+  \'production/borg/gaia',
+  \'production/sisyphus/gaia',
+  \'gaia/grape',
+  \'experimental/users/victoralvarez',
+  \'configs/production/prodspec/identity_gss',
+\]
 let g:rg_ex = []
 nnoremap <Leader>d q:ilet g:rg_in=['']<esc>hi
 function! s:RgArgs(args) abort
