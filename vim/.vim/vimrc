@@ -136,6 +136,8 @@ set suffixesadd+=.js
 set suffixesadd+=.go
 set suffixesadd+=.py
 set colorcolumn=
+
+let g:ruby_host_prog = '/usr/local/google/home/victoralvarez/.gem/ruby/2.5.0/bin/neovim-ruby-host'
 " }}}
 
 " plugins {{{
@@ -149,7 +151,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 \ 'branch': 'next',
 \ 'do': 'bash install.sh',
 \ }
-Plug 'deoplete-plugins/deoplete-dictionary'
+Plug 'blueshirts/darcula'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'deoplete-plugins/deoplete-dictionary'
 Plug 'edkolev/tmuxline.vim', { 'on': 'Tmuxline' }
@@ -177,6 +179,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'yangmillstheory/vim-python', { 'for': 'python' }
 Plug 'yangmillstheory/vim-snippets'
 Plug 'yangmillstheory/vim-snipe'
+Plug 'Yggdroot/indentLine'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 call plug#end()
 " }}}
@@ -248,6 +251,22 @@ let g:fzf_colors = {
 \ 'spinner': ['fg', 'Label'],
 \ 'header':  ['fg', 'Comment'] }
 let g:fzf_command_prefix = 'Fzf'
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  let h = float2nr(&lines * 0.9)
+  let w = float2nr(&columns * 0.8)
+  let horz = float2nr((&columns - w) / 2)
+  let vert = 1
+  let opts = {
+  \ 'relative': 'editor',
+  \ 'row': vert,
+  \ 'col': horz,
+  \ 'width': w,
+  \ 'height': h
+  \ }
+  call nvim_open_win(buf, v:true, opts)
+endfunction
 " use the same keybindings for fzf as in shell
 nnoremap <silent> <c-t> :FzfFiles<CR>
 nnoremap <silent> <c-f> :FzfRg<space>
@@ -263,7 +282,18 @@ let s:hg_command = 'hg files 2>/dev/null'
 "
 " explicitly include/exclude directories from fzf + rg
 " these aren't plugin options, but our own :)
-let g:rg_in = []
+let g:rg_in = [
+\  'experimental/users/victoralvarez',
+\  'gaia/storage/util',
+\  'gaia/config/presubmit',
+\  'production/borg/gaia',
+\  'production/borg/identity_automation',
+\  'production/sisyphus/gaia',
+\  'configs/production/prodspec/identity_gss',
+\  'configs/production/rollout/legislator/identity',
+\  'identity/production/annealing/plugins',
+\  'gaia/grape',
+\]
 let g:rg_ex = []
 nnoremap <Leader>d q:ilet g:rg_in=['']<esc>hi
 function! s:RgArgs(args) abort
@@ -308,6 +338,12 @@ command! -bang -nargs=* FzfRg
 "
 " command! -bang -nargs=? -complete=dir FzfBuffers
 "   \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview(), <bang>0)
+" }}}
+
+" indentLine {{{
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
+let g:indentline_enabled = 1
+let g:indentline_setConceal = 2
 " }}}
 
 " LanguageClient {{{
