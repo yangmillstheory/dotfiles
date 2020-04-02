@@ -78,5 +78,6 @@ alias p=prodaccess
 alias vs=/google/data/ro/teams/annealing/versionstore/live/cli
 alias prodspec=/google/data/ro/teams/prodspec/prodspec
 alias adm=/google/data/ro/projects/tonic/admin_session
+alias sp=/usr/bin/startpcl
 
 alias sudo='nocorrect /usr/bin/sudo'
