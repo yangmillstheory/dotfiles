@@ -151,7 +151,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 \ 'branch': 'next',
 \ 'do': 'bash install.sh',
 \ }
-Plug 'blueshirts/darcula'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'deoplete-plugins/deoplete-dictionary'
 Plug 'edkolev/tmuxline.vim', { 'on': 'Tmuxline' }
@@ -163,6 +162,7 @@ Plug 'junegunn/fzf', { 'do': './install --all --xdg' }
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/calendar-vim'
 Plug 'morhetz/gruvbox'
+Plug 'mhinz/vim-startify'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -263,7 +263,8 @@ function! FloatingFZF()
   \ 'row': vert,
   \ 'col': horz,
   \ 'width': w,
-  \ 'height': h
+  \ 'height': h,
+  \ 'style': 'minimal',
   \ }
   call nvim_open_win(buf, v:true, opts)
 endfunction
@@ -285,17 +286,24 @@ let s:hg_command = 'hg files 2>/dev/null'
 let g:rg_in = [
 \  'experimental/users/victoralvarez',
 \  'gaia/storage/util',
+\  'gaia/storage/server',
 \  'gaia/config/presubmit',
 \  'production/borg/gaia',
+\  'production/monitoring/gaia',
 \  'production/borg/identity_automation',
+\  'production/borg/identity_common',
 \  'production/sisyphus/gaia',
 \  'configs/production/prodspec/identity_gss',
+\  'configs/production/prodspec/identity_gss_1',
+\  'configs/production/prodspec/identity_gss_2',
+\  'configs/production/prodspec/identity_gss_3',
 \  'configs/production/rollout/legislator/identity',
 \  'identity/production/annealing/plugins',
 \  'gaia/grape',
 \]
 let g:rg_ex = []
 nnoremap <Leader>d q:ilet g:rg_in=['']<esc>hi
+
 function! s:RgArgs(args) abort
   let rg_args = []
   if len(g:rg_ex)
