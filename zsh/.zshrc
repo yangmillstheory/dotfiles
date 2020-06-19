@@ -31,7 +31,8 @@ ZSH_THEME="yangmillstheory"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
+setopt nocorrectall
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -137,13 +138,17 @@ bindkey -s '^o' 'lfcd\n'
 #   https://github.com/robbyrussell/oh-my-zsh/issues/3003
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_DEFAULT_OPTS='--inline-info --reverse --border --height 40%'
+export FZF_DEFAULT_OPTS='--ansi --inline-info --reverse --border --height 40%'
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden --bind '?:toggle-preview'"
-export FZF_CTRL_T_OPTS="--exit-0 --select-1 --preview '(highlight -O ansi {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_PREVIEW_COMMAND="bat --style=numbers,changes --wrap never --color always {} || cat {} || tree -C {}"
+export FZF_CTRL_T_OPTS="--exit-0 --select-1 --preview-window down:60% --preview-window noborder --preview '($FZF_PREVIEW_COMMAND) 2> /dev/null'"
 export FZF_ALT_C_OPTS="--exit-0 --select-1 --preview 'tree -C -a {} | head -200'"
 #
 # https://github.com/junegunn/fzf/issues/492
 setopt HIST_IGNORE_ALL_DUPS
+
+# bat
+export BAT_THEME="1337"
 
 eval "$(fasd --init auto)"
 
