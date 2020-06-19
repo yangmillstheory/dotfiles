@@ -266,7 +266,9 @@ function! FloatingFZF()
   \ 'height': h,
   \ 'style': 'minimal',
   \ }
-  call nvim_open_win(buf, v:true, opts)
+  hi Floating     guibg=NONE ctermbg=NONE
+  let w = nvim_open_win(buf, v:true, opts)
+  call setwinvar(w, '&winhl', 'Normal:Floating')
 endfunction
 " use the same keybindings for fzf as in shell
 nnoremap <silent> <c-t> :FzfFiles<CR>
@@ -279,28 +281,47 @@ nnoremap <silent> <c-c> :FzfCommands<CR>
 let s:rg_command = 'rg --hidden --ignore-case --column --line-number --no-heading --color=always'
 let s:hg_command = 'hg files 2>/dev/null'
 
+let g:rg_in_exp = [
+\ 'experimental/users/victoralvarez',
+\]
 " https://github.com/junegunn/fzf.vim#advanced-customization
 "
 " explicitly include/exclude directories from fzf + rg
 " these aren't plugin options, but our own :)
-let g:rg_in = [
-\  'experimental/users/victoralvarez',
+"
+" GSS and Gaia.
+let g:rg_in_gss = g:rg_in_exp + [
 \  'gaia/storage/util',
 \  'gaia/storage/server',
-\  'gaia/config/presubmit',
 \  'production/borg/gaia',
 \  'production/monitoring/gaia',
 \  'production/borg/identity_automation',
 \  'production/borg/identity_common',
 \  'production/sisyphus/gaia',
 \  'configs/production/prodspec/identity_gss',
-\  'configs/production/prodspec/identity_gss_1',
-\  'configs/production/prodspec/identity_gss_2',
-\  'configs/production/prodspec/identity_gss_3',
 \  'configs/production/rollout/legislator/identity',
 \  'identity/production/annealing/plugins',
 \  'gaia/grape',
 \]
+" Klotho.
+"
+" See go/klotho-prototype:production#locations.
+let g:rg_in_klotho = g:rg_in_exp + [
+\ 'logs/proto/identity/flows',
+\ 'identity/production/flows/',
+\ 'configs/production/cdpush/klotho-prototype-windmill-dev-jobs',
+\ 'configs/production/cdpush/klotho-prototype-windmill-jobs',
+\ 'configs/security/ganpati/contrib/ganpaticfg/klotho-prototype',
+\ 'googledata/pubsub/klotho-prototype',
+\ 'identity/production/klotho_prototype',
+\ 'production/borg/klotho-prototype',
+\ 'production/security/bcid/identity/klotho-prototype',
+\ 'configs/production/cdpush/pgt_retention/mapping/klotho_prototype_prod',
+\ 'configs/production/cdpush/pgt_retention/mapping/klotho_prototype_dev',
+\ 'production/notification/config/services/klotho-prototype-windmill-dev-jobs',
+\ 'production/notification/config/services/klotho-prototype-windmill-jobs',
+\]
+let g:rg_in = g:rg_in_klotho
 let g:rg_ex = []
 nnoremap <Leader>d q:ilet g:rg_in=['']<esc>hi
 
