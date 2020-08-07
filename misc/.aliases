@@ -80,4 +80,3 @@ alias blt='blaze test'
 alias blr='blaze run'
 
 alias p=prodaccess
-alias .='cd .'
