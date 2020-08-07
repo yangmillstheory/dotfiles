@@ -173,7 +173,7 @@ _blaze_query_tmux() {
 }
 zstyle ':completion:*:blaze-*:query' command -_blaze_query_tmux
 
-if! prodcertstatus -q; then
+if ! prodcertstatus -q; then
   echo 'Getting prodaccess...'
   prodaccess -g
 fi
