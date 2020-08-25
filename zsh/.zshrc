@@ -173,11 +173,14 @@ _blaze_query_tmux() {
 }
 zstyle ':completion:*:blaze-*:query' command -_blaze_query_tmux
 
-prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
 if ! prodcertstatus -q; then
   echo 'Getting prodaccess...'
   prodaccess -g
 fi
+prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
+
+export KNOCK_WEBHOOK="https://chat.googleapis.com/v1/spaces/AAAAG2kCj0c/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=u_G1fhxKOyvS00A_QH8Gx_D74TYalRcFA1c_CoICIpE%3D"
+source /google/src/head/depot/google3/experimental/users/nearp/knock/knock.sh
 
 export G4MULTIDIFF=0
 export P4DIFF='diff'

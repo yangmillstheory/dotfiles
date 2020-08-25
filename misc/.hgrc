@@ -1,0 +1,14 @@
+[ui]
+paginate = False
+merge = vimdiff
+[merge-tools]
+vimdiff.executable = nvim
+vimdiff.args = -d $base $local $output $other -c "wincmd J"
+[trainingwheels]
+prevent-push-dirty = false
+[alias]
+tricorder = !tricorder analyze -fast
+ps = !$HG presubmit; knock
+sb = !$HG submit; knock
+am = amend
+up = !$HG amend; $HG uc; $HG presubmit; knock
