@@ -1,83 +1,40 @@
+##################
+# misc shell stuff
 alias v='nvim'
 alias o='xdg-open'
-alias t='tmx2'
-alias ta='tmx2 attach-session -t'
-alias tn='/usr/bin/tmx2 new-session -s'
 alias q='exit'
 alias c='/usr/bin/clear'
 alias x='/bin/systemctl suspend'
 alias irc='/usr/bin/irssi -c google'
+alias sudo='nocorrect /usr/bin/sudo'
 
-alias py='/usr/bin/python'
-alias py3='/usr/bin/python3'
+#################
+# 3rd party stuff
+# tmux
+alias t='tmx2'
+alias ta='tmx2 attach-session -t'
+alias tn='/usr/bin/tmx2 new-session -s'
 
-# other apps
-alias ag='/usr/bin/ag --path-to-ignore ~/.agignore'
+##############
+# google stuff
+alias paste='/google/src/head/depot/eng/tools/pastebin'
+alias dingo='/google/data/ro/projects/production/tools/dingo'
 
-# git
-alias git=/usr/bin/git
-alias ga='git add'
-alias gap='git add --patch'
-alias gaf='git add $(fgf)'
-alias gcf='git checkout $(fgf)'
-alias gcb='git checkout $(fgb)'
+alias sp='/usr/bin/startpcl'
+alias fu='/usr/bin/fileutil'
+alias bc='/usr/bin/borgcfg'
 
-alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+alias analog=/google/data/ro/teams/borg-logs-ui/analog-cli
+alias adm=/google/data/ro/projects/tonic/admin_session
 
-alias gr='git reset'
-alias grp='gr --patch'
-
-alias gco='git checkout'
-alias gcop='gco --patch'
-
-alias gc='git commit'
-alias gca='gc --amend'
-alias gcm='gc --message'
-
-alias gd='git diff'
-alias gds='gd --staged'
-alias gdh='gd HEAD'
-
-alias gs='git status'
-
-alias gpush='git push'
-alias gpull='git pull'
-
-# google vcs
+# fig
 alias h='nocorrect /usr/bin/hg'
 
-# fasd
-#
-# these all come with fasd --init auto in .zshrc, but
-# pasting them here for documentation
-alias fasd=/usr/bin/fasd
-alias a='fasd -a'        # any
-alias s='fasd -si'       # show / search / select
-alias d='fasd -d'        # directory
-alias f='fasd -f'        # file
-alias sd='fasd -sid'     # interactive directory selection
-alias sf='fasd -sif'     # interactive file selection
-alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-alias zz='fasd_cd -d -i' # cd with interactive selection
-
-# google build & deploy
+# blaze
 alias blaze='nocorrect /usr/bin/blaze'
 alias bl='blaze'
 alias blb='blaze build'
 alias blt='blaze test'
 alias blr='blaze run'
-alias sp='/usr/bin/startpcl'
-alias fu='/usr/bin/fileutil'
-alias bc='/usr/bin/borgcfg'        # NB: this also overrides a system binary
 
-# google tools
-alias paste='/google/src/head/depot/eng/tools/pastebin'
-alias dingo='/google/data/ro/projects/production/tools/dingo'
-alias analog=/google/data/ro/teams/borg-logs-ui/analog-cli
-alias p=prodaccess
-alias vs=/google/data/ro/teams/annealing/versionstore/live/cli
-alias prodspec=/google/data/ro/teams/prodspec/prodspec
-alias adm=/google/data/ro/projects/tonic/admin_session
-alias sp=/usr/bin/startpcl
-
-alias sudo='nocorrect /usr/bin/sudo'
+alias p=gcert

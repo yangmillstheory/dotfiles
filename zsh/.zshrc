@@ -150,8 +150,6 @@ setopt HIST_IGNORE_ALL_DUPS
 # bat
 export BAT_THEME="1337"
 
-eval "$(fasd --init auto)"
-
 # google
 #
 # https://g3doc.corp.google.com/devtools/blaze/scripts/zsh_completion/README.md?cl=head
@@ -173,11 +171,11 @@ _blaze_query_tmux() {
 }
 zstyle ':completion:*:blaze-*:query' command -_blaze_query_tmux
 
-prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
 if ! prodcertstatus -q; then
   echo 'Getting prodaccess...'
   prodaccess -g
 fi
+prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
 
 export G4MULTIDIFF=0
 export P4DIFF='diff'
