@@ -162,9 +162,9 @@ zstyle ':completion:*:blaze-*:query' command -_blaze_query_tmux
 
 if ! prodcertstatus -q; then
   echo 'Getting prodaccess...'
-  gcert -g
+  gcert
 fi
-gcert -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
+prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
 
 export G4MULTIDIFF=0
 export P4DIFF='diff'
