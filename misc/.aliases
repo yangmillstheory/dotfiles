@@ -14,6 +14,7 @@ alias sudo='nocorrect /usr/bin/sudo'
 alias t='tmx2'
 alias ta='tmx2 attach-session -t'
 alias tn='/usr/bin/tmx2 new-session -s'
+alias fd=fdfind
 
 ##############
 # google stuff
