@@ -168,3 +168,5 @@ prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
 
 export G4MULTIDIFF=0
 export P4DIFF='diff'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
