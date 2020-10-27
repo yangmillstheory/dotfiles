@@ -120,17 +120,6 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/ripgreprc
 
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
-bindkey -s '^o' 'lfcd\n'
-
 # fzf
 #
 # should we just use the fzf plugin?
@@ -173,9 +162,9 @@ zstyle ':completion:*:blaze-*:query' command -_blaze_query_tmux
 
 if ! prodcertstatus -q; then
   echo 'Getting prodaccess...'
-  prodaccess -g
+  gcert -g
 fi
-prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
+gcert -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
 
 export G4MULTIDIFF=0
 export P4DIFF='diff'
