@@ -310,17 +310,12 @@ let g:rg_in_gss = g:rg_in_exp + [
 let g:rg_in_klotho = g:rg_in_exp + [
 \ 'logs/proto/identity/flows',
 \ 'identity/production/flows/',
-\ 'configs/production/cdpush/klotho-prototype-windmill-dev-jobs',
-\ 'configs/production/cdpush/klotho-prototype-windmill-jobs',
-\ 'configs/security/ganpati/contrib/ganpaticfg/klotho-prototype',
-\ 'googledata/pubsub/klotho-prototype',
-\ 'identity/production/klotho_prototype',
-\ 'production/borg/klotho-prototype',
-\ 'production/security/bcid/identity/klotho-prototype',
-\ 'configs/production/cdpush/pgt_retention/mapping/klotho_prototype_prod',
-\ 'configs/production/cdpush/pgt_retention/mapping/klotho_prototype_dev',
-\ 'production/notification/config/services/klotho-prototype-windmill-dev-jobs',
-\ 'production/notification/config/services/klotho-prototype-windmill-jobs',
+\ 'identity/boq/production/flows',
+\ 'googledata/pubsub/identity-flows',
+\ 'configs/production/prodspec/identity_flows',
+\ 'production/borg/identity_flows',
+\ 'identity/production/actuators/flows',
+\ 'configs/production/rollout/legislator/identity/flows',
 \]
 let g:rg_in = g:rg_in_klotho
 let g:rg_ex = []

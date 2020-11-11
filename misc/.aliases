@@ -20,7 +20,8 @@ alias fd=fdfind
 # google stuff
 alias paste='/google/src/head/depot/eng/tools/pastebin'
 alias dingo='/google/data/ro/projects/production/tools/dingo'
-
+alias pubsub='/google/data/ro/projects/goops/pubsub'
+alias pubsub2cfg='/google/data/ro/projects/goops/pubsub2cfg'
 alias sp='/usr/bin/startpcl'
 alias fu='/usr/bin/fileutil'
 alias bc='/usr/bin/borgcfg'
