@@ -308,6 +308,8 @@ let g:rg_in_gss = g:rg_in_exp + [
 "
 " See go/klotho-prototype:production#locations.
 let g:rg_in_klotho = g:rg_in_exp + [
+\ 'java/com/google/identity/production/flows',
+\ 'javatests/com/google/identity/production/flows',
 \ 'logs/proto/identity/flows',
 \ 'identity/production/flows/',
 \ 'identity/boq/production/flows',

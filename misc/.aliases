@@ -28,6 +28,7 @@ alias bc='/usr/bin/borgcfg'
 
 alias analog=/google/data/ro/teams/borg-logs-ui/analog-cli
 alias adm=/google/data/ro/projects/tonic/admin_session
+alias pspec=/google/data/ro/teams/prodspec/prodspec
 
 # fig
 alias h='nocorrect /usr/bin/hg'
