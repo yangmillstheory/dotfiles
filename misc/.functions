@@ -32,12 +32,36 @@ function jt() {
     fi
 }
 
+#############################################
+# Getting to //experimental from a CitC root.
 function ex() {
   echo "experimental/users/$USER"
 }
 
 function jx() {
   cd "$(ex)"
+}
+
+###################################
+# Write and read from personal x20.
+function xro() {
+  echo "/google/data/ro/users/vi/victoralvarez/www/no_crawl"
+}
+
+function xrw() {
+  echo "/google/data/rw/users/vi/victoralvarez/www/no_crawl"
+}
+
+function xmv() {
+  mv $1 $(xrw)
+}
+
+function xcp() {
+  cp $1 $(xrw)
+}
+
+function xls() {
+  ls -l $(xro)
 }
 
 prodaccess() {
