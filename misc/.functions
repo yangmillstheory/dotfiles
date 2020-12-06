@@ -53,11 +53,11 @@ function xrw() {
 }
 
 function xmv() {
-  mv $1 $(xrw)
+  mv $1 $(xrw) && echo "http://www/~victoralvarez/no_crawl/$1"
 }
 
 function xcp() {
-  cp $1 $(xrw)
+  cp $1 $(xrw) && echo "http://www/~victoralvarez/no_crawl/$1"
 }
 
 function xls() {
