@@ -633,6 +633,11 @@ nnoremap <A-cr> :wq<cr>
 nnoremap <A-e> :e<Space>
 " }}}
 
+" buffer management {{{
+" equalize buffers
+nnoremap <A-=> <C-w>=
+" }}}
+
 " casing {{{
 inoremap <A-t> <c-[>bvgUea
 inoremap <A-k> <c-[>viwUea
