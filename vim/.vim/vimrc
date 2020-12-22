@@ -158,28 +158,28 @@ Plug 'deoplete-plugins/deoplete-dictionary'
 Plug 'edkolev/tmuxline.vim', { 'on': 'Tmuxline' }
 Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
-Plug 'matze/vim-move'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': './install --xdg --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'morhetz/gruvbox'
+Plug 'matze/vim-move'
 Plug 'mhinz/vim-startify'
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet.vim'
 Plug 'simeji/winresizer'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'tmux-plugins/vim-tmux'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'vimwiki/vimwiki'
 Plug 'yangmillstheory/vim-python', { 'for': 'python' }
-Plug 'yangmillstheory/vim-snippets'
 Plug 'yangmillstheory/vim-snipe'
+Plug 'yangmillstheory/vim-snippets'
 Plug 'Yggdroot/indentLine'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 call plug#end()
@@ -444,6 +444,7 @@ if has('conceal')
 set conceallevel=2 concealcursor=niv
 endif
 let g:neosnippet#enable_completed_snippet = 1
+let g:neosnippet#enable_complete_done = 1
 " }}}
 
 " tmuxline {{{
@@ -572,7 +573,6 @@ augroup END
 
 " winresizer {{{
 let g:winresizer_start_key = '<leader>r'
-" }}}
 " }}}
 
 " (au)commands, mappings, languages {{{
@@ -759,6 +759,8 @@ Glug blazedeps auto_filetypes=`['go']`
 " }}}
 " }}}
 " }}}
+
+nnoremap <A-d> :cd $PWD<CR>
 
 augroup undo_google_style
   autocmd!

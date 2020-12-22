@@ -1,9 +1,4 @@
 {
-  "initializationOptions": {
-    "cache": {
-      "directory": "/tmp/ccls"
-    }
-  },
   "clang": {
     "resourceDir": "/usr/lib/llvm-7/lib/clang/7.0.1"
   }
