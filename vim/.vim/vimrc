@@ -627,6 +627,7 @@ nnoremap "" "_
 " misc {{{
 " folding, editing, yanking {{{
 nnoremap <A-y> "+y
+vnoremap <A-y> "+y
 nnoremap <A-z> za
 vnoremap <A-z> za
 nnoremap U :redo<cr>
