@@ -173,6 +173,7 @@ Plug 'simeji/winresizer'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
@@ -192,6 +193,10 @@ let g:AutoPairsShortcutToggle = ''
 let g:AutoPairsShortcutJump = ''
 let g:AutoPairsShortcutBackInsert = ''
 let g:AutoPairsShortcutFastWrap = ''
+" }}}
+
+" vim-repeat {{{
+nnoremap <silent> <Plug>(RepeatRedo): <C-U>call repeat#wrap("\<Lt>C-U>",v:count)<CR>
 " }}}
 
 " colorscheme {{{
