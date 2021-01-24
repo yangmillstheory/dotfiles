@@ -4,3 +4,6 @@ paginate = false
 
 [extensions]
 hgext.beautifygraph=
+
+[trainingwheels]
+prevent-push-dirty=false
