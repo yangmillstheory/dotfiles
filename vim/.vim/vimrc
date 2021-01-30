@@ -234,7 +234,6 @@ endif
 " deoplete-go {{{
 let g:deoplete#sources#go#gocode_binary = $HOME . '/go/bin/gocode'
 " }}}
-" }}}
 
 " fzf.vim {{{
 let g:fzf_buffers_jump = 1
@@ -548,6 +547,10 @@ nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 " }}}
 
+" vim-commentary {{{
+autocmd FileType cpp setlocal commentstring=//%s
+" }}}
+
 " vimwiki {{{
 let g:vimwiki_list = [
 \  {'path': '~/vimwiki/g', 'ext': '.md', 'syntax': 'markdown'},
@@ -579,6 +582,7 @@ augroup END
 
 " winresizer {{{
 let g:winresizer_start_key = '<leader>r'
+" }}}
 " }}}
 
 " (au)commands, mappings, languages {{{

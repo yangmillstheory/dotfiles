@@ -1,6 +1,7 @@
 [ui]
 merge = meld
 paginate = false
+ignore = ~/.hgignore
 
 [extensions]
 hgext.beautifygraph=
