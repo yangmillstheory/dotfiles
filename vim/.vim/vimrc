@@ -161,6 +161,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': './install --xdg --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'matze/vim-move'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
@@ -214,11 +215,14 @@ let g:gruvbox_undercurl        = 1
 
 syntax enable
 set background=dark
-colorscheme gruvbox
+" colorscheme gruvbox
+let g:seoul256_background = 236
+colorscheme seoul256
 set colorcolumn=
 
-hi Normal     guibg=NONE ctermbg=NONE
-hi CursorLine cterm=none gui=none
+
+" hi Normal     guibg=NONE ctermbg=NONE
+" hi CursorLine cterm=none gui=none
 " }}}
 
 " deoplete {{{
@@ -410,7 +414,7 @@ let g:LanguageClient_hasSnippetSupport = 0
 
 "  lightline {{{
 let g:lightline = {
-\  'colorscheme': 'gruvbox',
+\  'colorscheme': 'seoul256',
 \  'separator': { 'left': '', 'right': '' },
 \  'subseparator': { 'left': '', 'right': '' },
 \  'active': {
@@ -629,19 +633,24 @@ nnoremap "" "_
 " }}}
 
 " misc {{{
-" folding, editing, yanking {{{
+" mappings {{{
+" yanking
 nnoremap <A-y> "+y
 vnoremap <A-y> "+y
+" folding
 nnoremap <A-z> za
 vnoremap <A-z> za
-nnoremap U :redo<cr>
-" }}}
 
-" writing, quitting, opening {{{
+" a more intuitive mapping for :redo
+nnoremap U :redo<cr>
+
+" writing & quitting
 nnoremap <A-w> :w<cr>
 nnoremap <A-q> :q<cr>
 nnoremap <A-cr> :wq<cr>
-nnoremap <A-e> :e<Space>
+" opening
+nnoremap <A-e> :e
+nnoremap <cr><cr> :
 " }}}
 
 " buffer management {{{
