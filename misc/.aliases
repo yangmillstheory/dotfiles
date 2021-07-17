@@ -31,7 +31,7 @@ alias adm=/google/data/ro/projects/tonic/admin_session
 alias pspec=/google/data/ro/teams/prodspec/prodspec
 
 # fig
-alias h='nocorrect /usr/bin/hg'
+alias h='nocorrect /usr/bin/chg'
 
 # blaze
 alias blaze='nocorrect /usr/bin/blaze'
@@ -39,5 +39,11 @@ alias bl='blaze'
 alias blb='blaze build'
 alias blt='blaze test'
 alias blr='blaze run'
+alias cb='build_cleaner'
+
+# youtube
+alias epg_server=/google/src/head/depot/google3/video/youtube/utils/elements/tools/playground/epg_server
+alias acid=/google/bin/releases/mobile-devx-platform/acid/acid
+alias p13n=/google/bin/releases/youtube-p13n-eng/tools/p13n.par
 
 alias p=gcert

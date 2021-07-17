@@ -8,3 +8,6 @@ hgext.beautifygraph=
 
 [trainingwheels]
 prevent-push-dirty=false
+
+[google]
+rollback.show-description-warning=false

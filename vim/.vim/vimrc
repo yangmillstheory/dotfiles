@@ -136,6 +136,8 @@ set suffixesadd+=.js
 set suffixesadd+=.go
 set suffixesadd+=.py
 set colorcolumn=
+set cursorcolumn
+set cursorline
 
 " disable unused providers: https://neovim.io/doc/user/provider.html
 let g:loaded_ruby_provider = 0
@@ -299,36 +301,15 @@ let g:rg_in_exp = [
 " explicitly include/exclude directories from fzf + rg
 " these aren't plugin options, but our own :)
 "
-" GSS and Gaia.
-let g:rg_in_gss = g:rg_in_exp + [
-\  'gaia/storage/util',
-\  'gaia/storage/server',
-\  'production/borg/gaia',
-\  'production/monitoring/gaia',
-\  'production/borg/identity_automation',
-\  'production/borg/identity_common',
-\  'production/sisyphus/gaia',
-\  'configs/production/prodspec/identity_gss',
-\  'configs/production/rollout/legislator/identity',
-\  'identity/production/annealing/plugins',
-\  'gaia/grape',
+" ShopTube.
+let g:rg_in_shoptube = g:rg_in_exp + [
+\ 'video/youtube/discovery',
+\ 'video/youtube/ecommerce/shopping',
+\ 'video/youtube/personalization',
+\ 'googledata/experiments/youtube/browse_backend/features/shopping',
+\ 'googledata/experiments/youtube/browse_backend/studies/shopping',
 \]
-" Klotho.
-"
-" See go/klotho-prototype:production#locations.
-let g:rg_in_klotho = g:rg_in_exp + [
-\ 'java/com/google/identity/production/flows',
-\ 'javatests/com/google/identity/production/flows',
-\ 'logs/proto/identity/flows',
-\ 'identity/production/flows/',
-\ 'identity/boq/production/flows',
-\ 'googledata/pubsub/identity-flows',
-\ 'configs/production/prodspec/identity_flows',
-\ 'production/borg/identity_flows',
-\ 'identity/production/actuators/flows',
-\ 'configs/production/rollout/legislator/identity/flows',
-\]
-let g:rg_in = g:rg_in_klotho
+let g:rg_in = g:rg_in_shoptube
 let g:rg_ex = []
 nnoremap <Leader>d q:ilet g:rg_in=['']<esc>hi
 
@@ -392,6 +373,7 @@ let g:LanguageClient_serverCommands = {
 \  'proto': ['/google/bin/releases/editor-devtools/ciderlsp'],
 \  'borg': ['/google/bin/releases/editor-devtools/ciderlsp'],
 \  'borgspec': ['/google/bin/releases/editor-devtools/ciderlsp'],
+\  'eml': ['/google/bin/releases/editor-devtools/ciderlsp'],
 \ }
 
 nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
@@ -651,6 +633,7 @@ nnoremap <A-cr> :wq<cr>
 " opening
 nnoremap <A-e> :e
 nnoremap <cr><cr> :
+vnoremap <cr><cr> :
 " }}}
 
 " buffer management {{{
@@ -757,6 +740,7 @@ source /usr/share/vim/google/google.vim
 
 " " glugins {{{
 Glug codefmt-google
+Glug csearch
 " " }}}
 
 " glugin config {{{
@@ -764,7 +748,7 @@ Glug codefmt-google
 augroup autoformat_settings
   autocmd FileType borg,gcl,patchpanel AutoFormatBuffer gclfmt
   autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  " autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType java AutoFormatBuffer google-java-format
   " autocmd FileType python AutoFormatBuffer pyformat
@@ -817,6 +801,7 @@ function! s:csearch(args)
         \ })
 endfunction
 command! -nargs=+ CSearch :call <SID>csearch("<args>")
+
 " }}}
 " }}}
 " }}}
