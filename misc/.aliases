@@ -32,6 +32,18 @@ alias pspec=/google/data/ro/teams/prodspec/prodspec
 
 # fig
 alias h='nocorrect /usr/bin/chg'
+alias hf='nocorrect /usr/bin/chg fix -w'
+alias hu='nocorrect /usr/bin/chg uc'
+alias ha='nocorrect /usr/bin/chg amend'
+alias hi='hf; ha; hu'
+alias he='nocorrect /usr/bin/chg amend --edit'
+alias hc='nocorrect /usr/bin/chg ci'
+alias hv='nocorrect /usr/bin/chg evolve'
+alias hs='nocorrect /usr/bin/chg status'
+alias hy='nocorrect /usr/bin/chg sync'
+alias hp='nocorrect /usr/bin/chg presubmit -d'
+alias hx='nocorrect /usr/bin/chg x'
+alias hz='nocorrect /usr/bin/chg diff --pager=1'
 
 # blaze
 alias blaze='nocorrect /usr/bin/blaze'
@@ -45,5 +57,6 @@ alias cb='build_cleaner'
 alias epg_server=/google/src/head/depot/google3/video/youtube/utils/elements/tools/playground/epg_server
 alias acid=/google/bin/releases/mobile-devx-platform/acid/acid
 alias p13n=/google/bin/releases/youtube-p13n-eng/tools/p13n.par
+alias crow=/google/bin/releases/mobile-devx-platform/crow/crow.par
 
 alias p=gcert

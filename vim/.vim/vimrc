@@ -175,7 +175,6 @@ Plug 'simeji/winresizer'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
@@ -302,11 +301,11 @@ let g:rg_in_exp = [
 "
 " ShopTube.
 let g:rg_in_shoptube = g:rg_in_exp + [
-\ 'video/youtube/discovery',
-\ 'video/youtube/ecommerce/shopping',
-\ 'video/youtube/personalization',
-\ 'googledata/experiments/youtube/browse_backend/features/shopping',
-\ 'googledata/experiments/youtube/browse_backend/studies/shopping',
+\ 'video/youtube/ecommerce/shopping/rendering',
+\ 'video/youtube/ecommerce/shopping/recs3',
+\ 'video/youtube/ecommerce/shopping/proto',
+\ 'video/youtube/src/python/servers/innertube/elements/components/main_app/product_shelf',
+\ 'video/youtube/channels/frontend',
 \]
 let g:rg_in = g:rg_in_shoptube
 let g:rg_ex = []
@@ -631,6 +630,7 @@ nnoremap <A-q> :q<cr>
 nnoremap <A-cr> :wq<cr>
 " opening
 nnoremap <A-e> :e
+nnoremap <A-e><A-e> :e!<cr>
 nnoremap <cr><cr> :
 vnoremap <cr><cr> :
 " }}}
