@@ -30,6 +30,8 @@ alias analog=/google/data/ro/teams/borg-logs-ui/analog-cli
 alias adm=/google/data/ro/projects/tonic/admin_session
 alias pspec=/google/data/ro/teams/prodspec/prodspec
 
+alias gp=/google/data/ro/projects/goops/goops_proxy
+
 # fig
 alias h='nocorrect /usr/bin/chg'
 alias hf='nocorrect /usr/bin/chg fix -w'
@@ -53,10 +55,17 @@ alias blt='blaze test'
 alias blr='blaze run'
 alias cb='build_cleaner'
 
-# youtube
-alias epg_server=/google/src/head/depot/google3/video/youtube/utils/elements/tools/playground/epg_server
-alias acid=/google/bin/releases/mobile-devx-platform/acid/acid
-alias p13n=/google/bin/releases/youtube-p13n-eng/tools/p13n.par
-alias crow=/google/bin/releases/mobile-devx-platform/crow/crow.par
+# pubsub
+alias pubsub2cfg="/google/data/ro/projects/goops/pubsub2cfg" # go/pubsub2cfg
+alias pubsub="/google/data/ro/projects/goops/pubsub" # go/pubsub-tool
+alias goops_proxy="/google/data/ro/projects/goops/goops_proxy" # go/goops_proxy
+alias cps_proxy="/google/data/ro/teams/cloud-pubsub/cps_proxy" # go/cps_proxy
+alias cpsadmin="/google/data/ro/teams/cloud-pubsub/cpsadmin" # go/cpsadmin
+alias cps_span="/google/data/ro/teams/cloud-pubsub/cps_span" # go/cps_span
+alias admin_session="/google/data/ro/projects/tonic/admin_session" # go/admin_session
+alias onborg="/google/data/ro/projects/smartass/onborg" # go/onborg
+alias annealing="/google/bin/releases/rollouts/annealing/annealing" # go/annealing-cli
+alias prodspec="/google/bin/releases/rollouts/prodspec/prodspec" # go/prodspec-cli
+alias cpl="cpsadmin lookup"
 
 alias p=gcert

@@ -67,3 +67,8 @@ function xls() {
 prodaccess() {
   /usr/bin/prodaccess "$@" && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh --extra_space
 }
+
+cps() {
+  echo "http://auto/cloud:${1}/pubsub/subscription?subscription=${2}"
+  echo "http://go/goops-lookup/projects/${1}/subscriptions/${2}"
+}

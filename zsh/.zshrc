@@ -160,8 +160,8 @@ _blaze_query_tmux() {
 }
 zstyle ':completion:*:blaze-*:query' command -_blaze_query_tmux
 
-if ! prodcertstatus -q; then
-  echo 'Getting prodaccess...'
+if ! gcertstatus --quiet --check_remaining=1h; then
+  echo 'Getting gcert...'
   gcert
 fi
 prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh

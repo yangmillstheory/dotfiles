@@ -185,6 +185,21 @@ Plug 'yangmillstheory/vim-snipe'
 Plug 'yangmillstheory/vim-snippets'
 Plug 'Yggdroot/indentLine'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+" CiderLSP
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'neovim/nvim-lspconfig'
+Plug 'onsails/lspkind.nvim'
+
+" Diagnostics
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/trouble.nvim'
 call plug#end()
 " }}}
 
@@ -221,8 +236,8 @@ colorscheme seoul256
 set colorcolumn=
 
 
-" hi Normal     guibg=NONE ctermbg=NONE
-" hi CursorLine cterm=none gui=none
+hi Normal     guibg=NONE ctermbg=NONE
+hi CursorLine cterm=none gui=none
 " }}}
 
 " deoplete {{{
@@ -298,16 +313,16 @@ let g:rg_in_exp = [
 "
 " explicitly include/exclude directories from fzf + rg
 " these aren't plugin options, but our own :)
-"
-" ShopTube.
-let g:rg_in_shoptube = g:rg_in_exp + [
-\ 'video/youtube/ecommerce/shopping/rendering',
-\ 'video/youtube/ecommerce/shopping/recs3',
-\ 'video/youtube/ecommerce/shopping/proto',
-\ 'video/youtube/src/python/servers/innertube/elements/components/main_app/product_shelf',
-\ 'video/youtube/channels/frontend',
+let g:rg_in_pubsub = g:rg_in_exp + [
+\ 'production/borg/goops',
+\ 'production/borg/cloud-pubsub',
+\ 'configs/monitoring/cloud_pulse_monarch/cloud_pubsub',
+\ 'configs/monitoring/goops',
+\ 'configs/monitoring/cloud_pubsub',
+\ 'configs/production/cdpush/goops',
+\ 'configs/production/cdpush/cloud-pubsub',
 \]
-let g:rg_in = g:rg_in_shoptube
+let g:rg_in = g:rg_in_pubsub
 let g:rg_ex = []
 nnoremap <Leader>d q:ilet g:rg_in=['']<esc>hi
 
@@ -362,28 +377,36 @@ let g:indentline_setConceal = 2
 " }}}
 
 " LanguageClient {{{
-"https://github.com/autozimu/LanguageClient-neovim/wiki/Recommended-Settings
-let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
-let g:LanguageClient_serverCommands = {
-\  'python': ['/google/bin/releases/grok/tools/kythe_languageserver'],
-\  'go': ['/google/bin/releases/editor-devtools/ciderlsp'],
-\  'cpp': ['/google/bin/releases/editor-devtools/ciderlsp'],
-\  'proto': ['/google/bin/releases/editor-devtools/ciderlsp'],
-\  'borg': ['/google/bin/releases/editor-devtools/ciderlsp'],
-\  'borgspec': ['/google/bin/releases/editor-devtools/ciderlsp'],
-\  'eml': ['/google/bin/releases/editor-devtools/ciderlsp'],
-\ }
+" lua << EOF
+"   -- CiderLSP
+"   vim.opt.completeopt = { "menu", "menuone", "noselect" }
+"   require("lsp")
 
-nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+"   -- Diagnostics
+"   require("diagnostics")
+" EOF
+"https://github.com/autozimu/LanguageClient-neovim/wiki/Recommended-Settings
+" let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
+" let g:LanguageClient_serverCommands = {
+" \  'python': ['/google/bin/releases/grok/tools/kythe_languageserver'],
+" \  'go': ['/google/bin/releases/editor-devtools/ciderlsp'],
+" \  'cpp': ['/google/bin/releases/editor-devtools/ciderlsp'],
+" \  'proto': ['/google/bin/releases/editor-devtools/ciderlsp'],
+" \  'borg': ['/google/bin/releases/editor-devtools/ciderlsp'],
+" \  'borgspec': ['/google/bin/releases/editor-devtools/ciderlsp'],
+" \  'eml': ['/google/bin/releases/editor-devtools/ciderlsp'],
+" \ }
+
+" nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+" nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+" nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+" nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+" nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+" nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+" nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+" nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 
 set signcolumn=auto
 " https://github.com/autozimu/LanguageClient-neovim/issues/379
@@ -745,7 +768,7 @@ Glug csearch
 " glugin config {{{
 " codefmt-google {{{
 augroup autoformat_settings
-  autocmd FileType borg,gcl,patchpanel AutoFormatBuffer gclfmt
+  " autocmd FileType borg,gcl,patchpanel AutoFormatBuffer gclfmt
   autocmd FileType bzl AutoFormatBuffer buildifier
   " autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
   autocmd FileType go AutoFormatBuffer gofmt
