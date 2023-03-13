@@ -42,6 +42,11 @@ require("lazy").setup({
   'tpope/vim-surround',
   'tpope/vim-obsession',
   'yangmillstheory/vim-snipe',
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    dependencies  = { 'smartpde/tree-sitter-cpp-google' },
+  },
 
   -- CiderLSP
   'hrsh7th/cmp-buffer',
