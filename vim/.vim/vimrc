@@ -1,123 +1,13 @@
-" basis {{{
-"
-"   https://gist.github.com/jawshooah/acfd0839d4da0ab04e24
-"
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-set nobackup		" don't keep a backup file (restore to previous version)
-set noundofile	" don't keep an undo file (undo changes after closing)
-set noswapfile
-set history=25	" keep 50 lines of command line history
-set ruler		    " show the cursor position all the time
-set showcmd		  " display incomplete commands
-set incsearch		" do incremental searching
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-  augroup END
-
-else
-
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif
-
-if has('langmap') && exists('+langnoremap')
-  " Prevent that the langmap option applies to characters that result from a
-  " mapping.  If unset (default), this may break plugins (but it's backward
-  " compatible).
-  set langnoremap
-endif
-" }}}
-
 " global settings {{{
 set noshowmode
-set nocursorcolumn
-set nocursorline
+set cursorcolumn
+set cursorline
 set nowrap
 set expandtab
 set relativenumber
 set number
-set omnifunc=syntaxcomplete#Complete
-set hidden
-set wildmenu
-set wildmode=longest:full,full
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
-set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/**
-set wildignore+=*/.nx/**,*.app
 set termguicolors
-set encoding=utf-8
-let mapleader="\<space>"
-let maplocalleader="\\"
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
@@ -125,19 +15,8 @@ set softtabstop=2
 "
 "   https://asciinema.org/a/92207
 set inccommand=split
-
-" indenting
-set cinkeys-=0#
-set indentkeys-=0#
-
-set statusline+=%#warningmsg#
-set statusline+=%F
-set suffixesadd+=.js
-set suffixesadd+=.go
-set suffixesadd+=.py
-set colorcolumn=
-set cursorcolumn
-set cursorline
+let g:ruby_host_prog = '/home/victoralvarez/.gem/ruby/2.5.0/bin/neovim-ruby-host'
+let mapleader = ' '
 
 " disable unused providers: https://neovim.io/doc/user/provider.html
 let g:loaded_ruby_provider = 0
@@ -156,50 +35,20 @@ Plug 'autozimu/LanguageClient-neovim', {
 \ 'do': 'bash install.sh',
 \ }
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'deoplete-plugins/deoplete-dictionary'
 Plug 'edkolev/tmuxline.vim', { 'on': 'Tmuxline' }
-Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'do': './install --xdg --all' }
+Plug 'junegunn/fzf', { 'do': './install --all --xdg' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'matze/vim-move'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/neosnippet.vim'
-Plug 'simeji/winresizer'
-Plug 'skywind3000/asyncrun.vim'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'simeji/winresizer'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'vimwiki/vimwiki'
-Plug 'yangmillstheory/vim-python', { 'for': 'python' }
+Plug 'tpope/vim-obsession'
 Plug 'yangmillstheory/vim-snipe'
-Plug 'yangmillstheory/vim-snippets'
-Plug 'Yggdroot/indentLine'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-
-" CiderLSP
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-nvim-lua'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'neovim/nvim-lspconfig'
-Plug 'onsails/lspkind.nvim'
-
-" Diagnostics
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'folke/trouble.nvim'
 call plug#end()
 " }}}
 
@@ -211,10 +60,6 @@ let g:AutoPairsShortcutBackInsert = ''
 let g:AutoPairsShortcutFastWrap = ''
 " }}}
 
-" vim-repeat {{{
-nnoremap <silent> <Plug>(RepeatRedo): <C-U>call repeat#wrap("\<Lt>C-U>",v:count)<CR>
-" }}}
-
 " colorscheme {{{
 " gruvbox {{{
 "
@@ -222,40 +67,22 @@ nnoremap <silent> <Plug>(RepeatRedo): <C-U>call repeat#wrap("\<Lt>C-U>",v:count)
 let g:gruvbox_contrast_dark    = 'medium'
 let g:gruvbox_contrast_light   = 'medium'
 let g:gruvbox_invert_selection = 0
-let g:gruvbox_italic           = 0
+let g:gruvbox_italic           = 1
 let g:gruvbox_bold             = 1
 let g:gruvbox_underline        = 1
 let g:gruvbox_undercurl        = 1
 " }}}
 
-syntax enable
 set background=dark
-" colorscheme gruvbox
-let g:seoul256_background = 236
-colorscheme seoul256
-set colorcolumn=
-
+colorscheme gruvbox
 
 hi Normal     guibg=NONE ctermbg=NONE
 hi CursorLine cterm=none gui=none
 " }}}
 
-" deoplete {{{
-let g:deoplete#enable_at_startup = 1
-
-" this is really a global setting;
-" but it's related to completion
-if has("patch-7.4.314")
- set shortmess+=c
-endif
-" }}}
-
-" deoplete-go {{{
-let g:deoplete#sources#go#gocode_binary = $HOME . '/go/bin/gocode'
-" }}}
-
 " fzf.vim {{{
 let g:fzf_buffers_jump = 1
+" use the same semantics for fzf as in shell
 " keep actions compatible with nerdtree
 let g:fzf_action = {
 \ 'ctrl-t': 'tab split',
@@ -288,44 +115,27 @@ function! FloatingFZF()
   \ 'row': vert,
   \ 'col': horz,
   \ 'width': w,
-  \ 'height': h,
-  \ 'style': 'minimal',
+  \ 'height': h
   \ }
-  hi Floating     guibg=NONE ctermbg=NONE
-  let w = nvim_open_win(buf, v:true, opts)
-  call setwinvar(w, '&winhl', 'Normal:Floating')
+  call nvim_open_win(buf, v:true, opts)
 endfunction
-" use the same keybindings for fzf as in shell
+
 nnoremap <silent> <c-t> :FzfFiles<CR>
 nnoremap <silent> <c-f> :FzfRg<space>
-nnoremap <silent> <c-_> :FzfBLines<CR>
 nnoremap <silent> <c-b> :FzfBuffers<CR>
+nnoremap <silent> <c-_> :FzfBLines<CR>
 nnoremap <silent> <c-r> :FzfHistory:<CR>
 nnoremap <silent> <c-s> :FzfHistory/<CR>
 nnoremap <silent> <c-c> :FzfCommands<CR>
-let s:rg_command = 'rg --hidden --ignore-case --column --line-number --no-heading --color=always'
-let s:hg_command = 'hg files 2>/dev/null'
+nnoremap <silent> <c-m> :FzfMarks<CR>
 
-let g:rg_in_exp = [
-\ 'experimental/users/victoralvarez',
-\]
 " https://github.com/junegunn/fzf.vim#advanced-customization
 "
 " explicitly include/exclude directories from fzf + rg
 " these aren't plugin options, but our own :)
-let g:rg_in_pubsub = g:rg_in_exp + [
-\ 'production/borg/goops',
-\ 'production/borg/cloud-pubsub',
-\ 'configs/monitoring/cloud_pulse_monarch/cloud_pubsub',
-\ 'configs/monitoring/goops',
-\ 'configs/monitoring/cloud_pubsub',
-\ 'configs/production/cdpush/goops',
-\ 'configs/production/cdpush/cloud-pubsub',
-\]
-let g:rg_in = g:rg_in_pubsub
+let g:rg_in = []
 let g:rg_ex = []
 nnoremap <Leader>d q:ilet g:rg_in=['']<esc>hi
-
 function! s:RgArgs(args) abort
   let rg_args = []
   if len(g:rg_ex)
@@ -336,98 +146,30 @@ function! s:RgArgs(args) abort
   endif
   return join(rg_args + g:rg_in, " ")
 endfunction
-command! -bang FzfFiles
+command! -bang -complete=dir -nargs=? FzfFiles
 \ call fzf#run(fzf#wrap({
 \     'source': $FZF_DEFAULT_COMMAND . " " . s:RgArgs(''),
 \     'options': $FZF_DEFAULT_OPTS . " " . $FZF_CTRL_T_OPTS,
 \   }),
 \   <bang>0
 \ )
-command! -bang FzfHgFiles
-\ call fzf#run(fzf#wrap({
-\     'source': s:hg_command,
-\     'options': $FZF_DEFAULT_OPTS . " " . $FZF_CTRL_T_OPTS,
-\   }),
-\   <bang>0
-\ )
-command! -bang -nargs=* FzfHgRg
-\ call fzf#vim#grep(
-\   s:rg_command . " " . <q-args> . " " . "$(" . s:hg_command . ")", 1,
-\   <bang>0 ? fzf#vim#with_preview('up:60%')
-\           : fzf#vim#with_preview('right:50%'),
-\   <bang>0)
 command! -bang -nargs=* FzfRg
 \ call fzf#vim#grep(
-\   s:rg_command . " " . s:RgArgs(<q-args>), 1,
+\   "rg --hidden --ignore-case --column --line-number --no-heading --color=always " . s:RgArgs(<q-args>), 1,
 \   <bang>0 ? fzf#vim#with_preview('up:60%')
 \           : fzf#vim#with_preview('right:50%'),
 \   <bang>0)
-" not yet:
-"
-"     https://github.com/junegunn/fzf.vim/issues/195
-"
-" command! -bang -nargs=? -complete=dir FzfBuffers
-"   \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview(), <bang>0)
-" }}}
-
-" indentLine {{{
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
-let g:indentline_enabled = 1
-let g:indentline_setConceal = 2
-" }}}
-
-" LanguageClient {{{
-" lua << EOF
-"   -- CiderLSP
-"   vim.opt.completeopt = { "menu", "menuone", "noselect" }
-"   require("lsp")
-
-"   -- Diagnostics
-"   require("diagnostics")
-" EOF
-"https://github.com/autozimu/LanguageClient-neovim/wiki/Recommended-Settings
-" let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
-" let g:LanguageClient_serverCommands = {
-" \  'python': ['/google/bin/releases/grok/tools/kythe_languageserver'],
-" \  'go': ['/google/bin/releases/editor-devtools/ciderlsp'],
-" \  'cpp': ['/google/bin/releases/editor-devtools/ciderlsp'],
-" \  'proto': ['/google/bin/releases/editor-devtools/ciderlsp'],
-" \  'borg': ['/google/bin/releases/editor-devtools/ciderlsp'],
-" \  'borgspec': ['/google/bin/releases/editor-devtools/ciderlsp'],
-" \  'eml': ['/google/bin/releases/editor-devtools/ciderlsp'],
-" \ }
-
-" nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-" nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-" nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-" nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-" nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-" nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-" nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-" nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-
-set signcolumn=auto
-" https://github.com/autozimu/LanguageClient-neovim/issues/379
-let g:LanguageClient_diagnosticsList = "Disabled"
-let g:LanguageClient_diagnosticsEnable = 0
-let g:LanguageClient_hasSnippetSupport = 0
 " }}}
 
 "  lightline {{{
 let g:lightline = {
-\  'colorscheme': 'seoul256',
+\  'colorscheme': 'gruvbox',
 \  'separator': { 'left': '', 'right': '' },
 \  'subseparator': { 'left': '', 'right': '' },
 \  'active': {
 \    'left': [ [ 'mode', 'paste' ],
 \              [ 'filename', 'modified', 'readonly' ] ],
-\    'right': [ [ 'ale_warning', 'ale_error', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-\  },
-\  'component_type': {
-\    'ale_error': 'error',
-\    'ale_warning': 'warning',
+\    'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
 \  },
 \  'component_function': {
 \    'readonly': 'LightlineReadonly',
@@ -448,63 +190,20 @@ endfunction
 " }}}
 "  }}}
 
-" neosnippets {{{
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-if has('conceal')
-set conceallevel=2 concealcursor=niv
-endif
-let g:neosnippet#enable_completed_snippet = 1
-let g:neosnippet#enable_complete_done = 1
-" }}}
-
 " tmuxline {{{
 let g:tmuxline_status_justify = 'left'
-let g:tmuxline_theme = 'minimal'
+let g:tmuxline_theme = 'lightline'
 let g:tmuxline_preset = {
 \'a'    : '#S',
-\'b'    : ['#(g3-compact-path #{pane_current_path})', '#[italics,nobold]#{pane_current_command}'],
+\'b'    : ['#(compact-path #{pane_current_path})', '#[italics,nobold]#{pane_current_command}'],
 \'win'  : ['#I', '#W'],
-\'cwin' : ['#[bold]#I', '#W'],
+\'cwin' : ['#I', '#W'],
 \'y'    : [
 \  '#[bold]%I:%M %p (%Z)',
 \  '#[bold]%a %b %d',
 \],
 \'z': '#h'
 \}
-" }}}
-
-" vim-better-whitespace {{{
-autocmd BufEnter * EnableStripWhitespaceOnSave
-autocmd BufEnter * DisableWhitespace
-" }}}
-
-" vim-go {{{
-let g:go_metalinter_enabled = []
-let g:go_def_mapping_enabled = 0
-let g:go_info_mode = 'guru'
-let g:go_echo_go_info = 0
-let g:go_def_mode = 'guru'
-let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 0
-let g:go_list_type = "quickfix"
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_generate_tags = 1
-let g:go_def_mapping_enabled = 0
-
-" Open :GoDeclsDir with ctrl-g
-nmap <C-g> :GoDeclsDir<cr>
-imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
-
-augroup go
-  autocmd!
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-augroup END
 " }}}
 
 " vim-move {{{
@@ -554,67 +253,16 @@ nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 " }}}
 
-" vim-commentary {{{
-autocmd FileType cpp setlocal commentstring=//%s
-" }}}
-
-" vimwiki {{{
-let g:vimwiki_list = [
-\  {'path': '~/vimwiki/g', 'ext': '.md', 'syntax': 'markdown'},
-\  {'path': '~/vimwiki/p', 'ext': '.md', 'syntax': 'markdown'},
-\]
-" this doesn't seem to work
-let g:vimwiki_ext2syntax = {'.md': 'markdown'}
-let g:vimwiki_use_calendar = 1
-let g:vimwiki_listsyms = ' .oOx'
-let g:vimwiki_ext2syntax = {'.md': 'markdown'}
-" putting this in an augroup doesn't work;
-" apparently the syntax setting above doens't work either
-augroup wiki
-  autocmd!
-  autocmd BufEnter,FileType vimwiki set filetype=markdown
-  autocmd BufEnter,FileType vimwiki set syntax=markdown
-  " need to have the chrome extension
-  "
-  "   https://github.com/simov/markdown-viewer
-  "
-  " for this
-augroup END
-augroup markdown
-  autocmd!
-  autocmd FileType markdown nnoremap <silent> <F12> :silent! !google-chrome %<CR>
-  autocmd FileType markdown setlocal dictionary+=/usr/share/dict/words
-augroup END
-" }}}
-
 " winresizer {{{
 let g:winresizer_start_key = '<leader>r'
+" make it like i3
+let g:winresizer_keycode_up   = 106
+let g:winresizer_keycode_down = 107
 " }}}
 " }}}
 
 " (au)commands, mappings, languages {{{
 " vimscript and vimrc {{{
-function! s:Help(type)
-  if a:type ==# 'v'
-    normal! `<v`>y
-  elseif a:type ==# 'char'
-    normal! `[v`]y
-  else
-    return
-  endif
-  let saved = @@
-  silent execute "h " . @@
-  let @@ = saved
-endfunction
-augroup vimscript
-  autocmd!
-  " write and save the current file
-  autocmd Filetype vim nnoremap <silent> <F9> :w!<cr> :so %<cr>
-  " F1 = help
-  autocmd FileType vim vnoremap <silent> <F1> :<c-u>call <SID>Help(visualmode())<cr>
-  autocmd FileType vim nnoremap <silent> <F1> :set operatorfunc=<SID>Help<cr>g@
-  autocmd FileType vim nnoremap <silent> <F1><F1> :h <c-r><c-w><cr>
-augroup END
 augroup vimrc
   autocmd!
   autocmd BufRead vimrc setlocal foldmethod=marker
@@ -631,10 +279,6 @@ nnoremap <leader>ez :vsp ~/.zshrc<cr>
 nnoremap <leader>es :vsp scrap<cr>
 " }}}
 
-" registers {{{
-nnoremap "" "_
-" }}}
-
 " misc {{{
 " mappings {{{
 " yanking
@@ -643,6 +287,9 @@ vnoremap <A-y> "+y
 " folding
 nnoremap <A-z> za
 vnoremap <A-z> za
+" black hole register
+nnoremap "" "_
+"
 
 " a more intuitive mapping for :redo
 nnoremap U :redo<cr>
@@ -663,12 +310,6 @@ vnoremap <cr><cr> :
 nnoremap <A-=> <C-w>=
 " }}}
 
-" casing {{{
-inoremap <A-t> <c-[>bvgUea
-inoremap <A-k> <c-[>viwUea
-inoremap <A-j> <c-[>viwuea
-" }}}
-
 " tabs {{{
 " open current buffer in a new tab
 if !exists('g:last_tabpagenr')
@@ -679,30 +320,6 @@ nnoremap <A-t> :tab sp<cr>
 nnoremap <A-[> gT
 nnoremap <A-]> gt
 nnoremap <A-\> :exe "tabn ".g:last_tabpagenr<CR>
-" }}}
-
-" F2 = google (depends on https://github.com/yangmillstheory/s) {{{
-function! s:S(type)
-  let saved = @@
-  if a:type ==# 'V'
-    normal! `<V`>y
-  elseif a:type ==# 'v'
-    normal! `<v`>y
-  elseif a:type ==# 'char'
-    normal! `[v`]y
-  else
-    return
-  endif
-  " remove trailing newline
-  "
-  "   https://stackoverflow.com/a/6228454
-  let @@ = substitute(strtrans(@@), '\^@', '', 's')
-  call system('g ' . shellescape(@@))
-  let @@ = saved
-endfunction
-vnoremap <F2> :<c-u>call <SID>S(visualmode())<cr>
-nnoremap <F2> :set operatorfunc=<SID>S<cr>g@
-nnoremap <F2><F2> :silent !g <c-r><c-w><cr>
 " }}}
 
 " jumps {{{
@@ -728,102 +345,6 @@ nnoremap <silent> k :<C-U>call JkJumps('k')<CR>
 nnoremap <silent> <leader><esc> :noh<cr>
 nnoremap <A-r> :%s//g<Left><Left>
 vnoremap <A-r> :s//g<Left><Left>
-" }}}
-
-" vimgrep {{{
-if executable("rg")
-  set grepprg=rg\ --vimgrep\ --no-heading
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
-endif
-" grep into quickfix list
-"
-" http://learnvimscriptthehardway.stevelosh.com/chapters/34.html
-function! s:GrepOperator(type)
-  let saved = @@
-  if a:type ==# 'v'
-    normal! `<v`>y
-  elseif a:type ==# 'char'
-    normal! `[v`]y
-  else
-    return
-  endif
-  silent execute "grep! " . s:RgArgs(shellescape(@@))
-  copen
-  let @@ = saved
-endfunction
-
-nnoremap <leader>g :set operatorfunc=<SID>GrepOperator<cr>g@
-vnoremap <leader>g :<c-u>call <SID>GrepOperator(visualmode())<cr>
-" }}}
-" }}}
-
-" " google {{{
-source /usr/share/vim/google/google.vim
-
-" " glugins {{{
-Glug codefmt-google
-Glug csearch
-" " }}}
-
-" glugin config {{{
-" codefmt-google {{{
-augroup autoformat_settings
-  " autocmd FileType borg,gcl,patchpanel AutoFormatBuffer gclfmt
-  autocmd FileType bzl AutoFormatBuffer buildifier
-  " autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType java AutoFormatBuffer google-java-format
-  " autocmd FileType python AutoFormatBuffer pyformat
-  " autocmd FileType textpb AutoFormatBuffer text-proto-format
-augroup END
-" }}}
-
-" lang {{{
-" go {{{
-Glug codefmt gofmt_executable="goimports"
-Glug blazedeps auto_filetypes=`['go']`
-" }}}
-" }}}
-" }}}
-
-nnoremap <A-d> :cd $PWD<CR>
-
-augroup undo_google_style
-  autocmd!
-  autocmd BufRead * set cc= | set textwidth=0
-augroup END
-
-" codesearch + fzf.vim {{{
-function! s:CSearchSink(path)
-  execute "edit " . <SID>add_depot_root(a:path)
-endfunction
-function! s:citcroot()
-  return matchstr(getcwd(), '^/google/src/cloud/[^/]\+/[^/]\+/')
-endfunction
-function! s:add_depot_root(path)
-  if <SID>in_citc()
-    return <SID>citcroot() . a:path
-  else
-    return "/google/src/files/head/depot" . a:path
-  endif
-endfunction
-function! s:in_citc()
-  return match(getcwd(), '^/google/src/cloud/') != -1
-endfunction
-function! s:csearch(args)
-  let b:root='/google/src/files/head/depot'
-  if <SID>in_citc()
-    let b:root=<SID>citcroot()
-  endif
-  call fzf#run({
-        \ 'source': "csearch -l " . a:args. "| sed 's|^/google/src/files/head/depot||'",
-        \ 'sink': function("s:CSearchSink"),
-        \ 'options': '-m --preview="cat ' . b:root . '{}"',
-        \ 'down': '30%'
-        \ })
-endfunction
-command! -nargs=+ CSearch :call <SID>csearch("<args>")
-
 " }}}
 " }}}
 " }}}

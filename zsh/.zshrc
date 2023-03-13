@@ -130,6 +130,7 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS='--ansi --inline-info --reverse --border --height 40%'
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden --bind '?:toggle-preview'"
 export FZF_PREVIEW_COMMAND="bat --style=numbers,changes --wrap never --color always {} || cat {} || tree -C {}"
+export FZF_CTRL_T_COMMAND="/usr/bin/fdfind --hidden"
 export FZF_CTRL_T_OPTS="--exit-0 --select-1 --preview-window down:60% --preview-window noborder --preview '($FZF_PREVIEW_COMMAND) 2> /dev/null'"
 export FZF_ALT_C_OPTS="--exit-0 --select-1 --preview 'tree -C -a {} | head -200'"
 #
