@@ -17,7 +17,10 @@ require("lazy").setup({
     'edkolev/tmuxline.vim',
     cmd = 'Tmuxline'
   },
-  'nvim-lualine/lualine.nvim',
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'kyazdani42/nvim-web-devicons' }
+  },
   'windwp/nvim-autopairs',
   { 'junegunn/fzf', build = ':call fzf#install()' },
   {
@@ -56,9 +59,4 @@ require("lazy").setup({
   'hrsh7th/vim-vsnip',
   'neovim/nvim-lspconfig',
   'onsails/lspkind.nvim',
-
-  -- Diagnostics
-  { 
-    'folke/trouble.nvim', dependencies = { 'kyazdani42/nvim-web-devicons' } 
-  },
 })

@@ -42,7 +42,10 @@ g.fzf_in = {
   'configs/production/cdpush/goops',
   'configs/production/cdpush/cloud-pubsub',
 }
-g.fzf_ex = {}
+g.fzf_ex = {
+  'assets',
+  'fonts',
+}
 
 -- quickly edit g.fzf_in
 utils.keymap('n', '<leader>d', "q:ilet g:fzf_in=['']<esc>hi")
@@ -51,7 +54,7 @@ vim.cmd([[
 function! s:FzfArgs(args) abort
   let fzf_args = []
   if len(g:fzf_ex)
-    let rg_args += ["--glob=!{" . join(g:fzf_ex, ",") . "}"]
+    let fzf_args += ["--glob=!{" . join(g:fzf_ex, ",") . "}"]
   endif
   if len(a:args)
     let fzf_args += [a:args]
