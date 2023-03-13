@@ -42,8 +42,7 @@ g.fzf_in = {
   'configs/production/cdpush/goops',
   'configs/production/cdpush/cloud-pubsub',
 }
--- TODO: Support multiple patterns.
-g.fzf_ex = {'.git'}
+g.fzf_ex = {}
 
 -- quickly edit g.fzf_in
 utils.keymap('n', '<leader>d', "q:ilet g:fzf_in=['']<esc>hi")
@@ -52,8 +51,7 @@ vim.cmd([[
 function! s:FzfArgs(args) abort
   let fzf_args = []
   if len(g:fzf_ex)
-    let fzf_args += ["--exclude=" . join(g:fzf_ex, ",")]
-    let fzf_args
+    let rg_args += ["--glob=!{" . join(g:fzf_ex, ",") . "}"]
   endif
   if len(a:args)
     let fzf_args += [a:args]
@@ -62,7 +60,7 @@ function! s:FzfArgs(args) abort
 endfunction
 command! -bang -complete=dir -nargs=? FzfFiles
 \ call fzf#run(fzf#wrap({
-\     'source': $FZF_CTRL_T_COMMAND . " " . s:FzfArgs(''),
+\     'source': $FZF_DEFAULT_COMMAND . " " . s:FzfArgs(''),
 \     'options': $FZF_DEFAULT_OPTS . " " . $FZF_ALT_C_OPTS,
 \   }),
 \   <bang>0

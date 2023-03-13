@@ -55,8 +55,7 @@ require("lazy").setup({
   'onsails/lspkind.nvim',
 
   -- Diagnostics
-  -- { 
-  --   'folke/trouble.nvim', dependencies = { 'kyazdani42/nvim-web-devicons' } 
-  -- },
+  { 
+    'folke/trouble.nvim', dependencies = { 'kyazdani42/nvim-web-devicons' } 
+  },
 })
-
