@@ -19,11 +19,9 @@ require("lazy").setup({
   },
   'nvim-lualine/lualine.nvim',
   'windwp/nvim-autopairs',
+  { 'junegunn/fzf', build = ':call fzf#install()' },
   {
     'junegunn/fzf.vim',
-    dependencies = {
-      { 'junegunn/fzf', build = ':call fzf#install()' },
-    },
     init = function() require('fzf-vim') end
   },
   'matze/vim-move',

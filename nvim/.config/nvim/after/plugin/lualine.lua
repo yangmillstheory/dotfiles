@@ -4,7 +4,7 @@ require('lualine').setup({
     lualine_c = {
       {
         'filename',
-        path = 2,
+        path = 1,
         symbols = {
           modified = '✗',
           readonly = '',
