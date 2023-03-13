@@ -14,10 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   'christoomey/vim-tmux-navigator',
   {
-    'edkolev/tmuxline.vim',
-    cmd = 'Tmuxline'
-  },
-  {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' }
   },
