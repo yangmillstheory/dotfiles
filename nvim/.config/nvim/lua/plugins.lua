@@ -27,7 +27,6 @@ require("lazy").setup({
     init = function() require('fzf-vim') end
   },
   'matze/vim-move',
-  'mhinz/vim-startify',
   'ellisonleao/gruvbox.nvim',
   'tmux-plugins/vim-tmux',
   {
@@ -43,5 +42,21 @@ require("lazy").setup({
   'tpope/vim-surround',
   'tpope/vim-obsession',
   'yangmillstheory/vim-snipe',
+
+  -- CiderLSP
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-nvim-lua',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-vsnip',
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/vim-vsnip',
+  'neovim/nvim-lspconfig',
+  'onsails/lspkind.nvim',
+
+  -- Diagnostics
+  -- { 
+  --   'folke/trouble.nvim', dependencies = { 'kyazdani42/nvim-web-devicons' } 
+  -- },
 })
 

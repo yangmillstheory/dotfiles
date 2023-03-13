@@ -23,3 +23,5 @@ o.scrolloff = 8
 
 g.loaded_ruby_provider = false
 g.loaded_node_provider = false
+
+o.completeopt = table.concat({'menu', 'menuone', 'noselect'}, ',')
