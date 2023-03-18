@@ -13,16 +13,35 @@ configs.ciderlsp = {
     settings = {},
   },
 }
--- configs.lua_ls = {
---   default_config = {
---     cmd = { '~/code/lua-ls/bin/lua-language-server' },
---     filetypes = { 'lua' },
---     root_dir = '~/code/lua-ls',
---   },
--- }
-
+configs.lua_ls = {
+  default_config = {
+    cmd = { '/usr/local/google/home/victoralvarez/code/lua-ls/bin/lua-language-server' },
+    filetypes = { 'lua' },
+    root_dir = nvim_lsp.util.root_pattern(".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git"),
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = 'LuaJIT',
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = {'vim'},
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
+  }
+}
 -- 2. Configure CMP
-vim.opt.completeopt = 'menu,menuone,noselect' 
+vim.opt.completeopt = 'menu,menuone,noselect'
 
 -- Don't show matching
 vim.opt.shortmess:append('c')
@@ -48,6 +67,7 @@ cmp.setup({
 
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
     { name = 'path' },
     { name = 'vim_vsnip' },
     { name = 'buffer', keyword_length = 3 },
@@ -142,28 +162,28 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities())
 
 nvim_lsp.ciderlsp.setup({ capabilities = capabilities, on_attach = on_attach })
--- nvim_lsp.lua_ls.setup({ 
---   capabilities = capabilities,
---   on_attach = on_attach,
---   autostart = true,
---   settings = {
---     Lua = {
---       runtime = {
---         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
---         version = 'LuaJIT',
---       },
---       diagnostics = {
---         -- Get the language server to recognize the `vim` global
---         globals = {'vim'},
---       },
---       workspace = {
---         -- Make the server aware of Neovim runtime files
---         library = vim.api.nvim_get_runtime_file("", true),
---       },
---       -- Do not send telemetry data containing a randomized but unique identifier
---       telemetry = {
---         enable = false,
---       },
---     },
---   },
--- })
+nvim_lsp.lua_ls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  autostart = true,
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+})
