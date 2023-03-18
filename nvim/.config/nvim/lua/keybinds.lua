@@ -4,7 +4,7 @@ keymap('n', '<space>', '<nop>')
 vim.g.mapleader = ' '
 
 -- edit common files
-keymap('n', '<leader>ev', ':vsp ~/.vim/vimrc<cr>')
+keymap('n', '<leader>el', ':vsp ~/.config/nvim/init.lua<cr>')
 keymap('n', '<leader>ea', ':vsp ~/.config/alacritty/alacritty.yml<cr>')
 keymap('n', '<leader>ei', ':vsp ~/.config/i3/config<cr>')
 keymap('n', '<leader>et', ':vsp ~/.tmux.conf<cr>')
@@ -38,7 +38,7 @@ keymap('v', '<A-r>', ':s//g<left><left>')
 keymap('n', '<A-w>', ':w<cr>')
 keymap('n', '<A-q>', ':q<cr>')
 keymap('n', '<A-cr>', ':wq<cr>')
-keymap('n', '<A-e>', ':e<space>')
+keymap('n', '<A-e>', ':e!<cr>')
 
 -- keep search, page up and down centered
 keymap('n', '<C-d>', '<C-d>zz')

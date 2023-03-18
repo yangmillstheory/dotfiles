@@ -56,3 +56,4 @@ alias onborg="/google/data/ro/projects/smartass/onborg" # go/onborg
 alias annealing="/google/bin/releases/rollouts/annealing/annealing" # go/annealing-cli
 alias prodspec="/google/bin/releases/rollouts/prodspec/prodspec" # go/prodspec-cli
 alias cpl="cpsadmin lookup"
+alias p="gcert"

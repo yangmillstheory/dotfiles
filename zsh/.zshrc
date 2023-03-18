@@ -127,11 +127,11 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgrep/ripgreprc
 #   https://github.com/robbyrussell/oh-my-zsh/issues/3003
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_DEFAULT_OPTS='--ansi --inline-info --reverse --border --height 40%'
-export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden --bind '?:toggle-preview'"
-export FZF_PREVIEW_COMMAND="bat --style=numbers,changes --wrap never --color always {} || cat {} || tree -C {}"
+export FZF_DEFAULT_OPTS='--reverse --border --preview-window right:50% --preview-window border'
+export FZF_PREVIEW_COMMAND="bat --style=numbers,changes --wrap never --color always {}"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window hidden"
 export FZF_CTRL_T_COMMAND="fdfind"
-export FZF_CTRL_T_OPTS="--exit-0 --select-1 --preview-window down:60% --preview-window noborder --preview '($FZF_PREVIEW_COMMAND) 2> /dev/null'"
+export FZF_CTRL_T_OPTS="--preview '$FZF_PREVIEW_COMMAND'"
 export FZF_ALT_C_OPTS="--exit-0 --select-1 --preview 'tree -C -a {} | head -200'"
 #
 # https://github.com/junegunn/fzf/issues/492

@@ -13,19 +13,19 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   'christoomey/vim-tmux-navigator',
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' }
-  },
-  'windwp/nvim-autopairs',
+  'ellisonleao/gruvbox.nvim',
   { 'junegunn/fzf', build = ':call fzf#install()' },
   {
     'junegunn/fzf.vim',
     init = function() require('fzf-vim') end
   },
+  'kylechui/nvim-surround',
   'matze/vim-move',
-  'ellisonleao/gruvbox.nvim',
-  'tmux-plugins/vim-tmux',
+  'mkitt/tabline.vim',
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'kyazdani42/nvim-web-devicons' }
+  },
   {
     'simeji/winresizer',
     init = function()
@@ -35,9 +35,12 @@ require("lazy").setup({
       vim.g.winresizer_keycode_down = 107
     end
   },
+  'RRethy/vim-illuminate',
+  'tmux-plugins/vim-tmux',
   'tpope/vim-commentary',
-  'tpope/vim-surround',
   'tpope/vim-obsession',
+  'windwp/nvim-autopairs',
+  'yamatsum/nvim-cursorline',
   'yangmillstheory/vim-snipe',
   {
     'nvim-treesitter/nvim-treesitter',
@@ -49,6 +52,9 @@ require("lazy").setup({
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-nvim-lua',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-vsnip',
   'hrsh7th/nvim-cmp',

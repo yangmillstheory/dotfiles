@@ -13,9 +13,16 @@ configs.ciderlsp = {
     settings = {},
   },
 }
+-- configs.lua_ls = {
+--   default_config = {
+--     cmd = { '~/code/lua-ls/bin/lua-language-server' },
+--     filetypes = { 'lua' },
+--     root_dir = '~/code/lua-ls',
+--   },
+-- }
 
 -- 2. Configure CMP
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.opt.completeopt = 'menu,menuone,noselect' 
 
 -- Don't show matching
 vim.opt.shortmess:append('c')
@@ -34,11 +41,16 @@ cmp.setup({
     ['<C-m>'] = cmp.mapping.confirm({ select = true }),
   }),
 
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+
   sources = {
     { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'vim_vsnip' },
-    { name = 'buffer', keyword_length = 5 },
+    { name = 'buffer', keyword_length = 3 },
   },
 
   sorting = {
@@ -64,11 +76,24 @@ cmp.setup({
       },
     }),
   },
+})
 
-  experimental = {
-    native_menu = false,
-    ghost_text = true,
-  },
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
 })
 
 vim.cmd([[
@@ -113,7 +138,32 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_command('augroup END')
 end
 
-nvim_lsp.ciderlsp.setup({
-  capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  on_attach = on_attach,
-})
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
+  vim.lsp.protocol.make_client_capabilities())
+
+nvim_lsp.ciderlsp.setup({ capabilities = capabilities, on_attach = on_attach })
+-- nvim_lsp.lua_ls.setup({ 
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+--   autostart = true,
+--   settings = {
+--     Lua = {
+--       runtime = {
+--         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+--         version = 'LuaJIT',
+--       },
+--       diagnostics = {
+--         -- Get the language server to recognize the `vim` global
+--         globals = {'vim'},
+--       },
+--       workspace = {
+--         -- Make the server aware of Neovim runtime files
+--         library = vim.api.nvim_get_runtime_file("", true),
+--       },
+--       -- Do not send telemetry data containing a randomized but unique identifier
+--       telemetry = {
+--         enable = false,
+--       },
+--     },
+--   },
+-- })
