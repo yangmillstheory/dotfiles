@@ -37,6 +37,10 @@ g.fzf_preview_window = { 'right,50%,border-sharp' }
 -- explicitly allowlist directories
 g.fzf_in = {
   'experimental/users/victoralvarez',
+  'ipc/pubsub2/forwarder',
+  'ipc/pubsub2/tech',
+  'ipc/pubsub2/cloud',
+  'cloud/pubsub/common',
   'production/borg/goops',
   'production/borg/cloud-pubsub',
   'configs/monitoring/cloud_pulse_monarch/cloud_pubsub',

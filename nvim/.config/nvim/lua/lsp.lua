@@ -13,6 +13,7 @@ configs.ciderlsp = {
     settings = {},
   },
 }
+
 configs.lua_ls = {
   default_config = {
     cmd = { '/usr/local/google/home/victoralvarez/code/lua-ls/bin/lua-language-server' },
@@ -57,7 +58,7 @@ cmp.setup({
     ['<C-u>'] = cmp.mapping.scroll_docs(4),
     ['<C-e>'] = cmp.mapping.close(),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<C-m>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
 
   window = {
