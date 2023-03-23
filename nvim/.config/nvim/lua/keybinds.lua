@@ -51,8 +51,17 @@ keymap('n', '<A-t>', ':tab sp<cr>')
 keymap('n', '<A-[>', 'gT')
 keymap('n', '<A-]>', 'gt')
 
--- JK-jumps should be in the jumplist
 local M = {}
+
+-- joining lines keeps original cursor position
+function M.NonDestructiveJoin()
+  local pos = vim.fn.getpos('.')
+  vim.cmd.join()
+  vim.fn.setpos('.', pos)
+end
+keymap('n', 'J', ':lua require("keybinds").NonDestructiveJoin()<cr>')
+
+-- vertical jumps should be in the jumplist
 function M.JkJumps(j_or_k)
   vim.cmd { cmd = 'normal', bang = true, args = { vim.v.count1 .. j_or_k } }
   if vim.v.count1 > 1 then
@@ -63,7 +72,6 @@ function M.JkJumps(j_or_k)
     vim.cmd { cmd = 'normal', bang = true, args = { target .. 'G' } }
   end
 end
-
 keymap('n', 'j', ':lua require("keybinds").JkJumps("j")<cr>', { silent = true })
 keymap('n', 'k', ':lua require("keybinds").JkJumps("k")<cr>', { silent = true })
 

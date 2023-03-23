@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   { 'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'nvim-tree/nvim-web-devicons' },
   'christoomey/vim-tmux-navigator',
+  'Darazaki/indent-o-matic',
   'ellisonleao/gruvbox.nvim',
   { 'junegunn/fzf', build = ':call fzf#install()' },
   {
