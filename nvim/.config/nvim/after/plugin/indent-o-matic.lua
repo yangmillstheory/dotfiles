@@ -6,4 +6,3 @@ require('indent-o-matic').setup {
       standard_widths = { 2, 4 },
   },
 }
-

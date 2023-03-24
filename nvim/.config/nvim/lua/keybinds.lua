@@ -72,7 +72,7 @@ function M.JkJumps(j_or_k)
     vim.cmd { cmd = 'normal', bang = true, args = { target .. 'G' } }
   end
 end
-keymap('n', 'j', ':lua require("keybinds").JkJumps("j")<cr>', { silent = true })
-keymap('n', 'k', ':lua require("keybinds").JkJumps("k")<cr>', { silent = true })
+keymap('n', 'j', ':<C-U>lua require("keybinds").JkJumps("j")<cr>', { silent = true })
+keymap('n', 'k', ':<C-U>lua require("keybinds").JkJumps("k")<cr>', { silent = true })
 
 return M
