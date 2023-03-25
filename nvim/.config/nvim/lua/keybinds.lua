@@ -51,6 +51,16 @@ keymap('n', '<A-t>', ':tab sp<cr>')
 keymap('n', '<A-[>', 'gT')
 keymap('n', '<A-]>', 'gt')
 
+-- resizing windows
+keymap('n', '<C-Up>', ':resize +2<cr>')
+keymap('n', '<C-Down>', ':resize -2<cr>')
+keymap('n', '<C-Left>', ':vertical resize -2<cr>')
+keymap('n', '<C-Right>', ':vertical resize +2<cr>')
+
+-- uninterrupted indent
+keymap('v', '<', '<gv')
+keymap('v', '>', '>gv')
+
 local M = {}
 
 -- joining lines keeps original cursor position
