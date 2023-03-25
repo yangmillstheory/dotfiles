@@ -52,10 +52,10 @@ keymap('n', '<A-[>', 'gT')
 keymap('n', '<A-]>', 'gt')
 
 -- resizing windows
-keymap('n', '<C-Up>', ':resize +2<cr>')
-keymap('n', '<C-Down>', ':resize -2<cr>')
-keymap('n', '<C-Left>', ':vertical resize -2<cr>')
-keymap('n', '<C-Right>', ':vertical resize +2<cr>')
+keymap('n', '<C-k>', ':resize +2<cr>')
+keymap('n', '<C-j>', ':resize -2<cr>')
+keymap('n', '<C-h>', ':vertical resize -2<cr>')
+keymap('n', '<C-l>', ':vertical resize +2<cr>')
 
 -- uninterrupted indent
 keymap('v', '<', '<gv')
