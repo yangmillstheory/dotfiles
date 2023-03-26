@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' },
+  {'akinsho/bufferline.nvim', version = "v3.*", dependencies = 'nvim-tree/nvim-web-devicons'},
   'chentoast/marks.nvim',
   {
     'christoomey/vim-tmux-navigator',
@@ -30,12 +30,11 @@ require("lazy").setup({
   'mhinz/vim-startify',
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' }
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
   'RRethy/vim-illuminate',
   'tmux-plugins/vim-tmux',
   'tpope/vim-commentary',
-  'tpope/vim-obsession',
   'windwp/nvim-autopairs',
   'yamatsum/nvim-cursorline',
   'yangmillstheory/vim-snipe',
