@@ -4,7 +4,9 @@ require('lualine').setup({
     lualine_b = {
       function ()
         return vim.fn.ObsessionStatus()
-      end
+      end,
+      'diff',
+      'diagnostics'
     },
     lualine_c = {
       {

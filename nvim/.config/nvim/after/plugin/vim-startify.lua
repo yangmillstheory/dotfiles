@@ -10,7 +10,7 @@ vim.g.startify_custom_header = {
 }
 vim.g.startify_files_number = 5
 vim.g.startify_enable_special = 0
-vim.g.startify_session_persistence = 1
+vim.g.startify_session_persistence = 0
 vim.g.startify_fortune_use_unicode = 1
 vim.g.startify_change_to_dir = 0
 vim.g.startify_session_sort = 1
