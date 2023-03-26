@@ -35,6 +35,7 @@ require("lazy").setup({
   'RRethy/vim-illuminate',
   'tmux-plugins/vim-tmux',
   'tpope/vim-commentary',
+  'tpope/vim-obsession',
   'windwp/nvim-autopairs',
   'yamatsum/nvim-cursorline',
   'yangmillstheory/vim-snipe',
