@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { 'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'nvim-tree/nvim-web-devicons' },
+  { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' },
   'chentoast/marks.nvim',
   {
     'christoomey/vim-tmux-navigator',
@@ -24,26 +24,13 @@ require("lazy").setup({
   'Darazaki/indent-o-matic',
   'ellisonleao/gruvbox.nvim',
   { 'junegunn/fzf', build = ':call fzf#install()' },
-  {
-    'junegunn/fzf.vim',
-    init = function() require('fzf-vim') end
-  },
+  { 'junegunn/fzf.vim', init = function() require('fzf-vim') end },
   'kylechui/nvim-surround',
   'matze/vim-move',
-  'mkitt/tabline.vim',
+  'mhinz/vim-startify',
   {
-
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' }
-  },
-  {
-    'simeji/winresizer',
-    init = function()
-      vim.g.winresizer_start_key = '<leader>r'
-      -- make it like i3
-      vim.g.winresizer_keycode_up = 106
-      vim.g.winresizer_keycode_down = 107
-    end
   },
   'RRethy/vim-illuminate',
   'tmux-plugins/vim-tmux',
@@ -52,11 +39,7 @@ require("lazy").setup({
   'windwp/nvim-autopairs',
   'yamatsum/nvim-cursorline',
   'yangmillstheory/vim-snipe',
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    dependencies  = { 'smartpde/tree-sitter-cpp-google' },
-  },
+  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', dependencies  = { 'smartpde/tree-sitter-cpp-google' }, },
 
   -- CiderLSP
   'hrsh7th/cmp-buffer',
