@@ -39,6 +39,7 @@ keymap('n', '<A-w>', ':w<cr>')
 keymap('n', '<A-q>', ':q<cr>')
 keymap('n', '<A-cr>', ':wq<cr>')
 keymap('n', '<A-e>', ':e!<cr>')
+keymap('n', '<A-d>', ':cd $PWD<cr>')
 
 -- keep search, page up and down centered
 keymap('n', '<C-d>', '<C-d>zz')

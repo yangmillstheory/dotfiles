@@ -49,6 +49,8 @@ g.fzf_in = {
   'configs/monitoring/cloud_pubsub',
   'configs/production/cdpush/goops',
   'configs/production/cdpush/cloud-pubsub',
+  'googledata/production/playbooks/goops',
+  'googledata/production/playbooks/cloud-pubsub',
 }
 g.fzf_ex = {
   'assets',
