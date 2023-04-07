@@ -46,6 +46,8 @@ keymap('n', '<C-d>', '<C-d>zz')
 keymap('n', '<C-u>', '<C-u>zz')
 keymap('n', 'n', 'nzzzv')
 keymap('n', 'N', 'Nzzzv')
+keymap('n', '}', '}zz')
+keymap('n', '{', '{zz')
 
 -- navigating tabs
 keymap('n', '<A-t>', ':tab sp<cr>')

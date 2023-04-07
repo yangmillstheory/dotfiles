@@ -21,7 +21,6 @@ require("lazy").setup({
       vim.g.tmux_navigator_disable_when_zoomed = 1
     end
   },
-  'Darazaki/indent-o-matic',
   'ellisonleao/gruvbox.nvim',
   { 'junegunn/fzf', build = ':call fzf#install()' },
   { 'junegunn/fzf.vim', init = function() require('fzf-vim') end },
@@ -36,8 +35,8 @@ require("lazy").setup({
   'tmux-plugins/vim-tmux',
   'tpope/vim-commentary',
   'tpope/vim-obsession',
+  'tpope/vim-sleuth',
   'windwp/nvim-autopairs',
-  'yamatsum/nvim-cursorline',
   'yangmillstheory/vim-snipe',
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', dependencies  = { 'smartpde/tree-sitter-cpp-google' }, },
 

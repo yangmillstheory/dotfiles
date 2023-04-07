@@ -162,7 +162,11 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities())
 
-nvim_lsp.ciderlsp.setup({ capabilities = capabilities, on_attach = on_attach })
+nvim_lsp.ciderlsp.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  autostart = true,
+})
 nvim_lsp.lua_ls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
