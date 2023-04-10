@@ -8,12 +8,16 @@ google3_prompt_info() {
   fi
 }
 
-# Show the time that the command was run.
+# The oh-my-zsh vim plugin uses this.
+MODE_INDICATOR="%{$fg_bold[red]%}NORMAL%{$reset_color%}"
+
+# Show the time that the command was run; then reset RPS1 using the function in
+# the vim plugin.
 reset-prompt-and-accept-line() {
-    RPROMPT='[%D{%L:%M:%S %p}]'
+    RPS1='[%D{%L:%M:%S %p}]'
     zle reset-prompt
     zle accept-line
-    RPROMPT=""
+    RPS1='$(vi_mode_prompt_info)'
 }
 
 zle -N reset-prompt-and-accept-line

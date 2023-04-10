@@ -32,6 +32,7 @@ require("lazy").setup({
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
+  'rebelot/kanagawa.nvim',
   'RRethy/vim-illuminate',
   'tmux-plugins/vim-tmux',
   'tpope/vim-commentary',
