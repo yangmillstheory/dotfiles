@@ -1,6 +1,6 @@
 local api = vim.api
 
-local vimrc = api.nvim_create_augroup('vimrc', { clear = true })
+api.nvim_create_augroup('vimrc', { clear = true })
 api.nvim_create_autocmd({ 'BufRead' }, {
   pattern = 'vimrc',
   callback = function()

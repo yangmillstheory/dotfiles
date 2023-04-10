@@ -8,6 +8,17 @@ google3_prompt_info() {
   fi
 }
 
+# Show the time that the command was run.
+reset-prompt-and-accept-line() {
+    RPROMPT='[%D{%L:%M:%S %p}]'
+    zle reset-prompt
+    zle accept-line
+    RPROMPT=""
+}
+
+zle -N reset-prompt-and-accept-line
+bindkey '^m' reset-prompt-and-accept-line
+
 # enable command substitution (and other expansions) in PROMPT
 setopt prompt_subst
 local upper_arrow="%(?:%{$fg_bold[green]%}┌─ :%{$fg_bold[red]%}┌─ )%{$reset_color%}"
