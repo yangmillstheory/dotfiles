@@ -1,6 +1,15 @@
 require("lazy").setup({
-  {'akinsho/bufferline.nvim', version = "v3.*", dependencies = 'nvim-tree/nvim-web-devicons'},
+  { 'akinsho/bufferline.nvim', version = "v3.*", dependencies = 'nvim-tree/nvim-web-devicons' },
+  {
+    'anuvyklack/fold-preview.nvim',
+     dependencies = 'anuvyklack/keymap-amend.nvim',
+  },
   'chentoast/marks.nvim',
+  {
+    "chrisgrieser/nvim-early-retirement",
+    config = true,
+    event = "VeryLazy",
+  },
   {
     'christoomey/vim-tmux-navigator',
     init = function()

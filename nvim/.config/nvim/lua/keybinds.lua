@@ -31,8 +31,8 @@ keymap('v', '<A-z>', 'za')
 
 -- search & replace
 keymap('n', '<leader><esc>', ':noh<cr>', { silent = true })
-keymap('n', '<A-r>', ':%s//g<left><left>')
-keymap('v', '<A-r>', ':s//g<left><left>')
+keymap('n', '<A-r>', ':%s///g<left><left><left>')
+keymap('v', '<A-r>', ':s///g<left><left><left>')
 
 -- writing, quitting, opening
 keymap('n', '<A-w>', ':w<cr>')

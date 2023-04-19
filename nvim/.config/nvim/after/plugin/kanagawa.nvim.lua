@@ -1,20 +1,29 @@
 require('kanagawa').setup({
-    undercurl = true,            -- enable undercurls
-    commentStyle = { italic = true },
-    functionStyle = {},
-    keywordStyle = { italic = true},
-    statementStyle = { bold = true },
+    undercurl = true,
+    commentStyle = {
+        bold = true,
+        italic = true
+    },
+    functionStyle = {
+        bold = false,
+        italic = true,
+    },
+    keywordStyle = {
+        bold = true,
+        italic = false
+    },
+    statementStyle = {},
     typeStyle = {},
-    transparent = true,         -- do not set background color
-    dimInactive = false,         -- dim inactive window `:h hl-NormalNC`
-    terminalColors = true,       -- define vim.g.terminal_color_{0,17}
-    colors = {                   -- add/modify theme and palette colors
+    transparent = true,
+    dimInactive = false,
+    terminalColors = true,
+    colors = {
         palette = {},
         theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
     },
-    theme = "wave",              -- Load "wave" theme when 'background' option is not set
-    background = {               -- map the value of 'background' option to a theme
-        dark = "wave",           -- try "dragon" !
+    theme = "wave",
+    background = {
+        dark = "wave",
         light = "lotus"
     },
 })
