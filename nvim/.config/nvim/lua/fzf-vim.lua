@@ -49,6 +49,7 @@ g.fzf_in = {
   'configs/monitoring/cloud_pubsub',
   'configs/production/cdpush/goops',
   'configs/production/cdpush/cloud-pubsub',
+  'production/sisyphus/goops',
   'googledata/production/playbooks/goops',
   'googledata/production/playbooks/cloud-pubsub',
 }
