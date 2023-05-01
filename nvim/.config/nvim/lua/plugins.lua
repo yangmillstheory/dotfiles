@@ -1,4 +1,7 @@
 require("lazy").setup({
+  defaults = {
+    lazy = true
+  },
   { 'akinsho/bufferline.nvim', version = "v3.*", dependencies = 'nvim-tree/nvim-web-devicons' },
   {
     'anuvyklack/fold-preview.nvim',
@@ -17,8 +20,6 @@ require("lazy").setup({
       vim.g.tmux_navigator_disable_when_zoomed = 1
     end
   },
-  'ellisonleao/gruvbox.nvim',
-  'folke/tokyonight.nvim',
   {
     'folke/noice.nvim',
     dependencies = {
