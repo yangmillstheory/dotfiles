@@ -19,6 +19,13 @@ require("lazy").setup({
   },
   'ellisonleao/gruvbox.nvim',
   'folke/tokyonight.nvim',
+  {
+    'folke/noice.nvim',
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+  },
   { 'junegunn/fzf', build = ':call fzf#install()' },
   { 'junegunn/fzf.vim', init = function() require('fzf-vim') end },
   'kylechui/nvim-surround',

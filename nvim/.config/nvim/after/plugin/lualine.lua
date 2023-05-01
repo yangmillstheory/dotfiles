@@ -1,5 +1,5 @@
 require('lualine').setup({
-  options = { theme = 'gruvbox' },
+  options = { theme = 'kanagawa' },
   sections = {
     lualine_b = {
       function ()
