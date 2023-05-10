@@ -1,4 +1,4 @@
 require('early-retirement').setup({
-    -- Wait one day to close buffers.
-    retirementAgeMins = 60 * 24
+    -- Wait 3.5 days to close buffers.
+    retirementAgeMins = 60 * 24 * 3.5
 })

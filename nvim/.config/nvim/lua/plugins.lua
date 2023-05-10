@@ -20,16 +20,11 @@ require("lazy").setup({
       vim.g.tmux_navigator_disable_when_zoomed = 1
     end
   },
-  {
-    'folke/noice.nvim',
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-  },
+  'folke/trouble.nvim',
   { 'junegunn/fzf', build = ':call fzf#install()' },
   { 'junegunn/fzf.vim', init = function() require('fzf-vim') end },
   'kylechui/nvim-surround',
+  { "lukas-reineke/indent-blankline.nvim", ft = { "cpp", "python", "proto", "gcl" } },
   'matze/vim-move',
   'mhinz/vim-startify',
   {

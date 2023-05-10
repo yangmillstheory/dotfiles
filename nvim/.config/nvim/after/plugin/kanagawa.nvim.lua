@@ -5,7 +5,7 @@ require('kanagawa').setup({
         italic = true
     },
     functionStyle = {
-        bold = false,
+        bold = true,
         italic = true,
     },
     keywordStyle = {
