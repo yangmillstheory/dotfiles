@@ -52,6 +52,7 @@ g.fzf_in = {
   'production/sisyphus/goops',
   'googledata/production/playbooks/goops',
   'googledata/production/playbooks/cloud-pubsub',
+  'monitoring/viceroy/dashboards/automon/per_borg_user/cloud_pubsub',
   'monitoring/viceroy/dashboards/automon/per_cloud_product/pubsub',
   'monitoring/viceroy/dashboards/goops',
   'monitoring/viceroy/dashboards/templatetags/goops',
