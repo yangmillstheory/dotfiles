@@ -120,6 +120,7 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # fzf
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+bindkey "ç" fzf-cd-widget  # Make Opt-C key have Alt-C semantics on MacOS
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS='--reverse --border --preview-window right:50% --preview-window border'
 export FZF_PREVIEW_COMMAND="bat --style=numbers,changes --wrap never --color always {}"
