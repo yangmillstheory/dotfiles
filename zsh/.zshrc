@@ -118,13 +118,7 @@ bindkey '^ ' autosuggest-accept
 zmodload zsh/complist
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
-export RIPGREP_CONFIG_PATH=~/.config/ripgrep/ripgreprc
-
 # fzf
-#
-# should we just use the fzf plugin?
-#
-#   https://github.com/robbyrussell/oh-my-zsh/issues/3003
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS='--reverse --border --preview-window right:50% --preview-window border'
@@ -136,41 +130,5 @@ export FZF_ALT_C_OPTS="--exit-0 --select-1 --preview 'tree -C -a {} | head -200'
 #
 # https://github.com/junegunn/fzf/issues/492
 setopt HIST_IGNORE_ALL_DUPS
-
-# bat
-export BAT_THEME="1337"
-
-# google
-#
-# https://g3doc.corp.google.com/devtools/blaze/scripts/zsh_completion/README.md?cl=head
-if [[ -f /etc/bash_completion.d/g4d ]]; then
-  . /etc/bash_completion.d/g4d
-  . /etc/bash_completion.d/p4
-fi
-
-fpath=(
-  /google/src/files/head/depot/google3/devtools/blaze/scripts/zsh_completion
-  $fpath
-)
-
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-_blaze_query_tmux() {
-  tmux display-message 'Querying blaze'
-  $@
-}
-zstyle ':completion:*:blaze-*:query' command -_blaze_query_tmux
-
-if ! gcertstatus --quiet --check_remaining=1h; then
-  echo 'Getting gcert...'
-  gcert
-fi
-prodcertstatus -q && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh
-
-export G4MULTIDIFF=0
-export P4DIFF='diff'
-
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
