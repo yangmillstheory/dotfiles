@@ -1,7 +1,6 @@
 import = [
     "~/.config/alacritty/themes/themes/kanagawa_wave.toml",
     "~/.config/alacritty/keybindings.toml",
-    "~/.config/alacritty/font.toml",
 ]
 
 [colors]
@@ -13,6 +12,12 @@ unfocused_hollow = true
 
 [env]
 TERM = "xterm-256color"
+
+[font]
+size = 21.0
+normal = { family = "monofur for Powerline", style = "Regular" }
+italic = { family = "monofur for Powerline", style = "  italic" }
+bold = { family = "monofur for Powerline", style = "  bold" }
 
 [scrolling]
 history = 10000
@@ -27,7 +32,4 @@ opacity = 0.8
 blur = true
 decorations = "Full"
 option_as_alt = "Both"
-
-[window.padding]
-x = 20
-y = 20
+padding = { x = 20, y = 20 }
