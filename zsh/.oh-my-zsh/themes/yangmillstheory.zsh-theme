@@ -21,7 +21,7 @@ bindkey '^m' reset-prompt-and-accept-line
 # enable command substitution (and other expansions) in PROMPT
 setopt prompt_subst
 local upper_arrow="%(?:%{$fg[green]%}┌─ :%{$fg[red]%}┌─ )%{$reset_color%}"
-local lower_arrow="%(?:%{$fg[green]%}└─➤ :%{$fg[red]%}└%?─➤ )%{$reset_color%}"
+local lower_arrow="%(?:%{$fg[green]%}└─➤ :%{$fg[red]%}└%?─➤ )%{$reset_color%} "
 PROMPT="$upper_arrow"'%{$fg_bold[yellow]%}[$(short_path)] $(git_prompt_info)'$'\n'"$lower_arrow"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
