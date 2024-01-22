@@ -2,3 +2,4 @@ Session.vim
 session.vim
 .luarc.json
 *.swp
+alacritty/.config/alacritty/themes
