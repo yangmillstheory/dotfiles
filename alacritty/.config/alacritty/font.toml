@@ -1,0 +1,14 @@
+[font]
+size = 21.0
+
+[font.normal]
+family = "monofur for Powerline"
+style = "Regular"
+
+[font.italic]
+family = "monofur for Powerline"
+style = "  italic"
+
+[font.bold]
+family = "monofur for Powerline"
+style = "  bold"

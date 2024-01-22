@@ -1,5 +1,7 @@
 import = [
-    "~/.config/alacritty/themes/themes/kanagawa_wave.toml"
+    "~/.config/alacritty/themes/themes/kanagawa_wave.toml",
+    "~/.config/alacritty/keybindings.toml",
+    "~/.config/alacritty/font.toml",
 ]
 
 [colors]
@@ -9,62 +11,8 @@ draw_bold_text_with_bright_colors = true
 style = { shape = "Block", blinking = "Always" }
 unfocused_hollow = true
 
-[debug]
-render_timer = false
-
 [env]
 TERM = "xterm-256color"
-
-[font]
-size = 21.0
-
-[font.normal]
-family = "monofur for Powerline"
-style = "Regular"
-
-[font.italic]
-family = "monofur for Powerline"
-style = "  italic"
-
-[font.bold]
-family = "monofur for Powerline"
-style = "  bold"
-
-[font.glyph_offset]
-x = 1
-y = 0
-
-[font.offset]
-x = 0
-y = 0
-
-[[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Command"
-
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Command"
-
-[[keyboard.bindings]]
-action = "Paste"
-key = "Paste"
-
-[[keyboard.bindings]]
-action = "Copy"
-key = "Copy"
-
-[[keyboard.bindings]]
-action = "Quit"
-key = "Q"
-mods = "Command"
-
-[[keyboard.bindings]]
-action = "Quit"
-key = "W"
-mods = "Command"
 
 [scrolling]
 history = 10000
