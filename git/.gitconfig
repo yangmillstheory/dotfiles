@@ -1,10 +1,8 @@
 [user]
   name = Victor Alvarez
-  email = victoralvarez@google.com
+  email = sapien.reversing.entropy@gmail.com
 [core]
   editor = nvim
-[url "git@github.com:"]
-  pushInsteadOf = "https://github.com/"
 [alias]
   co = checkout
   br = branch
