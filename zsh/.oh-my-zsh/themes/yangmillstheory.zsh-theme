@@ -4,7 +4,7 @@ MODE_INDICATOR="%{$fg_bold[red]%}NORMAL%{$reset_color%}"
 # Show the time that the command was run; then reset RPS1 using the function in
 # the vim plugin.
 reset-prompt-and-accept-line() {
-    RPS1='%{$fg[yellow]%}[%D{%L:%M:%S %p}]%{$reset_color%}'
+    RPS1=$'%{\x1b[3m%}%{$fg[yellow]%}[%D{%L:%M:%S %p}]%{$reset_color%}%{\x1b[0m%}'
     zle reset-prompt
     zle accept-line
     RPS1='$(vi_mode_prompt_info)'
@@ -20,9 +20,9 @@ bindkey '^m' reset-prompt-and-accept-line
 
 # enable command substitution (and other expansions) in PROMPT
 setopt prompt_subst
-local upper_arrow="%(?:%{$fg[green]%}┌─ :%{$fg_bold[red]%}┌─ )%{$reset_color%}"
-local lower_arrow="%(?:%{$fg[green]%}└─➤ :%{$fg_bold[red]%}└%?─➤ )%{$reset_color%}"
-PROMPT="$upper_arrow"'%{$fg[blue]%}[%n@%m] %{$fg[yellow]%}$(short_path)%{$reset_color%} $(git_prompt_info)'$'\n'"$lower_arrow"
+local upper_arrow="%(?:%{$fg[green]%}┌─ :%{$fg[red]%}┌─ )%{$reset_color%}"
+local lower_arrow="%(?:%{$fg[green]%}└─➤ :%{$fg[red]%}└%?─➤ )%{$reset_color%}"
+PROMPT="$upper_arrow"'%{$fg_bold[yellow]%}[$(short_path)] $(git_prompt_info)'$'\n'"$lower_arrow"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
