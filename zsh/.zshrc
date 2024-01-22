@@ -102,6 +102,8 @@ unsetopt autopushd
 export KEYTIMEOUT=1
 
 fpath=(~/.zsh/completions $fpath)
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # don't remember what this is?
 autoload -Uz compinit && compinit
@@ -120,7 +122,6 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # fzf
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-bindkey "ç" fzf-cd-widget  # Make Opt-C key have Alt-C semantics on MacOS
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS='--reverse --border --preview-window right:50% --preview-window border'
 export FZF_PREVIEW_COMMAND="bat --style=numbers,changes --wrap never --color always {}"
@@ -133,3 +134,4 @@ export FZF_ALT_C_OPTS="--exit-0 --select-1 --preview 'tree -C -a {} | head -200'
 setopt HIST_IGNORE_ALL_DUPS
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fpath+=${ZDOTDIR:-~}/.zsh_functions
