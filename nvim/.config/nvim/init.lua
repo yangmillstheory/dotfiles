@@ -20,3 +20,4 @@ vim.cmd.colorscheme('kanagawa')
 
 require('autocmd')
 require('lsp')
+require('cmpl')
