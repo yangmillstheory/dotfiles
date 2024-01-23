@@ -5,8 +5,7 @@ vim.g.mapleader = ' '
 
 -- edit common files
 keymap('n', '<leader>el', ':vsp ~/.config/nvim/init.lua<cr>')
-keymap('n', '<leader>ea', ':vsp ~/.config/alacritty/alacritty.yml<cr>')
-keymap('n', '<leader>ei', ':vsp ~/.config/i3/config<cr>')
+keymap('n', '<leader>ea', ':vsp ~/.config/alacritty/alacritty.toml<cr>')
 keymap('n', '<leader>et', ':vsp ~/.tmux.conf<cr>')
 keymap('n', '<leader>ez', ':vsp ~/.zshrc<cr>')
 keymap('n', '<leader>es', ':vsp scrap<cr>')

@@ -1,15 +1,3 @@
-local api = vim.api
-
-api.nvim_create_augroup('vimrc', { clear = true })
-api.nvim_create_autocmd({ 'BufRead' }, {
-  pattern = 'vimrc',
-  callback = function()
-    vim.opt_local.foldmethod = 'marker'
-    vim.opt_local.foldlevelstart = 0
-  end
-})
-
--- Strip trailing whitespace.
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = {"*"},
   callback = function(_)

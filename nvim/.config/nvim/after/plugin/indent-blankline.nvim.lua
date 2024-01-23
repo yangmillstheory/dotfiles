@@ -1,6 +1,4 @@
 vim.opt.list = true
-vim.g.indent_blankline_filetype = { "cpp", "python", "lua", "proto" }
+vim.g.indent_blankline_filetype = { "cpp", "python", "lua", }
 
-require("indent_blankline").setup {
-    show_end_of_line = false,
-}
+require("ibl").setup {}

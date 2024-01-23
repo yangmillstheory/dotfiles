@@ -35,32 +35,8 @@ g.fzf_layout = {
 g.fzf_preview_window = { 'right,50%,border-sharp' }
 
 -- explicitly allowlist directories
-g.fzf_in = {
-  'experimental/users/victoralvarez',
-  'ipc/pubsub2/forwarder',
-  'ipc/pubsub2/tech',
-  'ipc/pubsub2/cloud',
-  'ipc/pubsub2/config',
-  'cloud/pubsub/common',
-  'production/borg/goops',
-  'production/borg/cloud-pubsub',
-  'configs/monitoring/cloud_pulse_monarch/cloud_pubsub',
-  'configs/monitoring/goops',
-  'configs/monitoring/cloud_pubsub',
-  'configs/production/cdpush/goops',
-  'configs/production/cdpush/cloud-pubsub',
-  'production/sisyphus/goops',
-  'googledata/production/playbooks/goops',
-  'googledata/production/playbooks/cloud-pubsub',
-  'monitoring/viceroy/dashboards/automon/per_borg_user/cloud_pubsub',
-  'monitoring/viceroy/dashboards/automon/per_cloud_product/pubsub',
-  'monitoring/viceroy/dashboards/goops',
-  'monitoring/viceroy/dashboards/templatetags/goops',
-}
-g.fzf_ex = {
-  'assets',
-  'fonts',
-}
+g.fzf_in = {}
+g.fzf_ex = {}
 
 -- quickly edit g.fzf_in
 utils.keymap('n', '<leader>d', "q:ilet g:fzf_in=['']<esc>hi")

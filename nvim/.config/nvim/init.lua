@@ -14,9 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 require('settings')
 require('keybinds')
 require('plugins')
-require('autocmd')
-require('lsp')
 
 vim.o.background = 'dark'
 vim.cmd.colorscheme('kanagawa')
-vim.api.nvim_create_autocmd('VimEnter', {command='source /usr/share/vim/google/google.vim'})
+
+require('autocmd')
+require('lsp')
+require('cmpl')
