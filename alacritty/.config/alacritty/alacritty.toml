@@ -14,9 +14,9 @@ TERM = "xterm-256color"
 
 [font]
 size = 21.0
-normal = { family = "monofur for Powerline", style = "Regular" }
-italic = { family = "monofur for Powerline", style = "  italic" }
-bold = { family = "monofur for Powerline", style = "  bold" }
+normal = { family = "Monofur Nerd Font", style = "Regular" }
+italic = { family = "Monofur Nerd Font", style = "Italic" }
+bold = { family = "Monofur Nerd Font", style = "Bold" }
 
 [keyboard]
 bindings = [
@@ -41,3 +41,4 @@ opacity = 0.9
 blur = true
 decorations = "Full"
 padding = { x = 20, y = 20 }
+option_as_alt = "Both"
