@@ -26,9 +26,8 @@ bindings = [
   { action = "Copy", key = "Copy" },
   { action = "Quit", key = "Q", mods = "Command" },
   { action = "Quit", key = "W", mods = "Command" },
-  { action = "ScrollHalfPageUp", key = "U", mods = "Control" },
-  { action = "ScrollHalfPageDown", key = "D", mods = "Control" },
-  { action = "ScrollHalfPageDown", key = "D", mods = "Control" },
+  { action = "ScrollHalfPageUp", key = "U", mods = "Command" },
+  { action = "ScrollHalfPageDown", key = "D", mods = "Command" },
   { action = "SelectNextTab", key = "Tab", mods = "Control" },
   { action = "SelectPreviousTab", key = "Tab", mods = "Control|Shift" },
 ]
@@ -38,7 +37,7 @@ history = 10000
 multiplier = 3
 
 [window]
-opacity = 0.8
+opacity = 0.9
 blur = true
 decorations = "Full"
 padding = { x = 20, y = 20 }
