@@ -1,0 +1,23 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here.\n\n\nunmap <a-f>\nmap ƒ LinkHints.activateModeWithQueue",
+  "searchEngines": "",
+  "settingsVersion": "2.0.5",
+  "exclusionRules": [
+    {
+      "passKeys": "",
+      "pattern": "https?://github.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://mail.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://docs.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://www.youtube.com/*"
+    }
+  ]
+}
