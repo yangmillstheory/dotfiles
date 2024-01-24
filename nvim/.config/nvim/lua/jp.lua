@@ -27,5 +27,3 @@ vim.api.nvim_create_user_command('YomitanCleanKanjiDef',
 , {
   desc = 'Make Yomitan-mined Kanji not be HTML lists, but plain text separated by |.'
 })
-
-
