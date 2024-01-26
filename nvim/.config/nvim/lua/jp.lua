@@ -2,7 +2,7 @@ vim.api.nvim_create_user_command('YomitanRmNums',
 -- TODO: <span> and other HTML tags can mess this up?
   function(_)
     -- Strip out tags like (\d+).
-    vim.cmd([[silent! %s/\v\(\d+\)//g]])
+    vim.cmd([[silent! %s/\v\(\d+\)(\&nbsp;)?//g]])
     -- Strip out tags like (1, \w+).
     vim.cmd([[silent! %s/\v\(\d+,\s([^)]+)\)/(\1)/g]])
     -- Yank into the system clipboard.

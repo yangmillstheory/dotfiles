@@ -11,6 +11,8 @@ o.expandtab = true
 o.relativenumber = true
 o.number = true
 
+o.cmdheight = 0
+
 o.wildignore = table.concat({'*.o', '*.a', '*.obj', '__pycache__'}, ',')
 o.termguicolors = true
 

@@ -3,3 +3,4 @@ session.vim
 .luarc.json
 *.swp
 alacritty/.config/alacritty/themes
+tmux/.tmux/plugins
