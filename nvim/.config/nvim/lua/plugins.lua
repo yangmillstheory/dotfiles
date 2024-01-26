@@ -23,6 +23,7 @@ require("lazy").setup({
   'rebelot/kanagawa.nvim',
   'tmux-plugins/vim-tmux',
   'tpope/vim-commentary',
+  'tpope/vim-obsession',
   'windwp/nvim-autopairs',
   'yangmillstheory/vim-snipe',
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
