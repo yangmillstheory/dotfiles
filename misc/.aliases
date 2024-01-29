@@ -1,3 +1,2 @@
-alias v='nvim'
 alias q='exit'
 alias c='/usr/bin/clear'
