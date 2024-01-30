@@ -8,10 +8,13 @@ backup() {
 
 function v() {
   if test $# -gt 0; then
+    echo "Starting nvim with args $@."
     env nvim "$@"
   elif test -f Session.vim; then
+    echo "Session.vim found. Starting nvim -S."
     env nvim -S
   else
+    echo "No Session.vim found. Running nvim -c Obsession."
     env nvim -c Obsession
   fi
 }
