@@ -49,15 +49,6 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-
-  vim.api.nvim_command('augroup LSP')
-  vim.api.nvim_command('autocmd!')
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_command('autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()')
-    vim.api.nvim_command('autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()')
-    vim.api.nvim_command('autocmd CursorMoved <buffer> lua vim.lsp.util.buf_clear_references()')
-  end
-  vim.api.nvim_command('augroup END')
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -72,6 +63,7 @@ nvim_lsp.lua_ls.setup({
       diagnostics = {
         -- Get the language server to recognize the `vim` global
         globals = {'vim'},
+        diagnostics = { disable = { 'missing-fields' } },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files

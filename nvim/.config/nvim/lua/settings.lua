@@ -5,6 +5,8 @@ o.showmode = false
 o.cursorcolumn = true
 o.cursorline = true
 
+o.confirm = true
+
 o.wrap = false
 o.expandtab = true
 

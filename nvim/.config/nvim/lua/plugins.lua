@@ -11,6 +11,7 @@ require("lazy").setup({
     end
   },
   'folke/trouble.nvim',
+  'folke/tokyonight.nvim',
   { 'junegunn/fzf', build = ':call fzf#install()' },
   { 'junegunn/fzf.vim', init = function() require('fzf-vim') end },
   'kylechui/nvim-surround',
