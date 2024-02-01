@@ -3,6 +3,7 @@ require('nvim-treesitter.configs').setup({
     "c", "lua", "vim", "vimdoc", "query",
 
     'markdown',
+    'markdown_inline',
   },
 
   ignore_install = {},
@@ -21,6 +22,8 @@ require('nvim-treesitter.configs').setup({
             return true
         end
     end,
+
+    -- additional_vim_regex_highlighting = {'markdown','markdown_inline'},
   }
 })
 
