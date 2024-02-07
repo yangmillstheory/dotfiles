@@ -17,7 +17,7 @@ require('keybinds')
 require('plugins')
 
 vim.o.background = 'dark'
-vim.cmd.colorscheme('tokyonight-night')
+vim.cmd.colorscheme('catppuccin')
 
 require('autocmd')
 require('lsp')
