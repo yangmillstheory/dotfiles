@@ -68,7 +68,11 @@ cmp.setup.cmdline({ '/', '?' }, {
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
+  -- See https://github.com/hrsh7th/cmp-cmdline/issues/108#issuecomment-193083214.
+  mapping = cmp.mapping.preset.cmdline({
+    ["<C-n>"] = { c = false },
+    ["<C-p>"] = { c = false },
+  }),
   sources = cmp.config.sources({
     { name = 'path' }
   }, {
