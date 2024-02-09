@@ -10,6 +10,8 @@ vim.api.nvim_create_user_command('YomitanRmNums',
     vim.cmd([[silent! %s/\v\(\d+\)(\&nbsp;)?//g]])
     -- Strip out tags like (n, \w+).
     vim.cmd([[silent! %s/\v\(\d+,\s([^)]+)\)/(\1)/g]])
+    -- Strip out "forms" list item.
+    vim.cmd([[silent! %s/\v\<li\>\<i\>\(forms\)\<\/i\>[^<]+\<\/li\>//g]])
     RmEmptyListItems()
     -- Yank into the system clipboard.
     vim.cmd.normal('"*yy')
