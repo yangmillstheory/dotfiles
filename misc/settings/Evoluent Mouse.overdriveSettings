@@ -126,9 +126,9 @@
 				<key>cmd</key>
 				<integer>11</integer>
 				<key>key</key>
-				<integer>16</integer>
+				<integer>13</integer>
 				<key>mod</key>
-				<integer>768</integer>
+				<integer>256</integer>
 			</dict>
 		</dict>
 		<key>0009.0006</key>

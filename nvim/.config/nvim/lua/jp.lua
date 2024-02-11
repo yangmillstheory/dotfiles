@@ -3,7 +3,7 @@ function RmEmptyListItems()
 end
 
 
-vim.api.nvim_create_user_command('YomitanRmNums',
+vim.api.nvim_create_user_command('YomitanCleanTerm',
 -- TODO: <span> and other HTML tags can mess this up?
   function(_)
     -- Strip out tags like (\d+).
@@ -21,7 +21,7 @@ vim.api.nvim_create_user_command('YomitanRmNums',
 })
 
 
-vim.api.nvim_create_user_command('YomitanCleanKanjiDef',
+vim.api.nvim_create_user_command('YomitanCleanKanji',
   function(_)
     -- Strip beginning and ending HTML tags.
     vim.cmd.normal('0')

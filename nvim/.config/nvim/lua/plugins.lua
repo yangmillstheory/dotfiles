@@ -11,7 +11,18 @@ require("lazy").setup({
     end
   },
   'folke/trouble.nvim',
-  'folke/tokyonight.nvim',
+  {
+    'folke/zen-mode.nvim',
+    opts = {
+      window = {
+        height = 0.8,
+        options = {
+          relativenumber = false,
+          number = false,
+        }
+      }
+    }
+  },
   { 'junegunn/fzf', build = ':call fzf#install()' },
   { 'junegunn/fzf.vim', init = function() require('fzf-vim') end },
   'kylechui/nvim-surround',
