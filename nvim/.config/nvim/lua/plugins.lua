@@ -10,6 +10,10 @@ require("lazy").setup({
       vim.g.tmux_navigator_disable_when_zoomed = 1
     end
   },
+  {
+    'axkirillov/hbac.nvim',
+    config = true,
+  },
   'folke/trouble.nvim',
   {
     'folke/zen-mode.nvim',
