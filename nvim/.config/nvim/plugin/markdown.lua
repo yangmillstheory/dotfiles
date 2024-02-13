@@ -19,7 +19,7 @@ local function ToggleTodo()
   vim.api.nvim_buf_set_lines(0, row - 1, row, true, {new_todo})
 end
 
-keymap('n', '<c-x>', '', {
+keymap('n', '<leader>x', '', {
   desc = 'Toggle a markdown checklist item.',
   callback = ToggleTodo,
 })
