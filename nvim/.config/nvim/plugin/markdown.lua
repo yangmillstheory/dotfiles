@@ -20,7 +20,17 @@ local function ToggleTodo()
   vim.api.nvim_buf_set_lines(0, row - 1, row, true, {new_todo})
 end
 
+local function NewTodo()
+  vim.cmd.normal('o* [ ]')
+  vim.api.nvim_feedkeys('A ', 'n', true)
+end
+
 keymap('n', '<leader>x', '', {
   desc = 'Toggle a markdown checklist item.',
   callback = ToggleTodo,
+})
+
+keymap('n', '<leader>n', '', {
+  desc = 'Create a markdown checklist item.',
+  callback = NewTodo,
 })
