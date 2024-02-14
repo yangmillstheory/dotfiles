@@ -80,6 +80,15 @@ cmp.setup.cmdline(':', {
   })
 })
 
+cmp.setup.filetype('markdown', {
+  sources = {
+    {
+      name = "dictionary",
+      keyword_length = 2,
+    },
+  }
+})
+
 vim.cmd([[
   augroup CmpZsh
     au!

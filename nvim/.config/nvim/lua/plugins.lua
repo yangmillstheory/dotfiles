@@ -44,6 +44,7 @@ require("lazy").setup({
   'windwp/nvim-autopairs',
   'yangmillstheory/vim-snipe',
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  'uga-rosa/cmp-dictionary',
 
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-cmdline',
