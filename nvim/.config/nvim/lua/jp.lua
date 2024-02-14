@@ -1,3 +1,5 @@
+local keymap = require('utils').keymap
+
 function RmEmptyListItems()
   vim.cmd([[silent! %s/\V<li><span><\/span><\/li>//g]])
 end
@@ -37,3 +39,16 @@ vim.api.nvim_create_user_command('YomitanCleanKanji',
 , {
   desc = 'Make Yomitan-mined Kanji not be HTML lists, but plain text separated by |.'
 })
+
+vim.api.nvim_create_user_command('YomitanSingleTerm',
+  function(_)
+    -- These have a predictale structure: ... <li><i>(...)</i>(definition)</li> ...
+    -- Remove everything up to the first <i>, skip to the </li>, delete to the end.
+    vim.cmd.normal('3dt<')
+    vim.cmd.normal('2f<d$')
+  end
+, {
+  desc = 'Clean Yomitan-mined terms with a single non-forms definition.'
+})
+
+
