@@ -1,5 +1,3 @@
-local keymap = require('utils').keymap
-
 function RmEmptyListItems()
   vim.cmd([[silent! %s/\V<li><span><\/span><\/li>//g]])
 end
