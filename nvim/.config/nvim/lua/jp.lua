@@ -42,7 +42,8 @@ vim.api.nvim_create_user_command('YomitanOneDefinitionTerm',
   function(_)
     -- These have a predictale structure: ... <li><i>(...)</i>(definition)</li> ...
     -- Remove everything up to the first <i>, skip to the </li>, delete to the end.
-    vim.cmd.normal('3dt<2f<d$')
+    vim.cmd.normal('3dt<')
+    vim.cmd.normal('2f<d$')
   end
 , {
   desc = 'Clean Yomitan-mined terms with a single non-forms definition.'
