@@ -1,6 +1,7 @@
 local o = vim.o
 local g = vim.g
 
+o.wrap = true
 o.showmode = false
 o.cursorcolumn = true
 o.cursorline = true
