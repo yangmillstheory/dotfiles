@@ -86,6 +86,8 @@ cmp.setup.filetype('markdown', {
       name = "dictionary",
       keyword_length = 2,
     },
+    { name = 'emoji' },
+    { name = 'buffer', keyword_length = 3 },
   }
 })
 
