@@ -65,6 +65,8 @@ keymap('n', '<leader>t', '', {
   callback = ToggleTodo,
 })
 
+keymap('n', '<leader>z', ':ZenMode<cr>')
+
 -- Automatically enter ZenMode for diary.md file.
 vim.cmd([[
   augroup diary.md
