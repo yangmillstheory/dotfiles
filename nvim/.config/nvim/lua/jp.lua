@@ -38,7 +38,8 @@ vim.api.nvim_create_user_command('YomitanCleanKanji',
   desc = 'Make Yomitan-mined Kanji not be HTML lists, but plain text separated by |.'
 })
 
--- TODO: this is a hack and breaks sometimes; fix it using captures
+-- TODO: this is a hack and breaks sometimes; fix it using captures. Or not,
+-- maybe it's not worth it.
 vim.api.nvim_create_user_command('YomitanOneDefinitionTerm',
   function(_)
     -- These have a predictale structure: ... <li><i>(...)</i>(definition)</li> ...
