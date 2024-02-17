@@ -35,7 +35,7 @@ history = 10000
 multiplier = 3
 
 [window]
-opacity = 0.9
+opacity = 0.8
 blur = true
 decorations = "Full"
 padding = { x = 20, y = 20 }

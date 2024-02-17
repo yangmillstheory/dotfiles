@@ -1,14 +1,13 @@
 local o = vim.o
 local g = vim.g
 
-o.wrap = true
 o.showmode = false
 o.cursorcolumn = false
 o.cursorline = false
 
 o.confirm = true
 
-o.wrap = false
+o.wrap = true
 o.expandtab = true
 
 o.relativenumber = true
