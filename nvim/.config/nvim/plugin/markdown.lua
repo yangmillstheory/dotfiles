@@ -1,5 +1,4 @@
 local keymap = require('utils').keymap
-local ZenMode = require('zen-mode')
 
 if not table.unpack then
   table.unpack = unpack
