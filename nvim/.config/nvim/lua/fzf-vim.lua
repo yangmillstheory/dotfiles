@@ -36,7 +36,7 @@ g.fzf_preview_window = { 'right,50%,border-sharp' }
 
 -- explicitly allowlist directories
 g.fzf_in = {}
-g.fzf_ex = {}
+g.fzf_ex = {'.git'}
 
 -- quickly edit g.fzf_in
 utils.keymap('n', '<leader>d', "q:ilet g:fzf_in=['']<esc>hi")
