@@ -14,8 +14,14 @@ cmp.setup({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-u>'] = cmp.mapping.scroll_docs(4),
     ['<C-e>'] = cmp.mapping.close(),
+    ['C-n'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- Don't understand this setting; doesn't appear to work when using
+    -- cmp.SelectBehavior.Select above.
+    ['<C-Enter>'] = cmp.mapping.confirm({ select = true }),
   }),
 
   window = {
@@ -70,8 +76,8 @@ cmp.setup.cmdline({ '/', '?' }, {
 cmp.setup.cmdline(':', {
   -- See https://github.com/hrsh7th/cmp-cmdline/issues/108#issuecomment-193083214.
   mapping = cmp.mapping.preset.cmdline({
-    ["<C-n>"] = { c = false },
-    ["<C-p>"] = { c = false },
+    ['<C-n>'] = { c = false },
+    ['<C-p>'] = { c = false },
   }),
   sources = cmp.config.sources({
     { name = 'path' }
