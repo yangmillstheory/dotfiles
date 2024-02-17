@@ -4,11 +4,10 @@ end
 
 
 vim.api.nvim_create_user_command('YomitanCleanTerm',
--- TODO: <span> and other HTML tags can mess this up?
   function(_)
     -- Strip out tags like (\d+).
     vim.cmd([[silent! %s/\v\(\d+\)(\&nbsp;)?//g]])
-    -- Strip out tags like (n, \w+).
+    -- Strip out tags like (\d+, \w+).
     vim.cmd([[silent! %s/\v\(\d+,\s([^)]+)\)/(\1)/g]])
     -- Strip out "forms" list item.
     vim.cmd([[silent! %s/\v\<li\>\<i\>\(forms\)\<\/i\>[^<]+\<\/li\>//g]])
@@ -38,16 +37,14 @@ vim.api.nvim_create_user_command('YomitanCleanKanji',
   desc = 'Make Yomitan-mined Kanji not be HTML lists, but plain text separated by |.'
 })
 
--- TODO: this is a hack and breaks sometimes; fix it using captures. Or not,
--- maybe it's not worth it.
-vim.api.nvim_create_user_command('YomitanOneDefinitionTerm',
+vim.api.nvim_create_user_command('YomitanSimpleTerm',
   function(_)
-    -- These have a predictale structure: ... <li><i>(...)</i>(definition)</li> ...
-    -- Remove everything up to the first <i>, skip to the </li>, delete to the end.
-    vim.cmd.normal('3dt<')
-    vim.cmd.normal('2f<d$')
-    vim.cmd.normal('"*yy')
+    vim.fn.search('<i>')
+    vim.cmd.normal('d0')
+    -- NB: This won't work if the first term contains nested <li> tags.
+    vim.fn.search('<\\/li>')
+    vim.cmd.normal('d$')
   end
 , {
-  desc = 'Clean Yomitan-mined terms with a single non-forms definition.'
+  desc = 'Use only the first definition of a Yomitan-mined term.'
 })
