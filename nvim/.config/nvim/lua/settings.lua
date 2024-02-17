@@ -3,8 +3,8 @@ local g = vim.g
 
 o.wrap = true
 o.showmode = false
-o.cursorcolumn = true
-o.cursorline = true
+o.cursorcolumn = false
+o.cursorline = false
 
 o.confirm = true
 
