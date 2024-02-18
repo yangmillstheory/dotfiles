@@ -10,9 +10,8 @@ vim.api.nvim_create_user_command('YomitanCleanTerm',
     -- Strip out tags like (\d+, \w+).
     vim.cmd([[silent! %s/\v\(\d+,\s([^)]+)\)/(\1)/g]])
     -- Strip out "forms" list item.
-    vim.cmd([[silent! %s/\v\<li\>\<i\>\(forms\)\<\/i\>[^<]+\<\/li\>//g]])
+    vim.cmd([[silent! %s/\v\<li\>\<i\>\(forms\)\<\/i\>.+\<\/li\>//g]])
     RmEmptyListItems()
-    -- Yank into the system clipboard.
     vim.cmd.normal('"*yy')
   end
 , {
