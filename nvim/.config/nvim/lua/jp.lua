@@ -29,7 +29,6 @@ vim.api.nvim_create_user_command('YomitanCleanKanji',
     -- Replace interior </li><li> (etc) tags with |.
     vim.cmd([[silent! %s/\v(\<\/?[oli]{2}\>){2}/ | /g]])
     RmEmptyListItems()
-    -- Yank into the system clipboard.
     vim.cmd.normal('"*yy')
   end
 , {
@@ -43,6 +42,7 @@ vim.api.nvim_create_user_command('YomitanSimpleTerm',
     -- NB: This won't work if the first term contains nested <li> tags.
     vim.fn.search('<\\/li>')
     vim.cmd.normal('d$')
+    vim.cmd.normal('"*yy')
   end
 , {
   desc = 'Use only the first definition of a Yomitan-mined term.'
