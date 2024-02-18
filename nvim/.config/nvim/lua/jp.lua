@@ -36,6 +36,7 @@ vim.api.nvim_create_user_command('YomitanCleanKanji',
 })
 
 vim.api.nvim_create_user_command('YomitanSimpleTerm',
+  -- Alternative implementation: use the macro 0d/<i>/<\/li>d$.
   function(_)
     vim.fn.search('<i>')
     vim.cmd.normal('d0')

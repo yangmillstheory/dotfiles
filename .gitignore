@@ -4,3 +4,4 @@ session.vim
 *.swp
 alacritty/.config/alacritty/themes
 tmux/.tmux/plugins
+.DS_Store
