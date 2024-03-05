@@ -6,6 +6,7 @@ o.cursorcolumn = false
 o.cursorline = false
 
 o.confirm = true
+o.hlsearch = false
 
 o.wrap = true
 o.expandtab = true

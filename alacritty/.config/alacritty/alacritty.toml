@@ -38,5 +38,5 @@ multiplier = 3
 opacity = 0.8
 blur = true
 decorations = "Full"
-padding = { x = 20, y = 20 }
+padding = { x = 0, y = 0 }
 option_as_alt = "Both"
