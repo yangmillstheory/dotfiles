@@ -45,6 +45,7 @@ require("lazy").setup({
   'yangmillstheory/vim-snipe',
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   'uga-rosa/cmp-dictionary',
+  'RRethy/vim-illuminate',
 
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-cmdline',

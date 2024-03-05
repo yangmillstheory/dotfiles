@@ -26,6 +26,8 @@ nvim_lsp.lua_ls.setup {
   end
 }
 
+nvim_lsp.pyright.setup{}
+
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   if vim.lsp.formatexpr then -- Neovim v0.6.0+ only.
