@@ -3,6 +3,7 @@
   email = sapien.reversing.entropy@gmail.com
 [core]
   editor = nvim
+  excludesfile = /Users/yangmillstheory/.gitignore
 [alias]
   co = checkout
   br = branch
