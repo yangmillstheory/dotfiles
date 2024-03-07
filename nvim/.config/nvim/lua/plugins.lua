@@ -30,7 +30,12 @@ require("lazy").setup({
   { 'junegunn/fzf', build = ':call fzf#install()' },
   { 'junegunn/fzf.vim', init = function() require('fzf-vim') end },
   'kylechui/nvim-surround',
-  { "lukas-reineke/indent-blankline.nvim", ft = { "c", "cpp", "python", "go"} },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+    ft = { "c", "cpp", "python", "go"},
+  },
   'matze/vim-move',
   {
     'nvim-lualine/lualine.nvim',

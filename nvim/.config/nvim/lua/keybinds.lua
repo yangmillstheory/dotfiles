@@ -48,10 +48,10 @@ keymap('n', 'N', 'Nzzzv')
 keymap('n', '}', '}zz')
 keymap('n', '{', '{zz')
 
--- navigating tabs
+-- navigating tabs & buffers
 keymap('n', '<A-t>', ':tab sp<cr>')
-keymap('n', '<A-[>', 'gT')
-keymap('n', '<A-]>', 'gt')
+keymap('n', '<A-[>', ':bprev<cr>')
+keymap('n', '<A-]>', ':bnext<cr>')
 
 -- resizing windows
 keymap('n', '<C-k>', ':resize +2<cr>')
