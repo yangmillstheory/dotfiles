@@ -13,6 +13,9 @@ keymap('n', '<leader>es', ':vsp scrap<cr>')
 -- black hole register
 keymap('n', '""', '"_')
 
+-- run previous command
+keymap('n', '<A-p>', ':lua vim.api.nvim_feedkeys(":<C-p><cr>", "n", true)')
+
 -- redo
 keymap('n', 'U', ':redo<cr>')
 
