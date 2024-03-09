@@ -14,6 +14,25 @@ require("lazy").setup({
     'axkirillov/hbac.nvim',
     config = true,
   },
+  {
+    'cameron-wags/rainbow_csv.nvim',
+    config = true,
+    ft = {
+      'csv',
+      'tsv',
+      'csv_semicolon',
+      'csv_whitespace',
+      'csv_pipe',
+      'rfc_csv',
+      'rfc_semicolon'
+    },
+    cmd = {
+      'RainbowDelim',
+      'RainbowDelimSimple',
+      'RainbowDelimQuoted',
+      'RainbowMultiDelim'
+    }
+  },
   'folke/trouble.nvim',
   {
     'folke/zen-mode.nvim',

@@ -14,6 +14,13 @@ size = 21.0
 normal = { family = "Monofur Nerd Font", style = "Regular" }
 italic = { family = "Monofur Nerd Font", style = "Italic" }
 bold = { family = "Monofur Nerd Font", style = "Bold" }
+# normal = { family = "FantasqueSansM Nerd Font Mono", style = "Regular" }
+# italic = { family = "FantasqueSansM Nerd Font Mono", style = "Italic" }
+# bold = { family = "FantasqueSansM Nerd Font Mono", style = "Bold" }
+# normal = { family = "Hack Nerd Font Mono", style = "Regular" }
+# italic = { family = "Hack Nerd Font Mono", style = "Italic" }
+# bold = { family = "Hack Nerd Font Mono", style = "Bold" }
+
 
 [keyboard]
 bindings = [
@@ -26,8 +33,6 @@ bindings = [
   { action = "Quit", key = "W", mods = "Command" },
   { action = "ScrollHalfPageUp", key = "U", mods = "Command" },
   { action = "ScrollHalfPageDown", key = "D", mods = "Command" },
-  { action = "SelectNextTab", key = "Tab", mods = "Control" },
-  { action = "SelectPreviousTab", key = "Tab", mods = "Control|Shift" },
 ]
 
 [scrolling]
@@ -35,7 +40,7 @@ history = 10000
 multiplier = 3
 
 [window]
-opacity = 0.8
+opacity = 0.9
 blur = true
 decorations = "Full"
 padding = { x = 0, y = 0 }
