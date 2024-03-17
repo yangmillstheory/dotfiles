@@ -14,6 +14,10 @@ function YomitanSimpleTerm(_)
   vim.cmd.normal('"*yy')
 end
 
+function YomitanCleanJisho(_)
+  vim.cmd([[silent! s/;/ |/g]])
+  vim.cmd.normal('"*yy')
+end
 
 vim.api.nvim_create_user_command('YomitanCleanTerm',
   function(_)
@@ -60,4 +64,10 @@ vim.api.nvim_create_user_command('YomitanSimpleTerm',
   YomitanSimpleTerm
 , {
   desc = 'Use only the first definition of a Yomitan-mined term.'
+})
+
+vim.api.nvim_create_user_command('YomitanCleanJisho',
+  YomitanCleanJisho
+, {
+  desc = 'Clean and copy a pasted Jisho definition.'
 })
