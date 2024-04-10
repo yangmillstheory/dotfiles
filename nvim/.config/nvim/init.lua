@@ -11,10 +11,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('jp')
 require('settings')
 require('keybinds')
 require('plugins')
+require('jp')
 
 vim.o.background = 'dark'
 vim.cmd.colorscheme('catppuccin')
