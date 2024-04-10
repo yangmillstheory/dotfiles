@@ -1,5 +1,16 @@
+local keymap = require('utils').keymap
+
 function RmEmptyListItems()
   vim.cmd([[silent! %s/\V<li><span><\/span><\/li>//g]])
+end
+
+function YomitanPrepareWords()
+  vim.cmd([[silent! %s/\V<br>/\&nbsp;-\&nbsp;<br>/g]])
+  vim.cmd.normal('$')
+  -- FIXME: Broken when the last word ends in Kana.
+  vim.cmd.normal('F<')
+  vim.cmd.normal('i&nbsp;-&nbsp;')
+  vim.cmd.normal('"*yy')
 end
 
 -- Keeps only the text of first bullet point in the definition list
@@ -71,3 +82,14 @@ vim.api.nvim_create_user_command('YomitanCleanJisho',
 , {
   desc = 'Clean and copy a pasted Jisho definition.'
 })
+
+vim.api.nvim_create_user_command('YomitanPrepareWords',
+  YomitanPrepareWords
+, {
+  desc = 'Prepare words with Furigana for a Kanji note.'
+})
+
+keymap('n', '<leader>yt', ':YomitanCleanTerm<cr>')
+keymap('n', '<leader>yp', ':YomitanPrepareWords<cr>')
+keymap('n', '<leader>yk', ':YomitanCleanKanji<cr>')
+keymap('n', '<leader>yj', ':YomitanCleanJisho<cr>')
