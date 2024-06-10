@@ -30,6 +30,8 @@ bindings = [
   { action = "Quit", key = "W", mods = "Command" },
   { action = "ScrollHalfPageUp", key = "U", mods = "Command" },
   { action = "ScrollHalfPageDown", key = "D", mods = "Command" },
+  { action = "SelectNextTab", key = "Tab", mods = "Control" },
+  { action = "SelectPreviousTab", key = "Tab", mods = "Control|Shift" },
 ]
 
 [scrolling]
