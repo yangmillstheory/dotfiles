@@ -1,10 +1,29 @@
 local keymap = require('utils').keymap
 
+function YomitanPrepareCommand()
+    vim.cmd.normal('gg')
+    vim.cmd.normal('0')
+    -- Clear the first line.
+    vim.api.nvim_buf_set_lines(0, 0, 1, false, { "" })
+    vim.opt.paste = true
+    vim.api.nvim_put({vim.fn.getreg('+')}, 'l',
+      false,  -- Insert text before cursor position
+      false  -- Leave the cursor in original position
+    )
+    vim.opt.paste = false
+    -- Remove null terminators
+		vim.cmd([[silent! :%s/\%x00//g]])
+    vim.cmd.normal('j')
+    vim.cmd.normal('dd')
+    vim.cmd.normal('k')
+end
+
 function RmEmptyListItems()
   vim.cmd([[silent! %s/\V<li><span><\/span><\/li>//g]])
 end
 
 function YomitanPrepareWords()
+  YomitanPrepareCommand()
   vim.cmd([[silent! %s/\V<br>/\&nbsp;-\&nbsp;<br>/g]])
   vim.cmd.normal('$')
   -- FIXME: Broken when the last word ends in Kana.
@@ -16,6 +35,7 @@ end
 -- Keeps only the text of first bullet point in the definition list
 -- and removes the surround HTML list markup.
 function YomitanSimpleTerm(_)
+  YomitanPrepareCommand()
   -- Alternative implementation: use the macro 0d/<i>/<\/li>d$.
   vim.fn.search('<i>')
   vim.cmd.normal('d0')
@@ -26,12 +46,14 @@ function YomitanSimpleTerm(_)
 end
 
 function YomitanCleanJisho(_)
+  YomitanPrepareCommand()
   vim.cmd([[silent! s/;/ |/g]])
   vim.cmd.normal('"*yy')
 end
 
 vim.api.nvim_create_user_command('YomitanCleanTerm',
   function(_)
+    YomitanPrepareCommand()
     -- Strip out tags like (\d+).
     vim.cmd([[silent! %s/\v\(\d+\)(\&nbsp;)?//g]])
     -- Strip out tags like (\d+, \w+).
@@ -57,6 +79,7 @@ vim.api.nvim_create_user_command('YomitanCleanTerm',
 
 vim.api.nvim_create_user_command('YomitanCleanKanji',
   function(_)
+    YomitanPrepareCommand()
     -- Strip beginning and ending HTML tags.
     vim.cmd.normal('0')
     vim.cmd.normal('3df>')
