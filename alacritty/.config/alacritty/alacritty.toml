@@ -18,7 +18,6 @@ bold = { family = "Monofur Nerd Font", style = "Bold" }
 # italic = { family = "Inconsolata Nerd Font Mono", style = "Italic" }
 # bold = { family = "Inconsolata Nerd Font Mono", style = "Bold" }
 
-
 [keyboard]
 bindings = [
   { action = "Paste", key = "V", mods = "Command" },
@@ -39,7 +38,7 @@ history = 10000
 multiplier = 3
 
 [window]
-opacity = 0.9
+opacity = 0.8
 blur = true
 decorations = "Full"
 padding = { x = 0, y = 0 }

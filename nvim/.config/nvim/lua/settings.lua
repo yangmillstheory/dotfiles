@@ -2,8 +2,8 @@ local o = vim.o
 local g = vim.g
 
 o.showmode = false
-o.cursorcolumn = false
-o.cursorline = false
+o.cursorcolumn = true
+o.cursorline = true
 
 o.confirm = true
 o.hlsearch = false
