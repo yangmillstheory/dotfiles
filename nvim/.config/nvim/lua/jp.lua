@@ -59,6 +59,8 @@ vim.api.nvim_create_user_command('YomitanCleanTerm',
     -- Strip out tags like (\d+, \w+).
     vim.cmd([[silent! %s/\v\(\d+,\s([^)]+)\)/(\1)/g]])
     -- Strip out "forms" list item.
+    -- First normalize all the li by removing useless data attributes.
+    vim.cmd([[silent! %s/\V\sdata-dictionary="JMdict"//g]])
     vim.cmd([[silent! %s/\v\<li\>\<i\>\(forms\)\<\/i\>.+\<\/li\>//g]])
     RmEmptyListItems()
     vim.cmd.normal('0')
