@@ -51,7 +51,7 @@ function YomitanCleanJisho(_)
   vim.cmd.normal('"*yy')
 end
 
-vim.api.nvim_create_user_command('YomitanCleanTerm',
+vim.api.nvim_create_user_command('YomitanCleanDefinition',
   function(_)
     YomitanPrepareCommand()
     -- Strip out tags like (\d+).
@@ -115,7 +115,7 @@ vim.api.nvim_create_user_command('YomitanPrepareWords',
   desc = 'Prepare words with Furigana for a Kanji note.'
 })
 
-keymap('n', '<leader>yt', ':YomitanCleanTerm<cr>')
+keymap('n', '<leader>yd', ':YomitanCleanDefinition<cr>')
 keymap('n', '<leader>yp', ':YomitanPrepareWords<cr>')
 keymap('n', '<leader>yk', ':YomitanCleanKanji<cr>')
 keymap('n', '<leader>yj', ':YomitanCleanJisho<cr>')
