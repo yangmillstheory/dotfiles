@@ -9,7 +9,6 @@ keymap('n', '<leader>ea', ':vsp ~/.config/alacritty/alacritty.toml<cr>')
 keymap('n', '<leader>et', ':vsp ~/.tmux.conf<cr>')
 keymap('n', '<leader>ez', ':vsp ~/.zshrc<cr>')
 keymap('n', '<leader>es', ':vsp scrap<cr>')
-keymap('n', '<leader>eT', ':<C-U>lua vim.cmd.edit(os.date("%Y_%m_%d") .. ".md")<cr>', { silent = true })
 
 -- black hole register
 keymap('n', '""', '"_')
