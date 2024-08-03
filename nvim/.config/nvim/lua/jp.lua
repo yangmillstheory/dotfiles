@@ -81,6 +81,8 @@ vim.api.nvim_create_user_command('YomitanCleanDefinition',
       YomitanSimpleTerm()
       return
     end
+    -- Remove outer div.
+    vim.cmd([[silent! %s/\v\<div\>(.+)\<\/div\>/\1/g]])
     EndCommand(start_pos)
   end
 , {
