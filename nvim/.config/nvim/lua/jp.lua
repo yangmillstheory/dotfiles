@@ -1,21 +1,28 @@
 local keymap = require('utils').keymap
 
-function YomitanPrepareCommand()
-    vim.cmd.normal('gg')
-    vim.cmd.normal('0')
-    -- Clear the first line.
-    vim.api.nvim_buf_set_lines(0, 0, 1, false, { "" })
-    vim.opt.paste = true
-    vim.api.nvim_put({vim.fn.getreg('+')}, 'l',
-      false,  -- Insert text before cursor position
-      false  -- Leave the cursor in original position
-    )
-    vim.opt.paste = false
-    -- Remove null terminators
-		vim.cmd([[silent! :%s/\%x00//g]])
-    vim.cmd.normal('j')
-    vim.cmd.normal('dd')
-    vim.cmd.normal('k')
+function StartCommand()
+  local start_pos = vim.api.nvim_win_get_cursor(0)
+  vim.cmd.normal('gg')
+  vim.cmd.normal('0')
+  -- Clear the first line.
+  vim.api.nvim_buf_set_lines(0, 0, 1, false, { "" })
+  vim.opt.paste = true
+  vim.api.nvim_put({vim.fn.getreg('+')}, 'l',
+    false,  -- Insert text before cursor position
+    false  -- Leave the cursor in original position
+  )
+  vim.opt.paste = false
+  -- Remove null terminators
+  vim.cmd([[silent! :%s/\%x00//g]])
+  vim.cmd.normal('j')
+  vim.cmd.normal('dd')
+  vim.cmd.normal('k')
+  return start_pos
+end
+
+function EndCommand(start_pos)
+  vim.cmd.normal('"*yy')
+  vim.api.nvim_win_set_cursor(0, start_pos)
 end
 
 function RmEmptyListItems()
@@ -23,37 +30,37 @@ function RmEmptyListItems()
 end
 
 function YomitanPrepareWords()
-  YomitanPrepareCommand()
+  local start_pos = StartCommand()
   vim.cmd([[silent! %s/\V<br>/\&nbsp;-\&nbsp;<br>/g]])
   vim.cmd.normal('$')
   -- FIXME: Broken when the last word ends in Kana.
   vim.cmd.normal('F<')
   vim.cmd.normal('i&nbsp;-&nbsp;')
-  vim.cmd.normal('"*yy')
+  EndCommand(start_pos)
 end
 
 -- Keeps only the text of first bullet point in the definition list
 -- and removes the surround HTML list markup.
 function YomitanSimpleTerm(_)
-  YomitanPrepareCommand()
+  local start_pos = StartCommand()
   -- Alternative implementation: use the macro 0d/<i>/<\/li>d$.
   vim.fn.search('<i>')
   vim.cmd.normal('d0')
   -- NB: This won't work if the first term contains nested <li> tags.
   vim.fn.search('<\\/li>')
   vim.cmd.normal('d$')
-  vim.cmd.normal('"*yy')
+  EndCommand(start_pos)
 end
 
 function YomitanCleanJisho(_)
-  YomitanPrepareCommand()
+  local start_pos = StartCommand()
   vim.cmd([[silent! s/;/ |/g]])
-  vim.cmd.normal('"*yy')
+  EndCommand(start_pos)
 end
 
 vim.api.nvim_create_user_command('YomitanCleanDefinition',
   function(_)
-    YomitanPrepareCommand()
+    local start_pos = StartCommand()
     -- Strip out tags like (\d+).
     vim.cmd([[silent! %s/\v\(\d+\)(\&nbsp;)?//g]])
     -- Strip out tags like (\d+, \w+).
@@ -61,6 +68,7 @@ vim.api.nvim_create_user_command('YomitanCleanDefinition',
     -- Strip out "forms" list item.
     -- First normalize all the li by removing useless data attributes.
     vim.cmd([[silent! %s/\V\sdata-dictionary="JMdict"//g]])
+    vim.cmd([[silent! %s/\V\sstyle="text-align: left;"//g]])
     vim.cmd([[silent! %s/\V\sclass="yomitan-glossary"//g]])
     vim.cmd([[silent! %s/\v\<li\>\<i\>\(forms\)\<\/i\>.+\<\/li\>//g]])
     RmEmptyListItems()
@@ -73,7 +81,7 @@ vim.api.nvim_create_user_command('YomitanCleanDefinition',
       YomitanSimpleTerm()
       return
     end
-    vim.cmd.normal('"*yy')
+    EndCommand(start_pos)
   end
 , {
   desc = 'Remove redundant numerical meaning tags like (1), (2), from mined Yomitan HTML definitions.'
@@ -82,7 +90,7 @@ vim.api.nvim_create_user_command('YomitanCleanDefinition',
 
 vim.api.nvim_create_user_command('YomitanCleanKanji',
   function(_)
-    YomitanPrepareCommand()
+    local start_pos = StartCommand()
     -- Strip beginning and ending HTML tags.
     vim.cmd.normal('0')
     vim.cmd.normal('3df>')
@@ -91,7 +99,7 @@ vim.api.nvim_create_user_command('YomitanCleanKanji',
     -- Replace interior </li><li> (etc) tags with |.
     vim.cmd([[silent! %s/\v(\<\/?[oli]{2}\>){2}/ | /g]])
     RmEmptyListItems()
-    vim.cmd.normal('"*yy')
+    EndCommand(start_pos)
   end
 , {
   desc = 'Make Yomitan-mined Kanji not be HTML lists, but plain text separated by |.'
