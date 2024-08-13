@@ -61,6 +61,10 @@ require("lazy").setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
   'rebelot/kanagawa.nvim',
+  {
+    'r-cha/encourage.nvim',
+    config = true
+  },
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   'tmux-plugins/vim-tmux',
   'tpope/vim-commentary',
