@@ -100,6 +100,8 @@ vim.api.nvim_create_user_command('YomitanCleanKanji',
     vim.cmd.normal('3dF<x')
     -- Replace interior </li><li> (etc) tags with |.
     vim.cmd([[silent! %s/\v(\<\/?[oli]{2}\>){2}/ | /g]])
+    -- Special case: there's only one definition.
+    vim.cmd([[silent! %s/\v^\<[^>]+\>(\w+)\<\/\w+\>$/\1/g]])
     RmEmptyListItems()
     EndCommand(start_pos)
   end
