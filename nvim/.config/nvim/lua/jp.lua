@@ -131,8 +131,8 @@ vim.api.nvim_create_user_command('YomitanPrepareWords',
 vim.api.nvim_create_user_command('LookupKanji',
   function (opts)
     local kanji = opts.args
-    local codepoint = utf8.codepoint(kanji)
-    if (codepoint < 0x4E00 or codepoint > 0x9FFF) and (codepoint < 0x3400 or codepoint > 0x4DBF) then
+    local cp = utf8.codepoint(kanji)
+    if (cp < 0x4E00 or cp > 0x9FFF) and (cp < 0x3400 or cp > 0x4DBF) then
       print(string.format('%s is not a valid Japanese Kanji.', kanji))
       return
     end
