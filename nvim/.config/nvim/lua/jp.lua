@@ -155,7 +155,7 @@ vim.api.nvim_create_user_command('LookupKanji',
   }
 )
 
-keymap('n', '<leader>kl', ':LookupKanji <c-r><c-w><cr>')
+keymap('n', '<leader>kk', ':LookupKanji <c-r><c-w><cr>')
 keymap('n', '<leader>yd', ':YomitanCleanDefinition<cr>')
 keymap('n', '<leader>yp', ':YomitanPrepareWords<cr>')
 keymap('n', '<leader>yk', ':YomitanCleanKanji<cr>')
