@@ -1,4 +1,5 @@
 local keymap = require('utils').keymap
+local utf8 = require('utf8')
 
 function StartCommand()
   local start_pos = vim.api.nvim_win_get_cursor(0)
@@ -127,6 +128,34 @@ vim.api.nvim_create_user_command('YomitanPrepareWords',
   desc = 'Prepare words with Furigana for a Kanji note.'
 })
 
+vim.api.nvim_create_user_command('LookupKanji',
+  function (opts)
+    local kanji = opts.args
+    local codepoint = utf8.codepoint(kanji)
+    if (codepoint < 0x4E00 or codepoint > 0x9FFF) and (codepoint < 0x3400 or codepoint > 0x4DBF) then
+      print(string.format('%s is not a valid Japanese Kanji.', kanji))
+      return
+    end
+    local urls = {
+      "https://www.immersionkit.com/dictionary?keyword=%s&exact=true&sort=shortness&category=drama#",
+      "https://kanji.koohii.com/study/kanji/%s",
+      "https://jisho.org/search/*%s*",
+    }
+    for _, url in ipairs(urls) do
+      vim.loop.spawn(
+        "open",
+        { args = { string.format(url, kanji) } },
+        function() end
+      )
+    end
+  end,
+  {
+    desc = 'Open relevant Kanji webpages to start Anki card creation process.',
+    nargs = 1,
+  }
+)
+
+keymap('n', '<leader>kl', ':LookupKanji <c-r><c-w><cr>')
 keymap('n', '<leader>yd', ':YomitanCleanDefinition<cr>')
 keymap('n', '<leader>yp', ':YomitanPrepareWords<cr>')
 keymap('n', '<leader>yk', ':YomitanCleanKanji<cr>')
