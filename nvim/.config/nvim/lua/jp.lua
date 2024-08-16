@@ -137,7 +137,7 @@ vim.api.nvim_create_user_command('LookupKanji',
       return
     end
     local urls = {
-      "https://www.immersionkit.com/dictionary?keyword=%s&exact=true&sort=shortness&category=drama#",
+      "https://www.immersionkit.com/dictionary?keyword=%s&sort=shortness&category=drama#",
       "https://kanji.koohii.com/study/kanji/%s",
       "https://jisho.org/search/*%s*",
     }
