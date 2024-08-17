@@ -17,7 +17,6 @@ o.number = true
 o.cmdheight = 1
 
 o.wildignore = table.concat({'*.o', '*.a', '*.obj', '__pycache__'}, ',')
-o.termguicolors = true
 
 o.shiftwidth = 2
 o.tabstop = 2

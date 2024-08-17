@@ -2,7 +2,7 @@ require("lazy").setup({
   defaults = {
     lazy = true
   },
-  { 'akinsho/bufferline.nvim', version = "v3.*", dependencies = 'nvim-tree/nvim-web-devicons' },
+  { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
   {
     'christoomey/vim-tmux-navigator',
     init = function()
@@ -67,7 +67,6 @@ require("lazy").setup({
   },
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   'tmux-plugins/vim-tmux',
-  'tpope/vim-commentary',
   'tpope/vim-obsession',
   'windwp/nvim-autopairs',
   'yangmillstheory/vim-snipe',
@@ -87,4 +86,5 @@ require("lazy").setup({
   'hrsh7th/nvim-cmp',
   'neovim/nvim-lspconfig',
   'onsails/lspkind.nvim',
+  { 'OXY2DEV/markview.nvim', lazy = false },
 })

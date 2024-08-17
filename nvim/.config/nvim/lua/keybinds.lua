@@ -24,8 +24,8 @@ keymap('n', '<cr><cr>', ':')
 keymap('v', '<cr><cr>', ':')
 
 -- yank into the system clipboard
-keymap('n', '<A-y>', '"*y')
-keymap('v', '<A-y>', '"*y')
+keymap('n', '<A-y>', '"+y')
+keymap('v', '<A-y>', '"+y')
 
 -- folding & unfolding
 keymap('n', '<A-z>', 'za')
