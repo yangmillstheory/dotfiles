@@ -6,7 +6,7 @@ markview.setup({
   list_items = {
     enable = true,
     shift_width = 2,
-    indent_size = 0,
+    indent_size = 2,
   }
 });
 

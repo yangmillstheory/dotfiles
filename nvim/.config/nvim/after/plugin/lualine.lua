@@ -13,7 +13,7 @@ end
 
 local lualine = require('lualine')
 lualine.setup({
-  options = { theme = 'gruvbox' },
+  options = { theme = 'auto' },
   sections = {
     lualine_b = {
       function ()
