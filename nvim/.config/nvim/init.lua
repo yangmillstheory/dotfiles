@@ -17,7 +17,7 @@ require('plugins')
 require('jp')
 
 vim.o.background = 'dark'
-vim.cmd.colorscheme('catppuccin')
+vim.cmd.colorscheme('gruvbox')
 
 require('autocmd')
 require('lsp')

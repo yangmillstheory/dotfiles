@@ -12,6 +12,7 @@
   "encourage.nvim": { "branch": "main", "commit": "acca5a06dece315d2944d7a1ce07ffecc1901a83" },
   "fzf": { "branch": "master", "commit": "5cce17e80a326680b503a51aadcf570cc089ea5c" },
   "fzf.vim": { "branch": "master", "commit": "6f28c8c7bb551161a0315a76488522204f39c1f4" },
+  "gruvbox.nvim": { "branch": "main", "commit": "7a1b23e4edf73a39642e77508ee6b9cbb8c60f9e" },
   "hbac.nvim": { "branch": "main", "commit": "30dcd055611f6ba6ec37aa2a1c038e211521bd39" },
   "indent-blankline.nvim": { "branch": "master", "commit": "dddb5d21811c319eb6e51a993d8fb44b193aae3f" },
   "kanagawa.nvim": { "branch": "master", "commit": "e5f7b8a804360f0a48e40d0083a97193ee4fcc87" },

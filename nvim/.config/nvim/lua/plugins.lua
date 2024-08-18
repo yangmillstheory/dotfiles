@@ -62,7 +62,7 @@ require("lazy").setup({
   'uga-rosa/cmp-dictionary',
   'uga-rosa/utf8.nvim',
   'RRethy/vim-illuminate',
-
+  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-cmdline',
   'hrsh7th/cmp-nvim-lsp',
