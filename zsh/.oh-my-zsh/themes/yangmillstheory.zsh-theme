@@ -10,11 +10,6 @@ reset-prompt-and-accept-line() {
     RPS1='$(vi_mode_prompt_info)'
 }
 
-short_path() {
-  DIR="${PWD/#$HOME/~}"
-  print -r -- "$(echo -n $DIR | perl -pe 's/(\w)[^\/]+\//\1\//g')"
-}
-
 zle -N reset-prompt-and-accept-line
 bindkey '^m' reset-prompt-and-accept-line
 
@@ -22,7 +17,7 @@ bindkey '^m' reset-prompt-and-accept-line
 setopt prompt_subst
 local upper_arrow="%(?:%{$fg[green]%}┌─ :%{$fg[red]%}┌─ )%{$reset_color%}"
 local lower_arrow="%(?:%{$fg[green]%}└─➤ :%{$fg[red]%}└%?─➤ )%{$reset_color%} "
-PROMPT="$upper_arrow"'%{$fg_bold[yellow]%}[$(short_path)] $(git_prompt_info)'$'\n'"$lower_arrow"
+PROMPT="$upper_arrow"'%{$fg_bold[yellow]%}[$(shortpath)] $(git_prompt_info)'$'\n'"$lower_arrow"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "

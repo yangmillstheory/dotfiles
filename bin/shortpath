@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+DIR="${PWD/#$HOME/~}"
+print -r -- "$(echo -n $DIR | perl -pe 's/(\w)[^\/]+\//\1\//g')"
