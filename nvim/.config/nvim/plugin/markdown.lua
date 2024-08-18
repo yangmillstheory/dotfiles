@@ -73,3 +73,5 @@ vim.cmd([[
     autocmd VimEnter diary.md :ZenMode
   augroup END
 ]])
+
+vim.api.nvim_set_hl(0, "ZenBg", { ctermbg = 0 })
