@@ -74,4 +74,11 @@ vim.cmd([[
   augroup END
 ]])
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.cursorcolumn = false
+  end,
+})
+
 vim.api.nvim_set_hl(0, "ZenBg", { ctermbg = 0 })
