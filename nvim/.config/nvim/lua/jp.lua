@@ -148,7 +148,8 @@ vim.api.nvim_create_user_command('LookupKanji',
         { args = url },
         function(code, signal)
           if code ~= 0 then
-            print(string.format('Opening URL %s exited with code: %d and signal %d', url, code, signal))
+            print(string.format('Opening URL %s exited with code: %d and signal %d',
+              url, code, signal))
           end
         end
       )
