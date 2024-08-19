@@ -147,10 +147,11 @@ vim.api.nvim_create_user_command('LookupKanji',
         "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
         { args = url },
         function(code, signal)
-          if code ~= 0 then
-            print(string.format('Opening URL %s exited with code: %d and signal %d',
-              url, code, signal))
+          if code == 0 then
+            return
           end
+          print(string.format('Opening URL %s exited with code: %d and signal %d',
+            url, code, signal))
         end
       )
     end
