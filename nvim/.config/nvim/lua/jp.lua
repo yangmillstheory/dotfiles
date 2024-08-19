@@ -136,16 +136,21 @@ vim.api.nvim_create_user_command('LookupKanji',
       print(string.format('%s is not a valid Japanese Kanji.', kanji))
       return
     end
-    local urls = {
+    local url_templates = {
       "https://www.immersionkit.com/dictionary?keyword=%s&sort=shortness&category=drama#",
       "https://kanji.koohii.com/study/kanji/%s",
       "https://jisho.org/search/*%s*",
     }
-    for _, url in ipairs(urls) do
+    for _, url_template in ipairs(url_templates) do
+      local url = { string.format(url_template, kanji) }
       vim.loop.spawn(
-        "open",
-        { args = { string.format(url, kanji) } },
-        function() end
+        "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
+        { args = url },
+        function(code, signal)
+          if code ~= 0 then
+            print(string.format('Opening URL %s exited with code: %d and signal %d', url, code, signal))
+          end
+        end
       )
     end
   end,
