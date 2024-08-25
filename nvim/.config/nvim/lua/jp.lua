@@ -129,7 +129,6 @@ vim.api.nvim_create_user_command('YomitanPrepareWords',
 })
 
 local function _lookup(url_templates, query)
-  print('d')
   for _, url_template in ipairs(url_templates) do
     local url = { string.format(url_template, query) }
     vim.loop.spawn(
@@ -199,7 +198,6 @@ vim.api.nvim_create_user_command('LookupTerm',
         return
       end
     end
-    print('d')
     _lookup({
       "https://www.immersionkit.com/dictionary?keyword=%s&sort=shortness&category=drama#",
       -- Ask for audio on the off-chance that it exists.
