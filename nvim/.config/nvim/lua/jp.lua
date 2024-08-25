@@ -140,6 +140,10 @@ vim.api.nvim_create_user_command('LookupKanji',
       "https://www.immersionkit.com/dictionary?keyword=%s&sort=shortness&category=drama#",
       "https://kanji.koohii.com/study/kanji/%s",
       "https://jisho.org/search/*%s*",
+      -- Ask for audio on the off-chance that it exists.
+      "https://tatoeba.org/en/sentences/search?from=jpn&has_audio=yes&query=%s&sort=relevance&to=eng&trans_to=eng",
+      -- No audio required.
+      "https://tatoeba.org/en/sentences/search?from=jpn&query=%s&sort=relevance&to=eng&trans_to=eng",
     }
     for _, url_template in ipairs(url_templates) do
       local url = { string.format(url_template, kanji) }
