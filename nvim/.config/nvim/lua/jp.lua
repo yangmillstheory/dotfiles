@@ -119,7 +119,7 @@ vim.api.nvim_create_user_command('YomitanSimpleTerm',
 vim.api.nvim_create_user_command('YomitanCleanJisho',
   YomitanCleanJisho
 , {
-  desc = 'Clean and copy a pasted Jisho definition.'
+  desc = 'Clean and a copy-pasted Jisho definition.'
 })
 
 vim.api.nvim_create_user_command('YomitanPrepareWords',
@@ -190,7 +190,7 @@ vim.api.nvim_create_user_command('LookupTerm',
     for _, cp in utf8.codes(term) do
       -- NB: Using https://github.com/uga-rosa/utf8.nvim/blob/954cbbadabe5cd19f202e918fec191d64eea7766/lua/utf8.lua#L158
       -- Don't be misled by https://www.lua.org/manual/5.4/manual.html#pdf-utf8.codes. This API doesn't exist in the current
-      -- Lua runtime, which is Lua 5.1. `cp` is actually a string, not an integer, despite any LSP warnings.
+      -- Neovim 0.10.1 Lua runtime, which is Lua 5.1. `cp` is actually a string, not an integer, despite any LSP warnings.
       if not _is_jp_char(utf8.codepoint(cp)) then
         print(
           string.format('%s is not a valid Japanese Kanji because of %s.',
