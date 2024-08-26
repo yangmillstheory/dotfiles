@@ -213,10 +213,38 @@ vim.api.nvim_create_user_command('LookupTerm',
   }
 )
 
+vim.api.nvim_create_user_command('NewTcjEntry',
+  function ()
+    local date = os.date("%Y_%m_%d")
+    vim.cmd.edit("~/diary/tcj/" .. date  .. ".md")
+    local buf = vim.api.nvim_get_current_buf()
+    local line_count = vim.api.nvim_buf_line_count(buf)
+    if line_count ~= 0 then
+      print(string.format('Found entry for %s; already has %s lines',
+        date, line_count))
+      return
+    end
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, {
+      "# ノート",
+      "",
+      "# 宿題",
+      "",
+      "## 漢字",
+      "",
+      "## 語彙",
+      "",
+    })
+  end,
+  {
+    desc = "Open a new entry of notes for TCJ. Does nothing if the entry already exists.",
+    nargs = 0,
+  }
+)
+
 keymap('n', '<leader>lk', ':LookupKanji <c-r><c-w><cr>')
 keymap('n', '<leader>lt', ':LookupTerm<cr>')
 keymap('n', '<leader>yd', ':YomitanCleanDefinition<cr>')
 keymap('n', '<leader>yp', ':YomitanPrepareWords<cr>')
 keymap('n', '<leader>yk', ':YomitanCleanKanji<cr>')
 keymap('n', '<leader>yj', ':YomitanCleanJisho<cr>')
-keymap('n', '<leader>jd', ':<C-U>lua vim.cmd.edit("~/diary/tcj/" .. os.date("%Y_%m_%d") .. ".md")<cr>', { silent = true })
+keymap('n', '<leader>jd', ':NewTcjEntry<cr>', { silent = true })
