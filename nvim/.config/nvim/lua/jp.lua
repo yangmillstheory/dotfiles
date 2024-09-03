@@ -185,8 +185,8 @@ vim.api.nvim_create_user_command('LookupKanji',
 )
 
 vim.api.nvim_create_user_command('LookupTerm',
-  function ()
-    local term = vim.fn.expand('<cWORD>')
+  function (opts)
+    local term = opts.args
     for _, cp in utf8.codes(term) do
       -- NB: Using https://github.com/uga-rosa/utf8.nvim/blob/954cbbadabe5cd19f202e918fec191d64eea7766/lua/utf8.lua#L158
       -- Don't be misled by https://www.lua.org/manual/5.4/manual.html#pdf-utf8.codes. This API doesn't exist in the current
@@ -209,7 +209,7 @@ vim.api.nvim_create_user_command('LookupTerm',
   end,
   {
     desc = 'Open relevant webpages to start Anki Term card creation process.',
-    nargs = 0,
+    nargs = 1,
   }
 )
 
@@ -250,8 +250,8 @@ vim.api.nvim_create_user_command('NewTcjEntry',
   }
 )
 
-keymap('n', '<leader>lk', ':LookupKanji <c-r><c-w><cr>')
-keymap('n', '<leader>lt', ':LookupTerm<cr>')
+keymap('n', '<leader>lk', ':LookupKanji <c-r><c-a><cr>')
+keymap('n', '<leader>lt', ':LookupTerm <c-r><c-a><cr>')
 keymap('n', '<leader>yd', ':YomitanCleanDefinition<cr>')
 keymap('n', '<leader>yp', ':YomitanPrepareWords<cr>')
 keymap('n', '<leader>yk', ':YomitanCleanKanji<cr>')
