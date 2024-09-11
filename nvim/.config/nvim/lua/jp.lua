@@ -71,6 +71,7 @@ vim.api.nvim_create_user_command('YomitanCleanDefinition',
     vim.cmd([[silent! %s/\V\sdata-dictionary="JMdict"//g]])
     vim.cmd([[silent! %s/\V\sstyle="text-align: left;"//g]])
     vim.cmd([[silent! %s/\V\sclass="yomitan-glossary"//g]])
+    vim.cmd([[silent! %s/\v,\sJMdict\s\(English\)//g]])
     vim.cmd([[silent! %s/\v\<li\>\<i\>\(forms\)\<\/i\>.+\<\/li\>//g]])
     RmEmptyListItems()
     vim.cmd.normal('0')
