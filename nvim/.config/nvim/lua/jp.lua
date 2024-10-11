@@ -201,6 +201,7 @@ vim.api.nvim_create_user_command('LookupTerm',
       end
     end
     _lookup({
+      "https://jisho.org/search/%s",
       "https://www.immersionkit.com/dictionary?keyword=%s&sort=shortness&category=drama#",
       -- Ask for audio on the off-chance that it exists.
       "https://tatoeba.org/en/sentences/search?from=jpn&has_audio=yes&query=%s&sort=relevance&to=eng&trans_to=eng",
