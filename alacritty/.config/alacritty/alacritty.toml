@@ -10,6 +10,7 @@ style = { shape = "Block", blinking = "Always" }
 unfocused_hollow = true
 
 [font]
+offset = {y = -5}
 size = 21.0
 normal = { family = "Monofur Nerd Font", style = "Regular" }
 italic = { family = "Monofur Nerd Font", style = "Italic" }
