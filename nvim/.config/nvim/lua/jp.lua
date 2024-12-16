@@ -170,7 +170,6 @@ vim.api.nvim_create_user_command('LookupKanji',
       return
     end
     _lookup({
-      "https://www.immersionkit.com/dictionary?keyword=%s&sort=shortness&category=drama#",
       "https://kanji.koohii.com/study/kanji/%s",
       "https://jisho.org/search/*%s*",
       -- Ask for audio on the off-chance that it exists.
@@ -203,7 +202,6 @@ vim.api.nvim_create_user_command('LookupTerm',
     _lookup({
       "https://jisho.org/search/%s",
       "https://forvo.com/word/%s/#ja",
-      "https://www.immersionkit.com/dictionary?keyword=%s&sort=shortness&category=drama#",
       -- Ask for audio on the off-chance that it exists.
       "https://tatoeba.org/en/sentences/search?from=jpn&has_audio=yes&query=%s&sort=relevance&to=eng&trans_to=eng",
       -- No audio required.
