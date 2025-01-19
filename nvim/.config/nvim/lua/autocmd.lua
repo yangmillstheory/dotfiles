@@ -7,3 +7,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.fn.winrestview(view)
   end,
 })
+
+local group = vim.api.nvim_create_augroup("Black", { clear = true })
+vim.api.nvim_create_autocmd("bufWritePost", {
+  pattern = "*.py",
+  -- $ brew install black
+  command = "silent !black -l 80 --unstable %",
+  group = group
+})

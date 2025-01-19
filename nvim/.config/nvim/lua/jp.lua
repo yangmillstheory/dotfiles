@@ -66,13 +66,13 @@ vim.api.nvim_create_user_command('YomitanCleanDefinition',
     vim.cmd([[silent! %s/\v\(\d+\)(\&nbsp;)?//g]])
     -- Strip out tags like (\d+, \w+).
     vim.cmd([[silent! %s/\v\(\d+,\s([^)]+)\)/(\1)/g]])
-    -- Strip out "forms" list item.
     -- First normalize all the li by removing useless data attributes.
     vim.cmd([[silent! %s/\V\sdata-dictionary="JMdict"//g]])
     vim.cmd([[silent! %s/\V\sstyle="text-align: left;"//g]])
     vim.cmd([[silent! %s/\V\sclass="yomitan-glossary"//g]])
     vim.cmd([[silent! %s/\v,\sJMdict\s\(English\)//g]])
-    vim.cmd([[silent! %s/\v\<li\>\<i\>\(forms\)\<\/i\>.+\<\/li\>//g]])
+    -- Strip out "forms" list item.
+    vim.cmd([[silent! %s/\v\<li\>\<i\>\(forms\)\<\/i\>.+\<table.+\<\/li\>//g]])
     RmEmptyListItems()
     vim.cmd.normal('0')
     -- Check if there's just one <li> remaining.
