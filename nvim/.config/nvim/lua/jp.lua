@@ -103,7 +103,7 @@ vim.api.nvim_create_user_command('YomitanCleanKanji',
     -- Replace interior </li><li> (etc) tags with |.
     vim.cmd([[silent! %s/\v(\<\/?[oli]{2}\>){2}/ | /g]])
     -- Special case: there's only one definition.
-    vim.cmd([[silent! %s/<[^>]\+>\(.*\)<\/[^>]\+>/\1/]])
+    vim.cmd([[silent! %s/<[^>]\+>\(.*\)<\/[^>]\+>/\1/%s/\v^\<[^>]+\>(\w+)\<\/\w+\>$/\1/g]])
     RmEmptyListItems()
     EndCommand(start_pos)
   end
@@ -172,10 +172,10 @@ vim.api.nvim_create_user_command('LookupKanji',
     _lookup({
       "https://kanji.koohii.com/study/kanji/%s",
       "https://jisho.org/search/*%s*",
-      -- Ask for audio on the off-chance that it exists.
-      "https://tatoeba.org/en/sentences/search?from=jpn&has_audio=yes&query=%s&sort=relevance&to=eng&trans_to=eng",
-      -- No audio required.
-      "https://tatoeba.org/en/sentences/search?from=jpn&query=%s&sort=relevance&to=eng&trans_to=eng",
+      -- -- Ask for audio on the off-chance that it exists.
+      -- "https://tatoeba.org/en/sentences/search?from=jpn&has_audio=yes&query=%s&sort=relevance&to=eng&trans_to=eng",
+      -- -- No audio required.
+      -- "https://tatoeba.org/en/sentences/search?from=jpn&query=%s&sort=relevance&to=eng&trans_to=eng",
     }, kanji)
   end,
   {
