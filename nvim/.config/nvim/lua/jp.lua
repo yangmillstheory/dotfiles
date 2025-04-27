@@ -241,6 +241,7 @@ keymap('v', '<leader>lk', function()
     table.insert(kanji_lookups, string.format("https://kanji.koohii.com/study/kanji/%s", k))
   end
   _lookup(jisho_lookups, '')
+  -- Hack to get tabs of different websites to open separately.
   vim.defer_fn(function() _lookup(kanji_lookups, '') end, 1000)
 
 end, { silent = true })
