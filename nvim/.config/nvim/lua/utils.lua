@@ -6,7 +6,7 @@ function module.keymap(mode, lhs, rhs, options)
   if options then
     o = vim.tbl_extend('force', o, options)
   end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, o)
+  vim.keymap.set(mode, lhs, rhs, o)
 end
 
 return module

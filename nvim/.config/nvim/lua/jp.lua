@@ -161,22 +161,23 @@ local function _is_jp_char(codepoint)
     (codepoint >= 0x30A0 and codepoint <= 0x30FF)       -- Katakana
 end
 
+local function LookupKanji(kanji)
+  if not _is_jp_char(utf8.codepoint(kanji)) then
+    print(string.format('%s is not a valid Japanese Kanji.', kanji))
+    return
+  end
+  _lookup({
+    "https://kanji.koohii.com/study/kanji/%s",
+    "https://jisho.org/search/*%s*",
+    -- -- Ask for audio on the off-chance that it exists.
+    -- "https://tatoeba.org/en/sentences/search?from=jpn&has_audio=yes&query=%s&sort=relevance&to=eng&trans_to=eng",
+    -- -- No audio required.
+    -- "https://tatoeba.org/en/sentences/search?from=jpn&query=%s&sort=relevance&to=eng&trans_to=eng",
+  }, kanji)
+end
 
-vim.api.nvim_create_user_command('LookupKanji',
-  function (opts)
-    local kanji = opts.args
-    if not _is_jp_char(utf8.codepoint(kanji)) then
-      print(string.format('%s is not a valid Japanese Kanji.', kanji))
-      return
-    end
-    _lookup({
-      "https://kanji.koohii.com/study/kanji/%s",
-      "https://jisho.org/search/*%s*",
-      -- -- Ask for audio on the off-chance that it exists.
-      -- "https://tatoeba.org/en/sentences/search?from=jpn&has_audio=yes&query=%s&sort=relevance&to=eng&trans_to=eng",
-      -- -- No audio required.
-      -- "https://tatoeba.org/en/sentences/search?from=jpn&query=%s&sort=relevance&to=eng&trans_to=eng",
-    }, kanji)
+vim.api.nvim_create_user_command('LookupKanji', function(opts)
+    LookupKanji(opts.args)
   end,
   {
     desc = 'Open relevant webpages to start Anki Kanji card creation process.',
@@ -214,47 +215,28 @@ vim.api.nvim_create_user_command('LookupTerm',
   }
 )
 
-vim.api.nvim_create_user_command('NewTcjEntry',
-  function ()
-    local date = os.date("%Y_%m_%d")
-    vim.cmd.edit("~/diary/tcj/" .. date  .. ".md")
-    local buf = vim.api.nvim_get_current_buf()
-    local pos = vim.api.nvim_win_get_cursor(0)
-    -- Search for the first non-whitespace character in the buffer
-    local hit = vim.fn.search("\\S", "n", buf)
-    vim.api.nvim_win_set_cursor(0, pos)
-    if hit ~= 0 then
-      print(string.format('Found entry for %s; has non-whitespace on line %d',
-        date, hit))
-      return
-    end
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, {
-      "# ノート",
-      "",
-      "## 文法",
-      "",
-      "## 聴解",
-      "",
-      "## 読解",
-      "",
-      "# 宿題",
-      "",
-      "## 漢字",
-      "",
-      "## 語彙",
-      "",
-    })
-  end,
-  {
-    desc = "Open a new entry of notes for TCJ. Does nothing if the entry already exists.",
-    nargs = 0,
-  }
-)
+keymap('v', '<leader>lk', function()
+  local start_line = vim.fn.line("'<")
+  local end_line = vim.fn.line("'>")
+  local kanji = {}
 
-keymap('n', '<leader>lk', ':LookupKanji <c-r><c-a><cr>')
+  for line = start_line, end_line do
+    local text = vim.fn.getline(line)
+    text = text:gsub('%s+$', '')
+    local last_word = text:match("(%S+)%s*$")
+    if last_word then
+      table.insert(kanji, last_word)
+    end
+  end
+
+  print(string.format('Looking up Kanji: %s', vim.inspect(kanji)))
+
+  for _, k in ipairs(kanji) do
+    LookupKanji(k)
+  end
+end, { silent = true })
 keymap('n', '<leader>lt', ':LookupTerm <c-r><c-a><cr>')
 keymap('n', '<leader>yd', ':YomitanCleanDefinition<cr>')
 keymap('n', '<leader>yp', ':YomitanPrepareWords<cr>')
 keymap('n', '<leader>yk', ':YomitanCleanKanji<cr>')
 keymap('n', '<leader>yj', ':YomitanCleanJisho<cr>')
-keymap('n', '<leader>jd', ':NewTcjEntry<cr>', { silent = true })
