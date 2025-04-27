@@ -218,22 +218,31 @@ vim.api.nvim_create_user_command('LookupTerm',
 keymap('v', '<leader>lk', function()
   local start_line = vim.fn.line("'<")
   local end_line = vim.fn.line("'>")
-  local kanji = {}
+  local kanjis = {}
 
   for line = start_line, end_line do
+    ::continue::
     local text = vim.fn.getline(line)
     text = text:gsub('%s+$', '')
-    local last_word = text:match("(%S+)%s*$")
-    if last_word then
-      table.insert(kanji, last_word)
+    local kanji = text:match("(%S+)%s*$")
+    if not _is_jp_char(utf8.codepoint(kanji)) then
+      print(string.format('%s is not a valid Japanese Kanji.', kanji))
+      goto continue
     end
+    table.insert(kanjis, kanji)
   end
 
-  print(string.format('Looking up Kanji: %s', vim.inspect(kanji)))
+  print(string.format('Looking up Kanji: %s', vim.inspect(kanjis)))
 
-  for _, k in ipairs(kanji) do
-    LookupKanji(k)
+  local jisho_lookups = {}
+  local kanji_lookups = {}
+  for _, k in ipairs(kanjis) do
+    table.insert(jisho_lookups, string.format("https://jisho.org/search/*%s*", k))
+    table.insert(kanji_lookups, string.format("https://kanji.koohii.com/study/kanji/%s", k))
   end
+  _lookup(jisho_lookups, '')
+  vim.defer_fn(function() _lookup(kanji_lookups, '') end, 1000)
+
 end, { silent = true })
 keymap('n', '<leader>lt', ':LookupTerm <c-r><c-a><cr>')
 keymap('n', '<leader>yd', ':YomitanCleanDefinition<cr>')
