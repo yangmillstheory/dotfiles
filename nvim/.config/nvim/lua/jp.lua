@@ -129,7 +129,8 @@ vim.api.nvim_create_user_command('YomitanPrepareWords',
   desc = 'Prepare words with Furigana for a Kanji note.'
 })
 
-local function _lookup(url_templates, query)
+local function _lookup(url_templates, query, sleep)
+  sleep = sleep or 0
   for _, url_template in ipairs(url_templates) do
     local url = { string.format(url_template, query) }
     vim.loop.spawn(
@@ -143,6 +144,9 @@ local function _lookup(url_templates, query)
           url, code, signal))
       end
     )
+    if sleep then
+      vim.loop.sleep(sleep)  -- Time in milliseconds (2000 ms = 2 seconds)
+    end
   end
 end
 
@@ -242,7 +246,7 @@ keymap('v', '<leader>lk', function()
   end
   _lookup(jisho_lookups, '')
   -- Hack to get tabs of different websites to open separately.
-  vim.defer_fn(function() _lookup(kanji_lookups, '') end, 1000)
+  vim.defer_fn(function() _lookup(kanji_lookups, '', 1000) end, 1000)
 
 end, { silent = true })
 keymap('n', '<leader>lt', ':LookupTerm <c-r><c-a><cr>')
