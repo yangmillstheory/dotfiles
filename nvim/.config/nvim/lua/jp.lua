@@ -144,8 +144,9 @@ local function _lookup(url_templates, query, sleep)
           url, code, signal))
       end
     )
+    -- Support sleep because some websites throttle.
     if sleep then
-      vim.loop.sleep(sleep)  -- Time in milliseconds (2000 ms = 2 seconds)
+      vim.loop.sleep(sleep)
     end
   end
 end
