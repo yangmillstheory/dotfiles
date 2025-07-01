@@ -250,6 +250,7 @@ keymap('v', '<leader>lk', function()
   vim.defer_fn(function() _lookup(kanji_lookups, '', 1000) end, 1000)
 
 end, { silent = true })
+keymap('n', '<leader>lk', ':LookupKanji <c-r><c-a><cr>')
 keymap('n', '<leader>lt', ':LookupTerm <c-r><c-a><cr>')
 keymap('n', '<leader>yd', ':YomitanCleanDefinition<cr>')
 keymap('n', '<leader>yp', ':YomitanPrepareWords<cr>')
