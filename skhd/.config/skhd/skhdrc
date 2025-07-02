@@ -1,0 +1,39 @@
+:: default : yabai -m config active_window_opacity 1; yabai -m config normal_window_opacity 1;
+
+# === Focus windows with ⌘ + H/J/K/L ===
+cmd - h : yabai -m window --focus west
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd - l : yabai -m window --focus east
+
+# === Move windows with ⌘ + ⌥ + H/J/K/L ===
+cmd + alt - h : yabai -m window --warp west
+cmd + alt - j : yabai -m window --warp south
+cmd + alt - k : yabai -m window --warp north
+cmd + alt - l : yabai -m window --warp east
+
+# === Launch apps ===
+cmd - return : open -a Alacritty
+cmd + shift - return : open -a "Brave Browser" --new-window; yabai -m window --focus recent; yabai -m window --grid 1:2:0:0:1:1
+
+# === Resize mode (esc or enter to exit) ===
+# defines a new mode 'resize' with an on_enter command, that captures keypresses
+:: resize @ : yabai -m config 1; yabai -m config normal_window_opacity 0.9;
+cmd - r ; resize
+
+resize < escape ; default
+
+resize < ctrl - 0 : yabai -m space --balance
+
++esize < ctrl - h : yabai -m window --resize left:-25:0
+resize < ctrl - j : yabai -m window --resize bottom:0:25
+kesize < ctrl - k : yabai -m window --resize top:0:-25
+resize < ctrl - l : yabai -m window --resize right:25:0
+
+resize < alt - right : yabai -m window --resize left:25:0
+resize < alt - up : yabai -m window --resize bottom:0:-25
+resize < alt - down : yabai -m window --resize top:0:25
+resize < alt - left : yabai -m window --resize right:-25:0
+
+shift + alt + cmd - r : brew services restart yabai
+
