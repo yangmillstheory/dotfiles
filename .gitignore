@@ -3,5 +3,6 @@ session.vim
 .luarc.json
 *.swp
 alacritty/.config/alacritty/themes
+kitty/.config/kitty/kitty-themes
 tmux/.tmux/plugins
 .DS_Store
