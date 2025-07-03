@@ -1,6 +1,6 @@
 . "$HOME/.cargo/env"
 
-export PATH=/Users/yangmillstheory/Library/Python/3.9/bin:$PATH
+export PATH=$HOME/Library/Python/3.9/bin/$HOME/.bin:$PATH
 
 # MacOS Ventura sets these incorrectly; see https://apple.stackexchange.com/a/452339.
 export LANG="en_US.UTF-8"
