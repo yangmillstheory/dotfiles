@@ -63,6 +63,7 @@ require("lazy").setup({
   'tpope/vim-obsession',
   'windwp/nvim-autopairs',
   'yangmillstheory/vim-snipe',
+  { 'OXY2DEV/markview.nvim', lazy = false, dependencies = 'nvim-treesitter/nvim-treesitter'},
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   'uga-rosa/cmp-dictionary',
   'uga-rosa/utf8.nvim',
@@ -79,5 +80,4 @@ require("lazy").setup({
   'hrsh7th/nvim-cmp',
   'neovim/nvim-lspconfig',
   'onsails/lspkind.nvim',
-  { 'OXY2DEV/markview.nvim', lazy = false },
 })
