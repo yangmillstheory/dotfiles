@@ -126,12 +126,13 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS='--reverse --border --preview-window right:50% --preview-window border'
 export FZF_PREVIEW_COMMAND="bat --style=numbers,changes --wrap never --color always {}"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window hidden"
-export FZF_CTRL_T_COMMAND="fdfind"
+export FZF_CTRL_T_COMMAND="fd"
 export FZF_CTRL_T_OPTS="--preview '$FZF_PREVIEW_COMMAND'"
 export FZF_ALT_C_OPTS="--exit-0 --select-1 --preview 'tree -C -a {} | head -200'"
 #
 # https://github.com/junegunn/fzf/issues/492
 setopt HIST_IGNORE_ALL_DUPS
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 fpath+=${ZDOTDIR:-~}/.zsh_functions
