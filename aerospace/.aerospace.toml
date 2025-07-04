@@ -140,6 +140,8 @@ automatically-unhide-macos-hidden-apps = false
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     cmd-alt-tab = 'workspace-back-and-forth'
+    cmd-alt-comma = 'workspace prev'
+    cmd-alt-period = 'workspace next'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     cmd-alt-s = 'mode service'
