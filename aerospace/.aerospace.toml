@@ -86,7 +86,7 @@ automatically-unhide-macos-hidden-apps = false
     # All possible modifiers: cmd, alt, ctrl, shift
 
     # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
-    cmd-shift-f = 'fullscreen'
+    cmd-alt-f = 'fullscreen'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
     # You can uncomment the following lines to open up terminal with alt + enter shortcut
