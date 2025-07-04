@@ -139,7 +139,7 @@ automatically-unhide-macos-hidden-apps = false
     cmd-alt-9 = 'move-node-to-workspace 9'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-    cmd-alt-tab = 'workspace-back-and-forth'
+    cmd-tab = 'workspace-back-and-forth'
     cmd-alt-comma = 'workspace prev'
     cmd-alt-period = 'workspace next'
 
