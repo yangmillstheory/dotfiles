@@ -125,6 +125,7 @@ automatically-unhide-macos-hidden-apps = false
     cmd-6 = 'workspace 6'
     cmd-7 = 'workspace 7'
     cmd-8 = 'workspace 8'
+    cmd-9 = 'workspace 9'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     cmd-alt-0 = 'move-node-to-workspace 0'
