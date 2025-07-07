@@ -1,3 +1,4 @@
 . "$HOME/.cargo/env"
 
-export PATH=$HOME/Library/Python/3.9/bin:$HOME/.bin:$PATH
+# Created by pipx, originally in .zshrc.
+export PATH="$PATH:/Users/victor.alvarez/.local/bin"
