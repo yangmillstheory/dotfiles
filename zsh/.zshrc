@@ -101,7 +101,7 @@ unsetopt autopushd
 
 export KEYTIMEOUT=1
 
-fpath=(~/.zsh/completions $fpath)
+fpath=(~/.zsh/completions /opt/homebrew/share/zsh/site-functions $fpath)
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
