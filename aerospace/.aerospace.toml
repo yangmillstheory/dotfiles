@@ -146,7 +146,6 @@ automatically-unhide-macos-hidden-apps = false
     esc = 'mode main'
 
 # 'service' binding mode declaration.
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
     esc = ['reload-config', 'mode main']
     r = ['flatten-workspace-tree', 'mode main'] # reset layout
