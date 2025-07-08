@@ -1,6 +1,15 @@
 -- Setup language servers.
 local nvim_lsp = require('lspconfig')
 
+nvim_lsp.ts_ls.setup({
+  on_attach = function(client, _)
+    -- optional: disable formatting if you use something like prettier
+    client.server_capabilities.documentFormattingProvider = false
+  end,
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+  cmd = { "typescript-language-server", "--stdio" },
+})
+
 nvim_lsp.lua_ls.setup {
   on_init = function(client)
     local path = client.workspace_folders[1].name
