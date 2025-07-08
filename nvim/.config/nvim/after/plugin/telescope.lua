@@ -3,6 +3,7 @@ local utils = require('utils')
 
 require('telescope').setup {
   defaults = {
+    file_ignore_patterns = { ".git/" },
     vimgrep_arguments = {
       'rg',
       '--no-heading',
@@ -10,15 +11,16 @@ require('telescope').setup {
       '--line-number',
       '--column',
       '--smart-case',
-      '--hidden',               -- ⬅️ key line to include hidden files
+      '--hidden',
       '--glob',
-      '!.git/'                  -- ⬅️ ignore .git/ to avoid noise
+      '!.git/'
     }
   }
 }
 
-
-utils.keymap('n', '<c-t>', builtin.find_files, { desc = 'Telescope find files' })
+utils.keymap('n', '<c-t>', function()
+  builtin.find_files({ hidden = true })
+end, { desc = 'Telescope find files' })
 utils.keymap('n', '<c-f>', builtin.live_grep, { desc = 'Telescope live grep'})
 utils.keymap('n', '<c-b>', builtin.buffers, { desc = 'Telescope buffers'})
 utils.keymap('n', '<c-r>', builtin.command_history, { desc = 'Telescope command history'})
