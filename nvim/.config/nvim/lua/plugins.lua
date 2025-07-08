@@ -44,7 +44,6 @@ require("lazy").setup({
     }
   },
   { 'junegunn/fzf', build = ':call fzf#install()' },
-  { 'junegunn/fzf.vim', init = function() require('fzf-vim') end },
   'kylechui/nvim-surround',
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -57,6 +56,11 @@ require("lazy").setup({
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   'rebelot/kanagawa.nvim',
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   'tmux-plugins/vim-tmux',
