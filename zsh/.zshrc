@@ -105,6 +105,12 @@ fpath=(~/.zsh/completions /opt/homebrew/share/zsh/site-functions $fpath)
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
+# Add brew completions to fpath
+if type brew &>/dev/null; then
+  HOMEBREW_PREFIX=$(brew --prefix)
+  fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+fi
+
 # don't remember what this is?
 autoload -Uz compinit && compinit
 _comp_options+=(globdots)
