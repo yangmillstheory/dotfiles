@@ -87,7 +87,7 @@ automatically-unhide-macos-hidden-apps = false
     # All possible modifiers: cmd, alt, ctrl, shift
 
     # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
-    cmd-alt-f = 'fullscreen'
+    ctrl-cmd-f = 'fullscreen'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
     # You can uncomment the following lines to open up terminal with alt + enter shortcut
@@ -99,46 +99,46 @@ automatically-unhide-macos-hidden-apps = false
     # end tell'
     # '''
 
-    # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-    cmd-alt-t = 'layout tiles horizontal vertical'
-    cmd-alt-a= 'layout accordion horizontal vertical'
-
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-    cmd-h = 'focus left --boundaries-action wrap-around-the-workspace'
-    cmd-j = 'focus down --boundaries-action wrap-around-the-workspace'
-    cmd-k = 'focus up --boundaries-action wrap-around-the-workspace'
-    cmd-l = 'focus right --boundaries-action wrap-around-the-workspace'
-
-    # See: https://nikitabobko.github.io/AeroSpace/commands#move
-    cmd-alt-h = 'move left'
-    cmd-alt-j = 'move down'
-    cmd-alt-k = 'move up'
-    cmd-alt-l = 'move right'
+    ctrl-cmd-h = 'focus left --boundaries-action wrap-around-the-workspace'
+    ctrl-cmd-j = 'focus down --boundaries-action wrap-around-the-workspace'
+    ctrl-cmd-k = 'focus up --boundaries-action wrap-around-the-workspace'
+    ctrl-cmd-l = 'focus right --boundaries-action wrap-around-the-workspace'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-    cmd-0 = 'workspace 0'
-    cmd-1 = 'workspace 1'
-    cmd-2 = 'workspace 2'
-    cmd-3 = 'workspace 3'
-    cmd-4 = 'workspace 4'
-    cmd-5 = 'workspace 5'
-
-    # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-    cmd-alt-0 = 'move-node-to-workspace 0'
-    cmd-alt-1 = 'move-node-to-workspace 1'
-    cmd-alt-2 = 'move-node-to-workspace 2'
-    cmd-alt-3 = 'move-node-to-workspace 3'
-    cmd-alt-4 = 'move-node-to-workspace 4'
-    cmd-alt-5 = 'move-node-to-workspace 5'
+    ctrl-cmd-0 = 'workspace 0'
+    ctrl-cmd-1 = 'workspace 1'
+    ctrl-cmd-2 = 'workspace 2'
+    ctrl-cmd-3 = 'workspace 3'
+    ctrl-cmd-4 = 'workspace 4'
+    ctrl-cmd-5 = 'workspace 5'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-    cmd-alt-shift-tab = 'workspace-back-and-forth'
-    cmd-alt-shift-comma = 'workspace prev --wrap-around'
-    cmd-alt-shift-period = 'workspace next --wrap-around'
+    ctrl-cmd-tab = 'workspace-back-and-forth'
+    ctrl-cmd-comma = 'workspace prev --wrap-around'
+    ctrl-cmd-period = 'workspace next --wrap-around'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move
+    alt-cmd-h = 'move left'
+    alt-cmd-j = 'move down'
+    alt-cmd-k = 'move up'
+    alt-cmd-l = 'move right'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#layout
+    alt-cmd-t = 'layout tiles horizontal vertical'
+    alt-cmd-a= 'layout accordion horizontal vertical'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+    alt-cmd-0 = 'move-node-to-workspace 0'
+    alt-cmd-1 = 'move-node-to-workspace 1'
+    alt-cmd-2 = 'move-node-to-workspace 2'
+    alt-cmd-3 = 'move-node-to-workspace 3'
+    alt-cmd-4 = 'move-node-to-workspace 4'
+    alt-cmd-5 = 'move-node-to-workspace 5'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-    cmd-alt-s = 'mode service'
-    cmd-alt-r = 'mode resize'      # 1. Define a binding to switch to 'resize' mode
+    alt-cmd-s = 'mode service'
+    alt-cmd-r = 'mode resize'      # 1. Define a binding to switch to 'resize' mode
 
 [mode.resize.binding]          # 2. Declare 'resize' binding mode
     minus = 'resize smart -50'
@@ -150,15 +150,14 @@ automatically-unhide-macos-hidden-apps = false
     esc = ['reload-config', 'mode main']
     r = ['flatten-workspace-tree', 'mode main'] # reset layout
     z = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
-    backspace = ['close-all-windows-but-current', 'mode main']
 
     # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
     #s = ['layout sticky tiling', 'mode main']
 
-    cmd-alt-h = ['join-with left', 'mode main']
-    cmd-alt-j = ['join-with down', 'mode main']
-    cmd-alt-k = ['join-with up', 'mode main']
-    cmd-alt-l = ['join-with right', 'mode main']
+    alt-cmd-h = ['join-with left', 'mode main']
+    alt-cmd-j = ['join-with down', 'mode main']
+    alt-cmd-k = ['join-with up', 'mode main']
+    alt-cmd-l = ['join-with right', 'mode main']
 
     down = 'volume down'
     up = 'volume up'

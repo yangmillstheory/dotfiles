@@ -15,6 +15,11 @@ require('telescope').setup {
       '--glob',
       '!.git/'
     }
+  },
+  pickers = {
+    live_grep = {
+      theme = 'ivy'
+    },
   }
 }
 
