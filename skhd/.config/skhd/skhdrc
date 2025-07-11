@@ -1,1 +1,2 @@
 cmd - h : echo "cmd+h disabled"
+cmd - m : echo "cmd+m disabled"
