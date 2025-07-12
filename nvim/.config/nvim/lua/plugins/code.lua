@@ -26,19 +26,6 @@ return {
   'RRethy/vim-illuminate',
   {
     'folke/trouble.nvim',
-    opts = {
-      modes = {
-        lsp_base = {
-          mode = "lsp_references",
-          preview = {
-            type = "split",
-            relative = "win",
-            position = "right",
-            size = 0.5,
-          },
-        }
-      },
-    },
     keys = {
       {
         "<leader>tt",
@@ -57,9 +44,7 @@ return {
       },
       {
         "<leader>tl",
-        function()
-          require('trouble').toggle('lsp_references')
-        end,
+        "<cmd>Trouble lsp toggle<cr>",
         desc = "LSP Definitions / references / ... (Trouble)",
       },
       {
