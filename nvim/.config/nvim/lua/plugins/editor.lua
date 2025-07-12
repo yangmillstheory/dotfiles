@@ -5,9 +5,18 @@ return {
   },
   {
     'christoomey/vim-tmux-navigator',
-    config = function()
+    init = function()
       vim.g.tmux_navigator_no_mappings = 1
       vim.g.tmux_navigator_disable_when_zoomed = 1
+    end,
+    config = function()
+      local utils = require('utils')
+
+      local keymap_opts = { silent = true }
+      utils.keymap('n', '<A-h>', ':TmuxNavigateLeft<cr>', keymap_opts)
+      utils.keymap('n', '<A-j>', ':TmuxNavigateDown<cr>', keymap_opts)
+      utils.keymap('n', '<A-k>', ':TmuxNavigateUp<cr>', keymap_opts)
+      utils.keymap('n', '<A-l>', ':TmuxNavigateRight<cr>', keymap_opts)
     end
   },
   {
@@ -16,14 +25,15 @@ return {
   },
   {
     'matze/vim-move',
+    init = function()
+      vim.g.move_map_keys = 0
+    end,
     config = function()
       local utils = require('utils')
 
-      vim.g.move_map_keys = 0
-
-      utils.keymap('v', '<A-S-h>', '<Plug>MoveBlockLeft')
       utils.keymap('v', '<A-S-j>', '<Plug>MoveBlockDown')
       utils.keymap('n', '<A-S-h>', '<Plug>MoveCharLeft')
+      utils.keymap('v', '<A-S-h>', '<Plug>MoveBlockLeft')
       utils.keymap('n', '<A-S-j>', '<Plug>MoveLineDown')
       utils.keymap('n', '<A-S-k>', '<Plug>MoveLineUp')
       utils.keymap('v', '<A-S-k>', '<Plug>MoveBlockUp')
@@ -97,6 +107,7 @@ return {
       utils.keymap('n', '<c-s>', builtin.search_history, { desc = 'Telescope search history' })
       utils.keymap('n', '<c-c>', builtin.commands, { desc = 'Telescope commands' })
       utils.keymap('n', '<c-q>', builtin.marks, { desc = 'Telescope marks' })
+      utils.keymap('n', '<c-h>', builtin.help_tags, { desc = 'Telescope help_tags' })
     end
   },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },

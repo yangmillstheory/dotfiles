@@ -71,31 +71,46 @@ return {
   },
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      local lualine = require('lualine')
-      lualine.setup({
-        options = { theme = 'gruvbox' },
-        sections = {
-          lualine_a = { 'mode' },
-          lualine_b = {
-            get_obsession_status,
-            'diff',
-            'diagnostics',
-            show_macro_recording,
-          },
-          lualine_c = {
-            {
-              'filename',
-              path = 1,
-              symbols = {
-                modified = '✗',
-                readonly = '',
-              },
-            },
-          }
-        },
+    dependencies = { 'nvim-tree/nvim-web-devicons', 'folke/trouble.nvim' },
+    opts = function(_, opts)
+      local trouble = require("trouble")
+
+      local symbols = trouble.statusline({
+        mode = "lsp_document_symbols",
+        groups = {},
+        title = false,
+        filter = { range = true },
+        format = "{kind_icon}{symbol.name:Normal}",
+        hl_group = "lualine_c_normal",
       })
+
+      opts.options = opts.options or {}
+      opts.options.theme = 'gruvbox'
+
+      opts.sections = opts.sections or {}
+      opts.sections.lualine_a = { 'mode' }
+      opts.sections.lualine_b = {
+        get_obsession_status,
+        'diff',
+        'diagnostics',
+        show_macro_recording,
+      }
+      opts.sections.lualine_c = {
+        {
+          'filename',
+          path = 1,
+          symbols = {
+            modified = '✗',
+            readonly = '',
+          },
+        },
+        {
+          symbols.get,
+          cond = symbols.has,
+        },
+      }
+
+      return opts
     end,
     lazy = false,
   },

@@ -18,43 +18,71 @@ return {
       }
     },
     ft = { "c", "cpp", "python", "go"},
-    config = function()
+    init = function()
       vim.o.list = true
       vim.g.indent_blankline_filetype = { "cpp", "python", "lua", "typescript", "javascript", "go"}
-    end
+    end,
   },
   'RRethy/vim-illuminate',
   {
     'folke/trouble.nvim',
-      opts = {}, -- for default options, refer to the configuration section for custom setup.
-      cmd = "Trouble",
-      keys = {
-        {
-          "<leader>tt",
-          "<cmd>Trouble diagnostics toggle<cr>",
-          desc = "Diagnostics (Trouble)",
+    opts = {
+      modes = {
+        preview_float = {
+          mode = "diagnostics",
+          preview = {
+            type = "float",
+            relative = "editor", -- Relative to the current editor window
+            border = "rounded",
+            title = "Preview",
+            title_pos = "center",
+            position = { 0, 0 },
+            size = { width = 0.25, height = 1 },
+            zindex = 200,
+          },
         },
-        {
-          "<leader>tb",
-          "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-          desc = "Buffer Diagnostics (Trouble)",
+        symbols = {
+          mode = "lsp_document_symbols",
+          win = {
+            position = "right",
+            size = { width = 0.3,  height = 1 },
+          },
+          focus = false,
         },
-        {
-          "<leader>ts",
-          "<cmd>Trouble symbols toggle focus=false<cr>",
-          desc = "Symbols (Trouble)",
-        },
-        {
-          "<leader>tl",
-          "<cmd>Trouble lsp toggle focus=false<cr>",
-          desc = "LSP Definitions / references / ... (Trouble)",
-        },
-        {
-          "<leader>td",
-          "<cmd>Trouble lsp_definitions<cr>",
-          desc = "Quickfix List (Trouble)",
-        },
+      }
+    },
+    keys = {
+      {
+        "<leader>tt",
+        -- "<cmd>Trouble diagnostics toggle focus=false<cr>",
+        function()
+          require("trouble").toggle("preview_float")
+        end,
+        desc = "Diagnostics (Trouble)",
       },
+      {
+        "<leader>tb",
+        function()
+          require("trouble").toggle("preview_float"):filter({ buf = 0 }, { focus = false})
+        end,
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>ts",
+        "<cmd>Trouble symbols toggle<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>tl",
+        "<cmd>Trouble lsp toggle focus=false<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>td",
+        "<cmd>Trouble lsp_definitions<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
   },
   {
     'nvim-treesitter/nvim-treesitter',
@@ -82,18 +110,10 @@ return {
         end,
       }
     },
-    config = function()
+    init = function()
       vim.opt.foldmethod = 'expr'
       vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
       vim.opt.foldenable = false
     end
   },
-  {
-    'folke/trouble.nvim',
-    action_keys = {
-      open_split = { "<c-i>" },
-      open_vsplit = { "<c-s>" },
-      open_tab = { "<c-t>" },
-    }
-  }
 }

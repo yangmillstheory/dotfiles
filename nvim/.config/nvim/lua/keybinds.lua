@@ -61,10 +61,10 @@ keymap('n', '<A-[>', ':bprev<cr>')
 keymap('n', '<A-]>', ':bnext<cr>')
 
 -- resizing windows
-keymap('n', '<C-k>', ':resize +2<cr>')
-keymap('n', '<C-j>', ':resize -2<cr>')
-keymap('n', '<C-h>', ':vertical resize -2<cr>')
-keymap('n', '<C-l>', ':vertical resize +2<cr>')
+keymap('n', '<C-A-k>', ':resize +2<cr>')
+keymap('n', '<C-A-j>', ':resize -2<cr>')
+keymap('n', '<C-A-h>', ':vertical resize -2<cr>')
+keymap('n', '<C-A-l>', ':vertical resize +2<cr>')
 
 -- uninterrupted indent
 keymap('v', '<', '<gv')
