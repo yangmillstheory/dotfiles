@@ -1,6 +1,7 @@
 return {
   {
     'uga-rosa/cmp-dictionary',
+    ft = 'markdown',
     opts = {
       paths = { "/usr/share/dict/words" },
       exact_length = 2,
@@ -13,11 +14,8 @@ return {
   },
   {
     'uga-rosa/utf8.nvim',
-    config = function()
-      require('jp')
-    end
+    ft = 'markdown',
   },
-
   {
     'hrsh7th/nvim-cmp',
     dependencies = {

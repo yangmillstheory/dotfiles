@@ -64,16 +64,6 @@ keymap('n', '<leader>t', '', {
   callback = ToggleTodo,
 })
 
-keymap('n', '<leader>z', ':ZenMode<cr>')
-
--- Automatically enter ZenMode for diary.md file.
-vim.cmd([[
-  augroup diary.md
-    autocmd!
-    autocmd VimEnter diary.md :ZenMode
-  augroup END
-]])
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function()
@@ -81,4 +71,4 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.api.nvim_set_hl(0, "ZenBg", { ctermbg = 0 })
+require('jp')
