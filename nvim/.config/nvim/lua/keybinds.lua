@@ -4,8 +4,8 @@ keymap('n', '<space>', '<nop>')
 vim.g.mapleader = ' '
 
 -- quickfix
-keymap('n', ']q', ':cnext<cr>')
-keymap('n', '[q', ':cprev<cr>')
+keymap('n', 'qj', ':cnext<cr>')
+keymap('n', 'qk', ':cprev<cr>')
 
 -- edit common files
 keymap('n', '<leader>el', ':vsp ~/.config/nvim/init.lua<cr>')
