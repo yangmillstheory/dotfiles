@@ -9,6 +9,8 @@
   br = branch
   ci = commit
   st = status
+  ph = push
+  pl = pull
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
