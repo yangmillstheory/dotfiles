@@ -11,14 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('settings')
 require('keybinds')
-require('plugins')
-require('jp')
-
-vim.o.background = 'dark'
-vim.cmd.colorscheme('gruvbox')
-
+require('settings')
+require('lazy').setup('plugins')
 require('autocmd')
-require('lsp')
-require('cmpl')

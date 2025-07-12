@@ -14,7 +14,7 @@ o.expandtab = true
 o.relativenumber = true
 o.number = true
 
-o.cmdheight = 1
+o.cmdheight = 0
 
 o.wildignore = table.concat({'*.o', '*.a', '*.obj', '__pycache__'}, ',')
 
