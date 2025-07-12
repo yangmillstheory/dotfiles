@@ -26,60 +26,31 @@ return {
   'RRethy/vim-illuminate',
   {
     'folke/trouble.nvim',
-    opts = {
-      modes = {
-        preview_float = {
-          mode = "diagnostics",
-          preview = {
-            type = "float",
-            relative = "editor", -- Relative to the current editor window
-            border = "rounded",
-            title = "Preview",
-            title_pos = "center",
-            position = { 0, 0 },
-            size = { width = 0.25, height = 1 },
-            zindex = 200,
-          },
-        },
-        symbols = {
-          mode = "lsp_document_symbols",
-          win = {
-            position = "right",
-            size = { width = 0.3,  height = 1 },
-          },
-          focus = false,
-        },
-      }
-    },
+    opts = {},
     keys = {
       {
         "<leader>tt",
-        -- "<cmd>Trouble diagnostics toggle focus=false<cr>",
-        function()
-          require("trouble").toggle("preview_float")
-        end,
+        "<cmd>Trouble diagnostics toggle focus=false<cr>",
         desc = "Diagnostics (Trouble)",
       },
       {
         "<leader>tb",
-        function()
-          require("trouble").toggle("preview_float"):filter({ buf = 0 }, { focus = false})
-        end,
+        "<cmd>Trouble diagnostics toggle filter.buf=0 focus=false<cr>",
         desc = "Buffer Diagnostics (Trouble)",
       },
       {
         "<leader>ts",
-        "<cmd>Trouble symbols toggle<cr>",
+        "<cmd>Trouble symbols toggle focus=false win.position=right win.size.width=0.25<cr>",
         desc = "Symbols (Trouble)",
       },
       {
         "<leader>tl",
-        "<cmd>Trouble lsp toggle focus=false<cr>",
+        "<cmd>Trouble lsp toggle focus=false win.position=right win.size.width=0.25<cr>",
         desc = "LSP Definitions / references / ... (Trouble)",
       },
       {
-        "<leader>td",
-        "<cmd>Trouble lsp_definitions<cr>",
+        "<leader>tq",
+        "<cmd>Trouble qflist toggle<cr>",
         desc = "Quickfix List (Trouble)",
       },
     },
