@@ -52,6 +52,7 @@ return {
           -- For major updates, this must be adjusted manually.
           version = "^1.0.0",
       },
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
     opts = function()
       local lga_actions = require("telescope-live-grep-args.actions")
@@ -77,6 +78,7 @@ return {
           },
         },
         extensions = {
+          fzf = {},
           live_grep_args = {
             auto_quoting = true,
             mappings = {
@@ -93,6 +95,7 @@ return {
     config = function(_, opts)
       local telescope = require("telescope")
       telescope.setup(opts)
+      telescope.load_extension('fzf')
       telescope.load_extension("live_grep_args")
 
       local builtin = require('telescope.builtin')
@@ -110,7 +113,6 @@ return {
       utils.keymap('n', '<c-h>', builtin.help_tags, { desc = 'Telescope help_tags' })
     end
   },
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   { 'windwp/nvim-autopairs', config = true },
   {
     'yangmillstheory/vim-snipe',
