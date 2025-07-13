@@ -12,15 +12,9 @@ unfocused_hollow = true
 [font]
 offset = {y = 0}
 size = 21.0
-# normal = { family = "Hack Nerd Font Mono", style = "Regular" }
-# italic = { family = "Hack Nerd Font Mono", style = "Italic" }
-# bold = { family = "Hack Nerd Font Mono", style = "Bold" }
 normal = { family = "Monofur Nerd Font", style = "Regular" }
 italic = { family = "Monofur Nerd Font", style = "Italic" }
 bold = { family = "Monofur Nerd Font", style = "Bold" }
-# normal = { family = "FantasqueSansM Nerd Font Mono", style = "Regular" }
-# italic = { family = "FantasqueSansM Nerd Font Mono", style = "Italic" }
-# bold = { family = "FantasqueSansM Nerd Font Mono", style = "Bold" }
 
 [keyboard]
 bindings = [
