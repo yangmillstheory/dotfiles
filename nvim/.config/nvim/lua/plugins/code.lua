@@ -47,11 +47,6 @@ return {
         "<cmd>Trouble lsp toggle<cr>",
         desc = "LSP Definitions / references / ... (Trouble)",
       },
-      {
-        "<leader>xq",
-        "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
-      },
     },
   },
   {
