@@ -28,27 +28,27 @@ return {
     'folke/trouble.nvim',
     keys = {
       {
-        "<leader>tt",
+        "<leader>xt",
         "<cmd>Trouble diagnostics toggle focus=false<cr>",
         desc = "Diagnostics (Trouble)",
       },
       {
-        "<leader>tb",
+        "<leader>xb",
         "<cmd>Trouble diagnostics toggle filter.buf=0 focus=false<cr>",
         desc = "Buffer Diagnostics (Trouble)",
       },
       {
-        "<leader>ts",
+        "<leader>xs",
         "<cmd>Trouble symbols toggle focus=false win.position=right win.size.width=0.25<cr>",
         desc = "Symbols (Trouble)",
       },
       {
-        "<leader>tl",
+        "<leader>xl",
         "<cmd>Trouble lsp toggle<cr>",
         desc = "LSP Definitions / references / ... (Trouble)",
       },
       {
-        "<leader>tq",
+        "<leader>xq",
         "<cmd>Trouble qflist toggle<cr>",
         desc = "Quickfix List (Trouble)",
       },

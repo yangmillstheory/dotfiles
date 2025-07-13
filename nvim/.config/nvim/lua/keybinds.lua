@@ -8,17 +8,11 @@ keymap('n', 'qj', ':cnext<cr>')
 keymap('n', 'qk', ':cprev<cr>')
 
 -- edit common files
-keymap('n', '<leader>el', ':vsp ~/.config/nvim/init.lua<cr>')
-keymap('n', '<leader>ea', ':vsp ~/.config/alacritty/alacritty.toml<cr>')
-keymap('n', '<leader>et', ':vsp ~/.tmux.conf<cr>')
 keymap('n', '<leader>ez', ':vsp ~/.zshrc<cr>')
 keymap('n', '<leader>es', ':vsp scrap<cr>')
 
 -- black hole register
 keymap('n', '""', '"_')
-
--- run previous command
-keymap('n', '<A-p>', ':lua vim.api.nvim_feedkeys(":<C-p><cr>", "n", true)')
 
 -- redo
 keymap('n', 'U', ':redo<cr>')

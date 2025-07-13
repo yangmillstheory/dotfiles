@@ -101,16 +101,22 @@ return {
       local builtin = require('telescope.builtin')
       local utils = require('utils')
 
-      utils.keymap('n', '<c-t>', function()
+      utils.keymap('n', '<leader>t', function()
         builtin.find_files({ hidden = true })
       end, { desc = 'Telescope find files' })
-      utils.keymap('n', '<c-f>', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = 'Telescope live grep' })
-      utils.keymap('n', '<c-b>', builtin.buffers, { desc = 'Telescope buffers' })
-      utils.keymap('n', '<c-r>', builtin.command_history, { desc = 'Telescope command history' })
-      utils.keymap('n', '<c-s>', builtin.search_history, { desc = 'Telescope search history' })
-      utils.keymap('n', '<c-c>', builtin.commands, { desc = 'Telescope commands' })
-      utils.keymap('n', '<c-q>', builtin.marks, { desc = 'Telescope marks' })
-      utils.keymap('n', '<c-h>', builtin.help_tags, { desc = 'Telescope help_tags' })
+      utils.keymap('n', '<leader>f', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = 'Telescope live grep' })
+      utils.keymap('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
+      utils.keymap('n', '<leader>ch', builtin.command_history, { desc = 'Telescope command history' })
+      utils.keymap('n', '<leader>sh', builtin.search_history, { desc = 'Telescope search history' })
+      utils.keymap('n', '<leader>c', builtin.commands, { desc = 'Telescope commands' })
+      utils.keymap('n', '<leader>m', builtin.marks, { desc = 'Telescope marks' })
+      utils.keymap('n', '<leader>h', builtin.help_tags, { desc = 'Telescope help_tags' })
+      utils.keymap('n', '<leader>.', function()
+        require('telescope.builtin').find_files {
+          hidden = true,
+          cwd = vim.fn.expand('~/code/dotfiles')
+        }
+      end, { desc = 'Telescope edit dotfiles' })
     end
   },
   { 'windwp/nvim-autopairs', config = true },
