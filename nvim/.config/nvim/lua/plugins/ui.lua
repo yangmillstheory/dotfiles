@@ -31,9 +31,10 @@ return {
       local bufferline = require('bufferline')
       bufferline.setup({
         options = {
-          separator_style = "slant",
+          -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
+          separator_style = "slope",
           indicator = {
-            style = 'underline'
+            style = 'none'
           }
         },
       })
@@ -44,19 +45,31 @@ return {
     end
   },
   {
+    "rebelot/kanagawa.nvim",
+    priority = 1000 ,
+    lazy = false,
+    config = function()
+      require("kanagawa").setup({
+        transparent = false,
+        dimInactive = true,
+        theme = 'wave',
+      })
+      vim.o.background = 'dark'
+      vim.cmd.colorscheme("kanagawa")
+    end,
+  },
+  {
     "ellisonleao/gruvbox.nvim",
     priority = 1000 ,
     lazy = false,
     config = function()
       require("gruvbox").setup({
-        transparent_mode = true,
-        italic = {
-          comments = true,
-          strings = true,
-        }
+        transparent_mode = false,
+        dim_inactive = true,
+        contrast = 'hard',
       })
-      vim.o.background = 'dark'
-      vim.cmd.colorscheme("gruvbox")
+      -- vim.o.background = 'dark'
+      -- vim.cmd.colorscheme("gruvbox")
     end,
   },
   {
@@ -85,7 +98,7 @@ return {
       })
 
       opts.options = opts.options or {}
-      opts.options.theme = 'gruvbox'
+      opts.options.theme = 'auto'
 
       opts.sections = opts.sections or {}
       opts.sections.lualine_a = { 'mode' }
