@@ -95,7 +95,9 @@ return {
     config = function(_, opts)
       local telescope = require("telescope")
       telescope.setup(opts)
+      -- https://github.com/nvim-telescope/telescope-fzf-native.nvim?tab=readme-ov-file#telescope-fzf-nativenvim
       telescope.load_extension('fzf')
+      -- https://github.com/nvim-telescope/telescope-live-grep-args.nvim?tab=readme-ov-file#grep-argument-examples
       telescope.load_extension("live_grep_args")
 
       local builtin = require('telescope.builtin')
