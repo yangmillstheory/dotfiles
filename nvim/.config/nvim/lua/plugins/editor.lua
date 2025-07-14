@@ -43,6 +43,35 @@ return {
   },
   'tmux-plugins/vim-tmux',
   {
+    "leath-dub/snipe.nvim",
+    keys = {
+      {
+        "<leader><cr>",
+        function () require("snipe").open_buffer_menu() end,
+        desc = "Open Snipe buffer menu",
+      }
+    },
+    opts = {
+      ui = {
+        open_win_override = {
+          title = 'Buffers',
+          border = 'rounded'
+        },
+        position = 'center',
+        preselect_current = true,
+      },
+      navigate = {
+        -- Make sure tags don't conflict with these. For
+        -- example, never assign "j" and "k" tags.
+        -- These are purposely similar to Telescope bindings.
+        open_split = "<c-x>",
+        open_vsplit = "<c-v>",
+        close_buffer = "X",
+        change_tag = "*",
+      },
+    }
+  },
+  {
    'nvim-telescope/telescope.nvim', tag = '0.1.8',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -62,14 +91,8 @@ return {
           file_ignore_patterns = { ".git/" },
           vimgrep_arguments = {
             'rg',
-            '--no-heading',
-            '--with-filename',
-            '--line-number',
-            '--column',
-            '--smart-case',
-            '--hidden',
-            '--glob',
-            '!.git/'
+            '--no-heading', '--with-filename', '--line-number', '--column',
+            '--smart-case', '--hidden', '--glob', '!.git/'
           }
         },
         pickers = {
@@ -106,7 +129,12 @@ return {
       utils.keymap('n', '<leader>t', function()
         builtin.find_files({ hidden = true })
       end, { desc = 'Telescope find files' })
-      utils.keymap('n', '<leader>f', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = 'Telescope live grep' })
+      -- These keymaps are important enough that we don't have a "prefix" key like t.
+      -- See for example Trouble's keybindings.
+      utils.keymap('n', '<leader>f',
+        ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+        { desc = 'Telescope live grep' }
+      )
       utils.keymap('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
       utils.keymap('n', '<leader>c', builtin.commands, { desc = 'Telescope commands' })
       utils.keymap('n', '<leader>m', builtin.marks, { desc = 'Telescope marks' })
