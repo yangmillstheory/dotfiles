@@ -1,18 +1,5 @@
 -- Plugins that make nvim prettier.
 
--- Force lualine to show macro recording status, since we set cmdheight=0 elsewhere.
---
--- https://www.reddit.com/r/neovim/comments/xy0tu1/comment/irfegvd/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
--- https://github.com/neovim/neovim/issues/19193
-local function show_macro_recording()
-  local recording_register = vim.fn.reg_recording()
-  if recording_register == "" then
-    return ""
-  else
-    return "Recording @" .. recording_register
-  end
-end
-
 local function get_obsession_status()
   if vim.fn.exists("ObsessionStatus") == 1 and type(vim.fn.ObsessionStatus()) == 'string' then
     return vim.fn.ObsessionStatus()
@@ -84,7 +71,11 @@ return {
   },
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons', 'folke/trouble.nvim' },
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      'folke/trouble.nvim',
+      'yavorski/lualine-macro-recording.nvim',
+    },
     opts = function(_, opts)
       local trouble = require("trouble")
 
@@ -106,7 +97,7 @@ return {
         get_obsession_status,
         'diff',
         'diagnostics',
-        show_macro_recording,
+        'macro_recording',
       }
       opts.sections.lualine_c = {
         {

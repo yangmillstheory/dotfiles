@@ -28,7 +28,7 @@ return {
     'folke/trouble.nvim',
     keys = {
       {
-        "<leader>xt",
+        "<leader>xx",
         "<cmd>Trouble diagnostics toggle focus=false<cr>",
         desc = "Diagnostics (Trouble)",
       },
