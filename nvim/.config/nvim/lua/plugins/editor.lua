@@ -46,7 +46,7 @@ return {
     "leath-dub/snipe.nvim",
     keys = {
       {
-        "<leader><cr>",
+        "<leader>b",
         function () require("snipe").open_buffer_menu() end,
         desc = "Open Snipe buffer menu",
       }
@@ -129,22 +129,24 @@ return {
       utils.keymap('n', '<leader>t', function()
         builtin.find_files({ hidden = true })
       end, { desc = 'Telescope find files' })
+
       -- These keymaps are important enough that we don't have a "prefix" key like t.
       -- See for example Trouble's keybindings.
       utils.keymap('n', '<leader>f',
         ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
         { desc = 'Telescope live grep' }
       )
-      utils.keymap('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
+      -- Drop this in favor of the strictly better snipe.
+      -- utils.keymap('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
       utils.keymap('n', '<leader>c', builtin.commands, { desc = 'Telescope commands' })
-      utils.keymap('n', '<leader>m', builtin.marks, { desc = 'Telescope marks' })
       utils.keymap('n', '<leader>?', builtin.help_tags, { desc = 'Telescope help_tags' })
       utils.keymap('n', '<leader>!', builtin.diagnostics, { desc = 'Telescope diagnostics' })
+      utils.keymap('n', '<leader>m', builtin.marks, { desc = 'Telescope marks' })
       utils.keymap('n', '<leader>ld', builtin.lsp_definitions, { desc = 'Telescope LSP defs' })
       utils.keymap('n', '<leader>lr', builtin.lsp_references, { desc = 'Telescope LSP refs' })
       utils.keymap('n', '<leader>li', builtin.lsp_implementations, { desc = 'Telescope LSP impl' })
       utils.keymap('n', '<leader>lt', builtin.lsp_type_definitions, { desc = 'Telescope LSP typedef' })
-      utils.keymap('n', '<leader>ls', builtin.lsp_document_symbols, { desc = 'Telescope LSP typedef' })
+      utils.keymap('n', '<leader>ls', builtin.lsp_document_symbols, { desc = 'Telescope LSP buf symbols' })
       utils.keymap('n', '<leader>r', builtin.command_history, { desc = 'Telescope command history' })
       utils.keymap('n', '<leader>/', builtin.search_history, { desc = 'Telescope search history' })
       utils.keymap('n', '<leader>.', function()

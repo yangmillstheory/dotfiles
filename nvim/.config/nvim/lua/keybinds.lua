@@ -3,12 +3,15 @@ local keymap = require('utils').keymap
 keymap('n', '<space>', '<nop>')
 vim.g.mapleader = ' '
 
+-- marks
+keymap('n', 'xM', [[:delm! \| delm A-Z0-9a-z<CR>]], { desc = 'Delete all marks'})
+keymap('n', 'xm', [[:delm a-z<CR>]], { desc = "Delete buffer-local marks" })
+
 -- quickfix
 keymap('n', 'qj', ':cnext<cr>')
 keymap('n', 'qk', ':cprev<cr>')
 
 -- edit common files
-keymap('n', '<leader>ez', ':vsp ~/.zshrc<cr>')
 keymap('n', '<leader>es', ':vsp scrap<cr>')
 
 -- black hole register
@@ -39,7 +42,6 @@ keymap('n', '<A-w>', ':w<cr>')
 keymap('n', '<A-q>', ':q<cr>')
 keymap('n', '<A-cr>', ':wq<cr>')
 keymap('n', '<A-e>', ':e!<cr>')
-keymap('n', '<A-d>', ':cd $PWD<cr>')
 
 -- keep search, page up and down centered
 keymap('n', '<C-d>', '<C-d>zz')
@@ -51,8 +53,6 @@ keymap('n', '{', '{zz')
 
 -- navigating tabs & buffers
 keymap('n', '<A-t>', ':tab sp<cr>')
-keymap('n', '<A-[>', ':bprev<cr>')
-keymap('n', '<A-]>', ':bnext<cr>')
 
 -- resizing windows
 keymap('n', '<C-A-k>', ':resize +2<cr>')
