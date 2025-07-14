@@ -4,15 +4,16 @@ if not table.unpack then
   table.unpack = unpack
 end
 
+-- Using "-" makes it compatible with markview.nvim's rendering.
 local function ToggleDone()
   local old = vim.api.nvim_get_current_line()
   local new = nil
   local status = string.match(old, "^%s*%*%s%[(.)%]%s.+$")
-  if status ~= ' ' and status ~= 'x' then
+  if status ~= ' ' and status ~= '-' then
     return
   end
   if status == ' ' then
-    new = string.gsub(old, "%b[]", '[x]', 1)
+    new = string.gsub(old, "%b[]", '[-]', 1)
   else
     new = string.gsub(old, "%b[]", '[ ]', 1)
   end
@@ -29,7 +30,7 @@ local function ToggleTodo()
   end
   local new = nil
   local col_delta = 0
-  if string.match(old, "^%s*%*%s%[[%s|x]%]%s.+$") then
+  if string.match(old, "^%s*%*%s%[[%s|-]%]%s.+$") then
     -- Already a todo; convert to normal bullet point.
     new = string.gsub(old, "%b[]%s", '', 1)
     -- Modify cursor to account for deleted characters
