@@ -4,7 +4,7 @@ return {
     ft = 'markdown',
     opts = {
       paths = { "/usr/share/dict/words" },
-      exact_length = 2,
+      exact_length = 3,
       first_case_insensitive = true,
       document = {
         enable = true,
@@ -140,10 +140,7 @@ return {
 
       cmp.setup.filetype('markdown', {
         sources = {
-          {
-            name = "dictionary",
-            keyword_length = 2,
-          },
+          { name = "dictionary", keyword_length = 3 },
           { name = 'emoji' },
           { name = 'buffer', keyword_length = 3 },
         }

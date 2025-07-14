@@ -116,6 +116,7 @@ return {
       utils.keymap('n', '<leader>lr', builtin.lsp_references, { desc = 'Telescope LSP refs' })
       utils.keymap('n', '<leader>li', builtin.lsp_implementations, { desc = 'Telescope LSP impl' })
       utils.keymap('n', '<leader>lt', builtin.lsp_type_definitions, { desc = 'Telescope LSP typedef' })
+      utils.keymap('n', '<leader>ls', builtin.lsp_document_symbols, { desc = 'Telescope LSP typedef' })
       utils.keymap('n', '<leader>r', builtin.command_history, { desc = 'Telescope command history' })
       utils.keymap('n', '<leader>/', builtin.search_history, { desc = 'Telescope search history' })
       utils.keymap('n', '<leader>.', function()
