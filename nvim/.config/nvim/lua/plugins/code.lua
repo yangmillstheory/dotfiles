@@ -88,6 +88,9 @@ return {
       vim.opt.foldmethod = 'expr'
       vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
       vim.opt.foldenable = false
+      -- Open all folds by default
+      vim.o.foldlevel = 99
+      vim.o.foldlevelstart = 99
     end
   },
 }
