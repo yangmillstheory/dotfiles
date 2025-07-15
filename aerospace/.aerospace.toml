@@ -98,6 +98,8 @@ automatically-unhide-macos-hidden-apps = false
     # end tell'
     # '''
 
+    # ctrl-cmd generally moves 'focus'
+
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
     ctrl-cmd-h = 'focus left --boundaries-action wrap-around-the-workspace'
     ctrl-cmd-j = 'focus down --boundaries-action wrap-around-the-workspace'
@@ -116,6 +118,8 @@ automatically-unhide-macos-hidden-apps = false
     ctrl-cmd-tab = 'workspace-back-and-forth'
     ctrl-cmd-comma = 'workspace prev --wrap-around'
     ctrl-cmd-period = 'workspace next --wrap-around'
+
+    # alt-cmd generally means 'move'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     alt-cmd-h = 'move left'
