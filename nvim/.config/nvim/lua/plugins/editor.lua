@@ -95,11 +95,6 @@ return {
             '--smart-case', '--hidden', '--glob', '!.git/'
           }
         },
-        pickers = {
-          live_grep = {
-            theme = 'get_ivy'
-          },
-        },
         extensions = {
           fzf = {},
           live_grep_args = {
@@ -107,8 +102,7 @@ return {
             mappings = {
               i = {
                 ["<C-k>"] = lga_actions.quote_prompt(),
-                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-                ["<C-space>"] = lga_actions.to_fuzzy_refine,
+                ["<C-g>"] = lga_actions.quote_prompt({ postfix = " --glob " }),
               },
             },
           },
