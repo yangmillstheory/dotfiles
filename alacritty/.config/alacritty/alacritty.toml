@@ -15,16 +15,8 @@ bold = { family = "Monofur Nerd Font", style = "Bold" }
 [keyboard]
 bindings = [
   { action = "Paste", key = "V", mods = "Command" },
-  { action = "Paste", key = "V", mods = "Command|Option|Shift" },
-  { action = "Paste", key = "Paste" },
-  { action = "Copy", key = "C", mods = "Command" },
-  { action = "Copy", key = "Copy" },
   { action = "Quit", key = "Q", mods = "Command" },
   { action = "Quit", key = "W", mods = "Command" },
-  { action = "ScrollHalfPageUp", key = "U", mods = "Command" },
-  { action = "ScrollHalfPageDown", key = "D", mods = "Command" },
-  { action = "SelectNextTab", key = "Tab", mods = "Control" },
-  { action = "SelectPreviousTab", key = "Tab", mods = "Control|Shift" },
 ]
 
 [scrolling]
