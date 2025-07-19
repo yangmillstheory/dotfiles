@@ -1,13 +1,4 @@
 -- Plugins that make nvim prettier.
-
-local function get_obsession_status()
-  if vim.fn.exists("ObsessionStatus") == 1 and type(vim.fn.ObsessionStatus()) == 'string' then
-    return vim.fn.ObsessionStatus()
-  else
-    return ""
-  end
-end
-
 return {
   {
     'akinsho/bufferline.nvim',
@@ -94,7 +85,7 @@ return {
       opts.sections = opts.sections or {}
       opts.sections.lualine_a = { 'mode' }
       opts.sections.lualine_b = {
-        get_obsession_status,
+        'ObsessionStatus',
         'diff',
         'diagnostics',
         'macro_recording',

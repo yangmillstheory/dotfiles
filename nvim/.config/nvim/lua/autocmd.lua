@@ -56,3 +56,4 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   end,
   desc = "Run Prettier on TypeScript/JavaScript files after saving",
 })
+
