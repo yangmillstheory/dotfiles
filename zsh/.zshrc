@@ -139,6 +139,10 @@ export FZF_ALT_C_OPTS="--exit-0 --select-1 --preview 'tree -C -a {} | head -200'
 # https://github.com/junegunn/fzf/issues/492
 setopt HIST_IGNORE_ALL_DUPS
 
+source <(kubectl completion zsh)
+source <(localstack completion zsh)
+eval "$(direnv hook zsh)"
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 fpath+=${ZDOTDIR:-~}/.zsh_functions

@@ -1,5 +1,8 @@
+alias kc=kubectl
 alias q='exit'
 alias c='/usr/bin/clear'
 alias p='/opt/homebrew/bin/python3'
 alias g='git'
+alias t='terraform'
+alias b='brew'
 alias fdfind=fd

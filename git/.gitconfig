@@ -1,9 +1,9 @@
 [user]
   name = Victor Alvarez
-  email = sapien.reversing.entropy@gmail.com
+  email = victor.alvarez@woven-planet.global
 [core]
   editor = nvim
-  excludesfile = /Users/yangmillstheory/.gitignore
+  excludesfile = /Users/victor.alvarez/.gitignore
 [alias]
   co = checkout
   br = branch

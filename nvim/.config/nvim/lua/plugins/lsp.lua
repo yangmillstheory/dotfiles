@@ -32,6 +32,7 @@ return {
 
       nvim_lsp.pyright.setup{}
       nvim_lsp.lua_ls.setup{}
+      nvim_lsp.terraformls.setup{}
     end
   },
 }
