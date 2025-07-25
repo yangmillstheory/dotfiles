@@ -106,6 +106,9 @@ automatically-unhide-macos-hidden-apps = false
     ctrl-cmd-k = 'focus up --boundaries-action wrap-around-the-workspace'
     ctrl-cmd-l = 'focus right --boundaries-action wrap-around-the-workspace'
 
+    ctrl-alt-comma = 'focus-monitor prev --wrap-around'
+    ctrl-alt-period = 'focus-monitor next --wrap-around'
+
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     ctrl-cmd-0 = 'workspace 0'
     ctrl-cmd-1 = 'workspace 1'
@@ -138,6 +141,9 @@ automatically-unhide-macos-hidden-apps = false
     alt-cmd-3 = 'move-node-to-workspace 3'
     alt-cmd-4 = 'move-node-to-workspace 4'
     alt-cmd-5 = 'move-node-to-workspace 5'
+
+    ctrl-alt-cmd-comma = 'move-workspace-to-monitor 1'
+    ctrl-alt-cmd-period = 'move-workspace-to-monitor 2'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-cmd-s = 'mode service'
