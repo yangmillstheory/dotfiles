@@ -24,7 +24,7 @@ return {
   },
   {
     "rebelot/kanagawa.nvim",
-    priority = 1000 ,
+    priority = 1000,
     lazy = false,
     config = function()
       require("kanagawa").setup({
@@ -38,7 +38,7 @@ return {
   },
   {
     "ellisonleao/gruvbox.nvim",
-    priority = 1000 ,
+    priority = 1000,
     lazy = false,
     config = function()
       require("gruvbox").setup({
@@ -127,4 +127,16 @@ return {
       vim.cmd("Markview Enable")
     end
   },
+  {
+    "sphamba/smear-cursor.nvim",
+    opts = {
+      stiffness = 0.5,
+      trailing_stiffness = 0.49,
+      never_draw_over_target = false,
+    },
+  },
+  {
+    "karb94/neoscroll.nvim",
+    opts = {},
+  }
 }
