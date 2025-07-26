@@ -12,27 +12,15 @@ These GLOBAL keymaps are created unconditionally when Nvim starts:
 ]]
 return {
   {
-    'neovim/nvim-lspconfig',
+    "mason-org/mason-lspconfig.nvim",
+    opts = {},
     dependencies = {
-      'folke/lazydev.nvim',
-      ft = "lua",
-      opts = {}
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
     },
-    config = function()
-      local nvim_lsp = require('lspconfig')
-
-      nvim_lsp.ts_ls.setup({
-        on_attach = function(client, _)
-          -- optional: disable formatting if you use something like prettier
-          client.server_capabilities.documentFormattingProvider = false
-        end,
-        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
-        cmd = { "typescript-language-server", "--stdio" },
-      })
-
-      nvim_lsp.pyright.setup{}
-      nvim_lsp.lua_ls.setup{}
-      nvim_lsp.terraformls.setup{}
-    end
   },
+  {
+      "mason-org/mason.nvim",
+      opts = {}
+  }
 }
