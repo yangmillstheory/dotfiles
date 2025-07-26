@@ -15,9 +15,8 @@ return {
     "mason-org/mason-lspconfig.nvim",
     opts = {
       ensure_installed = {
-        -- If commented out, Mason will complain that these are
-        -- not language servers. They're nonetheless installed
-        -- with Mason, though.
+        -- If commented out, Mason will complain that these are not language servers. They're
+        -- nonetheless installed with Mason, though, and I'm adding them here to record them.
         --
         -- Formatters
         -- "black",
@@ -27,10 +26,7 @@ return {
         --
         -- Linters
         -- "luacheck",
-        -- Too annoying to set up with conditions on filepaths.
-        -- Install via Homebrew.
-        -- "kube-linter",
-
+        -- "kube-linter", -- Too annoying to set up with conditions on filepaths. Install via Homebrew.
         "gh_actions_ls",
         "lua_ls",
         "pyright",
