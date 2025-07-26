@@ -21,7 +21,7 @@ return {
         -- Formatters
         -- "black",
         -- "prettier",
-        -- "stylelua",
+        -- "stylua",
         -- "yamlfmt",
         --
         -- Linters

@@ -12,9 +12,9 @@ function v() {
     sleep 1
     env nvim "$@"
   elif test -f Session.vim; then
-    echo "Session.vim found. Starting nvim -S."
+    echo "Session.vim found. Starting nvim -c -S Session.vim."
     sleep 1
-    env nvim -c -S
+    env nvim -S Session.vim
   else
     echo "No Session.vim found. Running nvim -c Obsession."
     sleep 1

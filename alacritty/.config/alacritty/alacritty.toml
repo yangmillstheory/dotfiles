@@ -32,5 +32,5 @@ option_as_alt = "Both"
 
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/tokyo_night_storm.toml",
+    "~/.config/alacritty/themes/themes/tokyo-night-storm.toml",
 ]
