@@ -13,14 +13,86 @@ These GLOBAL keymaps are created unconditionally when Nvim starts:
 return {
   {
     "mason-org/mason-lspconfig.nvim",
-    opts = {},
+    opts = {
+      ensure_installed = {
+        -- If commented out, Mason will complain that these are
+        -- not language servers. They're nonetheless installed
+        -- with Mason, though.
+        --
+        -- Formatters
+        -- "black",
+        -- "prettier",
+        -- "stylelua",
+        -- "yamlfmt",
+        --
+        -- Linters
+        -- "luacheck",
+        -- Too annoying to set up with conditions on filepaths.
+        -- Install via Homebrew.
+        -- "kube-linter",
+
+        "gh_actions_ls",
+        "lua_ls",
+        "pyright",
+        "terraformls",
+        "ts_ls",
+        "yamlls",
+      },
+    },
     dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
+      { "mason-org/mason.nvim", opts = {} },
+      {
         "neovim/nvim-lspconfig",
+        dependencies = {
+          'folke/lazydev.nvim',
+          -- This fixes the annoying "no global vim" warning when
+          -- editing Lua files.
+          ft = "lua",
+          opts = {},
+        },
+      },
+    }
+  },
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        lua = { 'stylelua' },
+        python = function(bufnr)
+          if require("conform").get_formatter_info("ruff_format", bufnr).available then
+            return { "ruff_format" }
+          else
+            return { "black" }
+          end
+        end,
+        yaml = { 'yamlfmt' },
+
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        json = { "prettier" },
+        markdown = { "prettier" },
+      },
+      format_on_save = {
+        lsp_format = "fallback",
+        timeout_ms = 500,
+      }
     },
   },
   {
-      "mason-org/mason.nvim",
-      opts = {}
-  }
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        lua = { "luacheck" },
+        yaml = { "yamllint" },
+      }
+    },
+    config = function()
+      local lint = require("lint")
+      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+        callback = function()
+          lint.try_lint()
+        end,
+      })
+    end,
+  },
 }
