@@ -27,6 +27,8 @@ return {
         -- Linters
         -- "luacheck",
         -- "kube-linter", -- Too annoying to set up with conditions on filepaths. Install via Homebrew.
+        -- "vale",
+        -- "terraform",
         "gh_actions_ls",
         "lua_ls",
         "pyright",
@@ -76,19 +78,20 @@ return {
   },
   {
     "mfussenegger/nvim-lint",
-    opts = {
-      linters_by_ft = {
-        lua = { "luacheck" },
-        yaml = { "yamllint" },
-      }
-    },
     config = function()
       local lint = require("lint")
+      lint.linters_by_ft = {
+        lua = { "luacheck" },
+        yaml = { "yamllint" },
+        terraform = { "terraform" },
+        markdown = { "vale" },
+        text = { "vale" },
+      }
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         callback = function()
           lint.try_lint()
         end,
       })
-    end,
+    end
   },
 }
