@@ -39,16 +39,7 @@ return {
     },
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
-      {
-        "neovim/nvim-lspconfig",
-        dependencies = {
-          'folke/lazydev.nvim',
-          -- This fixes the annoying "no global vim" warning when
-          -- editing Lua files.
-          ft = "lua",
-          opts = {},
-        },
-      },
+      { "neovim/nvim-lspconfig" },
     }
   },
   {

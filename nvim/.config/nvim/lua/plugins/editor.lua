@@ -198,4 +198,5 @@ return {
     end
   },
   'tpope/vim-obsession',
+  { 'folke/lazydev.nvim',    ft = "lua",   opts = {}, }
 }
