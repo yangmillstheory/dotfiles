@@ -47,7 +47,7 @@ return {
     keys = {
       {
         "<leader>B",
-        function () require("snipe").open_buffer_menu() end,
+        function() require("snipe").open_buffer_menu() end,
         desc = "Open Snipe buffer menu",
       }
     },
@@ -72,14 +72,15 @@ return {
     }
   },
   {
-   'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
     dependencies = {
       'nvim-lua/plenary.nvim',
       {
-          "nvim-telescope/telescope-live-grep-args.nvim" ,
-          -- This will not install any breaking changes.
-          -- For major updates, this must be adjusted manually.
-          version = "^1.0.0",
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        -- This will not install any breaking changes.
+        -- For major updates, this must be adjusted manually.
+        version = "^1.0.0",
       },
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
@@ -91,9 +92,24 @@ return {
           file_ignore_patterns = { ".git/" },
           vimgrep_arguments = {
             'rg',
-            '--no-heading', '--with-filename', '--line-number', '--column',
-            '--smart-case', '--hidden', '--glob', '!.git/'
-          }
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+            '--hidden',
+            '--no-ignore',
+            '--glob', '!.git/',
+            '--glob', '!.venv/'
+          },
+          find_command = {
+            'rg',
+            '--files',
+            '--hidden',
+            '--no-ignore',
+            '--glob', '!.git/',
+            '--glob', '!.venv/',
+          },
         },
         extensions = {
           fzf = {},

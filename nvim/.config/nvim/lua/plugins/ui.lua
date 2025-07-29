@@ -114,16 +114,7 @@ return {
     lazy = false,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
-      require('markview').setup({
-        headings = require("markview.presets").headings.glow_labels,
-        markdown = {
-          list_items = {
-            enable = true,
-            shift_width = 2,
-            indent_size = 2,
-          },
-        },
-      })
+      require('markview').setup()
       vim.cmd("Markview Enable")
     end
   },

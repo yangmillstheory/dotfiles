@@ -1,5 +1,6 @@
 local keymap = require('utils').keymap
 
+-- TODO: handle different kinds of markdown bullets, like -
 if not table.unpack then
   table.unpack = unpack
 end
@@ -18,7 +19,7 @@ local function ToggleDone()
     new = string.gsub(old, "%b[]", '[ ]', 1)
   end
   local row, _ = table.unpack(vim.api.nvim_win_get_cursor(0))
-  vim.api.nvim_buf_set_lines(0, row - 1, row, true, {new})
+  vim.api.nvim_buf_set_lines(0, row - 1, row, true, { new })
 end
 
 local function NewTodo()

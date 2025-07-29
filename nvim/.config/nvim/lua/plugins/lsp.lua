@@ -64,7 +64,6 @@ return {
           end
         end,
         yaml = { 'yamlfmt' },
-
         javascript = { "prettier" },
         typescript = { "prettier" },
         json = { "prettier" },
@@ -82,8 +81,7 @@ return {
       local lint = require("lint")
       lint.linters_by_ft = {
         lua = { "luacheck" },
-        yaml = { "yamllint" },
-        terraform = { "terraform" },
+        terraform = { "tflint" },
         markdown = { "vale" },
         text = { "vale" },
       }
