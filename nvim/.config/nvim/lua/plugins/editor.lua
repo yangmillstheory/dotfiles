@@ -173,6 +173,10 @@ return {
     'yangmillstheory/vim-snipe',
     config = function()
       local utils = require('utils')
+      -- Because I don't want the annoying prompt messages
+      -- due to plugin output, which will happen because I set
+      -- cmdheight=0 elsewhere.
+      vim.g.snipe_silent = true
       utils.keymap('', '<leader><leader>F', '<Plug>(snipe-F)')
       utils.keymap('', '<leader><leader>f', '<Plug>(snipe-f)')
       utils.keymap('', '<leader><leader>T', '<Plug>(snipe-T)')
