@@ -217,5 +217,5 @@ return {
       { "<c-f>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
-  { 'folke/lazydev.nvim',    ft = "lua",   opts = {}, }
+  { 'folkelazydev.nvim',     ft = "lua",   opts = {} }
 }
