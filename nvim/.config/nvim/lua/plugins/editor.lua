@@ -177,10 +177,10 @@ return {
       -- due to plugin output, which will happen because I set
       -- cmdheight=0 elsewhere.
       vim.g.snipe_silent = true
-      utils.keymap('', '<leader><leader>F', '<Plug>(snipe-F)')
-      utils.keymap('', '<leader><leader>f', '<Plug>(snipe-f)')
-      utils.keymap('', '<leader><leader>T', '<Plug>(snipe-T)')
-      utils.keymap('', '<leader><leader>t', '<Plug>(snipe-t)')
+      utils.keymap('', 'f', '<Plug>(snipe-F)')
+      utils.keymap('', 'f', '<Plug>(snipe-f)')
+      utils.keymap('', 'T', '<Plug>(snipe-T)')
+      utils.keymap('', 't', '<Plug>(snipe-t)')
       utils.keymap('', '<leader><leader>w', '<Plug>(snipe-w)')
       utils.keymap('', '<leader><leader>W', '<Plug>(snipe-W)')
       utils.keymap('', '<leader><leader>e', '<Plug>(snipe-e)')
@@ -189,18 +189,33 @@ return {
       utils.keymap('', '<leader><leader>B', '<Plug>(snipe-B)')
       utils.keymap('', '<leader><leader>ge', '<Plug>(snipe-ge)')
       utils.keymap('', '<leader><leader>gE', '<Plug>(snipe-gE)')
+      -- Swap.
       utils.keymap('n', '<leader><leader>]', '<Plug>(snipe-f-xp)')
       utils.keymap('n', '<leader><leader>[', '<Plug>(snipe-F-xp)')
+      -- Cut.
       utils.keymap('n', '<leader><leader>x', '<Plug>(snipe-f-x)')
       utils.keymap('n', '<leader><leader>X', '<Plug>(snipe-F-x)')
+      -- Replace.
       utils.keymap('n', '<leader><leader>r', '<Plug>(snipe-f-r)')
       utils.keymap('n', '<leader><leader>R', '<Plug>(snipe-F-r)')
+      -- Insert.
       utils.keymap('n', '<leader><leader>i', '<Plug>(snipe-f-i)')
       utils.keymap('n', '<leader><leader>I', '<Plug>(snipe-F-i)')
+      -- Append.
       utils.keymap('n', '<leader><leader>a', '<Plug>(snipe-f-a)')
       utils.keymap('n', '<leader><leader>A', '<Plug>(snipe-F-a)')
     end
   },
   'tpope/vim-obsession',
+  {
+    -- vim-snipe doesn't give me jump labels on search.
+    'folke/flash.nvim',
+    opts = {},
+    keys = {
+      -- Disabled until https://github.com/folke/flash.nvim/issues/446 is fixed.
+      -- "f", "F", "t", "T",
+      { "<c-f>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+  },
   { 'folke/lazydev.nvim',    ft = "lua",   opts = {}, }
 }
