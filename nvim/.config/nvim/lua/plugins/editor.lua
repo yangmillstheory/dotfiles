@@ -177,10 +177,6 @@ return {
       -- due to plugin output, which will happen because I set
       -- cmdheight=0 elsewhere.
       vim.g.snipe_silent = true
-      utils.keymap('', 'f', '<Plug>(snipe-F)')
-      utils.keymap('', 'f', '<Plug>(snipe-f)')
-      utils.keymap('', 'T', '<Plug>(snipe-T)')
-      utils.keymap('', 't', '<Plug>(snipe-t)')
       utils.keymap('', '<leader><leader>w', '<Plug>(snipe-w)')
       utils.keymap('', '<leader><leader>W', '<Plug>(snipe-W)')
       utils.keymap('', '<leader><leader>e', '<Plug>(snipe-e)')
@@ -210,12 +206,18 @@ return {
   {
     -- vim-snipe doesn't give me jump labels on search.
     'folke/flash.nvim',
-    opts = {},
+    opts = {
+      modes = {
+        char = {
+          jump_labels = false,
+          autohide = true,
+        }
+      }
+    },
     keys = {
-      -- Disabled until https://github.com/folke/flash.nvim/issues/446 is fixed.
-      -- "f", "F", "t", "T",
+      "f", "F", "t", "T",
       { "<c-f>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
-  { 'folkelazydev.nvim',     ft = "lua",   opts = {} }
+  { 'folke/lazydev.nvim',    ft = "lua",   opts = {} }
 }
