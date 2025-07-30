@@ -214,7 +214,7 @@ return {
     opts = {
       modes = {
         char = {
-          jump_labels = false,
+          jump_labels = true,
           autohide = true,
         }
       }
