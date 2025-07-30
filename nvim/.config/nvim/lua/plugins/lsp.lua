@@ -58,7 +58,6 @@ return {
         javascript = { "prettier" },
         typescript = { "prettier" },
         json = { "prettier" },
-        markdown = { "prettier" },
       },
       format_on_save = {
         lsp_format = "fallback",
@@ -73,7 +72,6 @@ return {
       lint.linters_by_ft = {
         lua = { "luacheck" },
         terraform = { "tflint" },
-        markdown = { "vale" },
         text = { "vale" },
       }
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
