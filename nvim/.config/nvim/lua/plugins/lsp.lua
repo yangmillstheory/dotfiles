@@ -22,7 +22,6 @@ return {
         -- "black",
         -- "prettier",
         -- "stylua",
-        -- "yamlfmt",
         --
         -- Linters
         -- "luacheck",
@@ -34,7 +33,6 @@ return {
         "pyright",
         "terraformls",
         "ts_ls",
-        "yamlls",
       },
     },
     dependencies = {
@@ -54,7 +52,6 @@ return {
             return { "black" }
           end
         end,
-        yaml = { 'yamlfmt' },
         javascript = { "prettier" },
         typescript = { "prettier" },
         json = { "prettier" },

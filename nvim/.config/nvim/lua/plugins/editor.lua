@@ -98,7 +98,6 @@ return {
             '--column',
             '--smart-case',
             '--hidden',
-            '--no-ignore',
             '--glob', '!.git/',
             '--glob', '!.venv/'
           },
@@ -106,7 +105,6 @@ return {
             'rg',
             '--files',
             '--hidden',
-            '--no-ignore',
             '--glob', '!.git/',
             '--glob', '!.venv/',
           },
