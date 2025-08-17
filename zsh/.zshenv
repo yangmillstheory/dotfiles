@@ -1,4 +1,4 @@
 . "$HOME/.cargo/env"
 
-# Created by pipx, originally in .zshrc.
-export PATH="$PATH:/Users/victor.alvarez/.local/bin"
+export PATH="$PATH:/Users/yangmillstheory/.local/bin"
+export PATH="$PATH:/Users/yangmillstheory/.docker/bin"

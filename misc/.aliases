@@ -3,3 +3,4 @@ alias c='/usr/bin/clear'
 alias p='/opt/homebrew/bin/python3'
 alias g='git'
 alias fdfind=fd
+alias k=kubectl
