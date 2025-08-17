@@ -1,4 +1,12 @@
-alias kc=kubectl
+alias k=kubectl
+alias kdl=kubectl delete
+alias kds=kubectl describe
+alias ka=kubectl apply
+alias kg=kubectl get
+alias kl=kubectl logs
+alias kex=kubectl explain
+alias ked=kubectl edit
+
 alias q='exit'
 alias c='/usr/bin/clear'
 alias p='/opt/homebrew/bin/python3'
