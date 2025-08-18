@@ -154,4 +154,19 @@ return {
       "rcarriga/nvim-notify",
     }
   },
+  -- Lua
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      window  = {
+        height = .85
+      },
+      plugins = {
+        alacritty = {
+          enabled = true,
+          font = "14",
+        }
+      }
+    }
+  }
 }

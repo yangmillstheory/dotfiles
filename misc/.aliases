@@ -14,3 +14,4 @@ alias g='git'
 alias t='terraform'
 alias b='brew'
 alias fdfind=fd
+alias k=kubectl

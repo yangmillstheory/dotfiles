@@ -5,6 +5,8 @@ o.showmode = false
 o.cursorcolumn = true
 o.cursorline = true
 
+o.list = false
+
 o.confirm = true
 o.hlsearch = false
 
@@ -16,7 +18,7 @@ o.number = true
 
 o.cmdheight = 0
 
-o.wildignore = table.concat({'*.o', '*.a', '*.obj', '__pycache__'}, ',')
+o.wildignore = table.concat({ '*.o', '*.a', '*.obj', '__pycache__' }, ',')
 
 o.shiftwidth = 2
 o.tabstop = 2
