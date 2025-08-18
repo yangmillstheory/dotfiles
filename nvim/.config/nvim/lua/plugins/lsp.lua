@@ -29,6 +29,7 @@ return {
         -- "kube-linter", -- Too annoying to set up with conditions on filepaths. Install via Homebrew.
         -- "vale",
         -- "terraform",
+        "gopls",
         "gh_actions_ls",
         "lua_ls",
         "pyright",
@@ -58,6 +59,7 @@ return {
         javascript = { "prettier" },
         typescript = { "prettier" },
         json = { "prettier" },
+        go = { "goimports", "gofmt" },
       },
       format_on_save = {
         lsp_format = "fallback",

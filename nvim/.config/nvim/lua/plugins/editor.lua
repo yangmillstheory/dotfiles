@@ -59,6 +59,7 @@ return {
         },
         position = 'center',
         preselect_current = true,
+        persist_tags = false,
       },
       navigate = {
         -- Make sure tags don't conflict with these. For
