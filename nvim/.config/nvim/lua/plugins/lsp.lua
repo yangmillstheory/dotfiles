@@ -45,10 +45,9 @@ return {
         settings = {
           yaml = {
             schemas = {
-                ["kubernetes"] = { "**/kubernetes/*.yaml", "**/k8s/*.yaml", "**/manifests/*.yaml" },
-                ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
-                ["https://json.schemastore.org/github-action.json"] = ".github/actions/*/action.yml",
-              },
+              ["kubernetes"] = { "**/kubernetes/*.yaml", "**/k8s/*.yaml", "**/manifests/*.yaml" },
+              ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
+              ["https://json.schemastore.org/github-action.json"] = ".github/actions/*/action.yml",
             },
           },
         },
