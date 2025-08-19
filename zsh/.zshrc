@@ -59,6 +59,7 @@ plugins=(
   zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting
+  kubectl
   vim
 )
 
