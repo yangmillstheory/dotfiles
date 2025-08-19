@@ -41,7 +41,22 @@ return {
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
       { "neovim/nvim-lspconfig" },
-    }
+    },
+    config = function()
+      require("lspconfig").yamlls.setup({
+        settings = {
+          yaml = {
+            schemas = {
+              -- TODO: likely too broad.
+              -- Kubernetes manifests
+              ["kubernetes"] = { "*.yaml", "**/manifests/*.yaml" },
+              -- GitHub Actions workflows
+              ["https://json.schemastore.org/github-workflow.json"] = { ".github/workflows/*.yaml" },
+            },
+          },
+        },
+      })
+    end
   },
   {
     'stevearc/conform.nvim',
