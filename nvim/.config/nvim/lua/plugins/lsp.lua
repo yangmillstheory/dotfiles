@@ -47,11 +47,9 @@ return {
         settings = {
           yaml = {
             schemas = {
-              -- TODO: likely too broad.
-              -- Kubernetes manifests
-              ["kubernetes"] = { "*.yaml", "**/manifests/*.yaml" },
-              -- GitHub Actions workflows
-              ["https://json.schemastore.org/github-workflow.json"] = { ".github/workflows/*.yaml" },
+              ["kubernetes"] = { "**/kubernetes/*.yaml", "**/k8s/*.yaml", "**/manifests/*.yaml" },
+              ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
+              ["https://json.schemastore.org/github-action.json"] = ".github/actions/*/action.yml",
             },
           },
         },
