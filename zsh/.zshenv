@@ -1,6 +1,6 @@
 . "$HOME/.cargo/env"
 
-export PATH="$PATH:/Users/yangmillstheory/.local/bin"
-export PATH="$PATH:/Users/yangmillstheory/.docker/bin"
-export PATH="$PATH:/Users/yangmillstheory/.local/share/nvim/mason/bin"
+export PATH="$PATH:/Users/victor.alvarez/.local/bin"
+export PATH="$PATH:/Users/victor.alvarez/.docker/bin"
+export PATH="$PATH:/Users/victor.alvarez/.local/share/nvim/mason/bin"
 
