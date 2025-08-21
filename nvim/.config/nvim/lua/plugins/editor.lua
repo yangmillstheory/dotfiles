@@ -46,7 +46,7 @@ return {
     "leath-dub/snipe.nvim",
     keys = {
       {
-        "<leader>B",
+        "<leader>b",
         function() require("snipe").open_buffer_menu() end,
         desc = "Open Snipe buffer menu",
       }
@@ -147,7 +147,7 @@ return {
         { desc = 'Telescope live grep' }
       )
       -- Drop this in favor of the strictly better snipe.
-      utils.keymap('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
+      utils.keymap('n', '<leader>B', builtin.buffers, { desc = 'Telescope buffers' })
       utils.keymap('n', '<leader>c', builtin.commands, { desc = 'Telescope commands' })
       utils.keymap('n', '<leader>?', builtin.help_tags, { desc = 'Telescope help_tags' })
       utils.keymap('n', '<leader>!', builtin.diagnostics, { desc = 'Telescope diagnostics' })
