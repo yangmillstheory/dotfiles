@@ -5,8 +5,6 @@ o.showmode = false
 o.cursorcolumn = true
 o.cursorline = true
 
-o.list = false
-
 o.confirm = true
 o.hlsearch = false
 

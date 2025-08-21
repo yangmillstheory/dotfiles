@@ -2,3 +2,5 @@
 
 export PATH="$PATH:/Users/yangmillstheory/.local/bin"
 export PATH="$PATH:/Users/yangmillstheory/.docker/bin"
+export PATH="$PATH:/Users/yangmillstheory/.local/share/nvim/mason/bin"
+
