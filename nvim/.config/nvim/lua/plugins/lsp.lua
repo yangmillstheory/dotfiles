@@ -40,26 +40,45 @@ return {
 			{ "mason-org/mason.nvim", opts = {} },
 			{ "neovim/nvim-lspconfig" },
 		},
-		config = function()
-			require("lspconfig").gopls.setup({})
-			require("lspconfig").yamlls.setup({
-				settings = {
-					yaml = {
-						schemas = {
-							["kubernetes"] = { "**/kubernetes/*.yaml", "**/k8s/*.yaml", "**/manifests/*.yaml" },
-							["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
-							["https://json.schemastore.org/github-action.json"] = ".github/actions/*/action.yml",
-						},
-					},
+		config = function(opts)
+			local mason = require("mason-lspconfig")
+			local common_opts = {
+				capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			}
+			local masonConfig = {
+				ensure_installed = opts.ensure_installed,
+				handlers = {
+					-- Without this auto-enabling LSP servers doesn't seem to work.
+					function(server_name)
+						mason[server_name].setup(common_opts)
+					end,
+					["yamlls"] = function()
+						mason.yamlls.setup(vim.tbl_deep_extend("force", common_opts, {
+							settings = {
+								yaml = {
+									schemas = {
+										["kubernetes"] = {
+											"**/kubernetes/*.yaml",
+											"**/k8s/*.yaml",
+											"**/manifests/*.yaml",
+										},
+										["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
+										["https://json.schemastore.org/github-action.json"] = ".github/actions/*/action.yml",
+									},
+								},
+							},
+						}))
+					end,
 				},
-			})
+			}
+			mason.setup(masonConfig)
 		end,
 	},
 	{
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
-				lua = { "stylelua" },
+				lua = { "stylua" },
 				python = function(bufnr)
 					if require("conform").get_formatter_info("ruff_format", bufnr).available then
 						return { "ruff_format" }
@@ -90,9 +109,7 @@ return {
 				terraform = { "tflint" },
 				text = { "vale" },
 			}
-			lint.linters.luacheck = {
-				cmd = { "luacheck", "--globals", "vim" },
-			}
+			lint.linters.luacheck.cmd = "luacheck --globals vim"
 			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 				callback = function()
 					lint.try_lint()
