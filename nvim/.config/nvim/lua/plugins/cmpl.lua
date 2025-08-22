@@ -26,6 +26,7 @@ return {
 			"hrsh7th/cmp-emoji",
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip", -- cmp source for LuaSnip
+			"windwp/nvim-autopairs",
 			{
 				"L3MON4D3/LuaSnip",
 				dependencies = {
