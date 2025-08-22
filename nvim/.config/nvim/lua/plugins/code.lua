@@ -32,7 +32,6 @@ return {
     },
     ft = { "c", "cpp", "python", "go"},
     init = function()
-      vim.o.list = true
       vim.g.indent_blankline_filetype = { "cpp", "python", "lua", "typescript", "javascript", "go"}
     end,
   },
@@ -77,10 +76,15 @@ return {
       --- See https://github.com/nvim-treesitter/nvim-treesitter/issues/5297.
       configs.setup({
         ensure_installed = {
-          "c", "lua", "vim", "vimdoc", "query", "javascript", "typescript", "python", "go",
+          "c", "lua", "vim", "vimdoc", "query", "javascript", "typescript", "python", "go", "terraform", "hcl",
 
           'markdown',
           'markdown_inline',
+        },
+
+        ft_to_parser = {
+          tf = "hcl",
+          terraform = "hcl",
         },
 
         ignore_install = {},
