@@ -1,21 +1,17 @@
 return {
   {
-    "juacker/git-link.nvim",
-    keys = {
-      {
-        "<leader>gu",
-        function() require("git-link.main").copy_line_url() end,
-        desc = "Copy code link to clipboard",
-        mode = { "n", "x" }
-      },
-      {
-        "<leader>go",
-        function() require("git-link.main").open_line_url() end,
-        desc = "Open code link in browser",
-        mode = { "n", "x" }
-      },
-    },
-  },
+  'claydugo/browsher.nvim',
+  event = "VeryLazy",
+  config = function()
+    -- Specify empty to use below default options
+    require('browsher').setup({
+      default_remote = 'origin',
+      default_branch = 'main',
+    })
+    vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>Browsher commit<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('v', '<leader>g', ":'<,'>Browsher commit<CR>gv", { noremap = true, silent = true })
+  end
+},
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
