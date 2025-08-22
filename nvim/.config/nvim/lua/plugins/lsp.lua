@@ -22,6 +22,7 @@ return {
 				-- "black",
 				-- "prettier",
 				-- "stylua",
+				-- "yamlfmt",
 				--
 				-- Linters
 				-- "luacheck",
@@ -34,6 +35,7 @@ return {
 				"pyright",
 				"terraformls",
 				"ts_ls",
+				"yamlls",
 			},
 		},
 		dependencies = {

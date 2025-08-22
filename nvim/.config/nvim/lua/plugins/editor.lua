@@ -31,109 +31,117 @@ return {
 		config = function()
 			local utils = require("utils")
 
-      utils.keymap('v', '<A-S-j>', '<Plug>MoveBlockDown')
-      utils.keymap('n', '<A-S-h>', '<Plug>MoveCharLeft')
-      utils.keymap('v', '<A-S-h>', '<Plug>MoveBlockLeft')
-      utils.keymap('n', '<A-S-j>', '<Plug>MoveLineDown')
-      utils.keymap('n', '<A-S-k>', '<Plug>MoveLineUp')
-      utils.keymap('v', '<A-S-k>', '<Plug>MoveBlockUp')
-      utils.keymap('v', '<A-S-l>', '<Plug>MoveBlockRight')
-      utils.keymap('n', '<A-S-l>', '<Plug>MoveCharRight')
-    end
-  },
-  'tmux-plugins/vim-tmux',
-  {
-    "leath-dub/snipe.nvim",
-    keys = {
-      {
-        "<leader>b",
-        function() require("snipe").open_buffer_menu() end,
-        desc = "Open Snipe buffer menu",
-      }
-    },
-    opts = {
-      ui = {
-        open_win_override = {
-          title = 'Buffers',
-          border = 'rounded'
-        },
-        position = 'center',
-        preselect_current = true,
-        persist_tags = false,
-      },
-      navigate = {
-        -- Make sure tags don't conflict with these. For
-        -- example, never assign "j" and "k" tags.
-        -- These are purposely similar to Telescope bindings.
-        open_split = "<c-x>",
-        open_vsplit = "<c-v>",
-        close_buffer = "X",
-        change_tag = "*",
-      },
-    }
-  },
-  {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      {
-        "nvim-telescope/telescope-live-grep-args.nvim",
-        -- This will not install any breaking changes.
-        -- For major updates, this must be adjusted manually.
-        version = "^1.0.0",
-      },
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    },
-    opts = function()
-      local lga_actions = require("telescope-live-grep-args.actions")
+			utils.keymap("v", "<A-S-j>", "<Plug>MoveBlockDown")
+			utils.keymap("n", "<A-S-h>", "<Plug>MoveCharLeft")
+			utils.keymap("v", "<A-S-h>", "<Plug>MoveBlockLeft")
+			utils.keymap("n", "<A-S-j>", "<Plug>MoveLineDown")
+			utils.keymap("n", "<A-S-k>", "<Plug>MoveLineUp")
+			utils.keymap("v", "<A-S-k>", "<Plug>MoveBlockUp")
+			utils.keymap("v", "<A-S-l>", "<Plug>MoveBlockRight")
+			utils.keymap("n", "<A-S-l>", "<Plug>MoveCharRight")
+		end,
+	},
+	"tmux-plugins/vim-tmux",
+	{
+		"leath-dub/snipe.nvim",
+		keys = {
+			{
+				"<leader>b",
+				function()
+					require("snipe").open_buffer_menu()
+				end,
+				desc = "Open Snipe buffer menu",
+			},
+		},
+		opts = {
+			ui = {
+				open_win_override = {
+					title = "Buffers",
+					border = "rounded",
+				},
+				position = "center",
+				preselect_current = true,
+				persist_tags = false,
+			},
+			navigate = {
+				-- Make sure tags don't conflict with these. For
+				-- example, never assign "j" and "k" tags.
+				-- These are purposely similar to Telescope bindings.
+				open_split = "<c-x>",
+				open_vsplit = "<c-v>",
+				close_buffer = "X",
+				change_tag = "*",
+			},
+		},
+	},
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.8",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{
+				"nvim-telescope/telescope-live-grep-args.nvim",
+				-- This will not install any breaking changes.
+				-- For major updates, this must be adjusted manually.
+				version = "^1.0.0",
+			},
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		},
+		opts = function()
+			local lga_actions = require("telescope-live-grep-args.actions")
 
-      return {
-        defaults = {
-          file_ignore_patterns = { ".git/" },
-          vimgrep_arguments = {
-            'rg',
-            '--no-heading',
-            '--with-filename',
-            '--line-number',
-            '--column',
-            '--smart-case',
-            '--hidden',
-            '--glob', '!.git/',
-            '--glob', '!.venv/',
-            '--glob', '!go.mod',
-            '--glob', '!go.sum',
-          },
-          find_command = {
-            'rg',
-            '--files',
-            '--hidden',
-            '--glob', '!.git/',
-            '--glob', '!.venv/',
-          },
-        },
-        extensions = {
-          fzf = {},
-          live_grep_args = {
-            auto_quoting = true,
-            mappings = {
-              i = {
-                ["<C-k>"] = lga_actions.quote_prompt(),
-                ["<C-g>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-                ["<C-t>"] = lga_actions.quote_prompt({ postfix = " --type " }),
-              },
-            },
-          },
-        },
-      }
-    end,
-    config = function(_, opts)
-      local telescope = require("telescope")
-      telescope.setup(opts)
-      -- https://github.com/nvim-telescope/telescope-fzf-native.nvim?tab=readme-ov-file#telescope-fzf-nativenvim
-      telescope.load_extension('fzf')
-      -- https://github.com/nvim-telescope/telescope-live-grep-args.nvim?tab=readme-ov-file#grep-argument-examples
-      telescope.load_extension("live_grep_args")
+			return {
+				defaults = {
+					file_ignore_patterns = { ".git/" },
+					vimgrep_arguments = {
+						"rg",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"--hidden",
+						"--glob",
+						"!.git/",
+						"--glob",
+						"!.venv/",
+						"--glob",
+						"!go.mod",
+						"--glob",
+						"!go.sum",
+					},
+					find_command = {
+						"rg",
+						"--files",
+						"--hidden",
+						"--glob",
+						"!.git/",
+						"--glob",
+						"!.venv/",
+					},
+				},
+				extensions = {
+					fzf = {},
+					live_grep_args = {
+						auto_quoting = true,
+						mappings = {
+							i = {
+								["<C-k>"] = lga_actions.quote_prompt(),
+								["<C-g>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+								["<C-t>"] = lga_actions.quote_prompt({ postfix = " --type " }),
+							},
+						},
+					},
+				},
+			}
+		end,
+		config = function(_, opts)
+			local telescope = require("telescope")
+			telescope.setup(opts)
+			-- https://github.com/nvim-telescope/telescope-fzf-native.nvim?tab=readme-ov-file#telescope-fzf-nativenvim
+			telescope.load_extension("fzf")
+			-- https://github.com/nvim-telescope/telescope-live-grep-args.nvim?tab=readme-ov-file#grep-argument-examples
+			telescope.load_extension("live_grep_args")
 
 			local builtin = require("telescope.builtin")
 			local utils = require("utils")
