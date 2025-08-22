@@ -50,7 +50,7 @@ return {
               ["kubernetes"] = { "**/kubernetes/*.yaml", "**/k8s/*.yaml", "**/manifests/*.yaml" },
               ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
               ["https://json.schemastore.org/github-action.json"] = ".github/actions/*/action.yml",
-            },
+           },
           },
         },
       })
@@ -72,6 +72,8 @@ return {
         javascript = { "prettier" },
         typescript = { "prettier" },
         json = { "prettier" },
+        tf = { "terraform_fmt" },
+        terraform = { "terraform_fmt" },
         go = { "goimports", "gofmt" },
       },
       format_on_save = {
