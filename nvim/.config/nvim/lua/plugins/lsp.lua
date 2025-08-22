@@ -111,7 +111,7 @@ return {
 				terraform = { "tflint" },
 				text = { "vale" },
 			}
-			lint.linters.luacheck.cmd = "luacheck --globals vim"
+			lint.linters.luacheck.args = { "--globals", "vim" }
 			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 				callback = function()
 					lint.try_lint()
