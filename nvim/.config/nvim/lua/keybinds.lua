@@ -4,10 +4,12 @@ keymap('n', '<space>', '<nop>')
 vim.g.mapleader = ' '
 
 -- marks
-keymap('n', 'xM', [[:delm! \| delm A-Z0-9a-z<CR>]], { desc = 'Delete all marks'})
+keymap('n', 'xM', [[:delm! \| delm A-Z0-9a-z<CR>]], { desc = 'Delete all marks' })
 keymap('n', 'xm', [[:delm a-z<CR>]], { desc = "Delete buffer-local marks" })
 
--- quickfix
+-- quickfix / diagnostics
+keymap('n', 'xj', function() vim.diagnostic.jump({ count = 1 }) end)
+keymap('n', 'xk', function() vim.diagnostic.jump({ count = -1 }) end)
 keymap('n', 'qj', ':cnext<cr>')
 keymap('n', 'qk', ':cprev<cr>')
 
@@ -72,6 +74,7 @@ function M.NonDestructiveJoin()
   vim.cmd.join()
   vim.fn.setpos('.', pos)
 end
+
 keymap('n', 'J', ':lua require("keybinds").NonDestructiveJoin()<cr>')
 
 -- vertical jumps should be in the jumplist
@@ -85,6 +88,7 @@ function M.JkJumps(j_or_k)
     vim.cmd { cmd = 'normal', bang = true, args = { target .. 'G' } }
   end
 end
+
 keymap('n', 'j', ':<C-U>lua require("keybinds").JkJumps("j")<cr>', { silent = true })
 keymap('n', 'k', ':<C-U>lua require("keybinds").JkJumps("k")<cr>', { silent = true })
 

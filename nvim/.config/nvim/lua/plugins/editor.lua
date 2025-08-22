@@ -100,7 +100,9 @@ return {
             '--smart-case',
             '--hidden',
             '--glob', '!.git/',
-            '--glob', '!.venv/'
+            '--glob', '!.venv/',
+            '--glob', '!go.mod',
+            '--glob', '!go.sum',
           },
           find_command = {
             'rg',
