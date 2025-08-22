@@ -63,37 +63,7 @@ return {
 					["<C-e>"] = cmp.mapping.close(),
 					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 					["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-					-- ["<cr>"] = cmp.mapping.confirm({ select = true }),
-					["<cr>"] = cmp.mapping({
-						i = function(fallback)
-							local entry = cmp.get_selected_entry()
-							if not entry or entry.source.name ~= "nvim_lsp" then
-								return fallback()
-							end
-							local kind = entry.completion_item.kind
-							if
-								kind ~= vim.lsp.protocol.CompletionItemKind.Function
-								and kind ~= vim.lsp.protocol.CompletionItemKind.Method
-							then
-								return fallback()
-							end
-							local _, start_col = unpack(cmp.core.get_cursor())
-							local end_col = start_col + vim.fn.strwidth(entry.completion_item.label)
-							local char_after = vim.api.nvim_get_current_line():sub(end_col, end_col)
-							if char_after == "(" or char_after == ")" or char_after == '"' or char_after == "'" then
-								return cmp.confirm({ select = false })
-							end
-							cmp.confirm({ select = false, behavior = cmp.ConfirmBehavior.Insert })
-							vim.api.nvim_feedkeys("()", "n", true)
-							vim.api.nvim_feedkeys(
-								vim.api.nvim_replace_termcodes("<Left>", true, true, true),
-								"n",
-								false
-							)
-						end,
-						s = cmp.mapping.confirm({ select = true }),
-						c = cmp.mapping.confirm({ select = true }),
-					}),
+					["<cr>"] = cmp.mapping.confirm({ select = true }),
 
 					-- Pared down version of https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
 					--
