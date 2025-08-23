@@ -29,6 +29,7 @@ return {
 				-- "kube-linter", -- Too annoying to set up with conditions on filepaths. Install via Homebrew.
 				-- "vale",
 				-- "terraform",
+				-- "golangci-lint",
 				"gopls",
 				"gh_actions_ls",
 				"lua_ls",
@@ -94,7 +95,7 @@ return {
 				json = { "prettier" },
 				tf = { "terraform_fmt" },
 				terraform = { "terraform_fmt" },
-				go = { "goimports", "gofmt" },
+				go = { "goimports" },
 			},
 			format_on_save = {
 				lsp_format = "fallback",
@@ -107,6 +108,7 @@ return {
 		config = function()
 			local lint = require("lint")
 			lint.linters_by_ft = {
+				go = { "golangcilint" },
 				lua = { "luacheck" },
 				terraform = { "tflint" },
 				text = { "vale" },
