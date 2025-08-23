@@ -136,9 +136,10 @@ return {
 
 			cmp.setup.filetype("markdown", {
 				sources = {
+					{ name = "luasnip" },
 					{ name = "dictionary", keyword_length = 3 },
 					{ name = "emoji" },
-					{ name = "buffer", keyword_length = 3 },
+					{ name = "buffer" },
 				},
 			})
 
