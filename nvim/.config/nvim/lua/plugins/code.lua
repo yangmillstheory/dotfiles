@@ -18,14 +18,6 @@ return {
 			{ "<leader>ct", ":CopilotChatTests<cr>", mode = "v", desc = "CopilotChat: Generate tests for selection" },
 			{ "<leader>cm", ":CopilotChatCommit<cr>", mode = "n", desc = "CopilotChat: Generate commit message" },
 		},
-		config = function(_, opts)
-			local chat = require("CopilotChat")
-
-			chat.setup(opts)
-			require("render-markdown").setup({
-				completions = { lsp = { enabled = true } },
-			})
-		end,
 	},
 	{
 		"github/copilot.vim",
