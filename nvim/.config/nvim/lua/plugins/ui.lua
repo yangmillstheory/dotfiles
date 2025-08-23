@@ -119,12 +119,15 @@ return {
 		lazy = false,
 	},
 	{
-		"OXY2DEV/markview.nvim",
-		lazy = false,
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		-- https://github.com/MeanderingProgrammer/render-markdown.nvim/wiki
+		"MeanderingProgrammer/render-markdown.nvim",
+		ft = { "markdown", "copilot-chat" },
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+		opts = {},
 		config = function()
-			require("markview").setup()
-			vim.cmd("Markview Enable")
+			require("render-markdown").setup({
+				completions = { lsp = { enabled = true } },
+			})
 		end,
 	},
 	{
