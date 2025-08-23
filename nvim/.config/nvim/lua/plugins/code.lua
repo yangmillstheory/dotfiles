@@ -2,30 +2,21 @@ local keymap = require("utils").keymap
 
 return {
 	{
+		"CopilotC-Nvim/CopilotChat.nvim",
 		-- Resources (#<name>) - Add specific content (files, git diffs, URLs) to your prompt
 		-- Tools (@<name>) - Give LLM access to functions it can call with your approval
 		-- Sticky Prompts (> <text>) - Persist context across single chat session
 		-- Models ($<model>) - Specify which AI model to use for the chat
 		-- Prompts (/PromptName) - Use predefined prompt templates for common tasks
-		-- Selection - Automatically includes current user selection in prompts
-		"CopilotC-Nvim/CopilotChat.nvim",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim", branch = "master" },
-			{ "MeanderingProgrammer/render-markdown.nvim" },
-		},
-		build = "make tiktoken",
-		opts = {
-			auto_insert_mode = true,
-		},
 		keys = {
-			{ "<leader>cc", ":CopilotChat<cr>", mode = "n" },
-			{ "<leader>ce", ":CopilotChatExplain<cr>", mode = "v" },
-			{ "<leader>cr", ":CopilotChatReview<cr>", mode = "v" },
-			{ "<leader>cf", ":CopilotChatFix<cr>", mode = "v" },
-			{ "<leader>cd", ":CopilotChatDocs<cr>", mode = "v" },
-			{ "<leader>co", ":CopilotChatOptimize<cr>", mode = "v" },
-			{ "<leader>ct", ":CopilotChatTests<cr>", mode = "v" },
-			{ "<leader>cm", ":CopilotChatCommit<cr>", mode = "n" },
+			{ "<leader>cc", ":CopilotChat<cr>", mode = "n", desc = "CopilotChat: Open chat" },
+			{ "<leader>ce", ":CopilotChatExplain<cr>", mode = "v", desc = "CopilotChat: Explain selection" },
+			{ "<leader>cr", ":CopilotChatReview<cr>", mode = "v", desc = "CopilotChat: Review selection" },
+			{ "<leader>cf", ":CopilotChatFix<cr>", mode = "v", desc = "CopilotChat: Fix selection" },
+			{ "<leader>cd", ":CopilotChatDocs<cr>", mode = "v", desc = "CopilotChat: Generate docs for selection" },
+			{ "<leader>co", ":CopilotChatOptimize<cr>", mode = "v", desc = "CopilotChat: Optimize selection" },
+			{ "<leader>ct", ":CopilotChatTests<cr>", mode = "v", desc = "CopilotChat: Generate tests for selection" },
+			{ "<leader>cm", ":CopilotChatCommit<cr>", mode = "n", desc = "CopilotChat: Generate commit message" },
 		},
 		config = function(_, opts)
 			local chat = require("CopilotChat")
@@ -39,15 +30,22 @@ return {
 	{
 		"github/copilot.vim",
 		config = function()
+			-- To conserve API usage.
+			vim.g.copilot_enabled = false
 			vim.g.copilot_no_tab_map = true
-			keymap("i", "<S-Tab>", 'copilot#Accept("\\<S-Tab>")', { expr = true, replace_keycodes = false })
-			keymap("i", "<c-c>w", "<Plug>(copilot-accept-word)")
-			keymap("i", "<c-c>l", "<Plug>(copilot-accept-line)")
-			keymap("i", "<c-c>?", "<Plug>(copilot-suggest)")
-			keymap("i", "<c-c>j", "<Plug>(copilot-previous)")
-			keymap("i", "<c-c>k", "<Plug>(copilot-next)")
-			keymap("i", "<c-c>x", "<Plug>(copilot-dismiss)")
-			keymap("n", "<c-c>p", ":Copilot panel<CR>")
+			keymap(
+				"i",
+				"<S-Tab>",
+				'copilot#Accept("\\<S-Tab>")',
+				{ expr = true, replace_keycodes = false, desc = "Copilot: Accept suggestion with Shift-Tab" }
+			)
+			keymap("i", "<c-c>w", "<Plug>(copilot-accept-word)", { desc = "Copilot: Accept next word" })
+			keymap("i", "<c-c>l", "<Plug>(copilot-accept-line)", { desc = "Copilot: Accept next line" })
+			keymap("i", "<c-c>?", "<Plug>(copilot-suggest)", { desc = "Copilot: Show suggestions" })
+			keymap("i", "<c-c>j", "<Plug>(copilot-previous)", { desc = "Copilot: Previous suggestion" })
+			keymap("i", "<c-c>k", "<Plug>(copilot-next)", { desc = "Copilot: Next suggestion" })
+			keymap("i", "<c-c>x", "<Plug>(copilot-dismiss)", { desc = "Copilot: Dismiss suggestion" })
+			keymap("n", "<c-c>p", ":Copilot panel<CR>", { desc = "Copilot: Open panel" })
 		end,
 	},
 	{

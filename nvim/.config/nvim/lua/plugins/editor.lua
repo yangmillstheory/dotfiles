@@ -12,11 +12,10 @@ return {
 		config = function()
 			local utils = require("utils")
 
-			local keymap_opts = { silent = true }
-			utils.keymap("n", "<A-h>", ":TmuxNavigateLeft<cr>", keymap_opts)
-			utils.keymap("n", "<A-j>", ":TmuxNavigateDown<cr>", keymap_opts)
-			utils.keymap("n", "<A-k>", ":TmuxNavigateUp<cr>", keymap_opts)
-			utils.keymap("n", "<A-l>", ":TmuxNavigateRight<cr>", keymap_opts)
+			utils.keymap("n", "<A-h>", ":TmuxNavigateLeft<cr>", { desc = "Navigate left (tmux)" })
+			utils.keymap("n", "<A-j>", ":TmuxNavigateDown<cr>", { desc = "Navigate down (tmux)" })
+			utils.keymap("n", "<A-k>", ":TmuxNavigateUp<cr>", { desc = "Navigate up (tmux)" })
+			utils.keymap("n", "<A-l>", ":TmuxNavigateRight<cr>", { desc = "Navigate right (tmux)" })
 		end,
 	},
 	{
@@ -31,14 +30,14 @@ return {
 		config = function()
 			local utils = require("utils")
 
-			utils.keymap("v", "<A-S-j>", "<Plug>MoveBlockDown")
-			utils.keymap("n", "<A-S-h>", "<Plug>MoveCharLeft")
-			utils.keymap("v", "<A-S-h>", "<Plug>MoveBlockLeft")
-			utils.keymap("n", "<A-S-j>", "<Plug>MoveLineDown")
-			utils.keymap("n", "<A-S-k>", "<Plug>MoveLineUp")
-			utils.keymap("v", "<A-S-k>", "<Plug>MoveBlockUp")
-			utils.keymap("v", "<A-S-l>", "<Plug>MoveBlockRight")
-			utils.keymap("n", "<A-S-l>", "<Plug>MoveCharRight")
+			utils.keymap("v", "<A-S-j>", "<Plug>MoveBlockDown", { desc = "Move block down (visual)" })
+			utils.keymap("n", "<A-S-h>", "<Plug>MoveCharLeft", { desc = "Move character left (normal)" })
+			utils.keymap("v", "<A-S-h>", "<Plug>MoveBlockLeft", { desc = "Move block left (visual)" })
+			utils.keymap("n", "<A-S-j>", "<Plug>MoveLineDown", { desc = "Move line down (normal)" })
+			utils.keymap("n", "<A-S-k>", "<Plug>MoveLineUp", { desc = "Move line up (normal)" })
+			utils.keymap("v", "<A-S-k>", "<Plug>MoveBlockUp", { desc = "Move block up (visual)" })
+			utils.keymap("v", "<A-S-l>", "<Plug>MoveBlockRight", { desc = "Move block right (visual)" })
+			utils.keymap("n", "<A-S-l>", "<Plug>MoveCharRight", { desc = "Move character right (normal)" })
 		end,
 	},
 	"tmux-plugins/vim-tmux",
@@ -193,29 +192,29 @@ return {
 			-- utils.keymap('', 'f', '<Plug>(snipe-f)')
 			-- utils.keymap('', 'T', '<Plug>(snipe-T)')
 			-- utils.keymap('', 't', '<Plug>(snipe-t)')
-			utils.keymap("", "<leader><leader>w", "<Plug>(snipe-w)")
-			utils.keymap("", "<leader><leader>W", "<Plug>(snipe-W)")
-			utils.keymap("", "<leader><leader>e", "<Plug>(snipe-e)")
-			utils.keymap("", "<leader><leader>E", "<Plug>(snipe-E)")
-			utils.keymap("", "<leader><leader>b", "<Plug>(snipe-b)")
-			utils.keymap("", "<leader><leader>B", "<Plug>(snipe-B)")
-			utils.keymap("", "<leader><leader>ge", "<Plug>(snipe-ge)")
-			utils.keymap("", "<leader><leader>gE", "<Plug>(snipe-gE)")
+			utils.keymap("", "<leader><leader>w", "<Plug>(snipe-w)", { desc = "Jump forward to word start" })
+			utils.keymap("", "<leader><leader>W", "<Plug>(snipe-W)", { desc = "Jump back to word start" })
+			utils.keymap("", "<leader><leader>e", "<Plug>(snipe-e)", { desc = "Jump forward to word end" })
+			utils.keymap("", "<leader><leader>E", "<Plug>(snipe-E)", { desc = "Jump back to word end" })
+			utils.keymap("", "<leader><leader>b", "<Plug>(snipe-b)", { desc = "Jump forward to word backward" })
+			utils.keymap("", "<leader><leader>B", "<Plug>(snipe-B)", { desc = "Jump back to word backward" })
+			utils.keymap("", "<leader><leader>ge", "<Plug>(snipe-ge)", { desc = "Jump forward to end of WORD" })
+			utils.keymap("", "<leader><leader>gE", "<Plug>(snipe-gE)", { desc = "Jump back to end of WORD" })
 			-- Swap.
-			utils.keymap("n", "<leader><leader>]", "<Plug>(snipe-f-xp)")
-			utils.keymap("n", "<leader><leader>[", "<Plug>(snipe-F-xp)")
+			utils.keymap("n", "<leader><leader>]", "<Plug>(snipe-f-xp)", { desc = "Swap with next character" })
+			utils.keymap("n", "<leader><leader>[", "<Plug>(snipe-F-xp)", { desc = "Swap with previous character" })
 			-- Cut.
-			utils.keymap("n", "<leader><leader>x", "<Plug>(snipe-f-x)")
-			utils.keymap("n", "<leader><leader>X", "<Plug>(snipe-F-x)")
+			utils.keymap("n", "<leader><leader>x", "<Plug>(snipe-f-x)", { desc = "Cut forward" })
+			utils.keymap("n", "<leader><leader>X", "<Plug>(snipe-F-x)", { desc = "Cut back" })
 			-- Replace.
-			utils.keymap("n", "<leader><leader>r", "<Plug>(snipe-f-r)")
-			utils.keymap("n", "<leader><leader>R", "<Plug>(snipe-F-r)")
+			utils.keymap("n", "<leader><leader>r", "<Plug>(snipe-f-r)", { desc = "Replace forward" })
+			utils.keymap("n", "<leader><leader>R", "<Plug>(snipe-F-r)", { desc = "Replace back" })
 			-- Insert.
-			utils.keymap("n", "<leader><leader>i", "<Plug>(snipe-f-i)")
-			utils.keymap("n", "<leader><leader>I", "<Plug>(snipe-F-i)")
+			utils.keymap("n", "<leader><leader>i", "<Plug>(snipe-f-i)", { desc = "Insert forward" })
+			utils.keymap("n", "<leader><leader>I", "<Plug>(snipe-F-i)", { desc = "Insert back" })
 			-- Append.
-			utils.keymap("n", "<leader><leader>a", "<Plug>(snipe-f-a)")
-			utils.keymap("n", "<leader><leader>A", "<Plug>(snipe-F-a)")
+			utils.keymap("n", "<leader><leader>a", "<Plug>(snipe-f-a)", { desc = "Append forward" })
+			utils.keymap("n", "<leader><leader>A", "<Plug>(snipe-F-a)", { desc = "Append back" })
 		end,
 	},
 	"tpope/vim-obsession",
