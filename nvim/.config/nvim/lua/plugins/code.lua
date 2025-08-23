@@ -30,7 +30,7 @@ return {
 				},
 			},
 		},
-		ft = { "c", "cpp", "python", "go" },
+		ft = { "c", "cpp", "python", "go", "lua" },
 		init = function()
 			vim.g.indent_blankline_filetype = { "cpp", "python", "lua", "typescript", "javascript", "go" }
 		end,

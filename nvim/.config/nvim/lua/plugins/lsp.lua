@@ -44,37 +44,31 @@ return {
 			{ "neovim/nvim-lspconfig" },
 		},
 		config = function(opts)
-			local mason = require("mason-lspconfig")
 			local common_opts = {
 				capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			}
-			local masonConfig = {
-				ensure_installed = opts.ensure_installed,
-				handlers = {
-					-- Without this auto-enabling LSP servers doesn't seem to work.
-					function(server_name)
-						mason[server_name].setup(common_opts)
-					end,
-					["yamlls"] = function()
-						mason.yamlls.setup(vim.tbl_deep_extend("force", common_opts, {
-							settings = {
-								yaml = {
-									schemas = {
-										["kubernetes"] = {
-											"**/kubernetes/*.yaml",
-											"**/k8s/*.yaml",
-											"**/manifests/*.yaml",
-										},
-										["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
-										["https://json.schemastore.org/github-action.json"] = ".github/actions/*/action.yml",
-									},
+			vim.lsp.config(
+				"yamlls",
+				vim.tbl_deep_extend("force", common_opts, {
+					settings = {
+						yaml = {
+							schemas = {
+								["kubernetes"] = {
+									"**/kubernetes/**/*.{yaml,yml}",
+									"**/k8s/**/*.{yaml,yml}",
+									"**/manifests/**/*.{yaml,yml}",
 								},
+								["https://json.schemastore.org/kustomization.json"] = { "kustomization" },
+								["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*.{yaml,yml}",
+								["https://jsonschemastore.org/github-action.json"] = ".github/actions/*/action.{yaml,yml}",
+								["http://json.schemastore.org/chart"] = "**/Chart.{yaml,yml}",
 							},
-						}))
-					end,
-				},
-			}
-			mason.setup(masonConfig)
+						},
+					},
+				})
+			)
+			require("mason").setup()
+			require("mason-lspconfig").setup({ ensure_installed = opts.ensure_installed })
 		end,
 	},
 	{
