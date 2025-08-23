@@ -1,4 +1,20 @@
+local keymap = require("utils").keymap
+
 return {
+	{
+		"github/copilot.vim",
+		config = function()
+			-- Use <Tab> to accept copilot suggestions.
+			vim.g.copilot_no_tab_map = false
+			keymap("i", "<m-c>w", "<Plug>(copilot-accept-word)")
+			keymap("i", "<m-c>l", "<Plug>(copilot-accept-line)")
+			keymap("i", "<m-c>?", "<Plug>(copilot-suggest)")
+			keymap("i", "<m-c>j", "<Plug>(copilot-previous)")
+			keymap("i", "<m-c>k", "<Plug>(copilot-next)")
+			keymap("i", "<m-c>x", "<Plug>(copilot-dismiss)")
+			keymap("n", "<m-c>p", ":Copilot panel<CR>")
+		end,
+	},
 	{
 		"ruifm/gitlinker.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
