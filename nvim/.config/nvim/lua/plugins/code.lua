@@ -2,17 +2,52 @@ local keymap = require("utils").keymap
 
 return {
 	{
+		-- Resources (#<name>) - Add specific content (files, git diffs, URLs) to your prompt
+		-- Tools (@<name>) - Give LLM access to functions it can call with your approval
+		-- Sticky Prompts (> <text>) - Persist context across single chat session
+		-- Models ($<model>) - Specify which AI model to use for the chat
+		-- Prompts (/PromptName) - Use predefined prompt templates for common tasks
+		-- Selection - Automatically includes current user selection in prompts
+		"CopilotC-Nvim/CopilotChat.nvim",
+		dependencies = {
+			{ "nvim-lua/plenary.nvim", branch = "master" },
+			{ "MeanderingProgrammer/render-markdown.nvim" },
+		},
+		build = "make tiktoken",
+		opts = {
+			auto_insert_mode = true,
+		},
+		keys = {
+			{ "<leader>cc", ":CopilotChat<cr>", mode = "n" },
+			{ "<leader>ce", ":CopilotChatExplain<cr>", mode = "v" },
+			{ "<leader>cr", ":CopilotChatReview<cr>", mode = "v" },
+			{ "<leader>cf", ":CopilotChatFix<cr>", mode = "v" },
+			{ "<leader>cd", ":CopilotChatDocs<cr>", mode = "v" },
+			{ "<leader>co", ":CopilotChatOptimize<cr>", mode = "v" },
+			{ "<leader>ct", ":CopilotChatTests<cr>", mode = "v" },
+			{ "<leader>cm", ":CopilotChatCommit<cr>", mode = "n" },
+		},
+		config = function(_, opts)
+			local chat = require("CopilotChat")
+
+			chat.setup(opts)
+			require("render-markdown").setup({
+				completions = { lsp = { enabled = true } },
+			})
+		end,
+	},
+	{
 		"github/copilot.vim",
 		config = function()
-			-- Use <Tab> to accept copilot suggestions.
-			vim.g.copilot_no_tab_map = false
-			keymap("i", "<m-c>w", "<Plug>(copilot-accept-word)")
-			keymap("i", "<m-c>l", "<Plug>(copilot-accept-line)")
-			keymap("i", "<m-c>?", "<Plug>(copilot-suggest)")
-			keymap("i", "<m-c>j", "<Plug>(copilot-previous)")
-			keymap("i", "<m-c>k", "<Plug>(copilot-next)")
-			keymap("i", "<m-c>x", "<Plug>(copilot-dismiss)")
-			keymap("n", "<m-c>p", ":Copilot panel<CR>")
+			vim.g.copilot_no_tab_map = true
+			keymap("i", "<S-Tab>", 'copilot#Accept("\\<S-Tab>")', { expr = true, replace_keycodes = false })
+			keymap("i", "<c-c>w", "<Plug>(copilot-accept-word)")
+			keymap("i", "<c-c>l", "<Plug>(copilot-accept-line)")
+			keymap("i", "<c-c>?", "<Plug>(copilot-suggest)")
+			keymap("i", "<c-c>j", "<Plug>(copilot-previous)")
+			keymap("i", "<c-c>k", "<Plug>(copilot-next)")
+			keymap("i", "<c-c>x", "<Plug>(copilot-dismiss)")
+			keymap("n", "<c-c>p", ":Copilot panel<CR>")
 		end,
 	},
 	{
