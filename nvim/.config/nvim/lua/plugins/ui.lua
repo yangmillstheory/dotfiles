@@ -16,10 +16,10 @@ return {
 					},
 				},
 			})
-			keymap("n", "bq", ":bw<CR>")
-			keymap("n", "bj", ":BufferLineCyclePrev<CR>")
-			keymap("n", "bk", ":BufferLineCycleNext<CR>")
-			keymap("n", "bg", ":BufferLinePick<CR>")
+			keymap("n", "bq", ":bw<CR>", { desc = "Close buffer" })
+			keymap("n", "bj", ":BufferLineCyclePrev<CR>", { desc = "Go to previous buffer" })
+			keymap("n", "bk", ":BufferLineCycleNext<CR>", { desc = "Go to next buffer" })
+			keymap("n", "bg", ":BufferLinePick<CR>", { desc = "Pick buffer from bufferline" })
 		end,
 	},
 	{
@@ -166,7 +166,6 @@ return {
 			"rcarriga/nvim-notify",
 		},
 	},
-	-- Lua
 	{
 		"folke/zen-mode.nvim",
 		opts = {
@@ -180,5 +179,11 @@ return {
 				},
 			},
 		},
+	},
+	{
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup()
+		end,
 	},
 }
