@@ -160,7 +160,7 @@ return {
 			)
 			-- Drop this in favor of the strictly better snipe.
 			utils.keymap("n", "<leader>B", builtin.buffers, { desc = "Telescope buffers" })
-			utils.keymap("n", "<leader>c", builtin.commands, { desc = "Telescope commands" })
+			utils.keymap("n", "<leader>C", builtin.commands, { desc = "Telescope commands" })
 			utils.keymap("n", "<leader>?", builtin.help_tags, { desc = "Telescope help_tags" })
 			utils.keymap("n", "<leader>!", builtin.diagnostics, { desc = "Telescope diagnostics" })
 			utils.keymap("n", "<leader>m", builtin.marks, { desc = "Telescope marks" })
