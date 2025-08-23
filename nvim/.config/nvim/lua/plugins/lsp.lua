@@ -47,26 +47,24 @@ return {
 			local common_opts = {
 				capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			}
-			vim.lsp.config(
-				"yamlls",
-				vim.tbl_deep_extend("force", common_opts, {
-					settings = {
-						yaml = {
-							schemas = {
-								["kubernetes"] = {
-									"**/kubernetes/**/*.{yaml,yml}",
-									"**/k8s/**/*.{yaml,yml}",
-									"**/manifests/**/*.{yaml,yml}",
-								},
-								["https://json.schemastore.org/kustomization.json"] = { "kustomization" },
-								["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*.{yaml,yml}",
-								["https://jsonschemastore.org/github-action.json"] = ".github/actions/*/action.{yaml,yml}",
-								["http://json.schemastore.org/chart"] = "**/Chart.{yaml,yml}",
+			vim.lsp.config("*", common_opts)
+			vim.lsp.config("yamlls", {
+				settings = {
+					yaml = {
+						schemas = {
+							["kubernetes"] = {
+								"**/kubernetes/**/*.{yaml,yml}",
+								"**/k8s/**/*.{yaml,yml}",
+								"**/manifests/**/*.{yaml,yml}",
 							},
+							["https://json.schemastore.org/kustomization.json"] = { "kustomization" },
+							["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*.{yaml,yml}",
+							["https://jsonschemastore.org/github-action.json"] = ".github/actions/*/action.{yaml,yml}",
+							["http://json.schemastore.org/chart"] = "**/Chart.{yaml,yml}",
 						},
 					},
-				})
-			)
+				},
+			})
 			require("mason").setup()
 			require("mason-lspconfig").setup({ ensure_installed = opts.ensure_installed })
 		end,
