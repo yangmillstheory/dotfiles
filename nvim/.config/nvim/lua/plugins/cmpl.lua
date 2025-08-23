@@ -36,15 +36,6 @@ return {
 					require("luasnip.loaders.from_vscode").lazy_load()
 				end,
 			},
-			{
-				"L3MON4D3/LuaSnip",
-				dependencies = {
-					"rafamadriz/friendly-snippets",
-				},
-				config = function()
-					require("luasnip.loaders.from_vscode").lazy_load()
-				end,
-			},
 		},
 		config = function()
 			-- Configure CMP
@@ -56,6 +47,12 @@ return {
 
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+			cmp.setup({
+				sources = cmp.config.sources({
+					{ name = "render-markdown" },
+				}),
+			})
 
 			cmp.setup({
 				mapping = cmp.mapping.preset.insert({
