@@ -30,6 +30,7 @@ return {
 				-- "vale",
 				-- "terraform",
 				-- "golangci-lint",
+				"marksman",
 				"gopls",
 				"gh_actions_ls",
 				"lua_ls",
@@ -48,6 +49,9 @@ return {
 				capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			}
 			vim.lsp.config("*", common_opts)
+			vim.lsp.config("marksman", {
+				filetypes = { "markdown", "copilot-chat" },
+			})
 			vim.lsp.config("yamlls", {
 				settings = {
 					yaml = {
