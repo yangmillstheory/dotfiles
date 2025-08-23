@@ -18,6 +18,9 @@ return {
 			{ "<leader>ct", ":CopilotChatTests<cr>", mode = "v", desc = "CopilotChat: Generate tests for selection" },
 			{ "<leader>cm", ":CopilotChatCommit<cr>", mode = "n", desc = "CopilotChat: Generate commit message" },
 		},
+		config = function()
+			require("CopilotChat").setup()
+		end,
 	},
 	{
 		"github/copilot.vim",
