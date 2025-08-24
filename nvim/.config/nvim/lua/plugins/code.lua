@@ -19,18 +19,7 @@ return {
 			{ "<leader>cm", ":CopilotChatCommit<cr>", mode = "n", desc = "CopilotChat: Generate commit message" },
 		},
 		config = function()
-			require("CopilotChat").setup({
-				custom_commands = {
-					WriteCommit = {
-						prompt = [[
-##git://diff/staged
-
-/Commit
-]],
-						selection = nil,
-					},
-				},
-			})
+			require("CopilotChat").setup()
 		end,
 	},
 	{
