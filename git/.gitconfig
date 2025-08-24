@@ -3,6 +3,7 @@
   email = sapien.reversing.entropy@gmail.com
 [core]
   editor = nvim
+  pager = delta
   excludesfile = /Users/yangmillstheory/.gitignore
 [alias]
   co = checkout
@@ -18,3 +19,10 @@
   required = true
 [push]
   autoSetupRemote = true
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  dark = true
+[merge]
+  conflictStyle = zdiff3
