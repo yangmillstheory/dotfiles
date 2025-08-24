@@ -26,10 +26,6 @@ keymap("n", '""', '"_', { desc = "Use black hole register" })
 -- redo
 keymap("n", "U", ":redo<cr>", { desc = "Redo" })
 
--- quickly get into normal mode
-keymap("n", "<cr><cr>", ":", { desc = "Enter command mode (normal)" })
-keymap("v", "<cr><cr>", ":", { desc = "Enter command mode (visual)" })
-
 -- yank into the system clipboard
 keymap("n", "<A-y>", '"+y', { desc = "Yank to system clipboard (normal)" })
 keymap("v", "<A-y>", '"+y', { desc = "Yank to system clipboard (visual)" })
