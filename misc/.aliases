@@ -1,3 +1,6 @@
+alias a=aws
+alias av=aws-vault
+
 alias k=kubectl
 alias kdl='kubectl delete'
 alias kds='kubectl describe'
@@ -10,7 +13,19 @@ alias ked='kubectl edit'
 alias q='exit'
 alias c='/usr/bin/clear'
 alias p='/opt/homebrew/bin/python3'
+
 alias g='git'
+alias gd='git diff'
+alias gm='git ci'
+alias gs='git st'
+alias gr='git restore'
+alias gc='git co'
+alias gp='git ph'
+alias gl='git pl'
+alias gg='git log'
+alias ga='git add'
+alias gx='git rm'
+
 alias t='terraform'
 alias b='brew'
 alias fdfind=fd

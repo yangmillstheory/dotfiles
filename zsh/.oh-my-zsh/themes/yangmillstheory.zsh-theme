@@ -1,10 +1,13 @@
 virtualenv_prompt_info() {
   if [[ -n "$VIRTUAL_ENV" ]]; then
-    echo "%{$fg_bold[cyan]%}(venv:$(basename "$VIRTUAL_ENV"))%{$reset_color%} "
+    echo "%{$fg_bold[cyan]%}venv:%{$fg[red]%}($(basename "$VIRTUAL_ENV"))%{$reset_color%} "
   fi
 }
-
-
+aws_vault_prompt_info() {
+  if [[ -n "$AWS_VAULT" ]]; then
+    echo "%{$fg_bold[magenta]%}aws-vault:%{$fg[red]%}($AWS_VAULT)%{$reset_color%} "
+  fi
+}
 # The oh-my-zsh vim plugin uses this.
 MODE_INDICATOR="%{$fg_bold[red]%}NORMAL%{$reset_color%}"
 
@@ -24,9 +27,7 @@ bindkey '^m' reset-prompt-and-accept-line
 setopt prompt_subst
 local upper_arrow="%(?:%{$fg[green]%}┌─ :%{$fg[red]%}┌─ )%{$reset_color%}"
 local lower_arrow="%(?:%{$fg[green]%}└─➤ :%{$fg[red]%}└%?─➤ )%{$reset_color%} "
-# PROMPT="$upper_arrow"'%{$fg_bold[yellow]%}[$(shortpath)] $(git_prompt_info)'$'\n'"$lower_arrow"
-PROMPT="$upper_arrow"'%{$fg_bold[yellow]%}[$(shortpath)] $(virtualenv_prompt_info)$(git_prompt_info)'$'\n'"$lower_arrow"
-
+PROMPT="$upper_arrow"'%{$fg_bold[yellow]%}[$(shortpath)] $(virtualenv_prompt_info)$(aws_vault_prompt_info)$(git_prompt_info)'$'\n'"$lower_arrow"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
