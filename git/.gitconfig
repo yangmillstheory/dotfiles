@@ -4,6 +4,7 @@
 [core]
   editor = nvim
   excludesfile = /Users/victor.alvarez/.gitignore
+  pager = delta
 [alias]
   co = checkout
   br = branch
@@ -18,3 +19,10 @@
   required = true
 [push]
   autoSetupRemote = true
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  dark = true
+[merge]
+  conflictStyle = zdiff3
