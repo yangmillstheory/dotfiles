@@ -3,8 +3,8 @@
   email = victor.alvarez@woven-planet.global
 [core]
   editor = nvim
-  excludesfile = /Users/victor.alvarez/.gitignore
   pager = delta
+  excludesfile = /Users/victor.alvarez/.gitignore
 [alias]
   co = checkout
   br = branch

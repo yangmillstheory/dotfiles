@@ -145,9 +145,9 @@ eval "$(direnv hook zsh)"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-source /Users/victor.alvarez/.jfrog/jfrog_zsh_completion
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
+source /Users/victor.alvarez/.jfrog/jfrog_zsh_completion
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/victor.alvarez/code/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/victor.alvarez/code/google-cloud-sdk/path.zsh.inc'; fi

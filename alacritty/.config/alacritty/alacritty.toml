@@ -38,5 +38,5 @@ option_as_alt = "Both"
 
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/gruvbox_dark.toml",
+    "~/.config/alacritty/themes/themes/catppuccin.toml",
 ]
