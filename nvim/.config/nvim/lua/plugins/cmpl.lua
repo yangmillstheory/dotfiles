@@ -34,6 +34,7 @@ return {
 				},
 				config = function()
 					require("luasnip.loaders.from_vscode").lazy_load()
+					require("luasnip").filetype_extend("copilot-chat", { "markdown", "text" })
 				end,
 			},
 		},
@@ -134,7 +135,7 @@ return {
 				}),
 			})
 
-			cmp.setup.filetype("markdown", {
+			cmp.setup.filetype({ "markdown", "copilot-chat" }, {
 				sources = {
 					{ name = "luasnip" },
 					{ name = "dictionary", keyword_length = 3 },
