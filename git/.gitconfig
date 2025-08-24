@@ -20,7 +20,7 @@
 [push]
   autoSetupRemote = true
 [interactive]
-  diffFilter = delta --color-only
+  diffFilter = delta --color-only --side-by-side
 [delta]
   navigate = true
   dark = true
