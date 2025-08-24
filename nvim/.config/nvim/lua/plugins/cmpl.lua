@@ -137,6 +137,7 @@ return {
 
 			cmp.setup.filetype({ "markdown", "copilot-chat" }, {
 				sources = {
+					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "dictionary", keyword_length = 3 },
 					{ name = "emoji" },
