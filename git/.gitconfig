@@ -20,9 +20,10 @@
 [push]
   autoSetupRemote = true
 [interactive]
-  diffFilter = delta --color-only --side-by-side
+  diffFilter = delta --color-only
 [delta]
   navigate = true
   dark = true
+  side-by-side = true
 [merge]
   conflictStyle = zdiff3
