@@ -25,5 +25,6 @@
   navigate = true
   dark = true
   side-by-side = true
+  paging = always
 [merge]
   conflictStyle = zdiff3
