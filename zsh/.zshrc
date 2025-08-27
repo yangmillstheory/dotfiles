@@ -94,8 +94,8 @@ export EDITOR=nvim
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source ~/.functions
-source ~/.aliases
+source ~/.functions.zsh
+source ~/.aliases.zsh
 
 # https://superuser.com/questions/401699/oh-my-zsh-turned-on-autopushd-how-can-i-turn-it-off
 unsetopt autopushd

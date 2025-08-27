@@ -72,7 +72,6 @@ alias gm='git merge'
 compdef gm=git
 
 alias t='terraform'
-compdef t=terraform
 
 alias b='brew'
 compdef b=brew
