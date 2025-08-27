@@ -30,17 +30,17 @@ return {
 			vim.g.copilot_no_tab_map = true
 			keymap(
 				"i",
-				"<S-Tab>",
-				'copilot#Accept("\\<S-Tab>")',
-				{ expr = true, replace_keycodes = false, desc = "Copilot: Accept suggestion with Shift-Tab" }
+				"<c-a><c-a>",
+				'copilot#Accept("\\<c-a><c-a>")',
+				{ expr = true, replace_keycodes = false, desc = "Copilot: Accept suggestion with <c-a><c-a>" }
 			)
-			keymap("i", "<c-c>w", "<Plug>(copilot-accept-word)", { desc = "Copilot: Accept next word" })
-			keymap("i", "<c-c>l", "<Plug>(copilot-accept-line)", { desc = "Copilot: Accept next line" })
-			keymap("i", "<c-c>?", "<Plug>(copilot-suggest)", { desc = "Copilot: Show suggestions" })
-			keymap("i", "<c-c>j", "<Plug>(copilot-previous)", { desc = "Copilot: Previous suggestion" })
-			keymap("i", "<c-c>k", "<Plug>(copilot-next)", { desc = "Copilot: Next suggestion" })
-			keymap("i", "<c-c>x", "<Plug>(copilot-dismiss)", { desc = "Copilot: Dismiss suggestion" })
-			keymap("n", "<c-c>p", ":Copilot panel<CR>", { desc = "Copilot: Open panel" })
+			keymap("i", "<c-a>w", "<Plug>(copilot-accept-word)", { desc = "Copilot: Accept next word" })
+			keymap("i", "<c-a>l", "<Plug>(copilot-accept-line)", { desc = "Copilot: Accept next line" })
+			keymap("i", "<c-a>?", "<Plug>(copilot-suggest)", { desc = "Copilot: Show suggestions" })
+			keymap("i", "<c-a>j", "<Plug>(copilot-previous)", { desc = "Copilot: Previous suggestion" })
+			keymap("i", "<c-a>k", "<Plug>(copilot-next)", { desc = "Copilot: Next suggestion" })
+			keymap("i", "<c-a>x", "<Plug>(copilot-dismiss)", { desc = "Copilot: Dismiss suggestion" })
+			keymap("n", "<c-a>p", ":Copilot panel<CR>", { desc = "Copilot: Open panel" })
 		end,
 	},
 	{

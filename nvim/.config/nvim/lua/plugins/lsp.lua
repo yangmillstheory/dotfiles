@@ -85,7 +85,7 @@ return {
 						return { "black" }
 					end
 				end,
-				yaml = { "yamlfmt" },
+				-- yaml = { "yamlfmt" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				json = { "prettier" },
