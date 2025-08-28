@@ -132,6 +132,17 @@ return {
 						},
 					},
 				},
+				pickers = {
+					git_commits = {
+						layout_strategy = "vertical",
+						layout_config = {
+							prompt_position = "bottom",
+							preview_height = 0.70,
+							height = 0.95,
+							width = 0.95,
+						},
+					},
+				},
 			}
 		end,
 		config = function(_, opts)

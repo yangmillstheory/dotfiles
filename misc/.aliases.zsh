@@ -2,7 +2,6 @@ alias a=aws
 compdef a=aws
 
 alias av=aws-vault
-compdef av=aws
 
 alias k=kubectl
 compdef k=kubectl
