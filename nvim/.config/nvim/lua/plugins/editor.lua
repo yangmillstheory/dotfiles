@@ -170,6 +170,7 @@ return {
 			utils.keymap("n", "<leader>ls", builtin.lsp_document_symbols, { desc = "Telescope LSP buf symbols" })
 			utils.keymap("n", "<leader>r", builtin.command_history, { desc = "Telescope command history" })
 			utils.keymap("n", "<leader>/", builtin.search_history, { desc = "Telescope search history" })
+			utils.keymap("n", "<leader>G", builtin.git_commits, { desc = "Telescope git commits" })
 			utils.keymap("n", "<leader>.", function()
 				require("telescope.builtin").find_files({
 					hidden = true,
