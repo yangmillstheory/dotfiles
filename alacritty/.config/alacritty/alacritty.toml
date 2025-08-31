@@ -11,9 +11,6 @@ size = 21.0
 # normal = { family = "Monofur Nerd Font", style = "Regular" }
 # italic = { family = "Monofur Nerd Font", style = "Italic" }
 # bold = { family = "Monofur Nerd Font", style = "Bold" }
-# normal = { family = "InconsolataGo Nerd Font", style = "Regular" }
-# italic = { family = "InconsolataGo Nerd Font", style = "Italic" }
-# bold = { family = "InconsolataGo Nerd Font", style = "Bold" }
 normal = { family = "DaddyTimeMono Nerd Font", style = "Regular" }
 italic = { family = "DaddyTimeMono Nerd Font", style = "Italic" }
 bold = { family = "DaddyTimeMono Nerd Font", style = "Bold" }
