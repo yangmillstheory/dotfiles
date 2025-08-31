@@ -1,5 +1,4 @@
 alias a=aws
-compdef a=aws
 
 alias av=aws-vault
 
@@ -73,7 +72,5 @@ compdef gm=git
 alias t='terraform'
 
 alias b='brew'
-compdef b=brew
 
 alias fdfind=fd
-compdef fdfind=fd
