@@ -19,7 +19,15 @@ return {
 			{ "<leader>cm", ":CopilotChatCommit<cr>", mode = "n", desc = "CopilotChat: Generate commit message" },
 		},
 		config = function()
-			require("CopilotChat").setup()
+			require("CopilotChat").setup({
+				-- The out-of-the-box version uses #buffer which makes no sense.
+				Commit = {
+					prompt = "Write commit message for the change with commitizen convention. Keep the title under 50 characters and wrap message at 72 characters. Format as a gitcommit code block. If user has COMMIT_EDITMSG opened, generate replacement block for whole buffer.",
+					resources = {
+						"gitdiff:staged",
+					},
+				},
+			})
 		end,
 	},
 	{
