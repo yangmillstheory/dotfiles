@@ -6,7 +6,6 @@ return {
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
-			local keymap = require("utils").keymap
 			local bufferline = require("bufferline")
 			bufferline.setup({
 				options = {
