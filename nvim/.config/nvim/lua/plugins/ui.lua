@@ -1,3 +1,4 @@
+local keymap = require("utils").keymap
 -- Plugins that make nvim prettier.
 return {
 	{
@@ -5,7 +6,6 @@ return {
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
-			local keymap = require("utils").keymap
 			local bufferline = require("bufferline")
 			bufferline.setup({
 				options = {
@@ -160,6 +160,8 @@ return {
 					lsp_doc_border = false,
 				},
 			})
+			keymap("n", "<leader>nd", "<cmd>Noice dismiss<cr>", { desc = "Dismiss all Noice messages" })
+			keymap("n", "<leader>nt", "<cmd>Noice dismiss<cr>", { desc = "Dismiss all Noice messages" })
 		end,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
