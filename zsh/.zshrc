@@ -112,10 +112,6 @@ if type brew &>/dev/null; then
   fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 fi
 
-# don't remember what this is?
-autoload -Uz compinit && compinit
-_comp_options+=(globdots)
-
 # auto-suggestions
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
@@ -139,6 +135,18 @@ export FZF_ALT_C_OPTS="--exit-0 --select-1 --preview 'tree -C -a {} | head -200'
 #
 # https://github.com/junegunn/fzf/issues/492
 setopt HIST_IGNORE_ALL_DUPS
+
+# Just some direnv setup.
+eval "$(direnv hook zsh)"
+
+# Initialize completion system
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+_comp_options+=(globdots)
+
+source <(localstack completion zsh)
+complete -C `which aws_completer` aws
+complete -C `which aws_completer` awslocal
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
