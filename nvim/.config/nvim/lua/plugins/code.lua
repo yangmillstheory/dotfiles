@@ -9,7 +9,7 @@ return {
 		-- Models ($<model>) - Specify which AI model to use for the chat
 		-- Prompts (/PromptName) - Use predefined prompt templates for common tasks
 		keys = {
-			{ "<leader>cc", ":CopilotChat<cr>", mode = "n", desc = "CopilotChat: Open chat" },
+			{ "<leader>cc", ":CopilotChatToggle<cr>", mode = "n", desc = "CopilotChat: Open chat" },
 			{ "<leader>ce", ":CopilotChatExplain<cr>", mode = "v", desc = "CopilotChat: Explain selection" },
 			{ "<leader>cr", ":CopilotChatReview<cr>", mode = "v", desc = "CopilotChat: Review selection" },
 			{ "<leader>cf", ":CopilotChatFix<cr>", mode = "v", desc = "CopilotChat: Fix selection" },
@@ -35,8 +35,7 @@ return {
 	{
 		"github/copilot.vim",
 		config = function()
-			-- To conserve API usage.
-			vim.g.copilot_enabled = false
+			vim.g.copilot_enabled = true
 			vim.g.copilot_no_tab_map = true
 			keymap(
 				"i",
