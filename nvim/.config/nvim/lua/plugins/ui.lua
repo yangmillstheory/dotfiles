@@ -79,15 +79,6 @@ return {
 		opts = function(_, opts)
 			local trouble = require("trouble")
 
-			local symbols = trouble.statusline({
-				mode = "lsp_document_symbols",
-				groups = {},
-				title = false,
-				filter = { range = true },
-				format = "{kind_icon}{symbol.name:Normal}",
-				hl_group = "lualine_c_normal",
-			})
-
 			opts.options = opts.options or {}
 			opts.options.theme = "auto"
 
@@ -103,14 +94,11 @@ return {
 				{
 					"filename",
 					path = 1,
+					shorting_target = 20,
 					symbols = {
 						modified = "✗",
 						readonly = "",
 					},
-				},
-				{
-					symbols.get,
-					cond = symbols.has,
 				},
 			}
 
