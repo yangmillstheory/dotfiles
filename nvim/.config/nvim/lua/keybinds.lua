@@ -92,47 +92,61 @@ end
 keymap("n", "j", ':<C-U>lua require("keybinds").JkJumps("j")<cr>', { desc = "Jump down and add to jumplist" })
 keymap("n", "k", ':<C-U>lua require("keybinds").JkJumps("k")<cr>', { desc = "Jump up and add to jumplist" })
 
--- Declare a variable to store the popup window ID.
--- This needs to be outside the function so its value persists between calls.
+-- Toggles a popup window displaying today's diary file.
+-- Now, it handles existing buffers correctly.
 local diary_popup_win_id = nil
 
---- Toggles a popup window displaying today's diary file in read-only mode.
--- If the popup is already open, it closes it. Otherwise, it opens the diary file
--- for the current date (YYYY-MM-DD) from ~/Documents/Woven/Diary/ as a markdown buffer
--- in a centered, minimal popup window. The popup is read-only and styled with a rounded border.
--- If the diary file does not exist, prints an error message.
 local function toggle_diary_popup()
-	-- Check if the popup window exists and is valid.
+	-- Check if the popup window exists. If so, close it and return.
 	if diary_popup_win_id ~= nil and vim.api.nvim_win_is_valid(diary_popup_win_id) then
-		-- Close the existing popup and reset the ID.
 		vim.api.nvim_win_close(diary_popup_win_id, true)
 		diary_popup_win_id = nil
 		return
 	end
-	-- Get the current date in YYYY-MM-DD format
+
 	local current_date = os.date("%Y-%m-%d")
-	-- Construct the full file path
 	local file_path = os.getenv("HOME") .. "/Documents/Woven/Diary/" .. current_date .. ".md"
-	-- Check if the file exists
-	local file_handle = io.open(file_path, "r")
-	if not file_handle then
-		print("Diary file does not exist: " .. file_path)
-		return
+
+	-- Check if a buffer for this file already exists.
+	local buf = vim.fn.bufnr(file_path)
+	if buf == -1 then
+		-- If the buffer doesn't exist, create a new one
+		buf = vim.api.nvim_create_buf(false, true)
+		vim.api.nvim_buf_set_name(buf, file_path)
+
+		-- Load content into the new buffer
+		local file_content = {}
+		local file = io.open(file_path, "r")
+		if file then
+			for line in file:lines() do
+				table.insert(file_content, line)
+			end
+			file:close()
+		else
+			-- If the file doesn't exist, create it with a header
+			table.insert(file_content, "---")
+			table.insert(file_content, "title: " .. current_date)
+			table.insert(file_content, "---")
+			table.insert(file_content, "")
+		end
+		vim.api.nvim_buf_set_lines(buf, 0, -1, false, file_content)
 	end
-	file_handle:close()
-	-- Open the file in a new buffer without writing to a window
-	local buf = vim.api.nvim_create_buf(false, true)
-	vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = buf })
-	vim.api.nvim_set_option_value("readonly", true, { buf = buf })
+
+	-- Explicitly set the buffer's type to a normal, writable buffer.
+	-- This is the new, crucial line to fix the E382 error.
+	vim.api.nvim_set_option_value("buftype", "", { buf = buf })
+
+	-- Set buffer options
 	vim.api.nvim_set_option_value("filetype", "markdown", { buf = buf })
-	-- Read the file content into the buffer
-	local content = vim.fn.readfile(file_path)
-	vim.api.nvim_buf_set_lines(buf, 0, -1, false, content)
-	-- Create the popup window
+	vim.api.nvim_set_option_value("bufhidden", "hide", { buf = buf })
+
+	-- Calculate window dimensions
 	local width = math.floor(vim.o.columns * 0.8)
 	local height = math.floor(vim.o.lines * 0.8)
 	local row = math.floor((vim.o.lines - height) / 2)
 	local col = math.floor((vim.o.columns - width) / 2)
+
+	-- Open the floating window using the existing or newly created buffer
 	local win_id = vim.api.nvim_open_win(buf, true, {
 		relative = "editor",
 		width = width,
@@ -143,10 +157,17 @@ local function toggle_diary_popup()
 		style = "minimal",
 		border = "rounded",
 	})
-	-- Store the new popup's window ID for future toggling.
+
 	diary_popup_win_id = win_id
-	-- Set window options using the new API
 	vim.api.nvim_set_option_value("winhl", "Normal:Popup", { win = win_id })
+
+	-- Add a keymap to save and close the popup
+	vim.api.nvim_buf_set_keymap(buf, "n", "q", ":w<CR>:quit<CR>", {
+		noremap = true,
+		silent = true,
+		nowait = true,
+		desc = "Save and Close Diary Popup",
+	})
 end
 
 vim.keymap.set(
