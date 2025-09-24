@@ -37,7 +37,7 @@ compdef=python3
 alias g='git'
 compdef g=git
 
-alias gd='git diff'
+alias gd='git diff --ignore-all-space'
 compdef gd=git
 
 alias gc='git ci'
