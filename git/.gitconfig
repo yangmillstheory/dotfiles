@@ -1,6 +1,7 @@
 [user]
   name = Victor Alvarez
   email = sapien.reversing.entropy@gmail.com
+	signingkey = /Users/yangmillstheory/.ssh/id_ed25519.pub
 [core]
   editor = nvim
   excludesfile = /Users/yangmillstheory/.gitignore
@@ -22,3 +23,5 @@
   conflictStyle = zdiff3
 [diff]
   external = difft --color=always
+[gpg]
+	format = ssh
