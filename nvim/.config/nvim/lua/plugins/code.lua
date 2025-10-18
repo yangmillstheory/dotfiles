@@ -173,4 +173,46 @@ return {
 			vim.o.foldlevelstart = 99
 		end,
 	},
+	--luacheck: globals Difft
+	{
+		"ahkohd/difft.nvim",
+		keys = {
+			{
+				"<leader>d",
+				function()
+					if Difft.is_visible() then
+						Difft.hide()
+					else
+						Difft.diff()
+					end
+				end,
+				desc = "Toggle Difft",
+			},
+		},
+		config = function()
+			require("difft").setup({
+				layout = "float",
+				command = "GIT_EXTERNAL_DIFF='difft --color=always' git diff",
+				window = {
+					number = false,
+					relativenumber = false,
+					border = "rounded",
+				},
+				keymaps = {
+					-- Next file change
+					next = "<Down>",
+					-- Previous file change
+					prev = "<Up>",
+					-- Close diff window (float only)
+					close = "q",
+					-- Refresh diff
+					refresh = "r",
+					-- First file change
+					first = "gg",
+					-- Last file change
+					last = "G",
+				},
+			})
+		end,
+	},
 }

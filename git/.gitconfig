@@ -4,7 +4,6 @@
   ; email = sapien.reversing.entropy@gmail.com
 [core]
   editor = nvim
-  pager = delta
   excludesfile = /Users/victor.alvarez/.gitignore
 [alias]
   co = checkout
@@ -20,12 +19,7 @@
   required = true
 [push]
   autoSetupRemote = true
-[interactive]
-  diffFilter = delta --color-only
-[delta]
-  navigate = true
-  dark = true
-  side-by-side = true
-  paging = always
 [merge]
   conflictStyle = zdiff3
+[diff]
+  external = difft --color=always
