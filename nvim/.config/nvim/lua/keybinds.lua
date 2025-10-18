@@ -172,7 +172,7 @@ end
 
 vim.keymap.set(
 	"n",
-	"<leader>d",
+	"<leader>D",
 	toggle_diary_popup,
 	{ noremap = true, silent = true, desc = "Toggle Daily Diary Popup" }
 )
