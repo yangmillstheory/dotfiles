@@ -77,7 +77,7 @@ return {
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
-				lua = { "stylua" },
+				lua = { "stylua", lsp_format = "never" },
 				python = function(bufnr)
 					if require("conform").get_formatter_info("ruff_format", bufnr).available then
 						return { "ruff_format" }
@@ -94,7 +94,8 @@ return {
 				go = { "goimports" },
 			},
 			format_on_save = {
-				lsp_fallback = "never",
+				lsp_format = "fallback",
+				timeout_ms = 500,
 			},
 		},
 	},

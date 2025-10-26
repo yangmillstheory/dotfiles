@@ -22,6 +22,6 @@
 [merge]
   conflictStyle = zdiff3
 [diff]
-  external = difft --color=always
+  external = difft --display side-by-side
 [gpg]
 	format = ssh
