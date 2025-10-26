@@ -177,4 +177,10 @@ vim.keymap.set(
 	{ noremap = true, silent = true, desc = "Toggle Daily Diary Popup" }
 )
 
+vim.keymap.set("n", "<leader>tD", function()
+	local diary_file = "Diary/" .. os.date("%F") .. ".md"
+	vim.cmd("!cp Diary/Template.md " .. diary_file)
+	vim.cmd("edit " .. diary_file)
+end, { desc = "Create today's diary from template" })
+
 return M
