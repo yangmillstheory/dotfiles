@@ -22,4 +22,4 @@
 [merge]
   conflictStyle = zdiff3
 [diff]
-  external = difft --color=always --display side-by-side
+  external = difft --display side-by-side
