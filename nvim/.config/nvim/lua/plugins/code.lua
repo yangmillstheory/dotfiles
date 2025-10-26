@@ -90,35 +90,44 @@ return {
 	},
 	"RRethy/vim-illuminate",
 	{
-		"folke/trouble.nvim",
-		opts = {
-			modes = {
-				diagnostics = { auto_close = true, auto_open = false },
-			},
-		},
-		keys = {
-			{
-				"<leader>xx",
-				"<cmd>Trouble diagnostics toggle focus=false<cr>",
-				desc = "Diagnostics (Trouble)",
-			},
-			{
-				"<leader>xb",
-				"<cmd>Trouble diagnostics toggle filter.buf=0 focus=false<cr>",
-				desc = "Buffer Diagnostics (Trouble)",
-			},
-			{
-				"<leader>xs",
-				"<cmd>Trouble symbols toggle focus=false win.position=right win.size.width=0.25<cr>",
-				desc = "Symbols (Trouble)",
-			},
-			{
-				"<leader>xl",
-				"<cmd>Trouble lsp toggle<cr>",
-				desc = "LSP Definitions / references / ... (Trouble)",
-			},
-		},
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy",
+		priority = 1000,
+		config = function()
+			require("tiny-inline-diagnostic").setup()
+			vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
+		end,
 	},
+	-- {
+	-- 	"folke/trouble.nvim",
+	-- 	opts = {
+	-- 		modes = {
+	-- 			diagnostics = { auto_close = true, auto_open = false },
+	-- 		},
+	-- 	},
+	-- 	keys = {
+	-- 		{
+	-- 			"<leader>xx",
+	-- 			"<cmd>Trouble diagnostics toggle focus=false<cr>",
+	-- 			desc = "Diagnostics (Trouble)",
+	-- 		},
+	-- 		{
+	-- 			"<leader>xb",
+	-- 			"<cmd>Trouble diagnostics toggle filter.buf=0 focus=false<cr>",
+	-- 			desc = "Buffer Diagnostics (Trouble)",
+	-- 		},
+	-- 		{
+	-- 			"<leader>xs",
+	-- 			"<cmd>Trouble symbols toggle focus=false win.position=right win.size.width=0.25<cr>",
+	-- 			desc = "Symbols (Trouble)",
+	-- 		},
+	-- 		{
+	-- 			"<leader>xl",
+	-- 			"<cmd>Trouble lsp toggle<cr>",
+	-- 			desc = "LSP Definitions / references / ... (Trouble)",
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
