@@ -177,7 +177,40 @@ return {
 		event = "VeryLazy",
 		priority = 10, -- Low priority to catch other plugins' keybindings
 		config = function()
-			require("tiny-glimmer").setup()
+			require("tiny-glimmer").setup({
+				overwrite = {
+					search = {
+						enabled = true,
+						default_animation = "pulse",
+						next_mapping = "n",
+						prev_mapping = "N",
+					},
+					undo = {
+						enabled = true,
+						default_animation = {
+							name = "fade",
+							settings = {
+								from_color = "DiffDelete",
+								max_duration = 500,
+								min_duration = 500,
+							},
+						},
+						undo_mapping = "u",
+					},
+					redo = {
+						enabled = true,
+						default_animation = {
+							name = "fade",
+							settings = {
+								from_color = "DiffAdd",
+								max_duration = 500,
+								min_duration = 500,
+							},
+						},
+						redo_mapping = "U",
+					},
+				},
+			})
 		end,
 	},
 }
