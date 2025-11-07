@@ -1,5 +1,5 @@
 # zmodload zsh/zprof
-
+#
 export ZSH=$HOME/.oh-my-zsh
 
 DEFAULT_USER=$(whoami)
@@ -26,8 +26,10 @@ DISABLE_UNTRACKED_FILES_DIRTY=true
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Which plugins would you like to load?
-plugins=(zsh-syntax-highlighting kubectl vim)
+# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
+#
+# zsh-syntax-highlighting needs to be last
+plugins=(kubectl vim zsh-syntax-highlighting)
 
 # zsh-completions isn't installed as a normal plugin to avoid issues with zcompdump.
 #
@@ -41,10 +43,10 @@ if type brew &>/dev/null; then
     fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 fi
 # Add custom functions directory to fpath
+
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
 _comp_options+=(globdots)
 
 source $ZSH/oh-my-zsh.sh
@@ -56,11 +58,6 @@ source ~/.aliases.zsh
 
 unsetopt autopushd
 export KEYTIMEOUT=1
-
-# auto-suggestions
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
-bindkey '^A' autosuggest-accept
 
 # allow S-Tab for reverse autocomplete navigation
 # https://unix.stackexchange.com/a/84869

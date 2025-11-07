@@ -13,7 +13,6 @@ These GLOBAL keymaps are created unconditionally when Nvim starts:
 return {
 	{
 		"mason-org/mason-lspconfig.nvim",
-		cmd = { "Mason", "LspInstall" },
 		opts = {
 			ensure_installed = {
 				-- If commented out, Mason will complain that these are not language servers. They're
