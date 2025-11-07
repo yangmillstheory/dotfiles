@@ -88,8 +88,6 @@ return {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
 		opts = function()
-			local lga_actions = require("telescope-live-grep-args.actions")
-
 			return {
 				defaults = {
 					file_ignore_patterns = { ".git/" },
@@ -122,16 +120,6 @@ return {
 				},
 				extensions = {
 					fzf = {},
-					live_grep_args = {
-						auto_quoting = true,
-						mappings = {
-							i = {
-								["<C-k>"] = lga_actions.quote_prompt(),
-								["<C-g>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-								["<C-t>"] = lga_actions.quote_prompt({ postfix = " --type " }),
-							},
-						},
-					},
 				},
 				pickers = {
 					git_commits = {
@@ -193,6 +181,19 @@ return {
 			},
 		},
 		config = function(_, opts)
+			local lga_actions = require("telescope-live-grep-args.actions")
+
+			opts.extensions.live_grep_args = {
+				auto_quoting = true,
+				mappings = {
+					i = {
+						["<C-k>"] = lga_actions.quote_prompt(),
+						["<C-g>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+						["<C-t>"] = lga_actions.quote_prompt({ postfix = " --type " }),
+					},
+				},
+			}
+
 			local telescope = require("telescope")
 			telescope.setup(opts)
 			-- https://github.com/nvim-telescope/telescope-fzf-native.nvim?tab=readme-ov-file#telescope-fzf-nativenvim
