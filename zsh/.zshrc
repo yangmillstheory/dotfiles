@@ -32,7 +32,20 @@ plugins=(zsh-syntax-highlighting kubectl vim)
 # zsh-completions isn't installed as a normal plugin to avoid issues with zcompdump.
 #
 # https://github.com/zsh-users/zsh-completions?tab=readme-ov-file#oh-my-zsh
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+fpath+=${ZSH}/custom/plugins/zsh-completions/src
+# Set up fpath completely before compinit
+fpath=(~/.zsh/completions /opt/homebrew/share/zsh/site-functions $fpath)
+# Add brew completions to fpath
+if type brew &>/dev/null; then
+    HOMEBREW_PREFIX=$(brew --prefix)
+    fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+fi
+# Add custom functions directory to fpath
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+_comp_options+=(globdots)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -69,54 +82,13 @@ setopt HIST_IGNORE_ALL_DUPS
 # Just some direnv setup.
 eval "$(direnv hook zsh)"
 
-# --- Completion Setup (Consolidated and Optimized) ---
-
-# Set up fpath completely before compinit
-fpath=(~/.zsh/completions /opt/homebrew/share/zsh/site-functions $fpath)
-
-# Add brew completions to fpath
-if type brew &>/dev/null; then
-    HOMEBREW_PREFIX=$(brew --prefix)
-    fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
-fi
-# Add custom functions directory to fpath
-fpath+=${ZDOTDIR:-~}/.zsh_functions
-
-# Configure completion system caching
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-_comp_options+=(globdots)
-
-# Run compinit ONCE to build/load the cache (fast load on subsequent starts)
-autoload -Uz compinit
-autoload -Uz zcompile
-
-ZINIT_COMPDUMP="${ZDOTDIR:-$HOME}/.zcompdump"
-ZINIT_COMPDUMP_ZWC="${ZINIT_COMPDUMP}.zwc"
-# Check if the compiled file is missing OR if the text dump is newer
-if [[ ! -f "$ZINIT_COMPDUMP_ZWC" || "$ZINIT_COMPDUMP" -nt "$ZINIT_COMPDUMP_ZWC" ]]; then
-    # Regenerate the plain text dump file (with -i to force dump and -D to skip compaudit)
-    compinit -u -i -D
-    # Byte-compile the new dump file
-    if [[ -f "$ZINIT_COMPDUMP" ]]; then
-        zcompile -R "$ZINIT_COMPDUMP"
-    fi
-else
-    # Load from the compiled cache file (fastest path)
-    # -C: Use the cache file
-    # -D: Skip compaudit (extra layer of protection against the 18ms cost)
-    compinit -u -C -D
-fi
-
-# 4. Set up fzf key bindings and fuzzy completion (Must be sourced after compinit)
+# Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-# 5. Source external completion scripts
+# Source external completion scripts
 source <(localstack completion zsh)
 complete -C `which aws_completer` aws
 complete -C `which aws_completer` awslocal
 
-# If needed, uncomment and run bashcompinit after compinit
-# autoload bashcompinit && bashcompinit
 
 # zprof
