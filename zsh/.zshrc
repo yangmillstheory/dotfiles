@@ -1,4 +1,4 @@
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
 export ZSH=$HOME/.oh-my-zsh
 
@@ -127,4 +127,4 @@ if [ -f '/Users/victor.alvarez/code/google-cloud-sdk/completion.zsh.inc' ]; then
 # If needed, uncomment and run bashcompinit after compinit
 # autoload bashcompinit && bashcompinit
 
-zprof
+# zprof
