@@ -1,4 +1,4 @@
-# zmodload zsh/zprof
+zmodload zsh/zprof
 
 export ZSH=$HOME/.oh-my-zsh
 
@@ -6,22 +6,21 @@ DEFAULT_USER=$(whoami)
 
 ZSH_THEME="yangmillstheory"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+zstyle ':omz:update' mode disabled
 # Disables re-hashing and re-compiling of Zsh functions within Oh My Zsh
-DISABLE_AUTO_REHASH="true"
+ZSH_DISABLE_COMPFIX=true
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 setopt nocorrectall
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS=true
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY=true
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -29,7 +28,12 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Which plugins would you like to load?
-plugins=(zsh-autosuggestions zsh-completions zsh-syntax-highlighting kubectl vim)
+plugins=(zsh-syntax-highlighting kubectl vim)
+
+# zsh-completions isn't installed as a normal plugin to avoid issues with zcompdump.
+#
+# https://github.com/zsh-users/zsh-completions?tab=readme-ov-file#oh-my-zsh
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,25 +90,23 @@ _comp_options+=(globdots)
 
 # Run compinit ONCE to build/load the cache (fast load on subsequent starts)
 autoload -Uz compinit
+autoload -Uz zcompile
 
-# Define a variable for the zcompdump file path
 ZINIT_COMPDUMP="${ZDOTDIR:-$HOME}/.zcompdump"
-
-# If the dump file is older than one day, or doesn't exist, re-generate it
-# Use a separate check to delete old file silently.
-if [[ -f $ZINIT_COMPDUMP ]]; then
-  # Check if it's older than 1 day (-mtime +1, using a different structure)
-  if [[ -z "$(find "$ZINIT_COMPDUMP" -mtime -1 -print -quit 2>/dev/null)" ]]; then
-    # It's older than 1 day, delete it silently
-    rm -f "$ZINIT_COMPDUMP" >/dev/null 2>&1
-  fi
-fi
-
-# Run compinit to load or create the dump file
-if [[ -f $ZINIT_COMPDUMP ]]; then
-  compinit -u -C -D
+ZINIT_COMPDUMP_ZWC="${ZINIT_COMPDUMP}.zwc"
+# Check if the compiled file is missing OR if the text dump is newer
+if [[ ! -f "$ZINIT_COMPDUMP_ZWC" || "$ZINIT_COMPDUMP" -nt "$ZINIT_COMPDUMP_ZWC" ]]; then
+    # Regenerate the plain text dump file (with -i to force dump and -D to skip compaudit)
+    compinit -u -i -D
+    # Byte-compile the new dump file
+    if [[ -f "$ZINIT_COMPDUMP" ]]; then
+        zcompile -R "$ZINIT_COMPDUMP"
+    fi
 else
-  compinit -u -D
+    # Load from the compiled cache file (fastest path)
+    # -C: Use the cache file
+    # -D: Skip compaudit (extra layer of protection against the 18ms cost)
+    compinit -u -C -D
 fi
 
 # 4. Set up fzf key bindings and fuzzy completion (Must be sourced after compinit)
@@ -118,4 +120,4 @@ complete -C `which aws_completer` awslocal
 # If needed, uncomment and run bashcompinit after compinit
 # autoload bashcompinit && bashcompinit
 
-# zprof
+zprof
