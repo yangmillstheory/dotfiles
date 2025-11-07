@@ -7,17 +7,11 @@ backup() {
 }
 
 v() {
-  if test $# -gt 0; then
-    echo "Starting nvim with args $@."
-    sleep 1
-    env nvim "$@"
-  elif test -f Session.vim; then
-    echo "Session.vim found. Starting nvim -c -S Session.vim."
-    sleep 1
-    env nvim -S Session.vim
+  if [ $# -gt 0 ]; then
+    nvim --cmd "echom 'Started nvim with args: $*'" "$@"
+  elif [ -f Session.vim ]; then
+    nvim --cmd "echom 'Session.vim found. Loaded session.'" -S Session.vim
   else
-    echo "No Session.vim found. Running nvim -c Obsession."
-    sleep 1
-    env nvim -c Obsession
+    nvim --cmd "echom 'No Session.vim found. Started Obsession.'" -c Obsession
   fi
 }
