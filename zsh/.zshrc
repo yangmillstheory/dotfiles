@@ -7,7 +7,6 @@ DEFAULT_USER=$(whoami)
 ZSH_THEME="yangmillstheory"
 
 zstyle ':omz:update' mode disabled
-# Disables re-hashing and re-compiling of Zsh functions within Oh My Zsh
 ZSH_DISABLE_COMPFIX=true
 
 # Uncomment the following line to enable command auto-correction.
