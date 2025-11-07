@@ -1,4 +1,4 @@
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
 export ZSH=$HOME/.oh-my-zsh
 
@@ -120,4 +120,4 @@ complete -C `which aws_completer` awslocal
 # If needed, uncomment and run bashcompinit after compinit
 # autoload bashcompinit && bashcompinit
 
-zprof
+# zprof
