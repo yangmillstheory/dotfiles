@@ -75,7 +75,8 @@ return {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
+		tag = "v0.1.9",
+		cmd = "Telescope",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			{
@@ -145,6 +146,52 @@ return {
 				},
 			}
 		end,
+		keys = {
+			-- These keymaps are important enough that we don't have a "prefix" key like t.
+			-- See for example Trouble's keybindings.
+			{
+				"<leader>t",
+				function()
+					require("telescope.builtin").find_files({ hidden = true })
+				end,
+				desc = "Telescope find files",
+			},
+			{
+				"<leader>f",
+				function()
+					require("telescope").extensions.live_grep_args.live_grep_args()
+				end,
+				desc = "Telescope live grep",
+			},
+			{ "<leader>B", require("telescope.builtin").buffers, desc = "Telescope buffers" },
+			{ "<leader>C", require("telescope.builtin").commands, desc = "Telescope commands" },
+			{ "<leader>?", require("telescope.builtin").help_tags, desc = "Telescope help_tags" },
+			{ "<leader>!", require("telescope.builtin").diagnostics, desc = "Telescope diagnostics" },
+			{ "<leader>m", require("telescope.builtin").marks, desc = "Telescope marks" },
+			{ "<leader>ld", require("telescope.builtin").lsp_definitions, desc = "Telescope LSP defs" },
+			{ "<leader>lr", require("telescope.builtin").lsp_references, desc = "Telescope LSP refs" },
+			{ "<leader>li", require("telescope.builtin").lsp_implementations, desc = "Telescope LSP impl" },
+			{ "<leader>lt", require("telescope.builtin").lsp_type_definitions, desc = "Telescope LSP typedef" },
+			{
+				"<leader>ls",
+				require("telescope.builtin").lsp_document_symbols,
+				desc = "Telescope LSP buf symbols",
+			},
+			{ "<leader>r", require("telescope.builtin").command_history, desc = "Telescope command history" },
+			{ "<leader>/", require("telescope.builtin").search_history, desc = "Telescope search history" },
+			{ "<leader>G", require("telescope.builtin").git_commits, desc = "Telescope git commits" },
+
+			{
+				"<leader>.",
+				function()
+					require("telescope.builtin").find_files({
+						hidden = true,
+						cwd = vim.fn.expand("~/code/dotfiles"),
+					})
+				end,
+				desc = "Telescope edit dotfiles",
+			},
+		},
 		config = function(_, opts)
 			local telescope = require("telescope")
 			telescope.setup(opts)
@@ -152,42 +199,6 @@ return {
 			telescope.load_extension("fzf")
 			-- https://github.com/nvim-telescope/telescope-live-grep-args.nvim?tab=readme-ov-file#grep-argument-examples
 			telescope.load_extension("live_grep_args")
-
-			local builtin = require("telescope.builtin")
-			local utils = require("utils")
-
-			utils.keymap("n", "<leader>t", function()
-				builtin.find_files({ hidden = true })
-			end, { desc = "Telescope find files" })
-
-			-- These keymaps are important enough that we don't have a "prefix" key like t.
-			-- See for example Trouble's keybindings.
-			utils.keymap(
-				"n",
-				"<leader>f",
-				":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-				{ desc = "Telescope live grep" }
-			)
-			-- Drop this in favor of the strictly better snipe.
-			utils.keymap("n", "<leader>B", builtin.buffers, { desc = "Telescope buffers" })
-			utils.keymap("n", "<leader>C", builtin.commands, { desc = "Telescope commands" })
-			utils.keymap("n", "<leader>?", builtin.help_tags, { desc = "Telescope help_tags" })
-			utils.keymap("n", "<leader>!", builtin.diagnostics, { desc = "Telescope diagnostics" })
-			utils.keymap("n", "<leader>m", builtin.marks, { desc = "Telescope marks" })
-			utils.keymap("n", "<leader>ld", builtin.lsp_definitions, { desc = "Telescope LSP defs" })
-			utils.keymap("n", "<leader>lr", builtin.lsp_references, { desc = "Telescope LSP refs" })
-			utils.keymap("n", "<leader>li", builtin.lsp_implementations, { desc = "Telescope LSP impl" })
-			utils.keymap("n", "<leader>lt", builtin.lsp_type_definitions, { desc = "Telescope LSP typedef" })
-			utils.keymap("n", "<leader>ls", builtin.lsp_document_symbols, { desc = "Telescope LSP buf symbols" })
-			utils.keymap("n", "<leader>r", builtin.command_history, { desc = "Telescope command history" })
-			utils.keymap("n", "<leader>/", builtin.search_history, { desc = "Telescope search history" })
-			utils.keymap("n", "<leader>G", builtin.git_commits, { desc = "Telescope git commits" })
-			utils.keymap("n", "<leader>.", function()
-				require("telescope.builtin").find_files({
-					hidden = true,
-					cwd = vim.fn.expand("~/code/dotfiles"),
-				})
-			end, { desc = "Telescope edit dotfiles" })
 		end,
 	},
 	{ "windwp/nvim-autopairs", config = true },

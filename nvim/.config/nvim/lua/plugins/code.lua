@@ -6,6 +6,7 @@ return {
 				diagnostics = { auto_close = true, auto_open = false },
 			},
 		},
+		cmd = "Trouble",
 		keys = {
 			{
 				"<leader>xx",
@@ -65,7 +66,7 @@ return {
 			vim.g.indent_blankline_filetype = { "cpp", "python", "lua", "typescript", "javascript", "go" }
 		end,
 	},
-	"RRethy/vim-illuminate",
+	{ "RRethy/vim-illuminate", event = "VeryLazy" },
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
 		event = "VeryLazy",
@@ -78,6 +79,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		event = "BufReadPost",
 		priority = 1001,
 		config = function()
 			local configs = require("nvim-treesitter.configs")

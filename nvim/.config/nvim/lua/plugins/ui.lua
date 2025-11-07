@@ -71,14 +71,12 @@ return {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
+		event = "VimEnter",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
-			"folke/trouble.nvim",
 			"yavorski/lualine-macro-recording.nvim",
 		},
 		opts = function(_, opts)
-			local trouble = require("trouble")
-
 			opts.options = opts.options or {}
 			opts.options.theme = "auto"
 
