@@ -6,7 +6,7 @@ backup() {
   done | sh -x
 }
 
-function v() {
+v() {
   if test $# -gt 0; then
     echo "Starting nvim with args $@."
     sleep 1
