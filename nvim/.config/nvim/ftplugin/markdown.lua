@@ -18,4 +18,4 @@ vim.api.nvim_create_user_command("LoadJp", function()
 	require("jp")
 end, {})
 
-vim.opt_local.wrap = false
+vim.opt_local.wrap = true
