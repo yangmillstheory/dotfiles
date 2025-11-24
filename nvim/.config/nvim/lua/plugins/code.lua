@@ -51,6 +51,7 @@ return {
 		},
 		config = function()
 			require("CopilotChat").setup({
+				resources = {},
 				prompts = {
 					-- The out-of-the-box version uses #buffer which makes no sense.
 					Commit = {
