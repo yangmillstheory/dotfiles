@@ -61,7 +61,27 @@ return {
 		},
 		config = function()
 			require("CopilotChat").setup({
+				-- Don't propagate #selection automatically, which is the default behavior.
 				resources = {},
+
+				window = {
+					layout = "float",
+					width = 0.85,
+					height = 0.85,
+					border = "rounded",
+					title = "Copilot Chat",
+					zindex = 100,
+					blend = 5,
+				},
+
+				separator = " ",
+
+				headers = {
+					user = "👤 Me",
+					assistant = "🤖 Copilot",
+					tool = "🔧 Tool",
+				},
+
 				prompts = {
 					-- The out-of-the-box version uses #buffer which makes no sense.
 					Commit = {
