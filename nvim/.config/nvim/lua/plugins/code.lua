@@ -45,8 +45,18 @@ return {
 			{ "<leader>cr", ":CopilotChatReview<cr>", mode = "v", desc = "CopilotChat: Review selection" },
 			{ "<leader>cf", ":CopilotChatFix<cr>", mode = "v", desc = "CopilotChat: Fix selection" },
 			{ "<leader>cd", ":CopilotChatDocs<cr>", mode = "v", desc = "CopilotChat: Generate docs for selection" },
-			{ "<leader>co", ":CopilotChatOptimize<cr>", mode = "v", desc = "CopilotChat: Optimize selection" },
-			{ "<leader>ct", ":CopilotChatTests<cr>", mode = "v", desc = "CopilotChat: Generate tests for selection" },
+			{
+				"<leader>cs",
+				":CopilotChatSave ",
+				mode = "n",
+				desc = "CopilotChat: Save chat history (with optional name)",
+			},
+			{
+				"<leader>cl",
+				":CopilotChatLoad ",
+				mode = "n",
+				desc = "CopilotChat: Load chat history (with optional name)",
+			},
 			{ "<leader>cm", ":CopilotChatCommit<cr>", mode = "n", desc = "CopilotChat: Generate commit message" },
 		},
 		config = function()
