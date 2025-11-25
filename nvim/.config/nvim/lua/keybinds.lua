@@ -3,15 +3,11 @@ local keymap = require("utils").keymap
 keymap("n", "<space>", "<nop>", { desc = "Disable space key in normal mode" })
 vim.g.mapleader = " "
 
--- marks
-keymap("n", "xM", [[:delm! \| delm A-Z0-9a-z<CR>]], { desc = "Delete all marks" })
-keymap("n", "xm", [[:delm a-z<CR>]], { desc = "Delete buffer-local marks" })
-
 -- quickfix / diagnostics
-keymap("n", "xj", function()
+keymap("n", "Xj", function()
 	vim.diagnostic.jump({ count = 1 })
 end, { desc = "Go to next diagnostic" })
-keymap("n", "xk", function()
+keymap("n", "Xk", function()
 	vim.diagnostic.jump({ count = -1 })
 end, { desc = "Go to previous diagnostic" })
 keymap("n", "qj", ":cnext<cr>", { desc = "Quickfix: Next item" })
