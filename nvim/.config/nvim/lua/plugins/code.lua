@@ -65,21 +65,20 @@ return {
 				resources = {},
 
 				window = {
-					layout = "float",
-					width = 0.85,
-					height = 0.85,
-					border = "rounded",
-					title = "Copilot Chat",
-					zindex = 100,
-					blend = 5,
+					width = 0.3,
+					height = 1,
 				},
 
-				separator = " ",
+				-- false is recommended per https://github.com/CopilotC-Nvim/CopilotChat.nvim/wiki/Examples-and-Tips#markdown-rendering.
+				-- However, this forces ugly UUID's to show up: https://github.com/CopilotC-Nvim/CopilotChat.nvim/issues/1217
+				highlight_headers = true,
+				error_header = "> [!ERROR] Error",
 
 				headers = {
-					user = "👤 Me",
-					assistant = "🤖 Copilot",
-					tool = "🔧 Tool",
+					-- Hack because the first icon isn't properly rendered.
+					user = "👤👤",
+					assistant = "🤖🤖",
+					tool = "🔧🔧",
 				},
 
 				prompts = {
