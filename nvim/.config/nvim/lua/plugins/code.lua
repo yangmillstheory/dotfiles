@@ -75,10 +75,9 @@ return {
 				error_header = "> [!ERROR] Error",
 
 				headers = {
-					-- Hack because the first icon isn't properly rendered.
-					user = "👤👤",
-					assistant = "🤖🤖",
-					tool = "🔧🔧",
+					user = "👤",
+					assistant = "🤖",
+					tool = "🔧",
 				},
 
 				prompts = {
