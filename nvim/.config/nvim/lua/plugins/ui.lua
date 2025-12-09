@@ -32,8 +32,8 @@ return {
 				dimInactive = true,
 				theme = "wave",
 			})
-			vim.o.background = "dark"
-			vim.cmd.colorscheme("kanagawa")
+			-- vim.o.background = "dark"
+			-- vim.cmd.colorscheme("kanagawa")
 		end,
 	},
 	{
@@ -42,12 +42,12 @@ return {
 		lazy = false,
 		config = function()
 			require("gruvbox").setup({
-				transparent_mode = false,
-				dim_inactive = true,
+				transparent_mode = true,
+				dim_inactive = false,
 				contrast = "hard",
 			})
-			-- vim.o.background = 'dark'
-			-- vim.cmd.colorscheme("gruvbox")
+			vim.o.background = "dark"
+			vim.cmd.colorscheme("gruvbox")
 		end,
 	},
 	{

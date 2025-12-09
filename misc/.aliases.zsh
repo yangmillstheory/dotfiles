@@ -72,6 +72,9 @@ compdef gx=git
 alias gm='git merge'
 compdef gm=git
 
+alias gwip='git add . && git ci -m "WIP" && git push'
+compdef gwip=git
+
 alias t='terraform'
 
 alias b='brew'

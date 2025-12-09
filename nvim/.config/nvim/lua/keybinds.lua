@@ -51,6 +51,8 @@ keymap("n", "{", "{zz", { desc = "Previous paragraph and center" })
 
 -- navigating tabs & buffers
 keymap("n", "<A-t>", ":tab sp<cr>", { desc = "Open new tab" })
+keymap("n", "tj", ":tabp<cr>", { desc = "Prev tab" })
+keymap("n", "tk", ":tabn<cr>", { desc = "Next tab" })
 
 -- resizing windows
 keymap("n", "<C-A-k>", ":resize +2<cr>", { desc = "Increase window height" })
