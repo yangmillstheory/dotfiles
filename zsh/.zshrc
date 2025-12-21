@@ -83,7 +83,6 @@ eval "$(direnv hook zsh)"
 source <(fzf --zsh)
 
 # Source external completion scripts
-source <(localstack completion zsh)
 complete -C `which aws_completer` aws
 complete -C `which aws_completer` awslocal
 
