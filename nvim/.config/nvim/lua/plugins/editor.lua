@@ -45,7 +45,7 @@ return {
 		"leath-dub/snipe.nvim",
 		keys = {
 			{
-				"<leader>b",
+				"<leader>B",
 				function()
 					require("snipe").open_buffer_menu()
 				end,
@@ -135,121 +135,121 @@ return {
 			}
 		end,
 		keys = {
-		  {
-		    "<leader>t",
-		    function()
-		      require("telescope.builtin").find_files({ hidden = true })
-		    end,
-		    desc = "Telescope find files",
-		  },
-		  {
-		    "<leader>f",
-		    function()
-		      require("telescope").extensions.live_grep_args.live_grep_args()
-		    end,
-		    desc = "Telescope live grep",
-		  },
-		  {
-		    "<leader>B",
-		    function()
-		      require("telescope.builtin").buffers()
-		    end,
-		    desc = "Telescope buffers",
-		  },
-		  {
-		    "<leader>C",
-		    function()
-		      require("telescope.builtin").commands()
-		    end,
-		    desc = "Telescope commands",
-		  },
-		  {
-		    "<leader>?",
-		    function()
-		      require("telescope.builtin").help_tags()
-		    end,
-		    desc = "Telescope help_tags",
-		  },
-		  {
-		    "<leader>!",
-		    function()
-		      require("telescope.builtin").diagnostics()
-		    end,
-		    desc = "Telescope diagnostics",
-		  },
-		  {
-		    "<leader>m",
-		    function()
-		      require("telescope.builtin").marks()
-		    end,
-		    desc = "Telescope marks",
-		  },
-		  {
-		    "<leader>ld",
-		    function()
-		      require("telescope.builtin").lsp_definitions()
-		    end,
-		    desc = "Telescope LSP defs",
-		  },
-		  {
-		    "<leader>lr",
-		    function()
-		      require("telescope.builtin").lsp_references()
-		    end,
-		    desc = "Telescope LSP refs",
-		  },
-		  {
-		    "<leader>li",
-		    function()
-		      require("telescope.builtin").lsp_implementations()
-		    end,
-		    desc = "Telescope LSP impl",
-		  },
-		  {
-		    "<leader>lt",
-		    function()
-		      require("telescope.builtin").lsp_type_definitions()
-		    end,
-		    desc = "Telescope LSP typedef",
-		  },
-		  {
-		    "<leader>ls",
-		    function()
-		      require("telescope.builtin").lsp_document_symbols()
-		    end,
-		    desc = "Telescope LSP buf symbols",
-		  },
-		  {
-		    "<leader>r",
-		    function()
-		      require("telescope.builtin").command_history()
-		    end,
-		    desc = "Telescope command history",
-		  },
-		  {
-		    "<leader>/",
-		    function()
-		      require("telescope.builtin").search_history()
-		    end,
-		    desc = "Telescope search history",
-		  },
-		  {
-		    "<leader>G",
-		    function()
-		      require("telescope.builtin").git_commits()
-		    end,
-		    desc = "Telescope git commits",
-		  },
-		  {
-		    "<leader>.",
-		    function()
-		      require("telescope.builtin").find_files({
-			hidden = true,
-			cwd = vim.fn.expand("~/code/dotfiles"),
-		      })
-		    end,
-		    desc = "Telescope edit dotfiles",
-		  },
+			{
+				"<leader>t",
+				function()
+					require("telescope.builtin").find_files({ hidden = true })
+				end,
+				desc = "Telescope find files",
+			},
+			{
+				"<leader>f",
+				function()
+					require("telescope").extensions.live_grep_args.live_grep_args()
+				end,
+				desc = "Telescope live grep",
+			},
+			{
+				"<leader>b",
+				function()
+					require("telescope.builtin").buffers()
+				end,
+				desc = "Telescope buffers",
+			},
+			{
+				"<leader>C",
+				function()
+					require("telescope.builtin").commands()
+				end,
+				desc = "Telescope commands",
+			},
+			{
+				"<leader>?",
+				function()
+					require("telescope.builtin").help_tags()
+				end,
+				desc = "Telescope help_tags",
+			},
+			{
+				"<leader>!",
+				function()
+					require("telescope.builtin").diagnostics()
+				end,
+				desc = "Telescope diagnostics",
+			},
+			{
+				"<leader>m",
+				function()
+					require("telescope.builtin").marks()
+				end,
+				desc = "Telescope marks",
+			},
+			{
+				"<leader>ld",
+				function()
+					require("telescope.builtin").lsp_definitions()
+				end,
+				desc = "Telescope LSP defs",
+			},
+			{
+				"<leader>lr",
+				function()
+					require("telescope.builtin").lsp_references()
+				end,
+				desc = "Telescope LSP refs",
+			},
+			{
+				"<leader>li",
+				function()
+					require("telescope.builtin").lsp_implementations()
+				end,
+				desc = "Telescope LSP impl",
+			},
+			{
+				"<leader>lt",
+				function()
+					require("telescope.builtin").lsp_type_definitions()
+				end,
+				desc = "Telescope LSP typedef",
+			},
+			{
+				"<leader>ls",
+				function()
+					require("telescope.builtin").lsp_document_symbols()
+				end,
+				desc = "Telescope LSP buf symbols",
+			},
+			{
+				"<leader>r",
+				function()
+					require("telescope.builtin").command_history()
+				end,
+				desc = "Telescope command history",
+			},
+			{
+				"<leader>/",
+				function()
+					require("telescope.builtin").search_history()
+				end,
+				desc = "Telescope search history",
+			},
+			{
+				"<leader>G",
+				function()
+					require("telescope.builtin").git_commits()
+				end,
+				desc = "Telescope git commits",
+			},
+			{
+				"<leader>.",
+				function()
+					require("telescope.builtin").find_files({
+						hidden = true,
+						cwd = vim.fn.expand("~/code/dotfiles"),
+					})
+				end,
+				desc = "Telescope edit dotfiles",
+			},
 		},
 		config = function(_, opts)
 			local lga_actions = require("telescope-live-grep-args.actions")
