@@ -10,7 +10,7 @@ return {
 			bufferline.setup({
 				options = {
 					-- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
-					separator_style = "slope",
+					separator_style = "thick",
 					indicator = {
 						style = "none",
 					},
@@ -48,6 +48,10 @@ return {
 			})
 			vim.o.background = "dark"
 			vim.cmd.colorscheme("gruvbox")
+			vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000" })
+			require("notify").setup({
+				background_colour = "NotifyBackground",
+			})
 		end,
 	},
 	{
