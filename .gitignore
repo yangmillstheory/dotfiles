@@ -6,3 +6,4 @@ alacritty/.config/alacritty/themes
 kitty/.config/kitty/kitty-themes
 tmux/.tmux/plugins
 .DS_Store
+startup.log
