@@ -10,7 +10,7 @@ return {
 			bufferline.setup({
 				options = {
 					-- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
-					separator_style = "thick",
+					separator_style = "slope",
 					indicator = {
 						style = "none",
 					},
