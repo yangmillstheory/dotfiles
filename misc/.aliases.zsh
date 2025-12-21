@@ -6,6 +6,8 @@ alias al=awslocal
 alias k=kubectl
 compdef k=kubectl
 
+alias kn='kubectl config set-context --current --namespace '
+
 alias kdl='kubectl delete'
 compdef kdl=kubectl
 
