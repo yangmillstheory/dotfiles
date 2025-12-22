@@ -10,7 +10,7 @@ return {
 			bufferline.setup({
 				options = {
 					-- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
-					separator_style = "slope",
+					separator_style = "thin",
 				},
 			})
 			keymap("n", "bq", ":bw<CR>", { desc = "Close buffer" })

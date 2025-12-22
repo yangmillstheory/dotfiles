@@ -33,7 +33,7 @@ history = 10000
 multiplier = 3
 
 [window]
-opacity = 0.8
+opacity = 1
 blur = true
 decorations = "Full"
 padding = { x = 0, y = 0 }
@@ -41,5 +41,5 @@ option_as_alt = "Both"
 
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/catppuccin.toml",
+    "~/.config/alacritty/themes/themes/gruvbox_dark.toml",
 ]
