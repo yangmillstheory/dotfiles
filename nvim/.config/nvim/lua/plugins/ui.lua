@@ -11,9 +11,6 @@ return {
 				options = {
 					-- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
 					separator_style = "slope",
-					indicator = {
-						style = "none",
-					},
 				},
 			})
 			keymap("n", "bq", ":bw<CR>", { desc = "Close buffer" })
@@ -88,8 +85,6 @@ return {
 			opts.sections.lualine_a = { "mode" }
 			opts.sections.lualine_b = {
 				"ObsessionStatus",
-				"diff",
-				"diagnostics",
 				"macro_recording",
 			}
 			opts.sections.lualine_c = {
@@ -102,6 +97,9 @@ return {
 						readonly = "",
 					},
 				},
+				"branch",
+				"selectioncount",
+				"lsp_status",
 			}
 
 			return opts
