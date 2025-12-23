@@ -81,6 +81,10 @@ return {
 		opts = function(_, opts)
 			opts.options = opts.options or {}
 			opts.options.theme = "auto"
+			opts.options = {
+				section_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
+			}
 
 			opts.sections = opts.sections or {}
 			opts.sections.lualine_a = { "mode" }
@@ -91,7 +95,7 @@ return {
 			opts.sections.lualine_c = {
 				{
 					"filename",
-					path = 1,
+					path = 0,
 					shorting_target = 20,
 					symbols = {
 						modified = "✗",
