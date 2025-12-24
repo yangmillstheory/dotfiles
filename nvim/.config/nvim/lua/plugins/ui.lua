@@ -29,8 +29,8 @@ return {
 				dimInactive = true,
 				theme = "wave",
 			})
-			vim.o.background = "dark"
-			vim.cmd.colorscheme("kanagawa")
+			-- vim.o.background = "dark"
+			-- vim.cmd.colorscheme("kanagawa")
 		end,
 	},
 	{
@@ -43,13 +43,13 @@ return {
 				dim_inactive = false,
 				contrast = "hard",
 			})
-			-- vim.o.background = "dark"
-			-- vim.cmd.colorscheme("gruvbox")
-			-- vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000" })
-			-- require("notify").setup({
-			-- 	background_colour = "NotifyBackground",
-			-- 	merge_duplicates = true,
-			-- })
+			vim.o.background = "dark"
+			vim.cmd.colorscheme("gruvbox")
+			vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000" })
+			require("notify").setup({
+				background_colour = "NotifyBackground",
+				merge_duplicates = true,
+			})
 		end,
 	},
 	{
