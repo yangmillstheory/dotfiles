@@ -86,5 +86,4 @@ source <(fzf --zsh)
 complete -C `which aws_completer` aws
 complete -C `which aws_completer` awslocal
 
-
 # zprof
