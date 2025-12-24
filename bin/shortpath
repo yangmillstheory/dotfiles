@@ -1,4 +1,18 @@
 #!/bin/zsh
 
-DIR="${PWD/#$HOME/~}"
-print -r -- "$(echo -n $DIR | perl -pe 's/(\w)[^\/]+\//\1\//g')"
+path="$1"
+[ -z "$path" ] && exit 1
+
+# Replace $HOME with ~
+path="${path/#$HOME/~}"
+
+# Split into array
+IFS='/' read -A parts <<< "$path"
+
+# Collapse intermediate directories to first letter
+for ((i=2; i<${#parts[@]}; i++)); do
+  [ -n "${parts[i]}" ] && parts[i]="${parts[i]:0:1}"
+done
+
+# Rejoin
+print -r -- "${(j:/:)parts}"
