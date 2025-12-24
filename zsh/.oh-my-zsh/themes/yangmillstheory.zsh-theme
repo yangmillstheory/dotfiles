@@ -26,8 +26,11 @@ bindkey '^m' reset-prompt-and-accept-line
 setopt prompt_subst
 
 # --- Main prompt ---
+shortpath_pwd() {
+  shortpath "$PWD"
+}
 PROMPT='%(?:%{$fg[green]%}┌─ :%{$fg[red]%}┌─ )%{$reset_color%}'\
-'%{$fg_bold[yellow]%}[$(shortpath)] $(virtualenv_prompt_info)$(aws_vault_prompt_info)$(git_prompt_info)'$'\n'\
+'%{$fg_bold[yellow]%}[$(shortpath_pwd)] $(virtualenv_prompt_info)$(aws_vault_prompt_info)$(git_prompt_info)'$'\n'\
 '%(?:%{$fg[green]%}└─➤ :%{$fg[red]%}└%?─➤ )%{$reset_color%} '
 
 # --- Git colors ---
