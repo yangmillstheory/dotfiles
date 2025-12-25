@@ -238,20 +238,6 @@ return {
 					relativenumber = false,
 					border = "rounded",
 				},
-				keymaps = {
-					-- Next file change
-					next = "<Down>",
-					-- Previous file change
-					prev = "<Up>",
-					-- Close diff window (float only)
-					close = "q",
-					-- Refresh diff
-					refresh = "r",
-					-- First file change
-					first = "gg",
-					-- Last file change
-					last = "G",
-				},
 			})
 		end,
 	},
