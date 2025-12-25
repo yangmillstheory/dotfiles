@@ -1,3 +1,4 @@
+local utf8 = require("utf8")
 local keymap = require("utils").keymap
 -- Plugins that make nvim prettier.
 return {
@@ -82,8 +83,8 @@ return {
 			opts.options = opts.options or {}
 			opts.options.theme = "auto"
 			opts.options = {
-				section_separators = { left = "", right = "" },
-				component_separators = { left = "", right = "" },
+				section_separators = { left = utf8.char(0xE0C6), right = utf8.char(0xE0C7) },
+				component_separators = { left = utf8.char(0xE0B1), right = utf8.char(0xE0B3) },
 			}
 
 			opts.sections = opts.sections or {}
@@ -95,17 +96,24 @@ return {
 			opts.sections.lualine_c = {
 				{
 					"filename",
-					path = 0,
-					shorting_target = 20,
+					path = 1,
+					-- Set to a very high number so we force shorting.
+					-- Would like to avoid rewriting my own function
+					shorting_target = 1000,
 					symbols = {
 						modified = "✗",
 						readonly = "",
 					},
 				},
 				"branch",
-				"selectioncount",
-				"lsp_status",
 			}
+
+			opts.sections.lualine_x = {
+				"lsp_status",
+				"filetype",
+			}
+			opts.sections.lualine_y = { "progress" }
+			opts.sections.lualine_z = { "location", "selectioncount" }
 
 			return opts
 		end,
