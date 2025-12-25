@@ -83,8 +83,9 @@ return {
 			opts.options = opts.options or {}
 			opts.options.theme = "auto"
 			opts.options = {
-				section_separators = { left = utf8.char(0xE0C6), right = utf8.char(0xE0C7) },
-				component_separators = { left = utf8.char(0xE0B1), right = utf8.char(0xE0B3) },
+				-- https://github.com/ryanoasis/powerline-extra-symbols for possibilities.
+				section_separators = { left = utf8.char(0xE0B8), right = utf8.char(0xE0BA) },
+				component_separators = { left = utf8.char(0xE0B9), right = utf8.char(0xE0BB) },
 			}
 
 			opts.sections = opts.sections or {}
