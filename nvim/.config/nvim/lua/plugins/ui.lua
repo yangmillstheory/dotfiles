@@ -106,14 +106,13 @@ return {
 						readonly = "",
 					},
 				},
-				"branch",
 			}
 
 			opts.sections.lualine_x = {
 				"lsp_status",
 				"filetype",
 			}
-			opts.sections.lualine_y = { "progress" }
+			opts.sections.lualine_y = { "progress", "branch" }
 			opts.sections.lualine_z = { "location", "selectioncount" }
 
 			return opts
